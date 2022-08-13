@@ -10,7 +10,7 @@ namespace App2.util
 {
     internal class JsonWorker
     {
-        public static string SETTINGS_PATH = "settings.json";
+        public static string SETTINGS_PATH = AppDomain.CurrentDomain.BaseDirectory + "settings.json";
 
         public static void SaveData(Dictionary<string, string> data)
         {
@@ -23,16 +23,25 @@ namespace App2.util
 
         public static Dictionary<string, string>? LoadData()
         {
-
-            using (StreamReader reader = new StreamReader(SETTINGS_PATH))
+            try
             {
+                using (StreamReader reader = new StreamReader(SETTINGS_PATH))
+                {
 
-                string json = "";
-                string? line;
-                while ((line = reader.ReadLine()) != null)
-                    json += line;
+                    string json = "";
+                    string? line;
+                    while ((line = reader.ReadLine()) != null)
+                        json += line;
 
-                return JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+                    return json!= ""?
+                        JsonConvert.DeserializeObject<Dictionary<string, string>>(json):
+                        new Dictionary<string, string>();
+                }
+            }
+            catch (FileNotFoundException ex)
+            {
+                File.Create(SETTINGS_PATH).Close();
+                return new Dictionary<string, string>();
             }
 
         }

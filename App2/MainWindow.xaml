@@ -6,16 +6,64 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+    
+    
 
     <Pivot >
-       
-        <PivotItem Header="SolidWorks Tests">
+
+        <PivotItem Header="Действия в SolidWorks">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button x:Name="myButton" Click="myButton_Click">Подключить</Button>
                 <TextBlock x:Name="textBlock" Text="Hello"></TextBlock>
                 <Button x:Name="myButton2" Click="myButton2_Click">Построить</Button>
             </StackPanel>
+        </PivotItem>
+        <PivotItem Header="Параметры">
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+               
+
+                <ComboBox x:Name="swloader_combobox" SelectionChanged="swloader_combobox_SelectionChanged" 
+                          SelectedIndex="0" Header="Параметры загрузки SolidWorks" Grid.Column="0"  Grid.Row="0"
+                          HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                    <x:String>Автоматическая</x:String>
+                    <x:String>Ручная</x:String>
+
+                </ComboBox>
+
+                <TeachingTip x:Name="SWLoadTip"
+                    Target="{x:Bind swloader_combobox}"
+                    Subtitle="Автоматическая загрузка позволяет автоматически открыть SolidWorks, при ручной загрузке это нужно делать самостоятельно!">
+                </TeachingTip>
+
+                <Button Margin ="10" Content="?" Click="Button_Click" Grid.Column="1"  Grid.Row="0"></Button>
+
+
+                <ComboBox x:Name="swdocloader_combobox" SelectionChanged="swdocloader_combobox_SelectionChanged"
+                          SelectedIndex="0" Header="Параметры загрузки документа SolidWorks" Grid.Column="0"  Grid.Row="1"
+                          HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                    <x:String>Создать новый пустой документ</x:String>
+                    <x:String>Загрузить существующий</x:String>
+                    <x:String>Загрузить последний выбранный</x:String>
+                </ComboBox>
+
+                <TeachingTip x:Name="SWLoadDocTip"
+                    Target="{x:Bind swdocloader_combobox}"
+                    Title="Параметры загрузки документа 3д детали"
+                    Subtitle="Выберите режим для эффективной работы с документом SolidWorks!">
+                </TeachingTip>
+
+                <Button Margin ="10" Content="?" Click="Button_Click_1" Grid.Column="1"  Grid.Row="1"></Button>
+            </Grid>
         </PivotItem>
 
     </Pivot>
