@@ -14,10 +14,12 @@
         <PivotItem Header="Действия в SolidWorks">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button  Click="Button_Click_2">Open SW</Button>
+                <Button  Click="Button_Click_3">Close SW</Button>
                 <Button x:Name="myButton" Click="myButton_Click">Подключить</Button>
                 <TextBlock x:Name="textBlock" Text="Hello"></TextBlock>
                 <Button x:Name="myButton2" Click="myButton2_Click">Построить</Button>
-                <Button  Click="Button_Click_3">Close SW</Button>
+                <Button  Click="Button_Click_4">get file path</Button>
+                
             </StackPanel>
         </PivotItem>
         <PivotItem Header="Параметры">
@@ -51,11 +53,11 @@
 
 
                 <ComboBox x:Name="swdocloader_combobox" SelectionChanged="swdocloader_combobox_SelectionChanged"
-                          SelectedIndex="0" Header="Параметры загрузки документа SolidWorks" Grid.Column="0"  Grid.Row="1"
+                          SelectedIndex="2" Header="Параметры загрузки документа SolidWorks" Grid.Column="0"  Grid.Row="1"
                           HorizontalAlignment="Stretch" VerticalAlignment="Center">
                     <x:String>Создать новый пустой документ</x:String>
-                    <x:String>Загрузить существующий</x:String>
-                    <x:String>Загрузить последний выбранный</x:String>
+                    <x:String>Загрузить из последнего файла</x:String>
+                    <x:String>Загрузить из файла</x:String>
                 </ComboBox>
 
                 <TeachingTip x:Name="SWLoadDocTip"

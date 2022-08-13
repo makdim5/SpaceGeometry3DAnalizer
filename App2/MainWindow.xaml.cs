@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using App2.util;
 using App2.exceptions;
 using App2.SolidWorksPackage;
-
+using System.Threading.Tasks;
+using Windows.Storage.Pickers;
+using Windows.Storage;
 
 namespace App2
 {
@@ -21,7 +23,7 @@ namespace App2
 
         }
 
-        private void RestoreSettings()
+        private async void RestoreSettings()
         {
             localSettings = JsonWorker.LoadData();
             try
@@ -41,6 +43,54 @@ namespace App2
             if (swloader_combobox.SelectedIndex == 0)
             {
                 SolidWorksDefiner.OpenSolidWorksApp();
+            } else if (swloader_combobox.SelectedIndex == 1)
+            {
+                try
+                {
+                    SolidWorksDefiner.DefineSolidWorksApp();
+                }
+                catch (NotSWAppFoundException ex)
+                {
+                    Message.Show(ex + "", this.Content.XamlRoot, "Mistake!");
+                }
+                
+            }
+
+            if (swdocloader_combobox.SelectedIndex == 0)
+            {
+                SolidWorksDefiner.CreateNewDocument();
+            } else 
+            {
+                string filepath = null;
+                if (swdocloader_combobox.SelectedIndex == 1)
+                {
+                    try
+                    {
+                        filepath = localSettings["filepath"];
+                    }
+                    catch (KeyNotFoundException)
+                    {
+                        filepath = await FileBrowserWorker.GetFilePathAsync(this);
+                        localSettings["filepath"] = filepath;
+                    }
+                }
+
+                if (swdocloader_combobox.SelectedIndex == 2)
+                {
+                    filepath = await FileBrowserWorker.GetFilePathAsync(this);
+                    localSettings["filepath"] = filepath;
+                }
+                
+
+                if (filepath != null)
+                {
+                    SolidWorksDefiner.OpenDocument(filepath);
+                }
+                else
+                {
+                    Message.Show("File has not been chosen!", this.Content.XamlRoot, "Mistake!");
+                }
+                
             }
         }
 
@@ -111,10 +161,21 @@ namespace App2
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             SolidWorksDefiner.OpenSolidWorksApp();
+            SolidWorksDefiner.comList = RotManager.GetRunningInstances(SolidWorksDefiner.APP_NAME);
+            Message.Show($"{SolidWorksDefiner.comList.Count}", this.Content.XamlRoot); 
         }
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             SolidWorksDefiner.CloseSolidWorksApp();
+        }
+
+        private async void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            
+            var filepath = await FileBrowserWorker.GetFilePathAsync(this);
+
+            localSettings["filepath"] = filepath;
+            
         }
     }
 }

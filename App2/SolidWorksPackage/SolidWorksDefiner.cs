@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace App2
     {
         public static SldWorks app;
         public static List<object> comList;
-        private const string APP_NAME = "SldWorks.Application";
+        public const string APP_NAME = "SldWorks.Application";
 
         public static void DefineSolidWorksApp()
         {
@@ -36,9 +37,9 @@ namespace App2
             {
                 app = Activator.CreateInstance(Type.GetTypeFromProgID(APP_NAME)) as SldWorks;
                 app.Visible = true;
-                
+
             }
- 
+
         }
 
         public static void CloseSolidWorksApp()
@@ -55,7 +56,10 @@ namespace App2
 
         public static ModelDoc2 DefineActiveSolidWorksDocument()
         {
-            DefineSolidWorksApp();
+            if (app == null)
+            {
+                throw new NotSWAppFoundException();
+            }
             ModelDoc2 swDoc = (ModelDoc2)app.GetFirstDocument();
             if (swDoc == null)
             {
@@ -68,6 +72,43 @@ namespace App2
             app.SetUserPreferenceToggle(pref_toggle, false);
 
             return swDoc;
+        }
+
+
+
+        public static void OpenDocument(string path)
+        {
+
+
+            int fileError = default(int);
+            int fileWarning = default(int);
+
+            //Open doc
+            ModelDoc2 swDoc = app.OpenDoc6(
+                path,
+                (int)swDocumentTypes_e.swDocPART,
+                (int)swOpenDocOptions_e.swOpenDocOptions_Silent,
+                null,
+                ref fileError,
+                ref fileWarning
+            );
+
+
+            if (swDoc != null)
+            {
+                //Set the working directory to the document directory
+                string pathName = swDoc.GetPathName();
+                app.SetCurrentWorkingDirectory(pathName.Substring(0, pathName.LastIndexOf("\\")));
+            }
+
+
+        }
+
+        public static void CreateNewDocument()
+        {
+
+            app.NewPart();
+
         }
 
     }       
