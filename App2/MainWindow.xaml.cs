@@ -16,6 +16,13 @@ namespace App2
         {
             this.InitializeComponent();
             this.Closed += On_Closed;
+            RestoreSettings();
+            
+
+        }
+
+        private void RestoreSettings()
+        {
             localSettings = JsonWorker.LoadData();
             try
             {
@@ -31,11 +38,16 @@ namespace App2
                 ;
             }
 
+            if (swloader_combobox.SelectedIndex == 0)
+            {
+                SolidWorksDefiner.OpenSolidWorksApp();
+            }
         }
 
         private void On_Closed(object sender, WindowEventArgs args)
         {
             JsonWorker.SaveData(localSettings);
+            SolidWorksDefiner.CloseSolidWorksApp();
         }
 
         private void myButton_Click(object sender, RoutedEventArgs e)
@@ -96,6 +108,13 @@ namespace App2
             SWLoadDocTip.IsOpen = true;
         }
 
-
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            SolidWorksDefiner.OpenSolidWorksApp();
+        }
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            SolidWorksDefiner.CloseSolidWorksApp();
+        }
     }
 }

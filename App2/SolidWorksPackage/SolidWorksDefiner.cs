@@ -14,10 +14,11 @@ namespace App2
     {
         public static SldWorks app;
         public static List<object> comList;
+        private const string APP_NAME = "SldWorks.Application";
 
         public static void DefineSolidWorksApp()
         {
-            comList = RotManager.GetRunningInstances("SldWorks.Application");
+            comList = RotManager.GetRunningInstances(APP_NAME);
 
             if (comList.Count == 0)
             {
@@ -25,6 +26,29 @@ namespace App2
             }
 
             app = (SldWorks)comList[0];
+
+        }
+
+        public static void OpenSolidWorksApp()
+        {
+            comList = RotManager.GetRunningInstances(APP_NAME);
+            if (comList.Count == 0)
+            {
+                app = Activator.CreateInstance(Type.GetTypeFromProgID(APP_NAME)) as SldWorks;
+                app.Visible = true;
+                
+            }
+ 
+        }
+
+        public static void CloseSolidWorksApp()
+        {
+            
+            if (app != null)
+            {
+                app.ExitApp();
+
+            }
 
         }
 
