@@ -7,6 +7,7 @@ using App2.SolidWorksPackage;
 using System.Threading.Tasks;
 using Windows.Storage.Pickers;
 using Windows.Storage;
+using System.Threading;
 
 namespace App2
 {
@@ -45,15 +46,8 @@ namespace App2
                 SolidWorksDefiner.OpenSolidWorksApp();
             } else if (swloader_combobox.SelectedIndex == 1)
             {
-                try
-                {
-                    SolidWorksDefiner.DefineSolidWorksApp();
-                }
-                catch (NotSWAppFoundException ex)
-                {
-                    Message.Show(ex + "", this.Content.XamlRoot, "Mistake!");
-                }
-                
+                return;
+               
             }
 
             if (swdocloader_combobox.SelectedIndex == 0)
@@ -161,8 +155,7 @@ namespace App2
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             SolidWorksDefiner.OpenSolidWorksApp();
-            SolidWorksDefiner.comList = RotManager.GetRunningInstances(SolidWorksDefiner.APP_NAME);
-            Message.Show($"{SolidWorksDefiner.comList.Count}", this.Content.XamlRoot); 
+            
         }
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
