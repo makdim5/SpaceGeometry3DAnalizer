@@ -37,4 +37,9 @@
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnablePreviewMsixTooling)'=='true'">
     <ProjectCapability Include="Msix" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="SolidWorks.Interop.cosworks">
+      <HintPath>SolidWorksDll\SolidWorks.Interop.cosworks.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>

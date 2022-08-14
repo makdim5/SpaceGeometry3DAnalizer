@@ -11,7 +11,7 @@ using SolidWorks.Interop.swconst;
 
 namespace App2
 {
-    internal class SolidWorksDefiner
+    internal class SolidWorksAppWorker
     {
         public static SldWorks app;
         public static List<object> comList;

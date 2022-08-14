@@ -46,7 +46,7 @@ namespace App2
             if (swloader_combobox.SelectedIndex == 0)
             {
 
-                await Task.Run(()=> SolidWorksDefiner.OpenSolidWorksApp());
+                await Task.Run(()=> SolidWorksAppWorker.OpenSolidWorksApp());
 
             }
             else if (swloader_combobox.SelectedIndex == 1)
@@ -57,7 +57,7 @@ namespace App2
 
             if (swdocloader_combobox.SelectedIndex == 0)
             {
-                Message.ProgressShow(SolidWorksDefiner.CreateNewDocument,
+                Message.ProgressShow(SolidWorksAppWorker.CreateNewDocument,
                         this.Content.XamlRoot, "Создание нового документа");
                 
             }
@@ -86,7 +86,7 @@ namespace App2
 
                 if (filepath != null)
                 {
-                    Message.ProgressShow( () => SolidWorksDefiner.OpenDocument(filepath),
+                    Message.ProgressShow( () => SolidWorksAppWorker.OpenDocument(filepath),
                         this.Content.XamlRoot, "Открытие файла");
                 }
                 else
@@ -100,14 +100,14 @@ namespace App2
         private void On_Closed(object sender, WindowEventArgs args)
         {
             JsonWorker.SaveData(localSettings);
-            SolidWorksDefiner.CloseSolidWorksApp();
+            SolidWorksAppWorker.CloseSolidWorksApp();
         }
 
         private void myButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                var activeDoc = SolidWorksDefiner.DefineActiveSolidWorksDocument();
+                var activeDoc = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
                 textBlock.Text = "Подключение к SolidWorks выполнено! Документ найден.";
 
             }
@@ -124,7 +124,7 @@ namespace App2
             try
             {
                 SolidWorksDrawerModels.DrawSimpleTestModel(
-                 SolidWorksDefiner.DefineActiveSolidWorksDocument());
+                 SolidWorksAppWorker.DefineActiveSolidWorksDocument());
 
             }
             catch (Exception ex) when (ex is NotSWDocumentFoundException
@@ -163,14 +163,14 @@ namespace App2
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Message.ProgressShow(SolidWorksDefiner.OpenSolidWorksApp,
+            Message.ProgressShow(SolidWorksAppWorker.OpenSolidWorksApp,
                         this.Content.XamlRoot);
            
 
         }
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            SolidWorksDefiner.CloseSolidWorksApp();
+            SolidWorksAppWorker.CloseSolidWorksApp();
         }        
 
     }

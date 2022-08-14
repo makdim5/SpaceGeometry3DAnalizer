@@ -5,20 +5,19 @@
     xmlns:local="using:App2"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+   >
 
 
 
-    <Pivot >
+    <Pivot Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}" >
         <PivotItem Header="Действия в SolidWorks">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock x:Name="textBlock" Text="Сообщение для вывода"></TextBlock>
                 <Button  Click="Button_Click_2">Открыть SW</Button>
                 <Button  Click="Button_Click_3">Закрыть SW</Button>
-                
                 <Button x:Name="myButton" Click="myButton_Click">Подключить</Button>
-                <TextBlock x:Name="textBlock" Text="Сообщение для вывода"></TextBlock>
                 <Button x:Name="myButton2" Click="myButton2_Click">Построить</Button>
-                
                 
             </StackPanel>
         </PivotItem>
