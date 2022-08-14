@@ -16,6 +16,8 @@
                 <TextBlock x:Name="textBlock" Text="Сообщение для вывода"></TextBlock>
                 <Button  Click="Button_Click_2">Открыть SW</Button>
                 <Button  Click="Button_Click_3">Закрыть SW</Button>
+                <Button  Click="Button_Click_4">Создать новый документ</Button>
+                <Button  Click="Button_Click_5">Открыть существующий документ</Button>
                 <Button x:Name="myButton" Click="myButton_Click">Подключить</Button>
                 <Button x:Name="myButton2" Click="myButton2_Click">Построить</Button>
                 
@@ -53,10 +55,10 @@
 
 
                 <ComboBox x:Name="swdocloader_combobox" SelectionChanged="swdocloader_combobox_SelectionChanged"
-                          SelectedIndex="2" Header="Параметры загрузки документа SolidWorks" Grid.Column="0"  Grid.Row="1"
+                          SelectedIndex="0" Header="Параметры загрузки документа SolidWorks" Grid.Column="0"  Grid.Row="1"
                           HorizontalAlignment="Stretch" VerticalAlignment="Center">
                     <x:String>Создать новый пустой документ</x:String>
-                    <x:String>Загрузить из последнего файла</x:String>
+                    <x:String>Загрузить из последнего открытого файла</x:String>
                     <x:String>Загрузить из файла</x:String>
                 </ComboBox>
 

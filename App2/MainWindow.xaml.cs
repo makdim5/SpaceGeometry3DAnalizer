@@ -95,6 +95,19 @@ namespace App2
                 {
                     swloader_combobox.SelectedIndex = Int16.Parse(localSettings["swloader_combobox"]);
 
+                    
+                }
+            }
+            catch (KeyNotFoundException ex)
+            {
+                ;
+            }
+
+            try
+            {
+                if (localSettings != null)
+                {
+          
                     swdocloader_combobox.SelectedIndex = Int16.Parse(localSettings["swdocloader_combobox"]);
                 }
             }
@@ -133,14 +146,14 @@ namespace App2
                     catch (KeyNotFoundException)
                     {
                         filepath = await FileBrowserWorker.GetFilePathAsync(this);
-                        localSettings["filepath"] = filepath;
+                        
                     }
                 }
 
                 if (swdocloader_combobox.SelectedIndex == 2)
                 {
                     filepath = await FileBrowserWorker.GetFilePathAsync(this);
-                    localSettings["filepath"] = filepath;
+                    
                 }
 
 
@@ -148,6 +161,7 @@ namespace App2
                 {
                     Message.ProgressShow(() => SolidWorksAppWorker.OpenDocument(filepath),
                         this.Content.XamlRoot, "Открытие файла");
+                    localSettings["filepath"] = filepath;
                 }
                 else
                 {
@@ -233,5 +247,24 @@ namespace App2
             SolidWorksAppWorker.CloseSolidWorksApp();
         }
 
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            Message.ProgressShow(SolidWorksAppWorker.CreateNewDocument,
+                        this.Content.XamlRoot, "Открытие файла");
+        }
+
+        private async void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            var filepath = await FileBrowserWorker.GetFilePathAsync(this);
+            if (filepath != null)
+            {
+                Message.ProgressShow(() => SolidWorksAppWorker.OpenDocument(filepath),
+                        this.Content.XamlRoot, "Открытие файла");
+                localSettings["filepath"] = filepath;
+            } else
+            {
+                Message.Show("File has not been chosen!", this.Content.XamlRoot, "Mistake!");
+            }
+        }
     }
 }
