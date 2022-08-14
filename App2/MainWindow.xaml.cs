@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Windows.Storage.Pickers;
 using Windows.Storage;
 using System.Threading;
+using Microsoft.UI.Xaml.Controls;
 
 namespace App2
 {
@@ -15,16 +16,17 @@ namespace App2
     public sealed partial class MainWindow : Window
     {
         Dictionary<string, string> localSettings;
+        
         public MainWindow()
         {
             this.InitializeComponent();
             this.Closed += On_Closed;
             RestoreSettings();
-            
+
 
         }
 
-        private async void RestoreSettings()
+        public async void RestoreSettings()
         {
             localSettings = JsonWorker.LoadData();
             try
@@ -43,17 +45,23 @@ namespace App2
 
             if (swloader_combobox.SelectedIndex == 0)
             {
-                SolidWorksDefiner.OpenSolidWorksApp();
-            } else if (swloader_combobox.SelectedIndex == 1)
+
+                await Task.Run(()=> SolidWorksDefiner.OpenSolidWorksApp());
+
+            }
+            else if (swloader_combobox.SelectedIndex == 1)
             {
                 return;
-               
+
             }
 
             if (swdocloader_combobox.SelectedIndex == 0)
             {
-                SolidWorksDefiner.CreateNewDocument();
-            } else 
+                Message.ProgressShow(SolidWorksDefiner.CreateNewDocument,
+                        this.Content.XamlRoot, "Создание нового документа");
+                
+            }
+            else
             {
                 string filepath = null;
                 if (swdocloader_combobox.SelectedIndex == 1)
@@ -74,17 +82,18 @@ namespace App2
                     filepath = await FileBrowserWorker.GetFilePathAsync(this);
                     localSettings["filepath"] = filepath;
                 }
-                
+
 
                 if (filepath != null)
                 {
-                    SolidWorksDefiner.OpenDocument(filepath);
+                    Message.ProgressShow( () => SolidWorksDefiner.OpenDocument(filepath),
+                        this.Content.XamlRoot, "Открытие файла");
                 }
                 else
                 {
                     Message.Show("File has not been chosen!", this.Content.XamlRoot, "Mistake!");
                 }
-                
+
             }
         }
 
@@ -154,21 +163,15 @@ namespace App2
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            SolidWorksDefiner.OpenSolidWorksApp();
-            
+            Message.ProgressShow(SolidWorksDefiner.OpenSolidWorksApp,
+                        this.Content.XamlRoot);
+           
+
         }
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             SolidWorksDefiner.CloseSolidWorksApp();
-        }
+        }        
 
-        private async void Button_Click_4(object sender, RoutedEventArgs e)
-        {
-            
-            var filepath = await FileBrowserWorker.GetFilePathAsync(this);
-
-            localSettings["filepath"] = filepath;
-            
-        }
     }
 }

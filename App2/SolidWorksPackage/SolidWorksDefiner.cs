@@ -44,12 +44,16 @@ namespace App2
 
         public static void CloseSolidWorksApp()
         {
-            
-            if (app != null)
+            foreach (Process proc in Process.GetProcessesByName("sldProcMon"))
             {
-                app.ExitApp();
-
+                proc.Kill();
             }
+
+            foreach (Process proc in Process.GetProcessesByName("SLDWORKS"))
+            {
+                proc.Kill();
+            }
+
 
         }
 
@@ -106,11 +110,11 @@ namespace App2
 
         public static void CreateNewDocument()
         {
-
-            app.NewPart();
+            if (app != null)
+                app.NewPart();
 
         }
 
-    }       
+    }
 }
 

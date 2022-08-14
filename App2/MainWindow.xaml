@@ -6,19 +6,19 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    
-    
+
+
 
     <Pivot >
-
         <PivotItem Header="Действия в SolidWorks">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Button  Click="Button_Click_2">Open SW</Button>
-                <Button  Click="Button_Click_3">Close SW</Button>
+                <Button  Click="Button_Click_2">Открыть SW</Button>
+                <Button  Click="Button_Click_3">Закрыть SW</Button>
+                
                 <Button x:Name="myButton" Click="myButton_Click">Подключить</Button>
-                <TextBlock x:Name="textBlock" Text="Hello"></TextBlock>
+                <TextBlock x:Name="textBlock" Text="Сообщение для вывода"></TextBlock>
                 <Button x:Name="myButton2" Click="myButton2_Click">Построить</Button>
-                <Button  Click="Button_Click_4">get file path</Button>
+                
                 
             </StackPanel>
         </PivotItem>
@@ -26,6 +26,7 @@
             
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
@@ -67,6 +68,8 @@
                 </TeachingTip>
 
                 <Button Margin ="10" Content="?" Click="Button_Click_1" Grid.Column="1"  Grid.Row="1"></Button>
+
+       
             </Grid>
         </PivotItem>
 

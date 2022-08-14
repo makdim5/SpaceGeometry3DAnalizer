@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml;
+﻿using App2.util;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -26,6 +27,7 @@ namespace App2
     /// </summary>
     public partial class App : Application
     {
+        
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -44,6 +46,7 @@ namespace App2
         {
             m_window = new MainWindow();
             m_window.Activate();
+            
         }
 
         private Window m_window;

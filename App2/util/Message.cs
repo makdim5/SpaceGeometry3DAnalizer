@@ -12,7 +12,8 @@ namespace App2.util
 {
     public class Message
     {
-        public static async void Show(string msg, XamlRoot xamlRoot, string title = "Message")
+        private static Action action;
+        public static async void Show(string msg, XamlRoot xamlRoot, string title = "Сообщение")
         {
 
             ContentDialog dialog = new ContentDialog()
@@ -25,5 +26,40 @@ namespace App2.util
 
             await dialog.ShowAsync();
         }
+
+        public static async void ProgressShow(Action act, XamlRoot xamlRoot, string title = "Подождите несколько секунд ...")
+        {
+
+            var prBar = new ProgressBar();
+            prBar.IsIndeterminate = true;
+            var dialog = new ContentDialog
+            {
+                Content = prBar,
+                Title = title,
+                XamlRoot = xamlRoot,
+
+            };
+            action = act;
+            dialog.Opened += ProgressContentDialog_Opened;
+
+            await dialog.ShowAsync();
+        }
+
+        private static async void ProgressContentDialog_Opened(ContentDialog sender, ContentDialogOpenedEventArgs args)
+        {
+
+            await Task.Run(() =>
+            {
+                action();
+                
+            });
+
+            sender.Title = "Завершено!";
+            await Task.Delay(500);
+            sender.Hide();
+
+        }
+
+
     }
 }
