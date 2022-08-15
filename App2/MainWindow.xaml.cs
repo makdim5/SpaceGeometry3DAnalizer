@@ -16,6 +16,7 @@ using App2.SolidWorksPackage.Simulation.FeatureFace;
 using App2.Simulation.Study;
 using App2.SolidWorksPackage.Simulation.MaterialWorker;
 using App2.SolidWorksPackage.Simulation.Study;
+using App2.SolidWorksPackage.Cells;
 
 namespace App2
 {
@@ -385,6 +386,19 @@ namespace App2
                 textBlock.Text = "Проведение исследования не удалось! :( ...";
             }
 
+        }
+
+        private void Button_Click_8(object sender, RoutedEventArgs e)
+        {
+            var pyramid = new PyramidFourVertexArea(
+                    new util.mathutils.Point3D(100, 0, 0),
+                    new util.mathutils.Point3D(200, 0, 0),
+                    new util.mathutils.Point3D(150, 300, 0),
+                    new util.mathutils.Point3D(150, 150, 200)
+                );
+
+            SolidWorksDrawerModels.DrawPyramid(
+                SolidWorksAppWorker.DefineActiveSolidWorksDocument(), pyramid);
         }
     }
 }

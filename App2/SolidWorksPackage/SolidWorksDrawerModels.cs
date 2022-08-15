@@ -1,4 +1,5 @@
-﻿using SolidWorks.Interop.sldworks;
+﻿using App2.SolidWorksPackage.Cells;
+using SolidWorks.Interop.sldworks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,6 +50,53 @@ namespace App2.SolidWorksPackage
             doc.ClearSelection2(true);
 
 
+        }
+
+        public static void DrawPyramid(ModelDoc2 swDoc, PyramidFourVertexArea area)
+        {
+            double unit = 1000;
+            swDoc.ClearSelection();
+            swDoc.SketchManager.Insert3DSketch(false);
+            var sketchPoint = swDoc.SketchManager.CreatePoint(area.vertex1.x / unit, area.vertex1.x / unit, area.vertex1.z / unit);
+            swDoc.SketchManager.Insert3DSketch(true);
+
+
+            swDoc.ClearSelection();
+            swDoc.SketchManager.Insert3DSketch(false);
+
+            var sketchSegments = new SketchSegment[] {
+
+                    swDoc.SketchManager.CreateLine(
+                    area.vertex2.x / unit, area.vertex2.y / unit, area.vertex2.z / unit,
+                    area.vertex3.x / unit, area.vertex3.y / unit, area.vertex3.z / unit),
+
+                    swDoc.SketchManager.CreateLine(
+                    area.vertex3.x / unit, area.vertex3.y / unit, area.vertex3.z / unit,
+                    area.vertex4.x / unit, area.vertex4.y / unit, area.vertex4.z / unit),
+
+                    swDoc.SketchManager.CreateLine(
+                    area.vertex4.x / unit, area.vertex4.y / unit, area.vertex4.z / unit,
+                    area.vertex2.x / unit, area.vertex2.y / unit, area.vertex2.z / unit)
+                };
+
+            bool canDraw = sketchSegments[0] != null && sketchSegments[1] != null && sketchSegments[2] != null;
+
+            if (!canDraw)
+                return;
+
+            sketchSegments[0].GetSketch().MergePoints(0.000001);
+
+            swDoc.SketchManager.Insert3DSketch(true);
+
+            if (sketchSegments != null && sketchPoint != null)
+            {
+
+                swDoc.ClearSelection();
+                sketchPoint.Select2(true, 1);
+                ((Feature)sketchSegments[0].GetSketch()).Select2(true, 1);
+                swDoc.FeatureManager.InsertCutBlend(false, true, false, 1, 0, 0, false, 0, 0, 0, true, true);
+
+            }
         }
     }
 }
