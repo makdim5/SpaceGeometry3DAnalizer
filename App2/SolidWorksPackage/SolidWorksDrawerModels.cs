@@ -52,29 +52,29 @@ namespace App2.SolidWorksPackage
 
         }
 
-        public static void DrawPyramid(ModelDoc2 swDoc, PyramidFourVertexArea area)
+        public static void DrawPyramid(ModelDoc2 doc, PyramidFourVertexArea area)
         {
             double unit = 1000;
-            swDoc.ClearSelection();
-            swDoc.SketchManager.Insert3DSketch(false);
-            var sketchPoint = swDoc.SketchManager.CreatePoint(area.vertex1.x / unit, area.vertex1.x / unit, area.vertex1.z / unit);
-            swDoc.SketchManager.Insert3DSketch(true);
+            doc.ClearSelection();
+            doc.SketchManager.Insert3DSketch(false);
+            var sketchPoint = doc.SketchManager.CreatePoint(area.vertex1.x / unit, area.vertex1.x / unit, area.vertex1.z / unit);
+            doc.SketchManager.Insert3DSketch(true);
 
 
-            swDoc.ClearSelection();
-            swDoc.SketchManager.Insert3DSketch(false);
+            doc.ClearSelection();
+            doc.SketchManager.Insert3DSketch(false);
 
             var sketchSegments = new SketchSegment[] {
 
-                    swDoc.SketchManager.CreateLine(
+                    doc.SketchManager.CreateLine(
                     area.vertex2.x / unit, area.vertex2.y / unit, area.vertex2.z / unit,
                     area.vertex3.x / unit, area.vertex3.y / unit, area.vertex3.z / unit),
 
-                    swDoc.SketchManager.CreateLine(
+                    doc.SketchManager.CreateLine(
                     area.vertex3.x / unit, area.vertex3.y / unit, area.vertex3.z / unit,
                     area.vertex4.x / unit, area.vertex4.y / unit, area.vertex4.z / unit),
 
-                    swDoc.SketchManager.CreateLine(
+                    doc.SketchManager.CreateLine(
                     area.vertex4.x / unit, area.vertex4.y / unit, area.vertex4.z / unit,
                     area.vertex2.x / unit, area.vertex2.y / unit, area.vertex2.z / unit)
                 };
@@ -86,17 +86,18 @@ namespace App2.SolidWorksPackage
 
             sketchSegments[0].GetSketch().MergePoints(0.000001);
 
-            swDoc.SketchManager.Insert3DSketch(true);
+            doc.SketchManager.Insert3DSketch(true);
 
             if (sketchSegments != null && sketchPoint != null)
             {
 
-                swDoc.ClearSelection();
+                doc.ClearSelection();
                 sketchPoint.Select2(true, 1);
                 ((Feature)sketchSegments[0].GetSketch()).Select2(true, 1);
-                swDoc.FeatureManager.InsertCutBlend(false, true, false, 1, 0, 0, false, 0, 0, 0, true, true);
+                doc.FeatureManager.InsertCutBlend(false, true, false, 1, 0, 0, false, 0, 0, 0, true, true);
 
             }
+            doc.ClearSelection();
         }
     }
 }
