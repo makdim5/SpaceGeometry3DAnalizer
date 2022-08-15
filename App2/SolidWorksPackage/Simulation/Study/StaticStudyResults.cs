@@ -28,12 +28,19 @@ namespace App2.SolidWorksPackage.Simulation.Study
         {
             StaticStudyResultsRuntimeStatistics.CreatedStudiesCount++;
 
+            var mmmm = mesh.GetNodes() as object[];
+
+            var eeee = mesh.GetElements() as object[];
+
+            int s = 9;
+
             this.nodes = GetNodes(
-                (object[])mesh.GetNodes(),
+                mmmm as object[]
+                ,
                 GetStress(results),
                 GetStrain(results));
-
-            this.meshElements = GetMeshElements(this.nodes, (object[])mesh.GetElements());
+            
+            this.meshElements = GetMeshElements(this.nodes, ((Array)mesh.GetElements()).Cast<object>().ToArray());
 
         }
 
@@ -60,7 +67,7 @@ namespace App2.SolidWorksPackage.Simulation.Study
         private static IEnumerable<Node> GetNodes(object[] nodes, object[] stress, object[] strain)
         {
 
-            List<Node> result = new();
+            List<Node> result = new List<Node>();
 
             for (int i = 0; i < stress.Length / 12; i++)
             {
@@ -68,7 +75,7 @@ namespace App2.SolidWorksPackage.Simulation.Study
                 int offset;
 
                 offset = i * 4;
-                Point3D point = new Point3D(
+                Point3D point = new(
                     (float)nodes[offset + 1] * 1000,
                     (float)nodes[offset + 2] * 1000,
                     (float)nodes[offset + 3] * 1000
@@ -107,6 +114,8 @@ namespace App2.SolidWorksPackage.Simulation.Study
 
                 result.Add(new Node(i + 1, point, stressNode, strainNode));
             }
+
+            var mjjjjj = result;
 
             return result;
         }

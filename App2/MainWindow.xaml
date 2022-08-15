@@ -13,14 +13,15 @@
     <Pivot Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}" >
         <PivotItem Header="Действия в SolidWorks">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock x:Name="textBlock" Text="Сообщение для вывода"></TextBlock>
-                <Button  Click="Button_Click_2">Открыть SW</Button>
+                <TextBlock x:Name="textBlock"  TextWrapping="WrapWholeWords" Text="Сообщение для вывода"></TextBlock>
+                <!--<Button  Click="Button_Click_2">Открыть SW</Button>
                 <Button  Click="Button_Click_3">Закрыть SW</Button>
                 <Button  Click="Button_Click_4">Создать новый документ</Button>
                 <Button  Click="Button_Click_5">Открыть существующий документ</Button>
                 <Button x:Name="myButton" Click="myButton_Click">Подключить</Button>
                 <Button x:Name="myButton2" Click="myButton2_Click">Построить</Button>
-                
+                <Button  Click="Button_Click_6">Определить грани</Button>-->
+                <Button  Click="Button_Click_7">Провести исследование</Button>
             </StackPanel>
         </PivotItem>
         <PivotItem Header="Параметры">

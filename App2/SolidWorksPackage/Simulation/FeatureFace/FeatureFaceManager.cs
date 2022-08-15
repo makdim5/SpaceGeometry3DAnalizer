@@ -136,16 +136,16 @@ namespace App2.SolidWorksPackage.Simulation.FeatureFace
 
             HashSet<object> result = new HashSet<object>();
 
-            Feature[] features = (Feature[])swDoc.FeatureManager.GetFeatures(true);
+            object[] features = swDoc.FeatureManager.GetFeatures(true) as object[];
 
             foreach (Feature feature in features)
             {
 
-                Face[] faces = (Face[]) feature.GetFaces();
+                object[] faces = (object[]) feature.GetFaces();
 
                 if (faces != null)
                 {
-                    foreach (object face in faces)
+                    foreach (Face face in faces)
                     {
                         result.Add(face);
                     }

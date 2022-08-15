@@ -38,6 +38,9 @@ namespace App2
                 app = Activator.CreateInstance(Type.GetTypeFromProgID(APP_NAME)) as SldWorks;
                 app.Visible = true;
 
+                app.LoadAddIn(app.GetExecutablePath() + @"\Simulation\cosworks.dll");
+
+                
             }
 
         }
@@ -113,6 +116,31 @@ namespace App2
             if (app != null)
                 app.NewPart();
 
+        }
+
+
+        //Получить путь к файлам с материалами
+        public static string[] GetPathsMaterialDataBase()
+        {
+
+            object[] result = app.GetMaterialDatabases() as object[];
+
+            return result.Cast<string>().ToArray();
+        }
+
+        public static dynamic GetSimulation()
+        {
+            if (app == null)
+            {
+                DefineSolidWorksApp();
+            }
+            
+            int swVersion = Convert.ToInt32(app.RevisionNumber().Substring(0, 2));
+
+            
+            dynamic COSMOSObject = app.GetAddInObject($"SldWorks.Simulation.{swVersion - 15}");
+
+            return COSMOSObject == null ? null : COSMOSObject.CosmosWorks;
         }
 
     }

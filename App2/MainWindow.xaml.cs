@@ -12,6 +12,10 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Composition.SystemBackdrops;
 using WinRT;
 using System.Runtime.InteropServices;
+using App2.SolidWorksPackage.Simulation.FeatureFace;
+using App2.Simulation.Study;
+using App2.SolidWorksPackage.Simulation.MaterialWorker;
+using App2.SolidWorksPackage.Simulation.Study;
 
 namespace App2
 {
@@ -95,7 +99,7 @@ namespace App2
                 {
                     swloader_combobox.SelectedIndex = Int16.Parse(localSettings["swloader_combobox"]);
 
-                    
+
                 }
             }
             catch (KeyNotFoundException ex)
@@ -107,7 +111,7 @@ namespace App2
             {
                 if (localSettings != null)
                 {
-          
+
                     swdocloader_combobox.SelectedIndex = Int16.Parse(localSettings["swdocloader_combobox"]);
                 }
             }
@@ -146,14 +150,14 @@ namespace App2
                     catch (KeyNotFoundException)
                     {
                         filepath = await FileBrowserWorker.GetFilePathAsync(this);
-                        
+
                     }
                 }
 
                 if (swdocloader_combobox.SelectedIndex == 2)
                 {
                     filepath = await FileBrowserWorker.GetFilePathAsync(this);
-                    
+
                 }
 
 
@@ -261,10 +265,126 @@ namespace App2
                 Message.ProgressShow(() => SolidWorksAppWorker.OpenDocument(filepath),
                         this.Content.XamlRoot, "Открытие файла");
                 localSettings["filepath"] = filepath;
-            } else
+            }
+            else
             {
                 Message.Show("File has not been chosen!", this.Content.XamlRoot, "Mistake!");
             }
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            var faceManager = new FeatureFaceManager(SolidWorksAppWorker.DefineActiveSolidWorksDocument());
+
+            string t = "";
+            foreach (var item in faceManager.nameFaces)
+            {
+                t += $"faceManager.nameFaces[{item.Key}] = {item.Value}";
+            }
+
+            textBlock.Text = t;
+        }
+
+        private async void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            textBlock.Text = "Создание исследования запущено ...";
+            MaterialManager materialManager = new MaterialManager();
+
+            foreach (string path in SolidWorksAppWorker.GetPathsMaterialDataBase())
+            {
+                materialManager.LoadDBMaterials(path);
+            }
+
+            Material material = materialManager.materials["Медь"];
+
+            double averageGlobalElementSize = 3.19728742, tolerance = 0.15986437;
+            var mesh = new StudyMesh(averageGlobalElementSize, tolerance);
+
+            //mesh.GetNodes() as object[];
+
+            var document = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
+            FeatureFaceManager FFM = new FeatureFaceManager(document);
+            FeatureFaceManager FFM_LoadFace = new FeatureFaceManager(document);
+            FeatureFaceManager FFM_FixFace = new FeatureFaceManager(document);
+
+
+            FFM.ReleaseFeatureFaces(FFM.busyFaces);
+            // Set fixed faces
+
+            HashSet<FeatureFace> selectedFixedFaces = new HashSet<FeatureFace>();
+            selectedFixedFaces.Add(FFM.nameFaces["Грань 1"]);
+
+            FFM.LoadFeatureFaces(selectedFixedFaces);
+
+            FFM_FixFace.SetFaces(selectedFixedFaces);
+
+            var fixFaces = new HashSet<StudyFace>();
+
+            foreach (var face in FFM_FixFace.freeFaces)
+            {
+                fixFaces.Add(new StudyFace(face, 0));
+            }
+
+            // Set loaded faces
+            var FFM_listFace = new FeatureFaceManager();
+
+            var FFM_listForce = new FeatureFaceManager();
+            HashSet<FeatureFace> selectedLoadedFaces = new HashSet<FeatureFace>();
+            selectedLoadedFaces.Add(FFM.nameFaces["Грань 2"]);
+
+            FFM_listFace.AddFaces(selectedLoadedFaces);
+
+            FFM.LoadFeatureFaces(selectedLoadedFaces);
+
+            foreach (FeatureFace face in selectedLoadedFaces)
+            {
+                // add force value
+                face.name += "-100";
+            }
+
+            FFM_listForce.AddFaces(FFM_listFace.freeFaces);
+            FFM_listFace.LoadFeatureFaces(FFM_listFace.freeFaces);
+
+            var tempLoad = FFM_listForce.freeFaces;
+
+            FFM_LoadFace.SetFaces(tempLoad);
+
+            FFM.LoadFeatureFaces(tempLoad);
+
+
+
+            var loadFaces = new HashSet<StudyFace>();
+
+            foreach (var face in FFM_LoadFace.freeFaces)
+            {
+                string text = face.name.Split('-')[0];
+
+                double value = Convert.ToDouble(face.name.Split('-')[1]);
+
+                face.name = text;
+                loadFaces.Add(new StudyFace(face, value));
+            }
+
+            StaticStudyRecord studyRecord = new StaticStudyRecord(0, material, fixFaces, loadFaces, mesh);
+
+            textBlock.Text = "Создание исследования завершено";
+
+            await Task.Delay(2000);
+
+            textBlock.Text = "Проведение исследования начато ...";
+
+            try
+            {
+                var studyManager = new StudyManager(SolidWorksAppWorker.GetSimulation());
+                StaticStudy study = studyManager.CreateStudy(studyRecord);
+                study.RunStudy();
+                textBlock.Text = "Проведение исследования завершено успешно ...";
+            }
+            catch (Exception)
+            {
+                textBlock.Text = "Проведение исследования не удалось! :( ...";
+            }
+
         }
     }
 }
