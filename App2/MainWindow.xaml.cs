@@ -301,16 +301,15 @@ namespace App2
 
             StaticStudyRecord studyRecord = new StaticStudyRecord(0, material, fixFaces, loadFaces, mesh);
 
-            textBlock.Text = "Создание исследования завершено";
-
-            await Task.Delay(2000);
-
-            textBlock.Text = "Проведение исследования начато ...";
-
             try
             {
-                var studyManager = new StudyManager(SolidWorksAppWorker.GetSimulation());
+                var studyManager = new StudyManager();
                 StaticStudy study = studyManager.CreateStudy(studyRecord);
+                textBlock.Text = "Создание исследования завершено";
+
+                await Task.Delay(500);
+                textBlock.Text = "Проведение исследования начато ...";
+                await Task.Delay(500);
                 study.RunStudy();
                 textBlock.Text = "Проведение исследования завершено успешно ...";
             }

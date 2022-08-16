@@ -11,65 +11,37 @@ namespace App2.Simulation.Study
     public class StudyManager
     {
         private dynamic COSMOSWORKS;
-
-        private CWModelDoc actDoc;
         private ICWStudyManager studyMgr;
 
-        public StudyManager(dynamic COSMOSWORKS) {
+        public StudyManager() {
 
-            this.COSMOSWORKS = COSMOSWORKS;
+            this.COSMOSWORKS = SolidWorksAppWorker.GetSimulation();
 
-            actDoc = COSMOSWORKS.ActiveDoc;
-            studyMgr = actDoc.StudyManager;
         }
 
         public StaticStudy CreateStudy(StaticStudyRecord record) 
         {
-            return new StaticStudy(CreateStaticStudy(record.text), record);
-        }
-
-        public bool TryGetStudyFromSolidworks(out StaticStudy study)
-        {
-            study = null;
-
-            CWStudy s = studyMgr.GetStudy(studyMgr.ActiveStudy);
-
-            if (s == null)
-                return false;
-
-            study = new StaticStudy(s);
-
-            return study != null;
-        }
-
-        public CWStudy CreateStaticStudy(string name) {
-
-            actDoc = COSMOSWORKS.ActiveDoc;
-            studyMgr = actDoc.StudyManager;
+            studyMgr = COSMOSWORKS.ActiveDoc.StudyManager;
 
             ClearAllStudy();
 
             int error = 0;
 
             CWStudy study = studyMgr.CreateNewStudy3(
-                name,
+                record.text,
                 (int)swsAnalysisStudyType_e.swsAnalysisStudyTypeStatic,
-                (int)swsMeshType_e.swsMeshTypeMixed, 
+                (int)swsMeshType_e.swsMeshTypeMixed,
                 out error);
 
-            if (error != 0) {
-                throw new Exception("Создание нового исследования провалилось!\nКод ошибки :"+ error +"\n");
+            if (error != 0)
+            {
+                throw new Exception("Создание нового исследования провалилось!\nКод ошибки :" + error + "\n");
             }
-
-            return study;
-
+            return new StaticStudy(study, record);
         }
 
-        public void ClearAllStudy() {
-            ClearAllStudy(COSMOSWORKS);
-        }
         
-        private static void ClearAllStudy(dynamic COSMOSWORKS) {
+        public void ClearAllStudy() {
             CWModelDoc actDoc = COSMOSWORKS.ActiveDoc;
 
             ICWStudyManager studyMgr = actDoc.StudyManager;
