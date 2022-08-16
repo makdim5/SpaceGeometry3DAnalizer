@@ -122,7 +122,10 @@ namespace App2
         //Получить путь к файлам с материалами
         public static string[] GetPathsMaterialDataBase()
         {
-
+            if (app == null)
+            {
+                throw new NotSWAppFoundException();
+            }
             object[] result = app.GetMaterialDatabases() as object[];
 
             return result.Cast<string>().ToArray();

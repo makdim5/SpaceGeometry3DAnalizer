@@ -11,10 +11,10 @@ namespace App2.SolidWorksPackage.Simulation.MaterialWorker
     public class Material
     {
 
-        // Имя категории
+        
         public readonly string category;
 
-        // Имя материала
+        
         public readonly string name;
 
         public readonly Dictionary<string, double> physicalProperties;

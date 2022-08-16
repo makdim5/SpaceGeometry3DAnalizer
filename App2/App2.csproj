@@ -42,4 +42,7 @@
       <HintPath>SolidWorksDll\SolidWorks.Interop.cosworks.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SolidWorksPackage\ResearchMaker\" />
+  </ItemGroup>
 </Project>

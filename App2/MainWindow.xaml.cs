@@ -289,14 +289,8 @@ namespace App2
         private async void Button_Click_7(object sender, RoutedEventArgs e)
         {
             textBlock.Text = "Создание исследования запущено ...";
-            MaterialManager materialManager = new MaterialManager();
-
-            foreach (string path in SolidWorksAppWorker.GetPathsMaterialDataBase())
-            {
-                materialManager.LoadDBMaterials(path);
-            }
-
-            Material material = materialManager.materials["Медь"];
+            
+            Material material = MaterialManager.GetMaterials()["Медь"];
 
             double averageGlobalElementSize = 3.19728742, tolerance = 0.15986437;
             var mesh = new StudyMesh(averageGlobalElementSize, tolerance);
