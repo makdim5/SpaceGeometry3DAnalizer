@@ -1,4 +1,6 @@
-﻿using App2.SolidWorksPackage.Simulation.MaterialWorker;
+﻿using App2.SolidWorksPackage.Simulation.FeatureFace;
+using App2.SolidWorksPackage.Simulation.MaterialWorker;
+using App2.SolidWorksPackage.Simulation.MeshWorker;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,20 +15,20 @@ namespace App2.Simulation.Study
 
         public readonly Material material;
 
-        public readonly IEnumerable<StudyFace> fixFaces;
+        public readonly IEnumerable<FeatureFace> fixFaces;
 
-        public readonly IEnumerable<StudyFace> loadFaces;
+        public readonly IEnumerable<FeatureFace> loadFaces;
 
-        public readonly StudyMesh mesh;
+        public readonly Mesh mesh;
 
         public readonly int index;
 
         public StaticStudyRecord(
             int index,
             Material material, 
-            IEnumerable<StudyFace> fixFaces,
-            IEnumerable<StudyFace> loadFaces, 
-            StudyMesh mesh) 
+            IEnumerable<FeatureFace> fixFaces,
+            IEnumerable<FeatureFace> loadFaces, 
+            Mesh mesh) 
         {
             this.index = index;
             this.material = material;

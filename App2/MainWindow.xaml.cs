@@ -17,6 +17,7 @@ using App2.Simulation.Study;
 using App2.SolidWorksPackage.Simulation.MaterialWorker;
 using App2.SolidWorksPackage.Simulation.Study;
 using App2.SolidWorksPackage.Cells;
+using App2.SolidWorksPackage.Simulation.MeshWorker;
 
 namespace App2
 {
@@ -202,7 +203,7 @@ namespace App2
 
             try
             {
-                SolidWorksDrawerModels.DrawSimpleTestModel(
+                SolidWorksDrawer.DrawSimpleTestModel(
                  SolidWorksAppWorker.DefineActiveSolidWorksDocument());
 
             }
@@ -277,13 +278,6 @@ namespace App2
         {
             var faceManager = new FeatureFaceManager(SolidWorksAppWorker.DefineActiveSolidWorksDocument());
 
-            string t = "";
-            foreach (var item in faceManager.nameFaces)
-            {
-                t += $"faceManager.nameFaces[{item.Key}] = {item.Value}";
-            }
-
-            textBlock.Text = t;
         }
 
         private async void Button_Click_7(object sender, RoutedEventArgs e)
@@ -291,74 +285,19 @@ namespace App2
             textBlock.Text = "Создание исследования запущено ...";
             
             Material material = MaterialManager.GetMaterials()["Медь"];
-
-            double averageGlobalElementSize = 3.19728742, tolerance = 0.15986437;
-            var mesh = new StudyMesh(averageGlobalElementSize, tolerance);
-
-            //mesh.GetNodes() as object[];
+            var mesh = new Mesh();
 
             var document = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
-            FeatureFaceManager FFM = new FeatureFaceManager(document);
-            FeatureFaceManager FFM_LoadFace = new FeatureFaceManager(document);
-            FeatureFaceManager FFM_FixFace = new FeatureFaceManager(document);
-
-
-            FFM.ReleaseFeatureFaces(FFM.busyFaces);
+            FeatureFaceManager faceManager = new FeatureFaceManager(document);
+            
             // Set fixed faces
-
-            HashSet<FeatureFace> selectedFixedFaces = new HashSet<FeatureFace>();
-            selectedFixedFaces.Add(FFM.nameFaces["Грань 1"]);
-
-            FFM.LoadFeatureFaces(selectedFixedFaces);
-
-            FFM_FixFace.SetFaces(selectedFixedFaces);
-
-            var fixFaces = new HashSet<StudyFace>();
-
-            foreach (var face in FFM_FixFace.freeFaces)
-            {
-                fixFaces.Add(new StudyFace(face, 0));
-            }
+            faceManager.DefineFace("Грань 1", FaceType.Fixed);
+            var fixFaces = faceManager.GetFacesPerType(FaceType.Fixed);
 
             // Set loaded faces
-            var FFM_listFace = new FeatureFaceManager();
+            faceManager.DefineFace("Грань 2", FaceType.ForceLoad, 100);
+            var loadFaces = faceManager.GetFacesPerType(FaceType.ForceLoad);
 
-            var FFM_listForce = new FeatureFaceManager();
-            HashSet<FeatureFace> selectedLoadedFaces = new HashSet<FeatureFace>();
-            selectedLoadedFaces.Add(FFM.nameFaces["Грань 2"]);
-
-            FFM_listFace.AddFaces(selectedLoadedFaces);
-
-            FFM.LoadFeatureFaces(selectedLoadedFaces);
-
-            foreach (FeatureFace face in selectedLoadedFaces)
-            {
-                // add force value
-                face.name += "-100";
-            }
-
-            FFM_listForce.AddFaces(FFM_listFace.freeFaces);
-            FFM_listFace.LoadFeatureFaces(FFM_listFace.freeFaces);
-
-            var tempLoad = FFM_listForce.freeFaces;
-
-            FFM_LoadFace.SetFaces(tempLoad);
-
-            FFM.LoadFeatureFaces(tempLoad);
-
-
-
-            var loadFaces = new HashSet<StudyFace>();
-
-            foreach (var face in FFM_LoadFace.freeFaces)
-            {
-                string text = face.name.Split('-')[0];
-
-                double value = Convert.ToDouble(face.name.Split('-')[1]);
-
-                face.name = text;
-                loadFaces.Add(new StudyFace(face, value));
-            }
 
             StaticStudyRecord studyRecord = new StaticStudyRecord(0, material, fixFaces, loadFaces, mesh);
 
@@ -391,7 +330,7 @@ namespace App2
                     new util.mathutils.Point3D(150, 150, 200)
                 );
 
-            SolidWorksDrawerModels.DrawPyramid(
+            SolidWorksDrawer.DrawPyramid(
                 SolidWorksAppWorker.DefineActiveSolidWorksDocument(), pyramid);
         }
     }

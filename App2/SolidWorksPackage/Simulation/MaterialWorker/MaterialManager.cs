@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace App2.SolidWorksPackage.Simulation.MaterialWorker
 {
     public class MaterialManager
     {
-
         private const string XML_NODE_MATERIAL_CATEGORY = "classification";
         private const string XML_NODE_MATERIAL_CATEGORY_ATTR_NAME = "name";
 

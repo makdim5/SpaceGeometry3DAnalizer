@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace App2.SolidWorksPackage
 {
-    internal class SolidWorksDrawerModels
+    internal class SolidWorksDrawer
     {
         public static void DrawSimpleTestModel(ModelDoc2 doc)
         {

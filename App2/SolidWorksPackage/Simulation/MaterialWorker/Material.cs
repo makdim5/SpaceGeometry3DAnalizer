@@ -1,22 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using SolidWorks.Interop.cosworks;
+﻿using System.Collections.Generic;
 
 namespace App2.SolidWorksPackage.Simulation.MaterialWorker
 {
     public class Material
     {
 
-        
         public readonly string category;
-
-        
         public readonly string name;
-
         public readonly Dictionary<string, double> physicalProperties;
 
         //// Модуль упругости
@@ -45,6 +35,8 @@ namespace App2.SolidWorksPackage.Simulation.MaterialWorker
 
         //// Предел текучести
         //public readonly double SIGYLD;
+
+        public Material() { }
 
         public Material(string category, string name, double[] physicalProperties)
         {
@@ -96,26 +88,6 @@ namespace App2.SolidWorksPackage.Simulation.MaterialWorker
             physicalProperties.Add("C", C);
             physicalProperties.Add("SIGXT", SIGXT);
             physicalProperties.Add("SIGYLD", SIGYLD);
-
-        }
-
-        public void SetCWMaterial(CWSolidBody solidBody)
-        {
-
-            CWMaterial material = solidBody.GetDefaultMaterial();
-
-            material.MaterialUnits = 0;
-
-            material.MaterialName = name;
-
-            foreach (string physicalPropertieName in physicalProperties.Keys)
-            {
-
-                material.SetPropertyByName(physicalPropertieName, physicalProperties[physicalPropertieName], 0);
-
-            }
-
-            solidBody.SetSolidBodyMaterial(material);
 
         }
 

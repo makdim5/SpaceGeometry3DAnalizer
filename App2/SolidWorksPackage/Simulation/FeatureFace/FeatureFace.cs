@@ -15,9 +15,10 @@ namespace App2.SolidWorksPackage.Simulation.FeatureFace
     {
 
         public string name;
-
+        public double force;
         public readonly Face face;
 
+        public FaceType type;
         private Entity entity;
 
         public Color color;
@@ -45,28 +46,25 @@ namespace App2.SolidWorksPackage.Simulation.FeatureFace
             return new Point3D(param[0] * 1000, param[1] * 1000, param[2] * 1000);
         }
 
-        public FeatureFace(Face face, string name)
+        public FeatureFace()
         {
-
-            this.name = name;
-
-            this.face = face;
-
             this.entity = face as Entity;
-
+            type = FaceType.NoneType;
+            
+        }
+        public FeatureFace(Face face, string name) :base()
+        {
+            
+            this.name = name;
+            this.face = face;
+            
             this.color = GetColor();
 
         }
 
-        public FeatureFace(Face face, string name, Color color)
+        public FeatureFace(Face face, string name, Color color) : this(face, name)
         {
-
-            this.name = name;
-
-            this.face = face;
-
-            this.entity = face as Entity;
-
+            
             this.color = color;
 
             SetColor(color);

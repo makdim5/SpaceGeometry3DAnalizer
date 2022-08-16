@@ -4,16 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App2.Simulation.Study
+namespace App2.SolidWorksPackage.Simulation.MeshWorker
 {
-    public class StudyMesh
+    public class Mesh
     {
-
+        public const double DEFAULT_ELEMENT_SIZE = 3.19728742;
+        public const double DEFAULT_TOLERANCE = 0.15986437;
         public readonly double averageGlobalElementSize;
 
         public readonly double tolerance;
 
-        public StudyMesh(double averageGlobalElementSize, double tolerance) {
+        public Mesh(double averageGlobalElementSize = DEFAULT_ELEMENT_SIZE,
+            double tolerance = DEFAULT_TOLERANCE)
+        {
 
             this.averageGlobalElementSize = averageGlobalElementSize;
 

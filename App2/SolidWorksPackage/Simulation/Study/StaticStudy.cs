@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using App2.SolidWorksPackage.Simulation.FeatureFace;
 using App2.SolidWorksPackage.Simulation.MaterialWorker;
+using App2.SolidWorksPackage.Simulation.MeshWorker;
 using App2.SolidWorksPackage.Simulation.Study;
 using SolidWorks.Interop.cosworks;
 using SolidWorks.Interop.sldworks;
@@ -171,12 +172,12 @@ namespace App2.Simulation.Study
             return errorCode;
         }
 
-        public int CreateMesh(StudyMesh stdMesh)
+        public int CreateMesh(Mesh stdMesh)
         {
             return CreateMesh(stdMesh.averageGlobalElementSize , stdMesh.tolerance);
         }
 
-        public int FixFaces(StudyFace[] faces)
+        public int FixFaces(FeatureFace[] faces)
         {
             object[] objectFaces = ConvertFacesToObjects(faces);
 
@@ -184,13 +185,13 @@ namespace App2.Simulation.Study
 
         }
 
-        public int LoadFaces(StudyFace[] faces) {
+        public int LoadFaces(FeatureFace[] faces) {
 
             object[] objectFaces = ConvertFacesToObjects(faces);
 
             int errorCode = 0;
 
-            foreach (StudyFace face in faces) {
+            foreach (var face in faces) {
 
                 object[] objFace = new object[] { face.face as object };
 
@@ -268,8 +269,21 @@ namespace App2.Simulation.Study
 
             foreach (CWSolidBody solidBody in solidBodies) {
 
-                material.SetCWMaterial(solidBody);
+                CWMaterial cwmaterial = solidBody.GetDefaultMaterial();
 
+                cwmaterial.MaterialUnits = 0;
+
+                cwmaterial.MaterialName = material.name;
+
+                foreach (string physicalPropertieName in material.physicalProperties.Keys)
+                {
+
+                    cwmaterial.SetPropertyByName(physicalPropertieName, material.physicalProperties[physicalPropertieName], 0);
+
+                }
+
+                solidBody.SetSolidBodyMaterial(cwmaterial);
+               
             }
 
         }
@@ -303,7 +317,7 @@ namespace App2.Simulation.Study
 
             List<object> result = new List<object>();
 
-            foreach (FeatureFace face in faces)
+            foreach (var face in faces)
             {
 
                 result.Add(face.face as object);
