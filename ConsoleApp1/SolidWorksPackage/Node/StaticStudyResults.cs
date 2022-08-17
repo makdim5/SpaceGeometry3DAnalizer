@@ -4,48 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using App2.util.mathutils;
-using App2.SolidWorksPackage.Simulation.NodeWorker;
 using SolidWorks.Interop.cosworks;
 
-namespace App2.SolidWorksPackage.Simulation.Study
+namespace SolidWorksSimulationManager
 {
-    public static class StaticStudyResultsRuntimeStatistics
-    {
-        public static int CreatedStudiesCount;
-    }
-
-
-
     public class StaticStudyResults
     {
-        public static int ResultsIndex;
 
         public readonly IEnumerable<Node> nodes;
 
         public readonly IEnumerable<Element> meshElements;
 
-        public StaticStudyResults(ICWResults results, ICWMesh mesh)
-        {
-            StaticStudyResultsRuntimeStatistics.CreatedStudiesCount++;
-
-            var mmmm = mesh.GetNodes() as object[];
-
-            var eeee = mesh.GetElements() as object[];
-
-            int s = 9;
+        public StaticStudyResults(ICWResults results, ICWMesh mesh) {
 
             this.nodes = GetNodes(
-                mmmm as object[]
-                ,
+                mesh.GetNodes(),
                 GetStress(results),
                 GetStrain(results));
-            
-            this.meshElements = GetMeshElements(this.nodes, ((Array)mesh.GetElements()).Cast<object>().ToArray());
+
+            this.meshElements = GetMeshElements(this.nodes, mesh.GetElements());
 
         }
 
-        public IEnumerable<Element> GetElements(IEnumerable<Node> nodes)
-        {
+        public IEnumerable<Element> GetElements(IEnumerable<Node> nodes) {
 
             HashSet<Element> findArea = new HashSet<Element>();
 
@@ -64,18 +45,16 @@ namespace App2.SolidWorksPackage.Simulation.Study
             return findArea;
         }
 
-        private static IEnumerable<Node> GetNodes(object[] nodes, object[] stress, object[] strain)
-        {
+        private static IEnumerable<Node> GetNodes(object[] nodes, object[] stress, object[] strain) {
 
-            List<Node> result = new List<Node>();
+            List<Node> result = new();
 
-            for (int i = 0; i < stress.Length / 12; i++)
-            {
+            for (int i = 0; i < stress.Length / 12; i++) {
 
                 int offset;
 
                 offset = i * 4;
-                Point3D point = new(
+                Point3D point = new Point3D(
                     (float)nodes[offset + 1] * 1000,
                     (float)nodes[offset + 2] * 1000,
                     (float)nodes[offset + 3] * 1000
@@ -115,31 +94,26 @@ namespace App2.SolidWorksPackage.Simulation.Study
                 result.Add(new Node(i + 1, point, stressNode, strainNode));
             }
 
-            var mjjjjj = result;
-
             return result;
         }
 
-        private static IEnumerable<Element> GetMeshElements(IEnumerable<Node> nodes, object[] elements)
-        {
+        private static IEnumerable<Element> GetMeshElements(IEnumerable<Node> nodes, object[] elements ) {
 
             List<Element> result = new List<Element>();
 
             int offset = 16;
 
-            for (int i = 0; i < elements.Length / offset; i++)
-            {
+            for (int i = 0; i< elements.Length / offset; i++) {
 
                 List<Node> meshElement = new List<Node>();
 
                 int numberElement = (int)elements[i * offset];
 
-                for (int item = 1; item <= 10; item++)
-                {
+                for(int item = 1;item <= 10;item++){
 
                     int number = (int)elements[i * offset + item];
 
-                    Node node = nodes.FirstOrDefault(node => node.number == number);
+                    Node node = nodes.FirstOrDefault( node => node.number == number);
 
                     meshElement.Add(node);
                 }
@@ -149,7 +123,7 @@ namespace App2.SolidWorksPackage.Simulation.Study
                         (float)elements[i * offset + 12] * 1000,
                         (float)elements[i * offset + 13] * 1000);
 
-                Element element = new Element(numberElement, meshElement, center);
+                Element element = new Element(numberElement,meshElement, center);
 
                 result.Add(element);
 
@@ -159,12 +133,11 @@ namespace App2.SolidWorksPackage.Simulation.Study
 
         }
 
-        private static object[] GetStress(ICWResults results, swsStrengthUnit_e unit = swsStrengthUnit_e.swsStrengthUnitPascal)
-        {
+        private static object[] GetStress(ICWResults results ,swsStrengthUnit_e unit = swsStrengthUnit_e.swsStrengthUnitPascal) {
 
             int error = 0;
 
-            object[] result = results.GetStress(0, 1, null, (int)unit, out error) as object[];
+            object[] result = results.GetStress(0, 1, null, (int)unit, out error);
 
             return result;
         }
@@ -173,14 +146,19 @@ namespace App2.SolidWorksPackage.Simulation.Study
         {
             int error = 0;
 
-            object[] result = results.GetStrain(0, 1, null, out error) as object[];
+            object[] result = results.GetStrain(0, 1, null, out error);
 
             return result;
         }
 
         public override string ToString()
         {
-            return $"Исследование №{StaticStudyResultsRuntimeStatistics.CreatedStudiesCount} SaticStudy Nodes:{nodes.Count()} Elements:{meshElements.Count()}";
+            string result = String.Format("StaticStudy Nodes:{0} Elements:{1}", 
+                nodes.Count(), 
+                meshElements.Count()
+                );
+
+            return result;
         }
     }
 }

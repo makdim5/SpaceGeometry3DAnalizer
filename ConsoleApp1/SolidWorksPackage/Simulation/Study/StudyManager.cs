@@ -1,25 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using App2.Simulation.Study;
 
 using SolidWorks.Interop.cosworks;
 
-namespace App2.Simulation.Study
+namespace App2.SolidWorksPackage.Simulation.Study
 {
     public class StudyManager
     {
-        private dynamic COSMOSWORKS;
+        private dynamic COSMOSWORKS; // api name of Simulation AddIn
         private ICWStudyManager studyMgr;
 
-        public StudyManager() {
+        public StudyManager()
+        {
 
-            this.COSMOSWORKS = SolidWorksAppWorker.GetSimulation();
+            COSMOSWORKS = SolidWorksAppWorker.GetSimulation();
 
         }
 
-        public StaticStudy CreateStudy(StaticStudyRecord record) 
+        public StaticStudy CreateStudy(StaticStudyRecord record)
         {
             studyMgr = COSMOSWORKS.ActiveDoc.StudyManager;
 
@@ -40,8 +38,9 @@ namespace App2.Simulation.Study
             return new StaticStudy(study, record);
         }
 
-        
-        public void ClearAllStudy() {
+
+        public void ClearAllStudy()
+        {
             CWModelDoc actDoc = COSMOSWORKS.ActiveDoc;
 
             ICWStudyManager studyMgr = actDoc.StudyManager;

@@ -2,22 +2,10 @@
 using Microsoft.UI.Xaml;
 using System.Collections.Generic;
 using App2.util;
-using App2.exceptions;
-using App2.SolidWorksPackage;
 using System.Threading.Tasks;
-using Windows.Storage.Pickers;
-using Windows.Storage;
-using System.Threading;
-using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Composition.SystemBackdrops;
 using WinRT;
 using System.Runtime.InteropServices;
-using App2.SolidWorksPackage.Simulation.FeatureFace;
-using App2.Simulation.Study;
-using App2.SolidWorksPackage.Simulation.MaterialWorker;
-using App2.SolidWorksPackage.Simulation.Study;
-using App2.SolidWorksPackage.Cells;
-using App2.SolidWorksPackage.Simulation.MeshWorker;
 
 namespace App2
 {
@@ -125,7 +113,7 @@ namespace App2
             if (swloader_combobox.SelectedIndex == 0)
             {
 
-                await Task.Run(() => SolidWorksAppWorker.OpenSolidWorksApp());
+                //await Task.Run(() => SolidWorksAppWorker.OpenSolidWorksApp());
 
             }
             else if (swloader_combobox.SelectedIndex == 1)
@@ -136,8 +124,8 @@ namespace App2
 
             if (swdocloader_combobox.SelectedIndex == 0)
             {
-                Message.ProgressShow(SolidWorksAppWorker.CreateNewDocument,
-                        this.Content.XamlRoot, "Создание нового документа");
+                //Message.ProgressShow(SolidWorksAppWorker.CreateNewDocument,
+                //        this.Content.XamlRoot, "Создание нового документа");
 
             }
             else
@@ -165,9 +153,9 @@ namespace App2
 
                 if (filepath != null)
                 {
-                    Message.ProgressShow(() => SolidWorksAppWorker.OpenDocument(filepath),
-                        this.Content.XamlRoot, "Открытие файла");
-                    localSettings["filepath"] = filepath;
+                    //Message.ProgressShow(() => SolidWorksAppWorker.OpenDocument(filepath),
+                    //    this.Content.XamlRoot, "Открытие файла");
+                    //localSettings["filepath"] = filepath;
                 }
                 else
                 {
@@ -180,38 +168,18 @@ namespace App2
         private void On_Closed(object sender, WindowEventArgs args)
         {
             JsonWorker.SaveData(localSettings);
-            SolidWorksAppWorker.CloseSolidWorksApp();
+            //SolidWorksAppWorker.CloseSolidWorksApp();
         }
 
         private void myButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                var activeDoc = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
-                textBlock.Text = "Подключение к SolidWorks выполнено! Документ найден.";
-
-            }
-            catch (Exception ex) when (ex is NotSWDocumentFoundException
-            || ex is NotSWAppFoundException)
-            {
-                Message.Show(ex + "", this.Content.XamlRoot, "Mistake!");
-            }
+            
         }
 
         private void myButton2_Click(object sender, RoutedEventArgs e)
         {
 
-            try
-            {
-                SolidWorksDrawer.DrawSimpleTestModel(
-                 SolidWorksAppWorker.DefineActiveSolidWorksDocument());
-
-            }
-            catch (Exception ex) when (ex is NotSWDocumentFoundException
-            || ex is NotSWAppFoundException)
-            {
-                Message.Show(ex + "", this.Content.XamlRoot, "Mistake!");
-            }
+           
 
         }
 
@@ -243,94 +211,50 @@ namespace App2
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Message.ProgressShow(SolidWorksAppWorker.OpenSolidWorksApp,
-                        this.Content.XamlRoot);
+            //Message.ProgressShow(SolidWorksAppWorker.OpenSolidWorksApp,
+            //            this.Content.XamlRoot);
 
 
         }
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            SolidWorksAppWorker.CloseSolidWorksApp();
+            //SolidWorksAppWorker.CloseSolidWorksApp();
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            Message.ProgressShow(SolidWorksAppWorker.CreateNewDocument,
-                        this.Content.XamlRoot, "Открытие файла");
+            //Message.ProgressShow(SolidWorksAppWorker.CreateNewDocument,
+            //            this.Content.XamlRoot, "Открытие файла");
         }
 
         private async void Button_Click_5(object sender, RoutedEventArgs e)
         {
-            var filepath = await FileBrowserWorker.GetFilePathAsync(this);
-            if (filepath != null)
-            {
-                Message.ProgressShow(() => SolidWorksAppWorker.OpenDocument(filepath),
-                        this.Content.XamlRoot, "Открытие файла");
-                localSettings["filepath"] = filepath;
-            }
-            else
-            {
-                Message.Show("File has not been chosen!", this.Content.XamlRoot, "Mistake!");
-            }
+            //var filepath = await FileBrowserWorker.GetFilePathAsync(this);
+            //if (filepath != null)
+            //{
+            //    Message.ProgressShow(() => SolidWorksAppWorker.OpenDocument(filepath),
+            //            this.Content.XamlRoot, "Открытие файла");
+            //    localSettings["filepath"] = filepath;
+            //}
+            //else
+            //{
+            //    Message.Show("File has not been chosen!", this.Content.XamlRoot, "Mistake!");
+            //}
         }
 
-        private void Button_Click_6(object sender, RoutedEventArgs e)
+        private async void Button_Click_6(object sender, RoutedEventArgs e)
         {
-            var faceManager = new FeatureFaceManager(SolidWorksAppWorker.DefineActiveSolidWorksDocument());
 
         }
 
         private async void Button_Click_7(object sender, RoutedEventArgs e)
         {
-            textBlock.Text = "Создание исследования запущено ...";
             
-            Material material = MaterialManager.GetMaterials()["Медь"];
-            var mesh = new Mesh();
-
-            var document = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
-            FeatureFaceManager faceManager = new FeatureFaceManager(document);
-            
-            // Set fixed faces
-            faceManager.DefineFace("Грань 1", FaceType.Fixed);
-            var fixFaces = faceManager.GetFacesPerType(FaceType.Fixed);
-
-            // Set loaded faces
-            faceManager.DefineFace("Грань 2", FaceType.ForceLoad, 100);
-            var loadFaces = faceManager.GetFacesPerType(FaceType.ForceLoad);
-
-
-            StaticStudyRecord studyRecord = new StaticStudyRecord(0, material, fixFaces, loadFaces, mesh);
-
-            try
-            {
-                var studyManager = new StudyManager();
-                StaticStudy study = studyManager.CreateStudy(studyRecord);
-                textBlock.Text = "Создание исследования завершено";
-
-                await Task.Delay(500);
-                textBlock.Text = "Проведение исследования начато ...";
-                await Task.Delay(500);
-                study.RunStudy();
-                textBlock.Text = "Проведение исследования завершено успешно ...";
-            }
-            catch (Exception)
-            {
-                textBlock.Text = "Проведение исследования не удалось! :( ...";
-            }
-
         }
 
         private void Button_Click_8(object sender, RoutedEventArgs e)
         {
-            var pyramid = new PyramidFourVertexArea(
-                    new util.mathutils.Point3D(100, 0, 0),
-                    new util.mathutils.Point3D(200, 0, 0),
-                    new util.mathutils.Point3D(150, 300, 0),
-                    new util.mathutils.Point3D(150, 150, 200)
-                );
-
-            SolidWorksDrawer.DrawPyramid(
-                SolidWorksAppWorker.DefineActiveSolidWorksDocument(), pyramid);
+            
         }
     }
 }

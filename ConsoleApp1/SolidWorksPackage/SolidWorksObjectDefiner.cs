@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace App2.SolidWorksPackage
 {
-    internal class SolidWorksStudyWorker
+    internal class SolidWorksObjectDefiner
     {
         public static HashSet<Face> GetFaces(ModelDoc2 swDoc)
         {

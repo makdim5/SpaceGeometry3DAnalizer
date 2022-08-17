@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace App2.SolidWorksPackage.Simulation.NodeWorker
+namespace SolidWorksSimulationManager
 {
     public class Element
     {

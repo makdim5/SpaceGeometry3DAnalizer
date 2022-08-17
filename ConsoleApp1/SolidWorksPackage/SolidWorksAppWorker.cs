@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using App2.exceptions;
+using App2.SolidWorksPackage;
 using App2.util;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
@@ -21,12 +23,13 @@ namespace App2
         {
             comList = RotManager.GetRunningInstances(APP_NAME);
 
-            if (comList.Count == 0)
-            {
-                throw new NotSWAppFoundException();
-            }
+            //if (comList.Count == 0)
+            //{
+            //    throw new NotSWAppFoundException();
+            //}
 
-            app = (SldWorks)comList[0];
+            //app = (SldWorks)comList[0];
+            app = Marshal.GetActiveObject("SldWorks.Application") as SldWorks;
 
         }
 
@@ -40,7 +43,7 @@ namespace App2
 
                 app.LoadAddIn(app.GetExecutablePath() + @"\Simulation\cosworks.dll");
 
-                
+                var coordinateSystem = new CoordinateSystem(app.GetMathUtility() as MathUtility);
             }
 
         }
@@ -67,7 +70,7 @@ namespace App2
             {
                 throw new NotSWAppFoundException();
             }
-            ModelDoc2 swDoc = (ModelDoc2)app.GetFirstDocument();
+            ModelDoc2 swDoc = (ModelDoc2)app.ActiveDoc;
             if (swDoc == null)
             {
                 throw new NotSWDocumentFoundException();
@@ -124,7 +127,7 @@ namespace App2
         {
             if (app == null)
             {
-                throw new NotSWAppFoundException();
+                DefineSolidWorksApp();
             }
             object[] result = app.GetMaterialDatabases() as object[];
 

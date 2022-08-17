@@ -26,8 +26,6 @@
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.4" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.194" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="SolidWorks.Interop.sldworks" Version="29.4.1" />
-    <PackageReference Include="SolidWorks.Interop.swconst" Version="29.4.1" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
@@ -36,13 +34,5 @@
        package has not yet been restored -->
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnablePreviewMsixTooling)'=='true'">
     <ProjectCapability Include="Msix" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="SolidWorks.Interop.cosworks">
-      <HintPath>SolidWorksDll\SolidWorks.Interop.cosworks.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SolidWorksPackage\ResearchMaker\" />
   </ItemGroup>
 </Project>

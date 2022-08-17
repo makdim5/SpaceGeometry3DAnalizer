@@ -10,15 +10,16 @@ using App2.SolidWorksPackage.Simulation.Study;
 using SolidWorks.Interop.cosworks;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
+using SolidWorksSimulationManager;
 
 namespace App2.Simulation.Study
 {
     public class StaticStudy
     {
 
-        private CWStudy study;
+        public CWStudy study;
 
-        private ICWMesh mesh;
+        public ICWMesh mesh;
 
         private CWSolidManager solidManager;
 
@@ -36,8 +37,10 @@ namespace App2.Simulation.Study
 
         public string MaterialName => solidManager.GetComponentAt(0, out int errorCode1).GetSolidBodyAt(0, out int errCode2).GetSolidBodyMaterial().MaterialName;
 
-        public StaticStudy(CWStudy study, StaticStudyRecord record) {
+        public StaticStudy() { }
 
+        public StaticStudy(CWStudy study, StaticStudyRecord record)
+        {
             this.study = study;
 
             this.solidManager = study.SolidManager;
@@ -65,12 +68,13 @@ namespace App2.Simulation.Study
             StudyErrors(errorMesh, errorFix, errorLoad);
         }
 
-        private static void StudyErrors(int errorMesh,int errorFix,int errorLoad){
+        private static void StudyErrors(int errorMesh, int errorFix, int errorLoad)
+        {
 
 
             bool error = false;
             string errorMsg = "";
-            
+
 
             if (errorMesh != 0)
             {
@@ -91,7 +95,8 @@ namespace App2.Simulation.Study
                 error = true;
             }
 
-            if (error) {
+            if (error)
+            {
 
                 throw new Exception(errorMsg);
 
@@ -106,13 +111,14 @@ namespace App2.Simulation.Study
             this.restraintsManager = study.LoadsAndRestraintsManager;
             this.solidBodies = GetSolidBodies(this.solidManager);
 
-            double averageGlobalElementSize = Convert.ToDouble("3,19728742");
-            double tolerance = Convert.ToDouble("0,15986437");
+            double averageGlobalElementSize = Mesh.DEFAULT_ELEMENT_SIZE;
+            double tolerance = Mesh.DEFAULT_TOLERANCE;
 
             CreateMesh(averageGlobalElementSize, tolerance);
         }
 
-        public int RunStudy() {
+        public int RunStudy()
+        {
 
             int errorCode = 0;
 
@@ -122,9 +128,9 @@ namespace App2.Simulation.Study
 
         }
 
-        public StaticStudyResults GetResult() 
-        { 
-            return new StaticStudyResults(study.Results,mesh);
+        public StaticStudyResults GetResult()
+        {
+            return new StaticStudyResults(study.Results, mesh);
         }
 
         public void LoadMaterial(Material material)
@@ -137,7 +143,7 @@ namespace App2.Simulation.Study
 
             double averageGlobalElementSize = 0;
 
-            double tolerance = 0; 
+            double tolerance = 0;
 
             mesh = (ICWMesh)study.Mesh;
 
@@ -157,7 +163,7 @@ namespace App2.Simulation.Study
         }
 
         public int CreateMesh(double averageGlobalElementSize, double tolerance)
-        { 
+        {
 
             mesh = (ICWMesh)study.Mesh;
 
@@ -174,24 +180,26 @@ namespace App2.Simulation.Study
 
         public int CreateMesh(Mesh stdMesh)
         {
-            return CreateMesh(stdMesh.averageGlobalElementSize , stdMesh.tolerance);
+            return CreateMesh(stdMesh.averageGlobalElementSize, stdMesh.tolerance);
         }
 
         public int FixFaces(FeatureFace[] faces)
         {
             object[] objectFaces = ConvertFacesToObjects(faces);
 
-            return FixFaces(fixedFaces,restraintsManager, objectFaces);
+            return FixFaces(fixedFaces, restraintsManager, objectFaces);
 
         }
 
-        public int LoadFaces(FeatureFace[] faces) {
+        public int LoadFaces(FeatureFace[] faces)
+        {
 
             object[] objectFaces = ConvertFacesToObjects(faces);
 
             int errorCode = 0;
 
-            foreach (var face in faces) {
+            foreach (var face in faces)
+            {
 
                 object[] objFace = new object[] { face.face as object };
 
@@ -257,7 +265,8 @@ namespace App2.Simulation.Study
                 false,
                 out errorCode);
 
-            if (errorCode == 0) {
+            if (errorCode == 0)
+            {
                 loadedFaces.Add(force);
             }
 
@@ -265,9 +274,11 @@ namespace App2.Simulation.Study
 
         }
 
-        private static void SetSolidBodyMaterial(CWSolidBody[] solidBodies, Material material) {
+        private static void SetSolidBodyMaterial(CWSolidBody[] solidBodies, Material material)
+        {
 
-            foreach (CWSolidBody solidBody in solidBodies) {
+            foreach (CWSolidBody solidBody in solidBodies)
+            {
 
                 CWMaterial cwmaterial = solidBody.GetDefaultMaterial();
 
@@ -283,18 +294,20 @@ namespace App2.Simulation.Study
                 }
 
                 solidBody.SetSolidBodyMaterial(cwmaterial);
-               
+
             }
 
         }
 
-        private static CWSolidBody[] GetSolidBodies(CWSolidManager solidManager) {
+        private static CWSolidBody[] GetSolidBodies(CWSolidManager solidManager)
+        {
 
             List<CWSolidBody> result = new List<CWSolidBody>();
 
             int errorCode = 0;
 
-            for (int i = 0; i < solidManager.ComponentCount; i++) {
+            for (int i = 0; i < solidManager.ComponentCount; i++)
+            {
 
                 CWSolidComponent solidComponent = solidManager.GetComponentAt(i, out errorCode);
 
@@ -304,7 +317,7 @@ namespace App2.Simulation.Study
 
             }
 
-          
+
 
             //errCode = SolidBody.SetSolidBodyMaterial(material.GetCWMaterial());
 

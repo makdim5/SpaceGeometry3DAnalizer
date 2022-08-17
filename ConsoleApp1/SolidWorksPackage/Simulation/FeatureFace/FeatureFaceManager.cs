@@ -23,7 +23,7 @@ namespace App2.SolidWorksPackage.Simulation.FeatureFace
         public FeatureFaceManager(ModelDoc2 swDoc)
         {
 
-            freeFaces = GetFeatureFaces(SolidWorksStudyWorker.GetFaces(swDoc));
+            freeFaces = GetFeatureFaces(SolidWorksObjectDefiner.GetFaces(swDoc));
             swDoc.GraphicsRedraw2();
 
         }
