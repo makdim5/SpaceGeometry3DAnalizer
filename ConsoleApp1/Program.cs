@@ -1,72 +1,71 @@
-﻿using App2.Simulation.Study;
-using App2.SolidWorksPackage;
-using App2.SolidWorksPackage.Simulation.FeatureFace;
-using App2.SolidWorksPackage.Simulation.MaterialWorker;
-using App2.SolidWorksPackage.Simulation.MeshWorker;
-using App2.SolidWorksPackage.Simulation.Study;
-using SolidWorks.Interop.cosworks;
-using SolidWorks.Interop.sldworks;
-using SolidWorks.Interop.swconst;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.ExceptionServices;
-using System.Security;
+﻿using System;
 using System.Text;
-using System.Threading.Tasks;
+using System.Net;
+using System.Net.Sockets;
+
+// Чтобы спрятать консоль просто измени тип выходных данных
+// в настройках на приложение Windows
 
 namespace App2
 {
-    // Before start open SolidWorks and <3d Part document>
-    //  with "Simulation" AddIn (NOT "Flow Simulation")
+    
     internal class Program
     {
-        [HandleProcessCorruptedStateExceptions, SecurityCritical]
-        static void Main(string[] args)
+       
+        static int port = 8005; // порт для приема входящих запросов
+        static void Main(string[] args) 
         {
-            Console.WriteLine("Console SW TEST APP\n");
+            RunServer();
 
-            
-            SolidWorksAppWorker.DefineSolidWorksApp();
-            SolidWorksAppWorker.DefineActiveSolidWorksDocument();
-            Console.WriteLine("App and doc are here!\n");
+        }
+        static void RunServer()
+        {
+            // получаем адреса для запуска сокета
+            IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
 
-            Console.WriteLine("Создание исследования запущено ...");
-
-            Material material = MaterialManager.GetMaterials()["Медь"];
-            var mesh = new Mesh();
-
-            var document = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
-            FeatureFaceManager faceManager = new FeatureFaceManager(document);
-
-            // Set fixed faces
-            faceManager.DefineFace("Грань 1", FaceType.Fixed);
-            var fixFaces = faceManager.GetFacesPerType(FaceType.Fixed);
-
-            // Set loaded faces
-            faceManager.DefineFace("Грань 2", FaceType.ForceLoad, 100);
-            var loadFaces = faceManager.GetFacesPerType(FaceType.ForceLoad);
-
-
-            StaticStudyRecord studyRecord = new StaticStudyRecord(0, material, fixFaces, loadFaces, mesh);
-
-            StudyManager studyManager;
-            StaticStudy study;
+            // создаем сокет
+            Socket listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             try
             {
-                studyManager = new StudyManager();
-                study = studyManager.CreateStudy(studyRecord);
-                Console.WriteLine("Создание исследования завершено. Проведение исследования начато ...");
-                study.RunStudy();
-                Console.WriteLine("Проведение исследования завершено успешно!" +
-                    $" Результаты исследования:{study.GetResult()} ");    
+                // связываем сокет с локальной точкой, по которой будем принимать данные
+                listenSocket.Bind(ipPoint);
+
+                // начинаем прослушивание
+                listenSocket.Listen(10);
+
+                Console.WriteLine("Сервер запущен. Ожидание подключений...");
+
+                while (true)
+                {
+                    Socket handler = listenSocket.Accept();
+                    // получаем сообщение
+                    StringBuilder builder = new StringBuilder();
+                    int bytes = 0; // количество полученных байтов
+                    byte[] data = new byte[256]; // буфер для получаемых данных
+
+                    do
+                    {
+                        bytes = handler.Receive(data);
+                        builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
+                    }
+                    while (handler.Available > 0);
+
+                    Console.WriteLine(DateTime.Now.ToShortTimeString() + ": " + builder.ToString());
+
+                    // отправляем ответ
+                    string message = $"ваше сообщение \'{builder.ToString()}\' доставлено";
+                    data = Encoding.Unicode.GetBytes(message);
+                    handler.Send(data);
+                    // закрываем сокет
+                    handler.Shutdown(SocketShutdown.Both);
+                    handler.Close();
+                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("" + ex);
+                Console.WriteLine(ex.Message);
             }
-            Console.ReadLine();
-            
         }
     }
 }
+

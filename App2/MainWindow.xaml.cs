@@ -60,6 +60,7 @@ namespace App2
             this.InitializeComponent();
             this.Closed += On_Closed;
             RestoreSettings();
+            ClientSocketUtil.RunCommandServer();
 
             m_wsdqHelper = new WindowsSystemDispatcherQueueHelper();
             m_wsdqHelper.EnsureWindowsSystemDispatcherQueueController();
@@ -168,12 +169,21 @@ namespace App2
         private void On_Closed(object sender, WindowEventArgs args)
         {
             JsonWorker.SaveData(localSettings);
-            //SolidWorksAppWorker.CloseSolidWorksApp();
+            ClientSocketUtil.FinishCommandServer();
         }
 
         private void myButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            string answer = "";
+            try
+            {
+                answer = ClientSocketUtil.SendMsgToServer("Hello");
+            } catch (Exception)
+            {
+                answer = "Соединение разорвано!";
+            }
+
+            Message.Show(answer, this.Content.XamlRoot);
         }
 
         private void myButton2_Click(object sender, RoutedEventArgs e)

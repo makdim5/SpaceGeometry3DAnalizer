@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MathNet.Numerics, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MathNet.Numerics.5.0.0\lib\net461\MathNet.Numerics.dll</HintPath>
@@ -42,15 +45,15 @@
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SolidWorks.Interop.cosworks">
-      <HintPath>..\..\Лаба 9\packages\SOLIDWORKS-API.0.777.7\lib\SolidWorks.Interop.cosworks.dll</HintPath>
+      <HintPath>..\SOLIDWORKS-API.0.777.7\lib\SolidWorks.Interop.cosworks.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="SolidWorks.Interop.sldworks">
-      <HintPath>..\..\Лаба 9\packages\SOLIDWORKS-API.0.777.7\lib\SolidWorks.Interop.sldworks.dll</HintPath>
+      <HintPath>..\SOLIDWORKS-API.0.777.7\lib\SolidWorks.Interop.sldworks.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="SolidWorks.Interop.swconst">
-      <HintPath>..\..\Лаба 9\packages\SOLIDWORKS-API.0.777.7\lib\SolidWorks.Interop.swconst.dll</HintPath>
+      <HintPath>..\SOLIDWORKS-API.0.777.7\lib\SolidWorks.Interop.swconst.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
