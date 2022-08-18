@@ -21,15 +21,14 @@ namespace App2
 
         public static void DefineSolidWorksApp()
         {
-            comList = RotManager.GetRunningInstances(APP_NAME);
-
-            //if (comList.Count == 0)
-            //{
-            //    throw new NotSWAppFoundException();
-            //}
-
-            //app = (SldWorks)comList[0];
-            app = Marshal.GetActiveObject("SldWorks.Application") as SldWorks;
+            
+            try
+            {
+                app = Marshal.GetActiveObject("SldWorks.Application") as SldWorks;
+            } catch (COMException)
+            {
+                throw new NotSWAppFoundException();
+            }
 
         }
 

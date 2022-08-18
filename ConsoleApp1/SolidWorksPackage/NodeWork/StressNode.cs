@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SolidWorksSimulationManager
+namespace App2.SolidWorksPackage.NodeWork
 {
     public class StressNode : IParameters
     {
@@ -73,5 +73,14 @@ namespace SolidWorksSimulationManager
             return this.param[param];
         }
 
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            foreach (var param in this.GetParameters())
+            {
+                sb.AppendLine(param.ToString());
+            }
+            return sb.ToString();
+        }
     }
 }

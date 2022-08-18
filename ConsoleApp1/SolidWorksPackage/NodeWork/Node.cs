@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace SolidWorksSimulationManager
+namespace App2.SolidWorksPackage.NodeWork
 {
     public class Node
     {
@@ -35,6 +35,8 @@ namespace SolidWorksSimulationManager
                 point.x, 
                 point.y,
                 point.z);
+
+            //text += $"\n-Stress:\n{stress}\n-Strain:\n{strain}";
 
             return text;
         }

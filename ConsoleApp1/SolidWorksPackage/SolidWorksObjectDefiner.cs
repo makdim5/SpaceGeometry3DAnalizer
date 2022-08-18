@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using App2.Simulation.Study;
-using App2.SolidWorksPackage;
 using App2.SolidWorksPackage.Simulation.FeatureFace;
 using App2.SolidWorksPackage.Simulation.MaterialWorker;
 using App2.SolidWorksPackage.Simulation.MeshWorker;
 using App2.SolidWorksPackage.Simulation.Study;
-using SolidWorks.Interop.cosworks;
-using SolidWorks.Interop.swconst;
 using System;
+using App2.SolidWorksPackage.Cells;
 
 namespace App2.SolidWorksPackage
 {
@@ -78,8 +76,23 @@ namespace App2.SolidWorksPackage
                 study = studyManager.CreateStudy(studyRecord);
                 Console.WriteLine("Создание исследования завершено. Проведение исследования начато ...");
                 study.RunStudy();
+
+                var studyResults = study.GetResult();
+                
+               
                 Console.WriteLine("Проведение исследования завершено успешно!" +
-                    $" Результаты исследования:{study.GetResult()} ");
+                    $" Результаты исследования: 5 елементов + рисунок");
+                studyManager.ClearAllStudy();
+                var doc = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
+                for (int i = 0; i < 5; i++)
+                {
+                    var element = studyResults.meshElements.ElementAt(i);
+                    Console.WriteLine(element);
+                    var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes());
+
+
+                    SolidWorksDrawer.DrawPyramid(doc, elementPyramid);
+                }
             }
             catch (Exception ex)
             {

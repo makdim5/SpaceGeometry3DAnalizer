@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SolidWorksSimulationManager
+namespace App2.SolidWorksPackage.NodeWork
 {
     interface IParameters
     {
         public Dictionary<string, float> GetParameters();
 
         public float GetParam(string param);
+
     }
 }

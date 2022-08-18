@@ -57,7 +57,7 @@ namespace App2.SolidWorksPackage
             double unit = 1000;
             doc.ClearSelection();
             doc.SketchManager.Insert3DSketch(false);
-            var sketchPoint = doc.SketchManager.CreatePoint(area.vertex1.x / unit, area.vertex1.x / unit, area.vertex1.z / unit);
+            var sketchPoint = doc.SketchManager.CreatePoint(area.vertex1.x / unit, area.vertex1.y / unit, area.vertex1.z / unit);
             doc.SketchManager.Insert3DSketch(true);
 
 

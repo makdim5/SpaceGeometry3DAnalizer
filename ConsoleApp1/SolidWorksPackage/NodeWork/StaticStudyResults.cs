@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using App2.util.mathutils;
 using SolidWorks.Interop.cosworks;
 
-namespace SolidWorksSimulationManager
+namespace App2.SolidWorksPackage.NodeWork
 {
     public class StaticStudyResults
     {

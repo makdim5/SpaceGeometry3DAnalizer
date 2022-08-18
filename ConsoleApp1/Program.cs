@@ -2,6 +2,7 @@
 using System.Text;
 using System.Net;
 using System.Net.Sockets;
+using App2.SolidWorksPackage;
 
 // Чтобы спрятать консоль просто измени тип выходных данных
 // в настройках на приложение Windows
@@ -15,7 +16,9 @@ namespace App2
         static int port = 8005; // порт для приема входящих запросов
         static void Main(string[] args) 
         {
-            RunServer();
+            SolidWorksObjectDefiner.DoResearch();
+            Console.ReadLine();
+            //RunServer();
 
         }
         static void RunServer()
