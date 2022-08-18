@@ -15,16 +15,18 @@ namespace App2.SolidWorksPackage.NodeWork
 
         public readonly IEnumerable<Element> meshElements;
 
-        public StaticStudyResults(ICWResults results, ICWMesh mesh) {
+        public StaticStudyResults(ICWStudy study)
+        {
 
             this.nodes = GetNodes(
-                mesh.GetNodes(),
-                GetStress(results),
-                GetStrain(results));
+                study.Mesh.GetNodes(),
+                GetStress(study.Results),
+                GetStrain(study.Results));
 
-            this.meshElements = GetMeshElements(this.nodes, mesh.GetElements());
+            this.meshElements = GetMeshElements(this.nodes, study.Mesh.GetElements());
 
         }
+
 
         public IEnumerable<Element> GetElements(IEnumerable<Node> nodes) {
 

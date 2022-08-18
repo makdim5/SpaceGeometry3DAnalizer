@@ -21,9 +21,7 @@ namespace App2.SolidWorksPackage.Simulation.Study
         {
             studyMgr = COSMOSWORKS.ActiveDoc.StudyManager;
 
-            ClearAllStudy();
-
-            int error = 0;
+            int error;
 
             CWStudy study = studyMgr.CreateNewStudy3(
                 record.text,
@@ -38,6 +36,16 @@ namespace App2.SolidWorksPackage.Simulation.Study
             return new StaticStudy(study, record);
         }
 
+        public StaticStudy GetExistingCompletedStudy()
+        {
+            studyMgr = COSMOSWORKS.ActiveDoc.StudyManager;
+            CWStudy study = studyMgr.GetStudy(0);
+            if (study != null)
+            {
+                return study.Results != null ? new StaticStudy(study) : null;
+            }
+            return null;
+        }
 
         public void ClearAllStudy()
         {

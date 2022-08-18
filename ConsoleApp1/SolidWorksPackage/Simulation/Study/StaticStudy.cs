@@ -39,6 +39,8 @@ namespace App2.Simulation.Study
 
         public StaticStudy() { }
 
+        
+
         public StaticStudy(CWStudy study, StaticStudyRecord record)
         {
             this.study = study;
@@ -110,11 +112,8 @@ namespace App2.Simulation.Study
             this.solidManager = study.SolidManager;
             this.restraintsManager = study.LoadsAndRestraintsManager;
             this.solidBodies = GetSolidBodies(this.solidManager);
+            mesh = study.Mesh;
 
-            double averageGlobalElementSize = Mesh.DEFAULT_ELEMENT_SIZE;
-            double tolerance = Mesh.DEFAULT_TOLERANCE;
-
-            CreateMesh(averageGlobalElementSize, tolerance);
         }
 
         public int RunStudy()
@@ -122,6 +121,7 @@ namespace App2.Simulation.Study
 
             int errorCode = 0;
 
+            
             errorCode = study.RunAnalysis();
 
             return errorCode;
@@ -130,7 +130,7 @@ namespace App2.Simulation.Study
 
         public StaticStudyResults GetResult()
         {
-            return new StaticStudyResults(study.Results, mesh);
+            return new StaticStudyResults(study);
         }
 
         public void LoadMaterial(Material material)

@@ -44,45 +44,53 @@ namespace App2.SolidWorksPackage
         {
             Console.WriteLine("Console SW TEST APP\n");
 
-
-            SolidWorksAppWorker.DefineSolidWorksApp();
-            SolidWorksAppWorker.DefineActiveSolidWorksDocument();
-            Console.WriteLine("App and doc are here!\n");
-
-            Console.WriteLine("Создание исследования запущено ...");
-
-            Material material = MaterialManager.GetMaterials()["Медь"];
-            var mesh = new Mesh();
-
-            var document = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
-            FeatureFaceManager faceManager = new FeatureFaceManager(document);
-
-            // Set fixed faces
-            faceManager.DefineFace("Грань 1", FaceType.Fixed);
-            var fixFaces = faceManager.GetFacesPerType(FaceType.Fixed);
-
-            // Set loaded faces
-            faceManager.DefineFace("Грань 2", FaceType.ForceLoad, 100);
-            var loadFaces = faceManager.GetFacesPerType(FaceType.ForceLoad);
-
-
-            StaticStudyRecord studyRecord = new StaticStudyRecord(0, material, fixFaces, loadFaces, mesh);
-
-            StudyManager studyManager;
-            StaticStudy study;
             try
             {
-                studyManager = new StudyManager();
-                study = studyManager.CreateStudy(studyRecord);
-                Console.WriteLine("Создание исследования завершено. Проведение исследования начато ...");
-                study.RunStudy();
+                SolidWorksAppWorker.DefineSolidWorksApp();
+                SolidWorksAppWorker.DefineActiveSolidWorksDocument();
+                Console.WriteLine("App and doc are here!\n");
+
+                
+
+                var studyManager = new StudyManager();
+
+                var study = studyManager.GetExistingCompletedStudy();
+                
+                //StaticStudy study = null;
+                if (study == null)
+                {
+                    Console.WriteLine("Создание исследования запущено ...");
+                    Material material = MaterialManager.GetMaterials()["Медь"];
+                    var mesh = new Mesh();
+
+                    var document = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
+                    FeatureFaceManager faceManager = new FeatureFaceManager(document);
+
+                    // Set fixed faces
+                    faceManager.DefineFace("Грань 1", FaceType.Fixed);
+                    var fixFaces = faceManager.GetFacesPerType(FaceType.Fixed);
+
+                    // Set loaded faces
+                    faceManager.DefineFace("Грань 2", FaceType.ForceLoad, 100);
+                    var loadFaces = faceManager.GetFacesPerType(FaceType.ForceLoad);
+
+
+                    StaticStudyRecord studyRecord = new StaticStudyRecord(0, material, fixFaces, loadFaces, mesh);
+                    study = studyManager.CreateStudy(studyRecord);
+                    Console.WriteLine("Создание исследования завершено. Проведение исследования начато ...");
+                    study.RunStudy();
+                    Console.WriteLine("Проведение исследования завершено успешно!");
+                } else
+                {
+                    Console.WriteLine("Загружено активное исследование!");
+                }
+                
 
                 var studyResults = study.GetResult();
-                
-               
-                Console.WriteLine("Проведение исследования завершено успешно!" +
-                    $" Результаты исследования: 5 елементов + рисунок");
-                studyManager.ClearAllStudy();
+
+
+                Console.WriteLine($" Результаты исследования: 5 елементов + рисунок");
+                //studyManager.ClearAllStudy();
                 var doc = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
                 for (int i = 0; i < 5; i++)
                 {
@@ -90,8 +98,24 @@ namespace App2.SolidWorksPackage
                     Console.WriteLine(element);
                     var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes());
 
-
                     SolidWorksDrawer.DrawPyramid(doc, elementPyramid);
+                }
+
+                study.CreateMesh(Mesh.DEFAULT_ELEMENT_SIZE, Mesh.DEFAULT_TOLERANCE);
+                Console.WriteLine("Повторное исследование начато ...");
+                study.RunStudy();
+                Console.WriteLine("Проведение исследования завершено успешно!");
+
+                studyResults = study.GetResult();
+
+
+                Console.WriteLine($" Результаты повторного исследования:");
+
+                for (int i = 0; i < 5; i++)
+                {
+                    var element = studyResults.meshElements.ElementAt(i);
+                    Console.WriteLine(element);
+
                 }
             }
             catch (Exception ex)
