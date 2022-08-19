@@ -42,15 +42,13 @@ namespace App2.SolidWorksPackage
         //  with "Simulation" AddIn (NOT "Flow Simulation")
         public static void DoResearch()
         {
-            Console.WriteLine("Console SW TEST APP\n");
+            Console.WriteLine("Console SW APP\n");
 
             try
             {
                 SolidWorksAppWorker.DefineSolidWorksApp();
                 SolidWorksAppWorker.DefineActiveSolidWorksDocument();
                 Console.WriteLine("App and doc are here!\n");
-
-                
 
                 var studyManager = new StudyManager();
 
@@ -89,34 +87,22 @@ namespace App2.SolidWorksPackage
                 var studyResults = study.GetResult();
 
 
-                Console.WriteLine($" Результаты исследования: 5 елементов + рисунок");
-                //studyManager.ClearAllStudy();
-                var doc = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
-                for (int i = 0; i < 5; i++)
-                {
-                    var element = studyResults.meshElements.ElementAt(i);
-                    Console.WriteLine(element);
-                    var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes());
+                Console.WriteLine($" Результаты исследования: ");
 
-                    SolidWorksDrawer.DrawPyramid(doc, elementPyramid);
+                
+                string param = "ESTRN";
+                var strainValues = studyResults.DefineMinMaxStrainValues(param);
+                var stressValues = studyResults.DefineMinMaxStressValues("VON");
+                float value = (strainValues["min"] + strainValues["max"]) / 2;
+                float deviation = value * 0.03f;
+
+                foreach (var item in studyResults.GetElements(
+                    studyResults.DefineNodesPerStrainParam(param, value-deviation, value+deviation)))
+                {
+                    Console.WriteLine(item);
                 }
 
-                study.CreateMesh(Mesh.DEFAULT_ELEMENT_SIZE, Mesh.DEFAULT_TOLERANCE);
-                Console.WriteLine("Повторное исследование начато ...");
-                study.RunStudy();
-                Console.WriteLine("Проведение исследования завершено успешно!");
 
-                studyResults = study.GetResult();
-
-
-                Console.WriteLine($" Результаты повторного исследования:");
-
-                for (int i = 0; i < 5; i++)
-                {
-                    var element = studyResults.meshElements.ElementAt(i);
-                    Console.WriteLine(element);
-
-                }
             }
             catch (Exception ex)
             {

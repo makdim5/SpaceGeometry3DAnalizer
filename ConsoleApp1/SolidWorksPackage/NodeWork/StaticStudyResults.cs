@@ -10,14 +10,22 @@ namespace App2.SolidWorksPackage.NodeWork
 {
     public class StaticStudyResults
     {
-
+        private List<string> STRAIN_PARAMS = new()
+        {
+            "SX", "SY", "SZ", "XY", "YZ", "XZ", "ESTRN", "SEDENS", "ENERGY", "E1", "E2", "E3"
+        };
+        private List<string> STRESS_PARAMS = new()
+        {
+            "SX", "SY", "SZ", "XY", "YZ", "XZ", "P1", "P2", "P3", "VON", "INT"
+        };
+        public readonly ICWStudy cWStudy;
         public readonly IEnumerable<Node> nodes;
 
         public readonly IEnumerable<Element> meshElements;
 
         public StaticStudyResults(ICWStudy study)
         {
-
+            this.cWStudy = study;
             this.nodes = GetNodes(
                 study.Mesh.GetNodes(),
                 GetStress(study.Results),
@@ -28,7 +36,8 @@ namespace App2.SolidWorksPackage.NodeWork
         }
 
 
-        public IEnumerable<Element> GetElements(IEnumerable<Node> nodes) {
+        public IEnumerable<Element> GetElements(IEnumerable<Node> nodes)
+        {
 
             HashSet<Element> findArea = new HashSet<Element>();
 
@@ -36,7 +45,8 @@ namespace App2.SolidWorksPackage.NodeWork
             {
                 IEnumerable<Element> area =
                     meshElements.Where(
-                        (element) => {
+                        (element) =>
+                        {
                             return element.Contains(node);
                         }
                     );
@@ -47,11 +57,13 @@ namespace App2.SolidWorksPackage.NodeWork
             return findArea;
         }
 
-        private static IEnumerable<Node> GetNodes(object[] nodes, object[] stress, object[] strain) {
+        private static IEnumerable<Node> GetNodes(object[] nodes, object[] stress, object[] strain)
+        {
 
             List<Node> result = new();
 
-            for (int i = 0; i < stress.Length / 12; i++) {
+            for (int i = 0; i < stress.Length / 12; i++)
+            {
 
                 int offset;
 
@@ -99,23 +111,26 @@ namespace App2.SolidWorksPackage.NodeWork
             return result;
         }
 
-        private static IEnumerable<Element> GetMeshElements(IEnumerable<Node> nodes, object[] elements ) {
+        private static IEnumerable<Element> GetMeshElements(IEnumerable<Node> nodes, object[] elements)
+        {
 
             List<Element> result = new List<Element>();
 
             int offset = 16;
 
-            for (int i = 0; i< elements.Length / offset; i++) {
+            for (int i = 0; i < elements.Length / offset; i++)
+            {
 
                 List<Node> meshElement = new List<Node>();
 
                 int numberElement = (int)elements[i * offset];
 
-                for(int item = 1;item <= 10;item++){
+                for (int item = 1; item <= 10; item++)
+                {
 
                     int number = (int)elements[i * offset + item];
 
-                    Node node = nodes.FirstOrDefault( node => node.number == number);
+                    Node node = nodes.FirstOrDefault(node => node.number == number);
 
                     meshElement.Add(node);
                 }
@@ -125,7 +140,7 @@ namespace App2.SolidWorksPackage.NodeWork
                         (float)elements[i * offset + 12] * 1000,
                         (float)elements[i * offset + 13] * 1000);
 
-                Element element = new Element(numberElement,meshElement, center);
+                Element element = new Element(numberElement, meshElement, center);
 
                 result.Add(element);
 
@@ -135,7 +150,8 @@ namespace App2.SolidWorksPackage.NodeWork
 
         }
 
-        private static object[] GetStress(ICWResults results ,swsStrengthUnit_e unit = swsStrengthUnit_e.swsStrengthUnitPascal) {
+        private static object[] GetStress(ICWResults results, swsStrengthUnit_e unit = swsStrengthUnit_e.swsStrengthUnitPascal)
+        {
 
             int error = 0;
 
@@ -153,10 +169,76 @@ namespace App2.SolidWorksPackage.NodeWork
             return result;
         }
 
+        public Dictionary<string, float> DefineMinMaxStrainValues(string param)
+        {
+            if (!STRAIN_PARAMS.Contains(param))
+            {
+                throw new ArgumentException($"Parametr {param} doesn\'t exist." +
+                    $" You may choose one of the following:" +
+                    $"SX, SY, SZ, XY, YZ, XZ, ESTRN, SEDENS, ENERGY, E1, E2, E3.");
+            }
+            
+            int error = 0;
+            object[] results = cWStudy.Results.GetMinMaxStrain(STRAIN_PARAMS.IndexOf(param), 0, 1, null, out error);
+            if (results == null)
+            {
+                throw new Exception("Results can\'t be given!");
+            }
+
+            return new Dictionary<string, float>()
+            {
+                {"min", (float)results[1]}, {"max", (float)results[3]}
+            };
+          
+        }
+
+        public Dictionary<string, float> DefineMinMaxStressValues(string param)
+        {
+            if (!STRESS_PARAMS.Contains(param))
+            {
+                throw new ArgumentException($"Parametr {param} doesn\'t exist." +
+                    $" You may choose one of the following:" +
+                    $"SX, SY, SZ, XY, YZ, XZ, P1, P2, P3, VON, INT.");
+            }
+
+            int error = 0;
+            object[] results = cWStudy.Results.GetMinMaxStress(STRESS_PARAMS.IndexOf(param), 0, 1, null,
+                (int)swsStrengthUnit_e.swsStrengthUnitPascal, out error);
+            if (results == null)
+            {
+                throw new Exception("Results can\'t be given!");
+            }
+
+            return new Dictionary<string, float>()
+            {
+                {"min", (float)results[1]}, {"max", (float)results[3]}
+            };
+        }
+
+        public IEnumerable<Node> DefineNodesPerStrainParam(string param, float startBorder, float endBorder) 
+        {
+            var borders = DefineMinMaxStrainValues(param);
+            if (startBorder < borders["min"] & endBorder > borders["max"])
+                throw new ArgumentException("Given invalid strain borders!");
+            return from node in nodes
+                   where node.strain.GetParam(param) > startBorder && node.strain.GetParam(param) < endBorder
+                   select node;
+        }
+
+        public IEnumerable<Node> DefineNodesPerStressParam(string param, float startBorder, float endBorder)
+        {
+            var borders = DefineMinMaxStressValues(param);
+            if (startBorder < borders["min"] & endBorder > borders["max"])
+                throw new ArgumentException("Given invalid stress borders!");
+            return from node in nodes
+                   where node.stress.GetParam(param) > startBorder && node.stress.GetParam(param) < endBorder
+                   select node;
+        }
+
         public override string ToString()
         {
-            string result = String.Format("StaticStudy Nodes:{0} Elements:{1}", 
-                nodes.Count(), 
+            string result = String.Format("StaticStudy Nodes:{0} Elements:{1}",
+                nodes.Count(),
                 meshElements.Count()
                 );
 
