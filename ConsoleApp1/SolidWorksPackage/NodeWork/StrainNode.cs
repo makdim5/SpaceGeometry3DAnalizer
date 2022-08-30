@@ -22,7 +22,7 @@ namespace App2.SolidWorksPackage.NodeWork
         public readonly float E3;
 
         private readonly Dictionary<string, float> param;
-
+        // показатели по деформации
         public StrainNode(
             float EPSx,
             float EPSy,

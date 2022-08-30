@@ -47,7 +47,7 @@ namespace App2.SolidWorksPackage
             try
             {
                 SolidWorksAppWorker.DefineSolidWorksApp();
-                SolidWorksAppWorker.DefineActiveSolidWorksDocument();
+                var doc = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
                 Console.WriteLine("App and doc are here!\n");
 
                 var studyManager = new StudyManager();
@@ -89,19 +89,36 @@ namespace App2.SolidWorksPackage
 
                 Console.WriteLine($" Результаты исследования: ");
 
-                
+
                 string param = "ESTRN";
                 var strainValues = studyResults.DefineMinMaxStrainValues(param);
                 var stressValues = studyResults.DefineMinMaxStressValues("VON");
                 float value = (strainValues["min"] + strainValues["max"]) / 2;
                 float deviation = value * 0.03f;
 
-                foreach (var item in studyResults.GetElements(
-                    studyResults.DefineNodesPerStrainParam(param, value-deviation, value+deviation)))
-                {
-                    Console.WriteLine(item);
-                }
+                var cutElements = studyResults.GetElements(
+                    studyResults.DefineNodesPerStrainParam(param, value - deviation, value + deviation));
 
+                while (cutElements.Count() != 0)
+                {
+                    Console.WriteLine("Вырез элементов ");
+                    foreach (var element in cutElements)
+                    {
+                    
+                        var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes(0.2));
+                        SolidWorksDrawer.DrawPyramid(doc, elementPyramid);
+
+                    }
+                    Console.WriteLine("Повторное исследование ");
+                    study.CreateDefaultMesh();
+
+                    study.RunStudy();
+                Console.WriteLine("Повторные результаты и поиск элементов!");
+                studyResults = study.GetResult();
+                cutElements = studyResults.GetElements(
+                studyResults.DefineNodesPerStrainParam(param, value - deviation, value + deviation));
+
+                }
 
             }
             catch (Exception ex)

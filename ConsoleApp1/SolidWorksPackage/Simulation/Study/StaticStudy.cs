@@ -147,7 +147,13 @@ namespace App2.Simulation.Study
 
             mesh = (ICWMesh)study.Mesh;
 
-            mesh.Quality = (int)swsMeshQuality_e.swsMeshQualityHigh;
+            mesh.Quality = 1;
+            mesh.UseJacobianCheckForSolids = 2;
+            mesh.MesherType = 1;
+            mesh.MinElementsInCircle = 8;
+            mesh.GrowthRatio = 1.4; 
+            mesh.SaveSettingsWithoutMeshing = 0;
+            mesh.Unit = 0;
 
             mesh.GetDefaultElementSizeAndTolerance(
                 (int)LINEAR_UNIT,

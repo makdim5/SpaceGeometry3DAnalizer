@@ -23,6 +23,7 @@ namespace App2.SolidWorksPackage.NodeWork
 
         private readonly Dictionary<string,float> param;
 
+        // показатели по напряжению
         public StressNode(
             float Sx,
             float Sy,

@@ -155,6 +155,9 @@ namespace App2.SolidWorksPackage.NodeWork
 
             int error = 0;
 
+            if (results == null)
+                throw new Exception("Результаты не были получены!");
+
             object[] result = results.GetStress(0, 1, null, (int)unit, out error);
 
             return result;
@@ -163,6 +166,9 @@ namespace App2.SolidWorksPackage.NodeWork
         private static object[] GetStrain(ICWResults results)
         {
             int error = 0;
+
+            if (results == null)
+                throw new Exception("Результаты не были получены!");
 
             object[] result = results.GetStrain(0, 1, null, out error);
 
