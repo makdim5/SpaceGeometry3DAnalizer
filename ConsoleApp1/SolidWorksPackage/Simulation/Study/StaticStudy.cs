@@ -141,9 +141,9 @@ namespace App2.Simulation.Study
         public int CreateDefaultMesh()
         {
 
-            double averageGlobalElementSize = 0;
+            double averageGlobalElementSize = Mesh.DEFAULT_ELEMENT_SIZE;
 
-            double tolerance = 0;
+            double tolerance = Mesh.DEFAULT_TOLERANCE;
 
             mesh = (ICWMesh)study.Mesh;
 

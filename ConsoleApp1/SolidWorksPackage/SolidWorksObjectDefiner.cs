@@ -42,81 +42,73 @@ namespace App2.SolidWorksPackage
         //  with "Simulation" AddIn (NOT "Flow Simulation")
         public static void DoResearch()
         {
-            Console.WriteLine("Console SW APP\n");
-
             try
             {
                 SolidWorksAppWorker.DefineSolidWorksApp();
                 var doc = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
-                Console.WriteLine("App and doc are here!\n");
+                Console.WriteLine("Приложение SW и документ определены!\n");
 
                 var studyManager = new StudyManager();
 
                 var study = studyManager.GetExistingCompletedStudy();
-                
-                //StaticStudy study = null;
+
                 if (study == null)
                 {
                     Console.WriteLine("Создание исследования запущено ...");
-                    Material material = MaterialManager.GetMaterials()["Медь"];
-                    var mesh = new Mesh();
-
-                    var document = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
-                    FeatureFaceManager faceManager = new FeatureFaceManager(document);
-
-                    // Set fixed faces
-                    faceManager.DefineFace("Грань 1", FaceType.Fixed);
-                    var fixFaces = faceManager.GetFacesPerType(FaceType.Fixed);
-
-                    // Set loaded faces
-                    faceManager.DefineFace("Грань 2", FaceType.ForceLoad, 100);
-                    var loadFaces = faceManager.GetFacesPerType(FaceType.ForceLoad);
-
-
-                    StaticStudyRecord studyRecord = new StaticStudyRecord(0, material, fixFaces, loadFaces, mesh);
-                    study = studyManager.CreateStudy(studyRecord);
+                    study = studyManager.CreateStudy(CreateSimpleRecord());
                     Console.WriteLine("Создание исследования завершено. Проведение исследования начато ...");
                     study.RunStudy();
                     Console.WriteLine("Проведение исследования завершено успешно!");
-                } else
+                }
+                else
                 {
                     Console.WriteLine("Загружено активное исследование!");
                 }
-                
+
 
                 var studyResults = study.GetResult();
 
 
-                Console.WriteLine($" Результаты исследования: ");
+                Console.WriteLine($" Результаты исследования: кол-во элементов: {studyResults.meshElements.Count()}, узлов: {studyResults.nodes.Count()}");
+
+               
+                string param = "VON";
+                //var strainValues = studyResults.DefineMinMaxStrainValues("ESTRN");
+                var stressValues = studyResults.DefineMinMaxStressValues(param);
+                double minvalue = stressValues["min"],
+                    maxvalue= 2 * MaterialManager.GetMaterials()[study.MaterialName].physicalProperties["SIGYLD"];
+
+                Console.WriteLine($" минимальное напряжение " +
+                    $"VON =  {minvalue} // " +
+                    $"максимальное напряжение по VON {stressValues["max"]}" +
+                    $"  // предел текущести = {maxvalue}");
 
 
-                string param = "ESTRN";
-                var strainValues = studyResults.DefineMinMaxStrainValues(param);
-                var stressValues = studyResults.DefineMinMaxStressValues("VON");
-                float value = (strainValues["min"] + strainValues["max"]) / 2;
-                float deviation = value * 0.03f;
+                var cutNodes = studyResults.DefineNodesPerStressParam(param, minvalue, maxvalue);
+                var cutElements = studyResults.GetElements(cutNodes);
 
-                var cutElements = studyResults.GetElements(
-                    studyResults.DefineNodesPerStrainParam(param, value - deviation, value + deviation));
+                Console.WriteLine($" кол-во вырезаемых элементов: {cutElements.Count()}, узлов: {cutNodes.Count()}");
+                
 
                 while (cutElements.Count() != 0)
                 {
-                    Console.WriteLine("Вырез элементов ");
+                    Console.WriteLine($"Вырез элементов {cutElements.Count()}");
                     foreach (var element in cutElements)
                     {
-                    
+
                         var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes(0.2));
                         SolidWorksDrawer.DrawPyramid(doc, elementPyramid);
+
 
                     }
                     Console.WriteLine("Повторное исследование ");
                     study.CreateDefaultMesh();
 
                     study.RunStudy();
-                Console.WriteLine("Повторные результаты и поиск элементов!");
-                studyResults = study.GetResult();
-                cutElements = studyResults.GetElements(
-                studyResults.DefineNodesPerStrainParam(param, value - deviation, value + deviation));
+                    Console.WriteLine("Повторные результаты и поиск элементов!");
+                    studyResults = study.GetResult();
+                    cutElements = studyResults.GetElements(
+                    studyResults.DefineNodesPerStrainParam(param, minvalue, maxvalue));
 
                 }
 
@@ -126,5 +118,29 @@ namespace App2.SolidWorksPackage
                 Console.WriteLine("" + ex);
             }
         }
+
+        public static StaticStudyRecord CreateSimpleRecord() 
+        {
+            // Задание сетки и материала
+            Material material = MaterialManager.GetMaterials()["Медь"];
+            var mesh = new Mesh();
+
+            FeatureFaceManager faceManager = new FeatureFaceManager(
+                SolidWorksAppWorker.DefineActiveSolidWorksDocument());
+
+            // Определение фиксированных граней
+            faceManager.DefineFace("Грань 1", FaceType.Fixed);
+            var fixFaces = faceManager.GetFacesPerType(FaceType.Fixed);
+
+            // Определение нагруженных граней с силой в 10000000 Н
+            faceManager.DefineFace("Грань 2", FaceType.ForceLoad, 10000000);
+            var loadFaces = faceManager.GetFacesPerType(FaceType.ForceLoad);
+
+
+            return new StaticStudyRecord(0, material, fixFaces, loadFaces, mesh);
+
+        }
+
+
     }
 }

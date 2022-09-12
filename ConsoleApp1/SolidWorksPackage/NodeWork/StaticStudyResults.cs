@@ -221,7 +221,7 @@ namespace App2.SolidWorksPackage.NodeWork
             };
         }
 
-        public IEnumerable<Node> DefineNodesPerStrainParam(string param, float startBorder, float endBorder) 
+        public IEnumerable<Node> DefineNodesPerStrainParam(string param, double startBorder, double endBorder) 
         {
             var borders = DefineMinMaxStrainValues(param);
             if (startBorder < borders["min"] & endBorder > borders["max"])
@@ -231,7 +231,7 @@ namespace App2.SolidWorksPackage.NodeWork
                    select node;
         }
 
-        public IEnumerable<Node> DefineNodesPerStressParam(string param, float startBorder, float endBorder)
+        public IEnumerable<Node> DefineNodesPerStressParam(string param, double startBorder, double endBorder)
         {
             var borders = DefineMinMaxStressValues(param);
             if (startBorder < borders["min"] & endBorder > borders["max"])
