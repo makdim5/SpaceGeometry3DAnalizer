@@ -84,22 +84,18 @@ namespace App2.SolidWorksPackage
                     $"  // предел текущести = {maxvalue}");
 
 
-                var cutNodes = studyResults.DefineNodesPerStressParam(param, minvalue, maxvalue);
-                var cutElements = studyResults.GetElements(cutNodes);
-
-                Console.WriteLine($" кол-во вырезаемых элементов: {cutElements.Count()}, узлов: {cutNodes.Count()}");
-                
-
+                var cutElements = studyResults.DetermineCutElements(param, minvalue, maxvalue);
                 while (cutElements.Count() != 0)
                 {
                     Console.WriteLine($"Вырез элементов {cutElements.Count()}");
+                    int i = 0;
                     foreach (var element in cutElements)
                     {
-
+                        if (i > 5)
+                            break;
                         var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes(0.2));
                         SolidWorksDrawer.DrawPyramid(doc, elementPyramid);
-
-
+                        i++;
                     }
                     Console.WriteLine("Повторное исследование ");
                     study.CreateDefaultMesh();
@@ -107,8 +103,7 @@ namespace App2.SolidWorksPackage
                     study.RunStudy();
                     Console.WriteLine("Повторные результаты и поиск элементов!");
                     studyResults = study.GetResult();
-                    cutElements = studyResults.GetElements(
-                    studyResults.DefineNodesPerStrainParam(param, minvalue, maxvalue));
+                    cutElements = studyResults.DetermineCutElements(param, minvalue, maxvalue);
 
                 }
 
@@ -133,7 +128,7 @@ namespace App2.SolidWorksPackage
             var fixFaces = faceManager.GetFacesPerType(FaceType.Fixed);
 
             // Определение нагруженных граней с силой в 10000000 Н
-            faceManager.DefineFace("Грань 2", FaceType.ForceLoad, 10000000);
+            faceManager.DefineFace("Грань 2", FaceType.ForceLoad, 9900000);
             var loadFaces = faceManager.GetFacesPerType(FaceType.ForceLoad);
 
 

@@ -18,6 +18,8 @@ namespace App2.SolidWorksPackage.NodeWork
         {
             "SX", "SY", "SZ", "XY", "YZ", "XZ", "P1", "P2", "P3", "VON", "INT"
         };
+
+        public HashSet<Element> cutElements = new();
         public readonly ICWStudy cWStudy;
         public readonly IEnumerable<Node> nodes;
 
@@ -239,6 +241,33 @@ namespace App2.SolidWorksPackage.NodeWork
             return from node in nodes
                    where node.stress.GetParam(param) > startBorder && node.stress.GetParam(param) < endBorder
                    select node;
+        }
+
+        public IEnumerable<Element> DetermineCutElements(string param, double minvalue, double maxvalue)
+        {
+            var cutNodes = DefineNodesPerStressParam(param, minvalue, maxvalue);
+
+            foreach (var element in this.cutElements)
+            {
+                var deletedNodes = element.DefineInsideNodes(cutNodes);
+                cutNodes = cutNodes.Intersect(deletedNodes);
+            }
+
+            var newCutElements = GetElements(cutNodes);
+
+            this.cutElements.Union(newCutElements);
+
+            return newCutElements;
+
+        }
+
+        public static bool AreElementsAdjacent(Element elementOne, Element elementTwo)
+        {
+            HashSet<Node> nodesOne = new HashSet<Node>(elementOne.vertexNodes);
+            HashSet<Node> nodesTwo = new HashSet<Node>(elementTwo.vertexNodes);
+            const int vertexesAmountForAdjacency = 3;
+            nodesOne.IntersectWith(nodesTwo);
+            return nodesOne.Count == vertexesAmountForAdjacency;
         }
 
         public override string ToString()

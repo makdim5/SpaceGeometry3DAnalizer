@@ -3,6 +3,7 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using App2.SolidWorksPackage;
+using System.Collections.Generic;
 
 // Чтобы спрятать консоль просто измени тип выходных данных
 // в настройках на приложение Windows

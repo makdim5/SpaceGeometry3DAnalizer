@@ -21,6 +21,8 @@ namespace App2.SolidWorksPackage.NodeWork
         //Центр области 
         public readonly Point3D center;
 
+        public Element() { }
+
         public Element(int number, IEnumerable<Node> nodes, Point3D center)
         {
 
@@ -76,6 +78,40 @@ namespace App2.SolidWorksPackage.NodeWork
                     center,
                     coefficient
                 );
+        }
+
+        public HashSet<Node> DefineInsideNodes(IEnumerable<Node> nodes)
+        {
+            var insideNodes = new HashSet<Node>();
+
+            foreach(var item in nodes)
+            {
+                if (this.IsNodeInside(item))
+                    insideNodes.Add(item);
+            }
+
+            return insideNodes;
+        }
+
+        public bool IsNodeInside(Node node)
+        {
+            double maxDistance = MathHelper.DefineMaxVertexDistanceFromPyramidCenter(
+                GetNodexCoords(), center);
+
+            double realDistance = MathHelper.DefineDistanceBetweenPoints(node.point, center);
+            return realDistance < maxDistance;
+        }
+
+        public List<Point3D> GetNodexCoords()
+        {
+            var coords = new List<Point3D>();
+
+            foreach (var node in vertexNodes)
+            {
+                coords.Add(node.point);
+            }
+
+            return coords;
         }
 
         public override string ToString()

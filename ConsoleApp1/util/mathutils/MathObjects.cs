@@ -28,6 +28,26 @@ namespace App2.util.mathutils
 
     public class MathHelper
     {
+        public static double DefineMaxVertexDistanceFromPyramidCenter(
+            IEnumerable<Point3D> vertexes, Point3D center)
+        {
+            List<double> distances = new();
+            
+            for (int i = 0; i < 4; i++)
+                distances.Add(DefineDistanceBetweenPoints(center, vertexes.ElementAt(i)));
+
+            return distances.Max();
+        }
+
+        public static double DefineDistanceBetweenPoints(Point3D pointOne, Point3D pointTwo)
+        {
+            return Math.Sqrt(
+                Math.Pow(pointTwo.x - pointOne.x, 2)+
+                Math.Pow(pointTwo.y - pointOne.y, 2)+
+                Math.Pow(pointTwo.z - pointOne.z, 2)
+                );
+        }
+
         public static List<Point3D> GetLessCoordinatesOfPyramid(
             IEnumerable<Point3D> vertexes, Point3D center, double lessCoefficient)
         {
