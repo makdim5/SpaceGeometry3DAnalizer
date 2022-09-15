@@ -77,6 +77,8 @@
     <Compile Include="SolidWorksPackage\Cells\PyramidFourVertexArea.cs" />
     <Compile Include="SolidWorksPackage\CoordinateSystem.cs" />
     <Compile Include="SolidWorksPackage\NodeWork\Element.cs" />
+    <Compile Include="SolidWorksPackage\NodeWork\ElementArea.cs" />
+    <Compile Include="SolidWorksPackage\NodeWork\ElementAreaWorker.cs" />
     <Compile Include="SolidWorksPackage\NodeWork\IParameters.cs" />
     <Compile Include="SolidWorksPackage\NodeWork\Node.cs" />
     <Compile Include="SolidWorksPackage\NodeWork\StaticStudyResults.cs" />

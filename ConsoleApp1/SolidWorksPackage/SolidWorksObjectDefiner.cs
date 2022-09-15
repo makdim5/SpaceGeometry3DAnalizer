@@ -8,6 +8,8 @@ using App2.SolidWorksPackage.Simulation.MeshWorker;
 using App2.SolidWorksPackage.Simulation.Study;
 using System;
 using App2.SolidWorksPackage.Cells;
+using ConsoleApp1.SolidWorksPackage.NodeWork;
+using App2.SolidWorksPackage.NodeWork;
 
 namespace App2.SolidWorksPackage
 {
@@ -84,29 +86,40 @@ namespace App2.SolidWorksPackage
                     $"  // предел текущести = {maxvalue}");
 
 
-                var cutElements = studyResults.DetermineCutElements(param, minvalue, maxvalue);
-                while (cutElements.Count() != 0)
+                var cutElements = studyResults.DetermineCutElements(param, minvalue, maxvalue) as HashSet<Element>;
+                //while (cutElements.Count() != 0)
+                //{
+                //    Console.WriteLine($"Вырез элементов {cutElements.Count()}");
+                //    int i = 0;
+                //    foreach (var element in cutElements)
+                //    {
+                //        if (i > 5) break;
+                //        var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes(0.2));
+                //        SolidWorksDrawer.DrawPyramid(doc, elementPyramid);
+                //        i++;
+                //    }
+                //    Console.WriteLine("Повторное исследование ");
+                //    study.CreateDefaultMesh();
+
+                //    study.RunStudy();
+                //    Console.WriteLine("Повторные результаты и поиск элементов!");
+                //    studyResults = study.GetResult();
+                //    cutElements = studyResults.DetermineCutElements(param, minvalue, maxvalue);
+
+                //}
+                Console.WriteLine("Начало поиска областей");
+                var areas = ElementAreaWorker.DefineElementAreas(cutElements);
+                Console.WriteLine($"Окончание поиска областей. Их общее количество - {areas.Count}");
+                Console.Write($"Введите номер области для выреза от 0 до {areas.Count-1}: ");
+                int number = Convert.ToInt32(Console.ReadLine());
+                if (number >= 0 && number < areas.Count)
                 {
-                    Console.WriteLine($"Вырез элементов {cutElements.Count()}");
-                    int i = 0;
-                    foreach (var element in cutElements)
+                    foreach (var element in areas.ElementAt(number).elements)
                     {
-                        if (i > 5)
-                            break;
                         var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes(0.2));
                         SolidWorksDrawer.DrawPyramid(doc, elementPyramid);
-                        i++;
                     }
-                    Console.WriteLine("Повторное исследование ");
-                    study.CreateDefaultMesh();
-
-                    study.RunStudy();
-                    Console.WriteLine("Повторные результаты и поиск элементов!");
-                    studyResults = study.GetResult();
-                    cutElements = studyResults.DetermineCutElements(param, minvalue, maxvalue);
-
                 }
-
             }
             catch (Exception ex)
             {
