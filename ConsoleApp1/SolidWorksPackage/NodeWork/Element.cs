@@ -80,29 +80,9 @@ namespace App2.SolidWorksPackage.NodeWork
                 );
         }
 
-        public HashSet<Node> DefineInsideNodes(IEnumerable<Node> nodes)
-        {
-            var insideNodes = new HashSet<Node>();
+        
 
-            foreach(var item in nodes)
-            {
-                if (this.IsNodeInside(item))
-                    insideNodes.Add(item);
-            }
-
-            return insideNodes;
-        }
-
-        public bool IsNodeInside(Node node)
-        {
-            double maxDistance = MathHelper.DefineMaxVertexDistanceFromPyramidCenter(
-                GetNodexCoords(), center);
-
-            double realDistance = MathHelper.DefineDistanceBetweenPoints(node.point, center);
-            return realDistance < maxDistance;
-        }
-
-        public List<Point3D> GetNodexCoords()
+        public List<Point3D> GetNodesCoords()
         {
             var coords = new List<Point3D>();
 

@@ -1,5 +1,7 @@
 ﻿using App2.SolidWorksPackage.Cells;
+using App2.util.mathutils;
 using SolidWorks.Interop.sldworks;
+using SolidWorks.Interop.swconst;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,8 @@ namespace App2.SolidWorksPackage
 {
     internal class SolidWorksDrawer
     {
+        public const double RADIUS = 0.01;
+
         public static void DrawSimpleTestModel(ModelDoc2 doc)
         {
             if (doc is null)
@@ -99,5 +103,38 @@ namespace App2.SolidWorksPackage
             }
             doc.ClearSelection();
         }
+
+
+        public static void DrawSphere(ModelDoc2 doc, Point3D centr, double radius)
+        {
+            Point3D center = new Point3D ( centr.x / 1000, centr.y / 1000, centr.z / 1000 );
+            double radious = radius / 1000;
+
+            Point3D startArcPoint = new(center.x, (center.y + radious), 0);
+            Point3D endArcPoint = new Point3D(center.x, (center.y - radious), 0);
+
+            doc.Extension.SelectByID2("Ñïåðåäè", "PLANE", center.x, center.y, center.z, false, 0, null, 0);
+
+            doc.SketchManager.InsertSketch(true);
+
+            doc.SketchManager.CreateArc(center.x, center.y, center.z,
+                startArcPoint.x, startArcPoint.y, startArcPoint.z,
+                endArcPoint.x, endArcPoint.y, endArcPoint.z, -1);
+
+            doc.SketchManager.CreateLine(endArcPoint.x, endArcPoint.y, endArcPoint.z,
+                startArcPoint.x, startArcPoint.y, startArcPoint.z);
+
+            doc.Extension.SelectByID2("Line1", "SKETCHSEGMENT", endArcPoint.x,
+                endArcPoint.y, endArcPoint.z, true, 0, null, 0);
+            doc.ShowNamedView2("*Òðèìåòðèÿ", 8);
+            doc.ViewZoomtofit2();
+            doc.ClearSelection2(true);
+            doc.Extension.SelectByID2("Line1", "SKETCHSEGMENT", endArcPoint.x, endArcPoint.y
+                , endArcPoint.z, false, 16, null, 0);
+            doc.FeatureManager.FeatureRevolve2(true, true, false, false, false, false, 0, 0, 6.2831853071796, 0, false, false, radious, radious, 0, 0, 0, true, true, true);
+            doc.SelectionManager.EnableContourSelection = false;
+        }
+
+
     }
 }

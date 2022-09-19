@@ -17,7 +17,8 @@ namespace App2
         static int port = 8005; // порт для приема входящих запросов
         static void Main(string[] args) 
         {
-            SolidWorksObjectDefiner.DoResearch();
+            //SolidWorksObjectDefiner.DoResearch();
+            SolidWorksObjectDefiner.DoTest();
             Console.ReadLine();
             //RunServer();
 

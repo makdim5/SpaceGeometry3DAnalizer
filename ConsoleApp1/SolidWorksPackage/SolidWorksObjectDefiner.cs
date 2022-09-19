@@ -109,17 +109,40 @@ namespace App2.SolidWorksPackage
                 //}
                 Console.WriteLine("Начало поиска областей");
                 var areas = ElementAreaWorker.DefineElementAreas(cutElements);
-                Console.WriteLine($"Окончание поиска областей. Их общее количество - {areas.Count}");
-                Console.Write($"Введите номер области для выреза от 0 до {areas.Count-1}: ");
-                int number = Convert.ToInt32(Console.ReadLine());
-                if (number >= 0 && number < areas.Count)
+                Console.WriteLine($"Окончание поиска областей. Их общее количество - {areas.Count}" +
+                    $"\nПрорисовка областей, их окружения и центра ...");
+                foreach (var area in areas)
                 {
-                    foreach (var element in areas.ElementAt(number).elements)
+                    foreach (var element in area.elements)
                     {
                         var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes(0.2));
                         SolidWorksDrawer.DrawPyramid(doc, elementPyramid);
                     }
+                    SolidWorksDrawer.DrawSphere(doc, area.areaCenter, area.maxRadius*0.1);
+                    SolidWorksDrawer.DrawSphere(doc, area.areaCenter ,area.maxRadius);
+                    break; 
                 }
+
+                Console.WriteLine("Выполнение программы завершено. Закройте окно для завершения!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("" + ex);
+            }
+        }
+
+        public static void DoTest()
+        {
+            try
+            {
+                SolidWorksAppWorker.DefineSolidWorksApp();
+                var doc = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
+                Console.WriteLine("Приложение SW и документ определены!\n");
+
+                
+                SolidWorksDrawer.DrawSphere(doc, new util.mathutils.Point3D(2,2,2), 10);
+                
+                Console.WriteLine("Выполнение программы завершено. Закройте окно для завершения!");
             }
             catch (Exception ex)
             {
