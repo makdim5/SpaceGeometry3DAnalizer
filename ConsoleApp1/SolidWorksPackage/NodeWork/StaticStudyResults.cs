@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using App2.util.mathutils;
+using ConsoleApp1.SolidWorksPackage.NodeWork;
 using SolidWorks.Interop.cosworks;
 
 namespace App2.SolidWorksPackage.NodeWork
@@ -19,7 +20,7 @@ namespace App2.SolidWorksPackage.NodeWork
             "SX", "SY", "SZ", "XY", "YZ", "XZ", "P1", "P2", "P3", "VON", "INT"
         };
 
-        public HashSet<Element> cutElements;
+        
         public readonly ICWStudy cWStudy;
         public readonly IEnumerable<Node> nodes;
 
@@ -27,7 +28,7 @@ namespace App2.SolidWorksPackage.NodeWork
 
         public StaticStudyResults(ICWStudy study)
         {
-            cutElements = new HashSet<Element>();
+            
             this.cWStudy = study;
             this.nodes = GetNodes(
                 study.Mesh.GetNodes(),
@@ -186,7 +187,7 @@ namespace App2.SolidWorksPackage.NodeWork
                     $" You may choose one of the following:" +
                     $"SX, SY, SZ, XY, YZ, XZ, ESTRN, SEDENS, ENERGY, E1, E2, E3.");
             }
-            
+
             int error = 0;
             object[] results = cWStudy.Results.GetMinMaxStrain(STRAIN_PARAMS.IndexOf(param), 0, 1, null, out error);
             if (results == null)
@@ -198,7 +199,7 @@ namespace App2.SolidWorksPackage.NodeWork
             {
                 {"min", (float)results[1]}, {"max", (float)results[3]}
             };
-          
+
         }
 
         public Dictionary<string, float> DefineMinMaxStressValues(string param)
@@ -224,7 +225,7 @@ namespace App2.SolidWorksPackage.NodeWork
             };
         }
 
-        public IEnumerable<Node> DefineNodesPerStrainParam(string param, double startBorder, double endBorder) 
+        public IEnumerable<Node> DefineNodesPerStrainParam(string param, double startBorder, double endBorder)
         {
             var borders = DefineMinMaxStrainValues(param);
             if (startBorder < borders["min"] & endBorder > borders["max"])
@@ -244,15 +245,26 @@ namespace App2.SolidWorksPackage.NodeWork
                    select node;
         }
 
-        public IEnumerable<Element> DetermineCutElements(string param, double minvalue, double maxvalue)
+        public IEnumerable<ElementArea> DetermineCutAreas(string param, double minvalue, double maxvalue, List<ElementArea> areas)
         {
-            var cutNodes = DefineNodesPerStressParam(param, minvalue, maxvalue);
 
-            return GetElements(cutNodes);
+            var cutNodes = DefineNodesPerStressParam(param, minvalue, maxvalue);
+            Console.WriteLine($" Количество найденных узлов: {cutNodes.Count()}");
+
+            cutNodes = ElementAreaWorker.ExceptInsideNodes(cutNodes, areas);
+            Console.WriteLine($" Количество отсортированных узлов: {cutNodes.Count()}");
+
+            var elems = GetElements(cutNodes) as HashSet<Element>;
+
+            Console.WriteLine($" Количество элементов: {elems.Count()}");
+            var newAreas = ElementAreaWorker.DefineElementAreas(elems);
+            
+    
+            return newAreas;
 
         }
 
-        
+
 
         public override string ToString()
         {

@@ -41,7 +41,7 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
         public bool IsNodeInside(Node node)
         {
             double realDistance = MathHelper.DefineDistanceBetweenPoints(node.point, areaCenter);
-            return realDistance < maxRadius;
+            return realDistance < maxRadius*1.2;
         }
 
         public Point3D DefineAreaCenter()

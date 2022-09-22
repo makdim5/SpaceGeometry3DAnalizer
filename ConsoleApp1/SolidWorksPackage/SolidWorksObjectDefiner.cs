@@ -85,43 +85,36 @@ namespace App2.SolidWorksPackage
                     $"максимальное напряжение по VON {stressValues["max"]}" +
                     $"  // предел текущести = {maxvalue}");
 
-
-                var cutElements = studyResults.DetermineCutElements(param, minvalue, maxvalue) as HashSet<Element>;
-                //while (cutElements.Count() != 0)
-                //{
-                //    Console.WriteLine($"Вырез элементов {cutElements.Count()}");
-                //    int i = 0;
-                //    foreach (var element in cutElements)
-                //    {
-                //        if (i > 5) break;
-                //        var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes(0.2));
-                //        SolidWorksDrawer.DrawPyramid(doc, elementPyramid);
-                //        i++;
-                //    }
-                //    Console.WriteLine("Повторное исследование ");
-                //    study.CreateDefaultMesh();
-
-                //    study.RunStudy();
-                //    Console.WriteLine("Повторные результаты и поиск элементов!");
-                //    studyResults = study.GetResult();
-                //    cutElements = studyResults.DetermineCutElements(param, minvalue, maxvalue);
-
-                //}
+                var areas = new List<ElementArea>();
                 Console.WriteLine("Начало поиска областей");
-                var areas = ElementAreaWorker.DefineElementAreas(cutElements);
-                Console.WriteLine($"Окончание поиска областей. Их общее количество - {areas.Count}" +
-                    $"\nПрорисовка областей, их окружения и центра ...");
-                foreach (var area in areas)
+                var cutElementAreas = studyResults.DetermineCutAreas(param, minvalue, maxvalue, areas);
+                Console.WriteLine($"Окончание поиска областей. Их общее количество - {cutElementAreas.Count()}");
+                while (cutElementAreas.Count() != 0)
                 {
-                    foreach (var element in area.elements)
+                    Console.WriteLine("Начало выреза областей ...");
+                    foreach (var area in cutElementAreas)
                     {
-                        var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes(0.2));
-                        SolidWorksDrawer.DrawPyramid(doc, elementPyramid);
+                        areas.Add(area);
+                        ElementAreaWorker.DrawElementArea(doc, area);
+                        //SolidWorksDrawer.DrawSphere(doc, area.areaCenter, area.maxRadius*0.1);
+                        //SolidWorksDrawer.DrawSphere(doc, area.areaCenter ,area.maxRadius);
+
                     }
-                    SolidWorksDrawer.DrawSphere(doc, area.areaCenter, area.maxRadius*0.1);
-                    SolidWorksDrawer.DrawSphere(doc, area.areaCenter ,area.maxRadius);
-                    break; 
+                    Console.WriteLine("Конец выреза областей");
+                    Console.WriteLine("Повторное исследование ");
+                    study.CreateDefaultMesh();
+
+                    study.RunStudy();
+                    Console.WriteLine("Повторные результаты и поиск элементов!");
+                    studyResults = study.GetResult();
+
+                    Console.WriteLine("Начало поиска областей");
+                    cutElementAreas = studyResults.DetermineCutAreas(param, minvalue, maxvalue, areas);
+                    Console.WriteLine($"Окончание поиска областей. Их общее количество - {cutElementAreas.Count()}");
+
+                   
                 }
+
 
                 Console.WriteLine("Выполнение программы завершено. Закройте окно для завершения!");
             }
@@ -141,7 +134,8 @@ namespace App2.SolidWorksPackage
 
                 
                 SolidWorksDrawer.DrawSphere(doc, new util.mathutils.Point3D(2,2,2), 10);
-                
+                SolidWorksDrawer.DrawSphere(doc, new util.mathutils.Point3D(20, 2, 2), 100);
+
                 Console.WriteLine("Выполнение программы завершено. Закройте окно для завершения!");
             }
             catch (Exception ex)
