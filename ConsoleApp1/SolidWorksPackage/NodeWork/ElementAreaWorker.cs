@@ -77,13 +77,15 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
             return newNodes;
         }
 
-        public static void DrawElementArea(ModelDoc2 doc, ElementArea area)
+        public static List<Feature> DrawElementArea(ModelDoc2 doc, ElementArea area)
         {
+            List<Feature> features = new List<Feature>();
             foreach (var element in area.elements)
             {
                 var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes(0.2));
-                SolidWorksDrawer.DrawPyramid(doc, elementPyramid);
+                features.Add(SolidWorksDrawer.DrawPyramid(doc, elementPyramid));
             }
+            return features;
         }
 
         public static bool AreElementsAdjacent(Element elementOne, Element elementTwo)

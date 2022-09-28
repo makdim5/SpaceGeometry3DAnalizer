@@ -248,6 +248,14 @@ namespace App2.SolidWorksPackage.NodeWork
         public IEnumerable<ElementArea> DetermineCutAreas(string param, double minvalue, double maxvalue, List<ElementArea> areas)
         {
 
+            var crashNodes = DefineNodesPerStressParam(param, maxvalue, DefineMinMaxStressValues(param)["max"]);
+
+            //if (crashNodes.Count() > 0)
+            //{
+            //    Console.WriteLine($" Были найдены узлы с превышенной нагрузкой!");
+            //    return new List<ElementArea>();
+            //}
+
             var cutNodes = DefineNodesPerStressParam(param, minvalue, maxvalue);
             Console.WriteLine($" Количество найденных узлов: {cutNodes.Count()}");
 

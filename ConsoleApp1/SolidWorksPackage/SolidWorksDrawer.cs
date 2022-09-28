@@ -56,7 +56,7 @@ namespace App2.SolidWorksPackage
 
         }
 
-        public static void DrawPyramid(ModelDoc2 doc, PyramidFourVertexArea area)
+        public static Feature DrawPyramid(ModelDoc2 doc, PyramidFourVertexArea area)
         {
             double unit = 1000;
             doc.ClearSelection();
@@ -86,11 +86,13 @@ namespace App2.SolidWorksPackage
             bool canDraw = sketchSegments[0] != null && sketchSegments[1] != null && sketchSegments[2] != null;
 
             if (!canDraw)
-                return;
+                throw new Exception("Не возможно нарисовать пирамиду!");
 
             sketchSegments[0].GetSketch().MergePoints(0.000001);
 
             doc.SketchManager.Insert3DSketch(true);
+
+            Feature cut = null;
 
             if (sketchSegments != null && sketchPoint != null)
             {
@@ -98,10 +100,12 @@ namespace App2.SolidWorksPackage
                 doc.ClearSelection();
                 sketchPoint.Select2(true, 1);
                 ((Feature)sketchSegments[0].GetSketch()).Select2(true, 1);
-                doc.FeatureManager.InsertCutBlend(false, true, false, 1, 0, 0, false, 0, 0, 0, true, true);
+                cut = doc.FeatureManager.InsertCutBlend(false, true, false, 1, 0, 0, false, 0, 0, 0, true, true);
 
             }
             doc.ClearSelection();
+
+            return cut;
         }
 
 
@@ -135,6 +139,16 @@ namespace App2.SolidWorksPackage
             doc.SelectionManager.EnableContourSelection = false;
         }
 
+
+        public static void UndoFeaturesCuts (ModelDoc2 doc, List<Feature> features)
+        {
+            foreach(var item in features)
+            {
+                doc.Extension.SelectByID2(item.Name, "BODYFEATURE", 0, 0, 0, false, 0, null, 0);
+                doc.EditDelete();
+            }
+            
+        }
 
     }
 }

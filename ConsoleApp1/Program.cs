@@ -19,6 +19,8 @@ namespace App2
         {
             SolidWorksObjectDefiner.DoResearch();
             //SolidWorksObjectDefiner.DoTest();
+
+            
             Console.ReadLine();
             //RunServer();
 

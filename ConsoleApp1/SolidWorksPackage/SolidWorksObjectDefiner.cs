@@ -10,6 +10,7 @@ using System;
 using App2.SolidWorksPackage.Cells;
 using ConsoleApp1.SolidWorksPackage.NodeWork;
 using App2.SolidWorksPackage.NodeWork;
+using SolidWorks.Interop.swconst;
 
 namespace App2.SolidWorksPackage
 {
@@ -41,7 +42,7 @@ namespace App2.SolidWorksPackage
         }
 
         // Before start open SolidWorks and <3d Part document>
-        //  with "Simulation" AddIn (NOT "Flow Simulation")
+        // with "Simulation" AddIn (NOT "Flow Simulation")
         public static void DoResearch()
         {
             try
@@ -49,6 +50,8 @@ namespace App2.SolidWorksPackage
                 SolidWorksAppWorker.DefineSolidWorksApp();
                 var doc = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
                 Console.WriteLine("Приложение SW и документ определены!\n");
+
+                Dictionary<int, List<Feature>> features = new();
 
                 var studyManager = new StudyManager();
 
@@ -89,13 +92,17 @@ namespace App2.SolidWorksPackage
                 Console.WriteLine("Начало поиска областей");
                 var cutElementAreas = studyResults.DetermineCutAreas(param, minvalue, maxvalue, areas);
                 Console.WriteLine($"Окончание поиска областей. Их общее количество - {cutElementAreas.Count()}");
+
+                int counter = 0;
                 while (cutElementAreas.Count() != 0)
                 {
+                    counter++;
+                    features.Add(counter, new());
                     Console.WriteLine("Начало выреза областей ...");
                     foreach (var area in cutElementAreas)
                     {
                         areas.Add(area);
-                        ElementAreaWorker.DrawElementArea(doc, area);
+                       features[counter].AddRange(ElementAreaWorker.DrawElementArea(doc, area));
                         //SolidWorksDrawer.DrawSphere(doc, area.areaCenter, area.maxRadius*0.1);
                         //SolidWorksDrawer.DrawSphere(doc, area.areaCenter ,area.maxRadius);
 
@@ -115,6 +122,11 @@ namespace App2.SolidWorksPackage
                    
                 }
 
+                // отброс последней итерации
+
+                Console.WriteLine("Удаление вырезов последней итерации ...");
+                SolidWorksDrawer.UndoFeaturesCuts(doc, features[counter]);
+
 
                 Console.WriteLine("Выполнение программы завершено. Закройте окно для завершения!");
             }
@@ -132,9 +144,39 @@ namespace App2.SolidWorksPackage
                 var doc = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
                 Console.WriteLine("Приложение SW и документ определены!\n");
 
-                
-                SolidWorksDrawer.DrawSphere(doc, new util.mathutils.Point3D(2,2,2), 10);
-                SolidWorksDrawer.DrawSphere(doc, new util.mathutils.Point3D(20, 2, 2), 100);
+
+                TreeControlItem tree = doc.FeatureManager.GetFeatureTreeRootItem2((int)swFeatMgrPane_e.swFeatMgrPaneBottom);
+
+                var node = tree.GetFirstChild();
+
+                object delObject = null;
+                while(node != null)
+                {
+                    if (node.ObjectType is (int)swTreeControlItemType_e.swFeatureManagerItem_Feature)
+                    {
+                        var _featureNode = (Feature)node.Object;
+                        var nodeType = _featureNode.GetTypeName();
+                        var nodeName = _featureNode.Name;
+
+                        if (nodeName == "Вырез-По сечениям5")
+                        {
+                            doc.Extension.SelectByID2(_featureNode.Name, "BODYFEATURE", 0, 0, 0, false, 0, null, 0);
+                            doc.EditDelete();
+                            break;
+                        }
+
+                        Console.WriteLine(nodeName);
+                    }
+      
+                    node = node.GetNext();
+
+                }
+
+
+               
+
+
+
 
                 Console.WriteLine("Выполнение программы завершено. Закройте окно для завершения!");
             }
