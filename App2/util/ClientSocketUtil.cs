@@ -53,7 +53,7 @@ namespace App2.util
 
         public static void RunCommandServer()
         {
-            pr = Process.Start(@"C:\Users\makan\Desktop\App1\ConsoleApp1\bin\Debug\ConsoleApp1.exe");
+            pr = Process.Start(@"D:\My programming\App1\ConsoleApp1\bin\Debug\ConsoleApp1.exe");
         }
 
         public static void FinishCommandServer()

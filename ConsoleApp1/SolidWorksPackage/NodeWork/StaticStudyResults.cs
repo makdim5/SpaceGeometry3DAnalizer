@@ -20,7 +20,7 @@ namespace App2.SolidWorksPackage.NodeWork
             "SX", "SY", "SZ", "XY", "YZ", "XZ", "P1", "P2", "P3", "VON", "INT"
         };
 
-        
+
         public readonly ICWStudy cWStudy;
         public readonly IEnumerable<Node> nodes;
 
@@ -28,7 +28,7 @@ namespace App2.SolidWorksPackage.NodeWork
 
         public StaticStudyResults(ICWStudy study)
         {
-            
+
             this.cWStudy = study;
             this.nodes = GetNodes(
                 study.Mesh.GetNodes(),
@@ -250,11 +250,11 @@ namespace App2.SolidWorksPackage.NodeWork
 
             var crashNodes = DefineNodesPerStressParam(param, maxvalue, DefineMinMaxStressValues(param)["max"]);
 
-            //if (crashNodes.Count() > 0)
-            //{
-            //    Console.WriteLine($" Были найдены узлы с превышенной нагрузкой!");
-            //    return new List<ElementArea>();
-            //}
+            if (crashNodes.Count() > 0)
+            {
+                Console.WriteLine($" Были найдены узлы с превышенной нагрузкой!");
+                return new List<ElementArea>();
+            }
 
             var cutNodes = DefineNodesPerStressParam(param, minvalue, maxvalue);
             Console.WriteLine($" Количество найденных узлов: {cutNodes.Count()}");
@@ -266,8 +266,8 @@ namespace App2.SolidWorksPackage.NodeWork
 
             Console.WriteLine($" Количество элементов: {elems.Count()}");
             var newAreas = ElementAreaWorker.DefineElementAreas(elems);
-            
-    
+
+
             return newAreas;
 
         }

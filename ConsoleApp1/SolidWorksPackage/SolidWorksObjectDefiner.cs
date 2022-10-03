@@ -11,6 +11,8 @@ using App2.SolidWorksPackage.Cells;
 using ConsoleApp1.SolidWorksPackage.NodeWork;
 using App2.SolidWorksPackage.NodeWork;
 using SolidWorks.Interop.swconst;
+using ConsoleApp1.util;
+using System.Windows.Forms;
 
 namespace App2.SolidWorksPackage
 {
@@ -123,9 +125,11 @@ namespace App2.SolidWorksPackage
                 }
 
                 // отброс последней итерации
-
-                Console.WriteLine("Удаление вырезов последней итерации ...");
-                SolidWorksDrawer.UndoFeaturesCuts(doc, features[counter]);
+                if (counter != 0)
+                {
+                    Console.WriteLine("Удаление вырезов последней итерации ...");
+                    SolidWorksDrawer.UndoFeaturesCuts(doc, features[counter]);
+                }
 
 
                 Console.WriteLine("Выполнение программы завершено. Закройте окно для завершения!");
@@ -140,44 +144,10 @@ namespace App2.SolidWorksPackage
         {
             try
             {
-                SolidWorksAppWorker.DefineSolidWorksApp();
-                var doc = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
-                Console.WriteLine("Приложение SW и документ определены!\n");
-
-
-                TreeControlItem tree = doc.FeatureManager.GetFeatureTreeRootItem2((int)swFeatMgrPane_e.swFeatMgrPaneBottom);
-
-                var node = tree.GetFirstChild();
-
-                object delObject = null;
-                while(node != null)
-                {
-                    if (node.ObjectType is (int)swTreeControlItemType_e.swFeatureManagerItem_Feature)
-                    {
-                        var _featureNode = (Feature)node.Object;
-                        var nodeType = _featureNode.GetTypeName();
-                        var nodeName = _featureNode.Name;
-
-                        if (nodeName == "Вырез-По сечениям5")
-                        {
-                            doc.Extension.SelectByID2(_featureNode.Name, "BODYFEATURE", 0, 0, 0, false, 0, null, 0);
-                            doc.EditDelete();
-                            break;
-                        }
-
-                        Console.WriteLine(nodeName);
-                    }
-      
-                    node = node.GetNext();
-
-                }
-
-
-               
-
-
-
-
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new FormChart());
+                
                 Console.WriteLine("Выполнение программы завершено. Закройте окно для завершения!");
             }
             catch (Exception ex)
@@ -200,7 +170,7 @@ namespace App2.SolidWorksPackage
             var fixFaces = faceManager.GetFacesPerType(FaceType.Fixed);
 
             // Определение нагруженных граней с силой в 10000000 Н
-            faceManager.DefineFace("Грань 2", FaceType.ForceLoad, 9900000);
+            faceManager.DefineFace("Грань 2", FaceType.ForceLoad, 99000);
             var loadFaces = faceManager.GetFacesPerType(FaceType.ForceLoad);
 
 
