@@ -7,10 +7,9 @@ using App2.SolidWorksPackage.Simulation.MaterialWorker;
 using App2.SolidWorksPackage.Simulation.MeshWorker;
 using App2.SolidWorksPackage.Simulation.Study;
 using System;
-using App2.SolidWorksPackage.Cells;
+
 using ConsoleApp1.SolidWorksPackage.NodeWork;
-using App2.SolidWorksPackage.NodeWork;
-using SolidWorks.Interop.swconst;
+
 using ConsoleApp1.util;
 using System.Windows.Forms;
 
@@ -83,18 +82,25 @@ namespace App2.SolidWorksPackage
                 //var strainValues = studyResults.DefineMinMaxStrainValues("ESTRN");
                 var stressValues = studyResults.DefineMinMaxStressValues(param);
                 double minvalue = stressValues["min"],
-                    maxvalue= 2 * MaterialManager.GetMaterials()[study.MaterialName].physicalProperties["SIGYLD"];
+                    criticalValue= 0.2 * MaterialManager.GetMaterials()["AISI 1035 Сталь (SS)"].physicalProperties["SIGXT"], 
+                    maxvalue = stressValues["max"]*0.1;
+
 
                 Console.WriteLine($" минимальное напряжение " +
                     $"VON =  {minvalue} // " +
                     $"максимальное напряжение по VON {stressValues["max"]}" +
-                    $"  // предел текущести = {maxvalue}");
+                    $"  // предел прочности при растяжении = {MaterialManager.GetMaterials()["AISI 1035 Сталь (SS)"].physicalProperties["SIGXT"]}" +
+                    $" критическое > максимальное по VON : {criticalValue > stressValues["max"]} критическое значение:{criticalValue}" 
+                    );
 
+                
                 var areas = new List<ElementArea>();
                 Console.WriteLine("Начало поиска областей");
-                var cutElementAreas = studyResults.DetermineCutAreas(param, minvalue, maxvalue, areas);
-                Console.WriteLine($"Окончание поиска областей. Их общее количество - {cutElementAreas.Count()}");
+                var cutElementAreas = studyResults.DetermineCutAreas(param, minvalue, maxvalue, criticalValue, areas);
+                Console.WriteLine($"Окончание поиска областей. Их общее количество - {cutElementAreas.Count()}\n" +
+                    $"Сами области:{cutElementAreas}");
 
+                return;
                 int counter = 0;
                 while (cutElementAreas.Count() != 0)
                 {
@@ -118,11 +124,19 @@ namespace App2.SolidWorksPackage
                     studyResults = study.GetResult();
 
                     Console.WriteLine("Начало поиска областей");
-                    cutElementAreas = studyResults.DetermineCutAreas(param, minvalue, maxvalue, areas);
-                    Console.WriteLine($"Окончание поиска областей. Их общее количество - {cutElementAreas.Count()}");
+                    cutElementAreas = studyResults.DetermineCutAreas(param, minvalue, maxvalue, criticalValue, areas);
+                    Console.WriteLine($"Окончание поиска областей. Их общее количество - {cutElementAreas.Count()}\n" +
+                    $"Сами области:{cutElementAreas}");
 
-                   
+
                 }
+
+                var crashNodes = studyResults.DefineNodesPerStressParam(param, criticalValue, studyResults.DefineMinMaxStressValues(param)["max"]);
+                NodeElementAreaWorker.DefineAreaElementDistances(areas, crashNodes);
+                Console.WriteLine("Вывод графика расстояний критических узлов и областей. ...");
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new FormChart(NodeElementAreaWorker.area_distances, areas));
 
                 // отброс последней итерации
                 if (counter != 0)
@@ -170,7 +184,7 @@ namespace App2.SolidWorksPackage
             var fixFaces = faceManager.GetFacesPerType(FaceType.Fixed);
 
             // Определение нагруженных граней с силой в 10000000 Н
-            faceManager.DefineFace("Грань 2", FaceType.ForceLoad, 99000);
+            faceManager.DefineFace("Грань 2", FaceType.ForceLoad, 100);
             var loadFaces = faceManager.GetFacesPerType(FaceType.ForceLoad);
 
 

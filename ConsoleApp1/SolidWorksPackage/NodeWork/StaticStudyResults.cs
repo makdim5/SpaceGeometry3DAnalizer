@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using App2.SolidWorksPackage.Simulation.MaterialWorker;
 using App2.util.mathutils;
 using ConsoleApp1.SolidWorksPackage.NodeWork;
 using SolidWorks.Interop.cosworks;
@@ -245,14 +246,15 @@ namespace App2.SolidWorksPackage.NodeWork
                    select node;
         }
 
-        public IEnumerable<ElementArea> DetermineCutAreas(string param, double minvalue, double maxvalue, List<ElementArea> areas)
+        public IEnumerable<ElementArea> DetermineCutAreas(string param, double minvalue, double maxvalue, double criticalvalue, List<ElementArea> areas)
         {
 
-            var crashNodes = DefineNodesPerStressParam(param, maxvalue, DefineMinMaxStressValues(param)["max"]);
+            var crashNodes = DefineNodesPerStressParam(param, criticalvalue, DefineMinMaxStressValues(param)["max"]);
 
-            if (crashNodes.Count() > 0)
+            if (DefineMinMaxStressValues(param)["max"] >= criticalvalue)
             {
-                Console.WriteLine($" Были найдены узлы с превышенной нагрузкой!");
+                Console.WriteLine($" Были найдены узлы с превышенной нагрузкой в количестве : " +
+                    $"{crashNodes.Count()}");
                 return new List<ElementArea>();
             }
 
