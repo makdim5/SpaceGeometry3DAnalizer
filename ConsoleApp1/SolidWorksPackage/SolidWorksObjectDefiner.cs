@@ -100,7 +100,6 @@ namespace App2.SolidWorksPackage
                 Console.WriteLine($"Окончание поиска областей. Их общее количество - {cutElementAreas.Count()}\n" +
                     $"Сами области:{cutElementAreas}");
 
-                return;
                 int counter = 0;
                 while (cutElementAreas.Count() != 0)
                 {
