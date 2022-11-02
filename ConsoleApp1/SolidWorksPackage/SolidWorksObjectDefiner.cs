@@ -110,8 +110,7 @@ namespace App2.SolidWorksPackage
                     {
                         areas.Add(area);
                        features[counter].AddRange(ElementAreaWorker.DrawElementArea(doc, area));
-                        //SolidWorksDrawer.DrawSphere(doc, area.areaCenter, area.maxRadius*0.1);
-                        //SolidWorksDrawer.DrawSphere(doc, area.areaCenter ,area.maxRadius);
+                        Console.WriteLine("Конец выреза промежуточной области");
 
                     }
                     Console.WriteLine("Конец выреза областей");

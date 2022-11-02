@@ -21,7 +21,7 @@ namespace App2.util
             }
         }
 
-        public static Dictionary<string, string>? LoadData()
+        public static Dictionary<string, string> LoadData()
         {
             try
             {
@@ -29,7 +29,7 @@ namespace App2.util
                 {
 
                     string json = "";
-                    string? line;
+                    string line;
                     while ((line = reader.ReadLine()) != null)
                         json += line;
 

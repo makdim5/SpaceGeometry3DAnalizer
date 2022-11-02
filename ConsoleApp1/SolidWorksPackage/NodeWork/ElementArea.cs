@@ -58,12 +58,11 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
 
             foreach (var element in elements)
             {
-                foreach (var node in element.vertexNodes)
-                {
-                    TemporableSumX += node.point.x;
-                    TemporableSumY += node.point.y;
-                    TemporableSumZ += node.point.z;
-                }
+                
+                    TemporableSumX += element.center.x;
+                    TemporableSumY += element.center.y;
+                    TemporableSumZ += element.center.z;
+                
             }
             return new Point3D
             {

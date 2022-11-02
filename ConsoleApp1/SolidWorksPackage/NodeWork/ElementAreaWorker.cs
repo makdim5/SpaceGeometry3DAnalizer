@@ -82,7 +82,7 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
             List<Feature> features = new List<Feature>();
             foreach (var element in area.elements)
             {
-                var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes(0.2));
+                var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes(0.8, area.areaCenter));
                 features.Add(SolidWorksDrawer.DrawPyramid(doc, elementPyramid));
             }
             return features;

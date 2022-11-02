@@ -64,9 +64,9 @@ namespace App2.SolidWorksPackage.NodeWork
 
         }
 
-        public IEnumerable<Point3D> GetDrawingVertexes(double coefficient=0.03)
+        public IEnumerable<Point3D> GetDrawingVertexes(double coefficient, Point3D point)
         {
-            return MathHelper.GetLessCoordinatesOfPyramid
+            return MathHelper.MinimizeCoordinatesOfPyramidPerItsCenter
                 (
                     new List<Point3D>()
                         {
@@ -75,7 +75,7 @@ namespace App2.SolidWorksPackage.NodeWork
                             vertexNodes.ElementAt(2).point,
                             vertexNodes.ElementAt(3).point
                         },
-                    center,
+                    point,
                     coefficient
                 );
         }
