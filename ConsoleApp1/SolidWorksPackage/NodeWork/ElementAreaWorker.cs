@@ -80,7 +80,12 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
 
             foreach (var category in areaElementsCategories)
             {
-                Console.WriteLine($"Вырез области по категории {category.Key} в количестве элементов {category.Value.Count()}");
+                Console.WriteLine($"Вырезаемая область имеет в категории {category.Key} количество элементов -  {category.Value.Count()}");
+            }
+
+            foreach (var category in areaElementsCategories)
+            {
+                Console.WriteLine($"Вырез области по категории {category.Key} ...");
                 foreach (var element in category.Value)
                 {
                     var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes(0.8, area.areaCenter));
@@ -104,11 +109,15 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
                 { "3n", new HashSet<Element>() },
                 { "4n", new HashSet<Element>() },
             };
+
+            var elems = new HashSet<Element>(area.elements);
            
-            foreach (var element in area.elements)
+            while (elems.Count() != 0)
             {
+                var element = elems.First();
                 string key = "";
-                var amountOfNeighbours = DefineAdjacentElementsForCurrentElement(element, area.elements).Count();
+                var neighbours = DefineAdjacentElementsForCurrentElement(element, area.elements);
+                var amountOfNeighbours = neighbours.Count() - 1;
                 if (amountOfNeighbours == 4)
                 {
                     key = "4n";
@@ -137,7 +146,12 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
                     }
                 }
                 if (key != "")
+                {
                     categories[key].Add(element);
+                    elems.Remove(element);
+                }
+                    
+
             }
 
 
