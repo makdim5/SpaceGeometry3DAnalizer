@@ -85,7 +85,7 @@ namespace App2
 
 
 
-        public static void OpenDocument(string path)
+        public static ModelDoc2 OpenDocument(string path)
         {
 
 
@@ -110,14 +110,12 @@ namespace App2
                 app.SetCurrentWorkingDirectory(pathName.Substring(0, pathName.LastIndexOf("\\")));
             }
 
-
+            return swDoc;
         }
 
-        public static void CreateNewDocument()
+        public static ModelDoc2 CreateNewDocument()
         {
-            if (app != null)
-                app.NewPart();
-
+            return app.NewPart();
         }
 
 

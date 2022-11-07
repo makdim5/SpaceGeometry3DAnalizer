@@ -48,19 +48,13 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
 
             return areas;
         }
-        public static HashSet<Element> DefineAdjacentElementsForCurrentElement(
-            Element element, IEnumerable<Element> elements)
-        {
-            return new HashSet<Element>(from elem in elements
-                                        where AreElementsAdjacent(elem, element)
-                                        select elem);
-        }
+
 
         public static HashSet<Node> ExceptInsideNodes(IEnumerable<Node> nodes, List<ElementArea> areas)
         {
             var newNodes = new HashSet<Node>();
 
-            foreach (var node in nodes) { newNodes.Add(node);}
+            foreach (var node in nodes) { newNodes.Add(node); }
 
             int i = 1;
             foreach (var area in areas)
@@ -70,25 +64,97 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
                 var insideNodes = area.DefineInsideNodes(newNodes);
                 Console.WriteLine($"Общее количество схожих узлов после поиска - {insideNodes.Count}, осталось узлов = {newNodes.Count - insideNodes.Count}");
                 newNodes.ExceptWith(insideNodes);
-                
+
                 i++;
             }
 
             return newNodes;
         }
 
-        public static List<Feature> DrawElementArea(ModelDoc2 doc, ElementArea area)
+
+        public static List<Feature> DrawElementArea(ModelDoc2 doc, ModelDoc2 additionalDoc, ElementArea area)
         {
             List<Feature> features = new List<Feature>();
-            foreach (var element in area.elements)
+
+            Dictionary<string, HashSet<Element>> areaElementsCategories = MakeAreaElementsCategories(area);
+
+            foreach (var category in areaElementsCategories)
             {
-                var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes(0.8, area.areaCenter));
-                features.Add(SolidWorksDrawer.DrawPyramid(doc, elementPyramid));
+                Console.WriteLine($"Вырез области по категории {category.Key} в количестве элементов {category.Value.Count()}");
+                foreach (var element in category.Value)
+                {
+                    var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes(0.8, area.areaCenter));
+                    features.Add(SolidWorksDrawer.DrawPyramid(doc, elementPyramid));
+                    SolidWorksDrawer.DrawPyramid(additionalDoc, elementPyramid, 0);
+                }
             }
+
+
             return features;
         }
 
-        public static bool AreElementsAdjacent(Element elementOne, Element elementTwo)
+        public static Dictionary<string, HashSet<Element>> MakeAreaElementsCategories(ElementArea area)
+        {
+            Dictionary<string, HashSet<Element>> categories = new Dictionary<string, HashSet<Element>>()
+            {
+                { "v", new HashSet<Element>() },
+                { "e", new HashSet<Element>() },
+                { "1n", new HashSet<Element>() },
+                { "2n", new HashSet<Element>() },
+                { "3n", new HashSet<Element>() },
+                { "4n", new HashSet<Element>() },
+            };
+           
+            foreach (var element in area.elements)
+            {
+                string key = "";
+                var amountOfNeighbours = DefineAdjacentElementsForCurrentElement(element, area.elements).Count();
+                if (amountOfNeighbours == 4)
+                {
+                    key = "4n";
+                }
+                else if (amountOfNeighbours == 3)
+                {
+                    key = "3n";
+                }
+                else if (amountOfNeighbours == 2)
+                {
+                    key = "2n";
+                }
+                else if (amountOfNeighbours == 1)
+                {
+                    key = "1n";
+                }
+                else if (amountOfNeighbours == 0)
+                {
+                    if (DefineAdjacentElementsForCurrentElement(element, area.elements, 2).Count() > 0)
+                    {
+                        key = "e";
+                    }
+                    else if (DefineAdjacentElementsForCurrentElement(element, area.elements, 1).Count() > 0)
+                    {
+                        key = "v";
+                    }
+                }
+                if (key != "")
+                    categories[key].Add(element);
+            }
+
+
+
+            return categories;
+        }
+
+        // vertexesAmountForAdjacency = 3 - по грани смежные, 2 - по ребру, 1 - по вершине
+        public static HashSet<Element> DefineAdjacentElementsForCurrentElement(
+            Element element, IEnumerable<Element> elements, int vertexesAmountForAdjacency = 3)
+        {
+            return new HashSet<Element>(from elem in elements
+                                        where AreElementsAdjacent(elem, element, vertexesAmountForAdjacency)
+                                        select elem);
+        }
+
+        public static bool AreElementsAdjacent(Element elementOne, Element elementTwo, int vertexesAmountForAdjacency = 3)
         {
             if (elementOne.number == elementTwo.number)
             {
@@ -97,7 +163,6 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
 
             HashSet<Node> nodesOne = new HashSet<Node>(elementOne.vertexNodes);
             HashSet<Node> nodesTwo = new HashSet<Node>(elementTwo.vertexNodes);
-            const int vertexesAmountForAdjacency = 3;
             nodesOne.IntersectWith(nodesTwo);
             return nodesOne.Count == vertexesAmountForAdjacency;
         }

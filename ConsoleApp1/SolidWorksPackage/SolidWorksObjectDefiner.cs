@@ -49,7 +49,8 @@ namespace App2.SolidWorksPackage
             try
             {
                 SolidWorksAppWorker.DefineSolidWorksApp();
-                var doc = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
+                var activeDoc = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
+                
                 Console.WriteLine("Приложение SW и документ определены!\n");
 
                 Dictionary<int, List<Feature>> features = new();
@@ -99,7 +100,7 @@ namespace App2.SolidWorksPackage
                 var cutElementAreas = studyResults.DetermineCutAreas(param, minvalue, maxvalue, criticalValue, areas);
                 Console.WriteLine($"Окончание поиска областей. Их общее количество - {cutElementAreas.Count()}\n" +
                     $"Сами области:{cutElementAreas}");
-
+                var newEmptyDoc = SolidWorksAppWorker.CreateNewDocument();
                 int counter = 0;
                 while (cutElementAreas.Count() != 0)
                 {
@@ -109,7 +110,7 @@ namespace App2.SolidWorksPackage
                     foreach (var area in cutElementAreas)
                     {
                         areas.Add(area);
-                       features[counter].AddRange(ElementAreaWorker.DrawElementArea(doc, area));
+                        features[counter].AddRange(ElementAreaWorker.DrawElementArea(activeDoc, newEmptyDoc, area));
                         Console.WriteLine("Конец выреза промежуточной области");
 
                     }
@@ -140,7 +141,7 @@ namespace App2.SolidWorksPackage
                 if (counter != 0)
                 {
                     Console.WriteLine("Удаление вырезов последней итерации ...");
-                    SolidWorksDrawer.UndoFeaturesCuts(doc, features[counter]);
+                    SolidWorksDrawer.UndoFeaturesCuts(activeDoc, features[counter]);
                 }
 
 

@@ -56,7 +56,7 @@ namespace App2.SolidWorksPackage
 
         }
 
-        public static Feature DrawPyramid(ModelDoc2 doc, PyramidFourVertexArea area)
+        public static Feature DrawPyramid(ModelDoc2 doc, PyramidFourVertexArea area, int mode=1)
         {
             double unit = 1000;
             doc.ClearSelection();
@@ -100,7 +100,22 @@ namespace App2.SolidWorksPackage
                 doc.ClearSelection();
                 sketchPoint.Select2(true, 1);
                 ((Feature)sketchSegments[0].GetSketch()).Select2(true, 1);
-                cut = doc.FeatureManager.InsertCutBlend(false, true, false, 1, 0, 0, false, 0, 0, 0, true, true);
+                if (mode == 1)
+                {
+                    // вырез
+                    cut = doc.FeatureManager.InsertCutBlend(false, true, false, 1, 0, 0, false, 0, 0, 0, true, true);
+                }
+                else
+                {
+                    // выдавливание
+                    doc.FeatureManager.SetNetBlendCurveData(0, 0, 0, 0, 1, true);
+                    doc.FeatureManager.SetNetBlendCurveData(0, 1, 0, 0, 1, true);
+                    doc.FeatureManager.SetNetBlendDirectionData(0, 32, 0, false, false);
+                    doc.FeatureManager.SetNetBlendDirectionData(1, 32, 0, false, false);
+                    cut = doc.FeatureManager.InsertNetBlend2(0, 2, 0, false, 0.0001, true, true, true, true, false,
+                        -1, -1, false, -1, false, false, -1, false, -1, false, false);
+                }
+                
 
             }
             doc.ClearSelection();
