@@ -76,23 +76,30 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
         {
             List<Feature> features = new List<Feature>();
 
-            Dictionary<string, HashSet<Element>> areaElementsCategories = MakeAreaElementsCategories(area);
+            //Dictionary<string, HashSet<Element>> areaElementsCategories = MakeAreaElementsCategories(area);
 
-            foreach (var category in areaElementsCategories)
+            //foreach (var category in areaElementsCategories)
+            //{
+            //    Console.WriteLine($"Вырезаемая область имеет в категории {category.Key} количество элементов -  {category.Value.Count()}");
+            //}
+
+            //foreach (var category in areaElementsCategories)
+            //{
+            //    Console.WriteLine($"Вырез области по категории {category.Key} ...");
+            //    foreach (var element in category.Value)
+            //    {
+            //        var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes(0, area.areaCenter));
+            //        features.Add(SolidWorksDrawer.DrawPyramid(doc, elementPyramid));
+            //        //SolidWorksDrawer.DrawPyramid(additionalDoc, elementPyramid, 0);
+            //    }
+            //}
+
+            foreach (var element in area.elements)
             {
-                Console.WriteLine($"Вырезаемая область имеет в категории {category.Key} количество элементов -  {category.Value.Count()}");
+                var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes(0, area.areaCenter));
+                features.Add(SolidWorksDrawer.DrawPyramid(doc, elementPyramid));
             }
 
-            foreach (var category in areaElementsCategories)
-            {
-                Console.WriteLine($"Вырез области по категории {category.Key} ...");
-                foreach (var element in category.Value)
-                {
-                    var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes(0.8, area.areaCenter));
-                    features.Add(SolidWorksDrawer.DrawPyramid(doc, elementPyramid));
-                    SolidWorksDrawer.DrawPyramid(additionalDoc, elementPyramid, 0);
-                }
-            }
 
 
             return features;

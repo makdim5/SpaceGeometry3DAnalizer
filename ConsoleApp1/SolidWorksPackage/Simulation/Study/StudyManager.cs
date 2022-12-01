@@ -40,11 +40,15 @@ namespace App2.SolidWorksPackage.Simulation.Study
         {
             studyMgr = COSMOSWORKS.ActiveDoc.StudyManager;
             CWStudy study = studyMgr.GetStudy(0);
-            if (study != null)
-            {
-                return study.Results != null ? new StaticStudy(study) : null;
-            }
-            return null;
+            if (study == null)
+                throw new Exception("Исследование не удалось получить!");
+           
+            if (study.Results == null)
+                throw new Exception("Результаты исследования не удалось получить!");
+
+            return new StaticStudy(study);
+            
+            
         }
 
         public void ClearAllStudy()

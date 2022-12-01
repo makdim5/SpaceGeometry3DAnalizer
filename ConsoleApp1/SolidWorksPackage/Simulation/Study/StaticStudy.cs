@@ -113,8 +113,11 @@ namespace App2.Simulation.Study
             this.restraintsManager = study.LoadsAndRestraintsManager;
             this.solidBodies = GetSolidBodies(this.solidManager);
             mesh = study.Mesh;
+        }
 
-            Console.WriteLine(solidManager.GetComponentAt(0, out int errorCode1).GetSolidBodyAt(0, out int errCode2).GetSolidBodyMaterial().MaterialName);
+        public string GetMaterialName()
+        {
+            return solidManager.GetComponentAt(0, out int errorCode1).GetSolidBodyAt(0, out int errCode2).GetSolidBodyMaterial().MaterialName;
         }
 
         public int RunStudy()

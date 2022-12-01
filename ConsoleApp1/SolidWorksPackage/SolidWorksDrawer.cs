@@ -154,6 +154,7 @@ namespace App2.SolidWorksPackage
             doc.SelectionManager.EnableContourSelection = false;
         }
 
+        
 
         public static void UndoFeaturesCuts (ModelDoc2 doc, List<Feature> features)
         {

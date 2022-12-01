@@ -153,6 +153,16 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
             return maxRadius;
         }
 
+        public HashSet<Node> GetNodes()
+        {
+            var nodes = new HashSet<Node>();
+            foreach (var element in elements)
+            {
+                nodes.UnionWith(element.vertexNodes);
+            }
+            return nodes;
+        }
+
         public override string ToString()
         {
             string res = "ElementArea {";
