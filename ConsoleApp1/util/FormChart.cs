@@ -18,7 +18,7 @@ namespace ConsoleApp1.util
         {
             InitializeComponent();
         }
-        public FormChart(List<Tuple<ElementArea, Node, double>> distances, IEnumerable<ElementArea> areas) : base()
+        public FormChart(List<Tuple<ElementArea, Node, double>> distances, IEnumerable<ElementArea> areas) : this()
         {
             foreach (var item in areas)
             {

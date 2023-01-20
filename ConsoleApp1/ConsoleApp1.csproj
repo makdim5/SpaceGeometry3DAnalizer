@@ -80,8 +80,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolidWorksPackage\Cells\PyramidFourVertexArea.cs" />
-    <Compile Include="SolidWorksPackage\CoordinateSystem.cs" />
-    <Compile Include="SolidWorksPackage\ElementAreaOptimizer.cs" />
     <Compile Include="SolidWorksPackage\NodeWork\Element.cs" />
     <Compile Include="SolidWorksPackage\NodeWork\ElementArea.cs" />
     <Compile Include="SolidWorksPackage\NodeWork\ElementAreaWorker.cs" />

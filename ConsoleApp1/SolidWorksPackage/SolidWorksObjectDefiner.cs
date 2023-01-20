@@ -83,14 +83,14 @@ namespace App2.SolidWorksPackage
                 //var strainValues = studyResults.DefineMinMaxStrainValues("ESTRN");
                 var stressValues = studyResults.DefineMinMaxStressValues(param);
                 double minvalue = stressValues["min"],
-                    criticalValue= 0.2 * MaterialManager.GetMaterials()[study.GetMaterialName()].physicalProperties["SIGXT"], 
+                    criticalValue= 0.2 * MaterialManager.GetMaterials()["AISI 1035 Steel (SS)"].physicalProperties["SIGXT"], 
                     maxvalue = stressValues["max"]*0.1;
 
 
                 Console.WriteLine($" минимальное напряжение " +
                     $"VON =  {minvalue} // " +
                     $"максимальное напряжение по VON {stressValues["max"]}" +
-                    $"  // предел прочности при растяжении = {MaterialManager.GetMaterials()[study.GetMaterialName()].physicalProperties["SIGXT"]}" +
+                    $"  // предел прочности при растяжении = {MaterialManager.GetMaterials()["AISI 1035 Steel (SS)"].physicalProperties["SIGXT"]}" +
                     $" критическое > максимальное по VON : {criticalValue > stressValues["max"]} критическое значение:{criticalValue}" 
                     );
 
@@ -101,7 +101,6 @@ namespace App2.SolidWorksPackage
                 Console.WriteLine($"Окончание поиска областей. Их общее количество - {cutElementAreas.Count()}");
 
 
-                var newEmptyDoc = SolidWorksAppWorker.CreateNewDocument();
                 int counter = 0;
                 while (cutElementAreas.Count() != 0)
                 {
@@ -154,67 +153,10 @@ namespace App2.SolidWorksPackage
             }
         }
 
-        public static void DoTest()
-        {
-            try
-            {
-
-                SolidWorksAppWorker.DefineSolidWorksApp();
-                var doc = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
-
-                Console.WriteLine("Приложение SW и документ определены!\n");
-
-                double unit = 1000;
-                doc.ClearSelection();
-                doc.SketchManager.Insert3DSketch(true);
-
-                var sketchPoint1 = doc.SketchManager.CreatePoint(-10 / unit, 0 / unit, 10 / unit);
-                var sketchPoint2 = doc.SketchManager.CreatePoint(10 / unit, 10 / unit, 10 / unit);
-                var sketchPoint3 = doc.SketchManager.CreatePoint(0 / unit, 0 / unit, 0 / unit);
-
-                doc.SketchManager.Insert3DSketch(false);
-                doc.ClearSelection();
-
-
-                sketchPoint1.Select2(true, 1);
-                sketchPoint2.Select2(true, 1);
-                sketchPoint3.Select2(true, 1);
-
-                Feature swPlane = doc.CreatePlaneThru3Points3(true);
-                swPlane.Select2(true, 1);
-                swPlane.Name = "plane1";
-
-
-                doc.InsertSketch2(true);
-
-                Sketch actSketch = doc.SketchManager.ActiveSketch;
-                
-               
-                //doc.SketchManager.CreateCornerRectangle(5/unit, 0, 0, 10/unit, 7/unit, 0);
-                doc.SketchManager.CreateCircleByRadius(0 / unit, 2 / unit, 0, 20/unit);
-                doc.SketchManager.CreateCircleByRadius(40/ unit, 2 / unit, 0, 10 / unit);
-                doc.SketchManager.CreateCircleByRadius(60 / unit, 2 / unit, 0, 5 / unit);
-                //doc.InsertSketch2(false);
-
-
-
-                doc.FeatureManager.FeatureExtrusion2(true, false, true, 0, 0, 0.01, 0.01, false, 
-                    false, false, false, 1.74532925199433E-02, 1.74532925199433E-02,
-                    false, false, false, false, true, true, true, 0, 0, false);
-
-
-                Console.WriteLine("Выполнение программы завершено. Закройте окно для завершения!");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("" + ex);
-            }
-        }
-
         public static StaticStudyRecord CreateSimpleRecord() 
         {
             // Задание сетки и материала
-            Material material = MaterialManager.GetMaterials()["Медь"];
+            Material material = MaterialManager.GetMaterials()["Copper"];
             var mesh = new Mesh();
 
             FeatureFaceManager faceManager = new FeatureFaceManager(

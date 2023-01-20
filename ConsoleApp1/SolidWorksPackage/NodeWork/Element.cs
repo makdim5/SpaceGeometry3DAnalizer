@@ -41,34 +41,7 @@ namespace App2.SolidWorksPackage.NodeWork
 
         }
 
-        public HashSet<ElementAreaOptimizer.Facet> GetFreeFacets(IEnumerable<Element> adjElemets)
-        {
-            List<Tuple<int, int, int>> places = new() {
-                Tuple.Create(0, 1, 2),
-                Tuple.Create(0, 1, 3),
-                Tuple.Create(0, 2, 3),
-                Tuple.Create(1, 3, 2)
-            };
-            var facets = new HashSet<ElementAreaOptimizer.Facet>();
-            foreach(var pl in places){
-                facets.Add(new ElementAreaOptimizer.Facet(vertexNodes[pl.Item1].point, vertexNodes[pl.Item2].point, vertexNodes[pl.Item3].point));
-            };
-
-
-            foreach(var a_elem in adjElemets)
-            {
-                var a_elem_facets = new HashSet<ElementAreaOptimizer.Facet>();
-                foreach (var pl in places)
-                {
-                    a_elem_facets.Add(new ElementAreaOptimizer.Facet(a_elem.vertexNodes[pl.Item1].point,
-                        a_elem.vertexNodes[pl.Item2].point, a_elem.vertexNodes[pl.Item3].point));
-                };
-
-                facets.ExceptWith(a_elem_facets);
-            }
-
-            return facets;
-        }
+        
 
         public bool Contains(Node node)
         {

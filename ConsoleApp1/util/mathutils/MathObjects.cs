@@ -59,6 +59,8 @@ namespace App2.util.mathutils
         }
     }
 
+
+
     public class MathHelper
     {
         public static double DefineMaxVertexDistanceFromPyramidCenter(

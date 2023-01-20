@@ -42,7 +42,7 @@ namespace App2
 
                 app.LoadAddIn(app.GetExecutablePath() + @"\Simulation\cosworks.dll");
 
-                var coordinateSystem = new CoordinateSystem(app.GetMathUtility() as MathUtility);
+            
             }
 
         }

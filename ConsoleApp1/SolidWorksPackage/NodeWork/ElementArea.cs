@@ -16,7 +16,7 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
 
         public double maxRadius;
 
-        public Dictionary<string, Node> dimensions;
+        public Dictionary<string, double> dimensions;
 
         public ElementArea()
         {
@@ -28,7 +28,7 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
             this.elements = elements;
             areaCenter = DefineAreaCenter();
             maxRadius = DefineAreaRadius();
-            //dimensions  = DefineDimensions();
+            dimensions  = DefineDimensions();
         }
 
         public HashSet<Node> DefineInsideNodes(IEnumerable<Node> nodes)
@@ -72,7 +72,7 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
             };
         }
 
-        public Dictionary<string, Node> DefineDimensions()
+        public Dictionary<string, double> DefineDimensions()
         {
             var nodes = new HashSet<Node>();
 
@@ -84,43 +84,43 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
                 }
             }
 
-            Node minX = nodes.ElementAt(0), maxX = nodes.ElementAt(1),
-                 minY = nodes.ElementAt(2), maxY = nodes.ElementAt(3),
-                 minZ = nodes.ElementAt(4), maxZ = nodes.ElementAt(5);
+            double minX = nodes.ElementAt(0).point.x, maxX = nodes.ElementAt(0).point.x,
+                 minY = nodes.ElementAt(0).point.y, maxY = nodes.ElementAt(0).point.y,
+                 minZ = nodes.ElementAt(0).point.z, maxZ = nodes.ElementAt(0).point.z;
 
             foreach(Node node in nodes)
             {
-                if (minX.point.x > node.point.x)
+                if (minX > node.point.x)
                 {
-                    minX = node;
+                    minX = node.point.x;
                 }
-                if (maxX.point.x < node.point.x)
+                if (maxX < node.point.x)
                 {
-                    maxX = node;
-                }
-
-                if (minY.point.y > node.point.y)
-                {
-                    minY = node;
+                    maxX = node.point.x;
                 }
 
-                if (maxY.point.y < node.point.y)
+                if (minY > node.point.y)
                 {
-                    maxY = node;
+                    minY = node.point.y;
                 }
 
-                if (minZ.point.z > node.point.z)
+                if (maxY < node.point.y)
                 {
-                    minZ = node;
+                    maxY = node.point.y;
                 }
 
-                if (maxZ.point.z < node.point.z)
+                if (minZ > node.point.z)
                 {
-                    maxZ = node;
+                    minZ = node.point.z;
+                }
+
+                if (maxZ < node.point.z)
+                {
+                    maxZ = node.point.z;
                 }
             }
 
-            return new Dictionary<string, Node>()
+            return new Dictionary<string, double>()
             {
                 { "minX", minX },
                 { "maxX", maxX },

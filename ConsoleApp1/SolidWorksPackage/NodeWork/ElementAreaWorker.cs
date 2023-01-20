@@ -1,10 +1,13 @@
 ﻿using App2.SolidWorksPackage;
 using App2.SolidWorksPackage.Cells;
 using App2.SolidWorksPackage.NodeWork;
+using App2.util.mathutils;
 using SolidWorks.Interop.sldworks;
+using SolidWorks.Interop.swconst;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace ConsoleApp1.SolidWorksPackage.NodeWork
@@ -76,34 +79,128 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
         {
             List<Feature> features = new List<Feature>();
 
-            //Dictionary<string, HashSet<Element>> areaElementsCategories = MakeAreaElementsCategories(area);
 
-            //foreach (var category in areaElementsCategories)
+            //foreach (var element in area.elements)
             //{
-            //    Console.WriteLine($"Вырезаемая область имеет в категории {category.Key} количество элементов -  {category.Value.Count()}");
+            //    var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes(0, area.areaCenter));
+            //    features.Add(SolidWorksDrawer.DrawPyramid(doc, elementPyramid));
             //}
 
-            //foreach (var category in areaElementsCategories)
-            //{
-            //    Console.WriteLine($"Вырез области по категории {category.Key} ...");
-            //    foreach (var element in category.Value)
-            //    {
-            //        var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes(0, area.areaCenter));
-            //        features.Add(SolidWorksDrawer.DrawPyramid(doc, elementPyramid));
-            //        //SolidWorksDrawer.DrawPyramid(additionalDoc, elementPyramid, 0);
-            //    }
-            //}
+            // preparing
+            doc.ClearSelection2(true);
+            PartDoc? part = (PartDoc)doc;
+            var swBody = (Body2)part.CreateNewBody();
 
-            foreach (var element in area.elements)
+            foreach (var surfaceNodes in GetBodySurfacesNodes(area.elements))
             {
-                var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes(0, area.areaCenter));
-                features.Add(SolidWorksDrawer.DrawPyramid(doc, elementPyramid));
+                CreateSurface(new[] { surfaceNodes[0].point, surfaceNodes[1].point, surfaceNodes[2].point }, swBody);
             }
 
+            swBody.CreateBodyFromSurfaces();
 
+            // cut
+            var mainBodyName = "Вырез-Вытянуть2";
+            doc.Extension.SelectByID2(mainBodyName, "SOLIDBODY", 0, 0, 0, false, 1, null, 0);
 
+            swBody.Select(false, 2);
+
+            var swCombineBodiesFeatureData = (CombineBodiesFeatureData)doc.FeatureManager.InsertCombineFeature(
+                (int)swBodyOperationType_e.SWBODYCUT, null, Array.Empty<object>()).GetDefinition();
+
+            swCombineBodiesFeatureData.AccessSelections(doc, null);
+            swCombineBodiesFeatureData.ReleaseSelectionAccess();
+
+            doc.ClearSelection2(true);
+
+            features.Add(swCombineBodiesFeatureData as Feature);
             return features;
         }
+
+        private static void CreateSurface(Point3D[] points, Body2 swBody)
+        {
+            double[] nPt = new double[points.Length * 3];
+
+            for (int i = 0; i < points.Length; i++)
+            {
+                nPt[i * 3 + 0] = points[i].x / 1000;
+                nPt[i * 3 + 1] = points[i].y / 1000;
+                nPt[i * 3 + 2] = points[i].z / 1000;
+            }
+
+            _ = swBody.CreatePlanarTrimSurfaceDLL(nPt, null);
+        }
+
+        private static IEnumerable<Node[]> GetBodySurfacesNodes(IEnumerable<Element> elements)
+        {
+            var list = new List<Node[]>();
+            var surfacesNodes = new List<Node[]>();
+
+            foreach (var element in elements)
+            {
+                surfacesNodes.AddRange(GetPyramideSurfacesNodes(element.vertexNodes.ToArray()));
+            }
+
+            foreach (var surfaceNodes in surfacesNodes)
+            {
+                if (list.Any(s => s == surfaceNodes)) { continue; }
+
+                foreach (var item in surfacesNodes)
+                {
+                    if (surfaceNodes == item || list.Any(s => s == item)) { continue; }
+
+                    if (surfaceNodes.All((n) => item.Any((n1) => n.number == n1.number)))
+                    {
+                        list.Add(item);
+                        list.Add(surfaceNodes);
+                        break;
+                    }
+                }
+            }
+
+            foreach (var surfaceNodes in list)
+            {
+                surfacesNodes.Remove(surfaceNodes);
+            }
+
+            return surfacesNodes;
+        }
+
+        private static IEnumerable<Node[]> GetPyramideSurfacesNodes(Node[] node)
+        {
+            var surfacesNodes = new List<Node[]>();
+
+            for (int i = 0; i < node.Length; i++)
+            {
+
+                int n1Index = 0;
+                int n2Index = 1;
+                int n3Index = 2;
+
+                switch (i)
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        n3Index = 3;
+                        break;
+                    case 2:
+                        n2Index = 2;
+                        n3Index = 3;
+                        break;
+                    case 3:
+                        n1Index = 1;
+                        n2Index = 2;
+                        n3Index = 3;
+                        break;
+                }
+
+                surfacesNodes.Add(new[] { node[n1Index], node[n2Index], node[n3Index] });
+            }
+
+            return surfacesNodes;
+        }
+
+
 
         public static Dictionary<string, HashSet<Element>> MakeAreaElementsCategories(ElementArea area)
         {
@@ -118,7 +215,7 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
             };
 
             var elems = new HashSet<Element>(area.elements);
-           
+
             while (elems.Count() != 0)
             {
                 var element = elems.First();
@@ -157,7 +254,7 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
                     categories[key].Add(element);
                     elems.Remove(element);
                 }
-                    
+
 
             }
 
