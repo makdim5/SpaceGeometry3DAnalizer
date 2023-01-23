@@ -1,0 +1,93 @@
+﻿<Page
+    x:Class="SolidAppForWindowsUWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SolidAppForWindowsUWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
+    mc:Ignorable="d"
+     
+    Background="{ThemeResource SystemControlAcrylicWindowBrush}"
+    >
+
+
+    <Pivot >
+
+        <PivotItem Header="Действия в SolidWorks">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock x:Name="textBlock"  TextWrapping="WrapWholeWords" Text="Сообщение для вывода"></TextBlock>
+                <!--<Button  Click="Button_Click_2">Открыть SW</Button>
+                <Button  Click="Button_Click_3">Закрыть SW</Button>
+                <Button  Click="Button_Click_4">Создать новый документ</Button>
+                <Button  Click="Button_Click_5">Открыть существующий документ</Button>-->
+                <Button x:Name="myButton" Click="myButton_Click">Подключить</Button>
+                <Button x:Name="myButton2" Click="myButton2_Click">Построить</Button>
+               
+            </StackPanel>
+        </PivotItem>
+        <PivotItem Header="Параметры">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+
+
+                <ComboBox x:Name="swloader_combobox" SelectionChanged="swloader_combobox_SelectionChanged" 
+                          SelectedIndex="0" Header="Параметры загрузки SolidWorks" Grid.Column="0"  Grid.Row="0"
+                          HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                    <x:String>Автоматическая</x:String>
+                    <x:String>Ручная</x:String>
+
+                </ComboBox>
+
+                <muxc:TeachingTip x:Name="SWLoadTip"
+                    Target="{x:Bind swloader_combobox}"
+                    Subtitle="Автоматическая загрузка позволяет автоматически открыть SolidWorks, при ручной загрузке это нужно делать самостоятельно!">
+                </muxc:TeachingTip>
+
+                <Button Margin ="10" Content="?" Click="Button_Click" Grid.Column="1"  Grid.Row="0"></Button>
+
+
+                <ComboBox x:Name="swdocloader_combobox" SelectionChanged="swdocloader_combobox_SelectionChanged"
+                          SelectedIndex="0" Header="Параметры загрузки документа SolidWorks" Grid.Column="0"  Grid.Row="1"
+                          HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                    <x:String>Создать новый пустой документ</x:String>
+                    <x:String>Загрузить из последнего открытого файла</x:String>
+                    <x:String>Загрузить из файла</x:String>
+                </ComboBox>
+
+                <muxc:TeachingTip x:Name="SWLoadDocTip"
+                    Target="{x:Bind swdocloader_combobox}"
+                    Title="Параметры загрузки документа 3д детали"
+                    Subtitle="Выберите режим для эффективной работы с документом SolidWorks!">
+                </muxc:TeachingTip>
+
+                <Button Margin ="10" Content="?" Click="Button_Click_1" Grid.Column="1"  Grid.Row="1"></Button>
+
+                <ComboBox x:Name="theme_combobox" SelectionChanged="theme_combobox_SelectionChanged"
+                          SelectedIndex="0" Header="Параметры темы приложения" Grid.Column="0"  Grid.Row="3"
+                          HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                    <x:String>Системная</x:String>
+                    <x:String>Темная</x:String>
+                    <x:String>Светлая</x:String>
+                    <x:String>Системный цвет</x:String>
+                </ComboBox>
+
+
+            </Grid>
+        </PivotItem>
+
+    </Pivot>
+
+</Page>
