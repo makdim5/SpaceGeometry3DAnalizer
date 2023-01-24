@@ -33,6 +33,7 @@ namespace SolidAppForWindowsUWP
         {
             this.InitializeComponent();
 
+            CardFrame.Navigate(typeof(CardPage));
         }
 
         public async void RestoreSettings()
@@ -198,8 +199,6 @@ namespace SolidAppForWindowsUWP
             //            this.Content.XamlRoot, "Открытие файла");
         }
 
-       
-
         private void theme_combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
            
@@ -234,5 +233,7 @@ namespace SolidAppForWindowsUWP
             }
 
         }
+
+       
     }
 }

@@ -22,9 +22,13 @@
                 <Button  Click="Button_Click_3">Закрыть SW</Button>
                 <Button  Click="Button_Click_4">Создать новый документ</Button>
                 <Button  Click="Button_Click_5">Открыть существующий документ</Button>-->
-                <Button x:Name="myButton" Click="myButton_Click">Подключить</Button>
-                <Button x:Name="myButton2" Click="myButton2_Click">Построить</Button>
-               
+                <!--<Button x:Name="myButton" Click="myButton_Click">Подключить</Button>
+                <Button x:Name="myButton2" Click="myButton2_Click">Построить</Button>-->
+                
+                <TextBlock Text="A connected animation between elements on the same page" />
+                <Frame x:Name="CardFrame" MinWidth="500" MinHeight="300" MaxHeight="700" />
+
+
             </StackPanel>
         </PivotItem>
         <PivotItem Header="Параметры">
