@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App2.util.mathutils
+namespace SolidServer.util.mathutils
 {
     public struct Point3D
     {

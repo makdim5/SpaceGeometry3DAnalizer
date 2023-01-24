@@ -1,12 +1,12 @@
-﻿using App2.SolidWorksPackage.NodeWork;
-using App2.util.mathutils;
+﻿using SolidServer.SolidWorksPackage.NodeWork;
+using SolidServer.util.mathutils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App2.SolidWorksPackage.Cells
+namespace SolidServer.SolidWorksPackage.Cells
 {
     public class PyramidFourVertexArea
     {

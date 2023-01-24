@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace App2.SolidWorksPackage.Simulation.MaterialWorker
+namespace SolidServer.SolidWorksPackage.Simulation.MaterialWorker
 {
     public class Material
     {

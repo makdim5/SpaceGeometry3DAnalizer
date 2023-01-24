@@ -5,13 +5,13 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using App2.exceptions;
-using App2.SolidWorksPackage;
-using App2.util;
+using SolidServer.exceptions;
+using SolidServer.SolidWorksPackage;
+using SolidServer.util;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 
-namespace App2
+namespace SolidServer
 {
     internal class SolidWorksAppWorker
     {

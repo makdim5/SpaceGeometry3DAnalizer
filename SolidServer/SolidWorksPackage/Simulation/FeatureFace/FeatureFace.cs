@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using System.Drawing;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
-using App2.util.mathutils;
+using SolidServer.util.mathutils;
 
-namespace App2.SolidWorksPackage.Simulation.FeatureFace
+namespace SolidServer.SolidWorksPackage.Simulation.FeatureFace
 {
     public class FeatureFace
     {

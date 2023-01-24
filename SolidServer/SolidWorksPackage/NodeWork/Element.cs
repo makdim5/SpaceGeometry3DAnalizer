@@ -1,4 +1,4 @@
-﻿using App2.util.mathutils;
+﻿using SolidServer.util.mathutils;
 using ConsoleApp1.SolidWorksPackage;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace App2.SolidWorksPackage.NodeWork
+namespace SolidServer.SolidWorksPackage.NodeWork
 {
     public class Element
     {
@@ -67,7 +67,7 @@ namespace App2.SolidWorksPackage.NodeWork
 
         }
 
-        public IEnumerable<Point3D> GetDrawingVertexes(double coefficient, Point3D point)
+        public List<Point3D> GetMinimizedVertexes(double coefficient, Point3D point)
         {
             return MathHelper.MinimizeCoordinatesOfPyramidPerItsCenter
                 (

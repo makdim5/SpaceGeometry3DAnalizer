@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
 
-namespace App2.util
+namespace SolidServer.util
 {
     public static class RotManager
     {

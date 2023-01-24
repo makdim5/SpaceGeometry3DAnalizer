@@ -1,4 +1,4 @@
-﻿using App2.SolidWorksPackage.NodeWork;
+﻿using SolidServer.SolidWorksPackage.NodeWork;
 using ConsoleApp1.SolidWorksPackage.NodeWork;
 using System;
 using System.Collections.Generic;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Xml;
 
-namespace App2.SolidWorksPackage.Simulation.MaterialWorker
+namespace SolidServer.SolidWorksPackage.Simulation.MaterialWorker
 {
     public class MaterialManager
     {

@@ -1,4 +1,4 @@
-﻿using App2.util.mathutils;
+﻿using SolidServer.util.mathutils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace App2.SolidWorksPackage.NodeWork
+namespace SolidServer.SolidWorksPackage.NodeWork
 {
     public class Node
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App2.SolidWorksPackage.Simulation.MeshWorker
+namespace SolidServer.SolidWorksPackage.Simulation.MeshWorker
 {
     public class Mesh
     {

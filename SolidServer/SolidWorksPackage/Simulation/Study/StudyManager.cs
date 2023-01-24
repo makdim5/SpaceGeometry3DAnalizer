@@ -1,9 +1,9 @@
 ﻿using System;
-using App2.Simulation.Study;
+using SolidServer.Simulation.Study;
 
 using SolidWorks.Interop.cosworks;
 
-namespace App2.SolidWorksPackage.Simulation.Study
+namespace SolidServer.SolidWorksPackage.Simulation.Study
 {
     public class StudyManager
     {

@@ -1,7 +1,7 @@
-﻿using App2.SolidWorksPackage;
-using App2.SolidWorksPackage.Cells;
-using App2.SolidWorksPackage.NodeWork;
-using App2.util.mathutils;
+﻿using SolidServer.SolidWorksPackage;
+using SolidServer.SolidWorksPackage.Cells;
+using SolidServer.SolidWorksPackage.NodeWork;
+using SolidServer.util.mathutils;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using System;
@@ -50,6 +50,26 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
             }
 
             return areas;
+        }
+
+
+        public static ElementArea SqueezeArea(ElementArea area, double lessCoefficient=0.8)
+        {
+            var newElements = new HashSet<Element>();
+          
+            foreach(var item in area.elements)
+            {
+                var nodePoints = item.GetMinimizedVertexes(lessCoefficient, area.areaCenter);
+                var nodes = new List<Node>();
+                for(int i = 0; i < 4; i++)
+                {
+                    nodes.Add(new Node(item.vertexNodes[i].number, nodePoints[i],
+                        item.vertexNodes[i].stress, item.vertexNodes[i].strain));
+                }
+                newElements.Add(new Element(item.number, nodes, item.center ));
+            }
+
+            return new ElementArea(newElements);
         }
 
 
@@ -104,15 +124,14 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
 
             swBody.Select(false, 2);
 
-            var swCombineBodiesFeatureData = (CombineBodiesFeatureData)doc.FeatureManager.InsertCombineFeature(
-                (int)swBodyOperationType_e.SWBODYCUT, null, Array.Empty<object>()).GetDefinition();
+            doc.FeatureManager.InsertCombineFeature(
+                (int)swBodyOperationType_e.SWBODYCUT, null, Array.Empty<object>());
 
-            swCombineBodiesFeatureData.AccessSelections(doc, null);
-            swCombineBodiesFeatureData.ReleaseSelectionAccess();
+         
 
             doc.ClearSelection2(true);
 
-            features.Add(swCombineBodiesFeatureData as Feature);
+            //features.Add(swCombineBodiesFeatureData);
             return features;
         }
 

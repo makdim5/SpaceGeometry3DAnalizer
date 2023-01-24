@@ -1,13 +1,13 @@
-﻿using App2.SolidWorksPackage.Simulation.FeatureFace;
-using App2.SolidWorksPackage.Simulation.MaterialWorker;
-using App2.SolidWorksPackage.Simulation.MeshWorker;
+﻿using SolidServer.SolidWorksPackage.Simulation.FeatureFace;
+using SolidServer.SolidWorksPackage.Simulation.MaterialWorker;
+using SolidServer.SolidWorksPackage.Simulation.MeshWorker;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App2.Simulation.Study
+namespace SolidServer.Simulation.Study
 {
     public class StaticStudyRecord
     {

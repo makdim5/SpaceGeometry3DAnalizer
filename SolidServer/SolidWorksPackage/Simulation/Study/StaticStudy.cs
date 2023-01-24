@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using App2.SolidWorksPackage.NodeWork;
-using App2.SolidWorksPackage.Simulation.FeatureFace;
-using App2.SolidWorksPackage.Simulation.MaterialWorker;
-using App2.SolidWorksPackage.Simulation.MeshWorker;
-using App2.SolidWorksPackage.Simulation.Study;
+using SolidServer.SolidWorksPackage.NodeWork;
+using SolidServer.SolidWorksPackage.Simulation.FeatureFace;
+using SolidServer.SolidWorksPackage.Simulation.MaterialWorker;
+using SolidServer.SolidWorksPackage.Simulation.MeshWorker;
+using SolidServer.SolidWorksPackage.Simulation.Study;
 using SolidWorks.Interop.cosworks;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 
-namespace App2.Simulation.Study
+namespace SolidServer.Simulation.Study
 {
     public class StaticStudy
     {

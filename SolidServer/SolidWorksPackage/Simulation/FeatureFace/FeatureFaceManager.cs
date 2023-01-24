@@ -5,7 +5,7 @@ using System.Drawing;
 
 using SolidWorks.Interop.sldworks;
 
-namespace App2.SolidWorksPackage.Simulation.FeatureFace
+namespace SolidServer.SolidWorksPackage.Simulation.FeatureFace
 {
     public class FeatureFaceManager
     {

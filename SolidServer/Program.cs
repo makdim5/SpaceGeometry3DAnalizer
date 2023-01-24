@@ -1,14 +1,15 @@
-﻿using System;
+﻿
+using System;
 using System.Text;
 using System.Net;
 using System.Net.Sockets;
-using App2.SolidWorksPackage;
+using SolidServer.SolidWorksPackage;
 using System.Globalization;
 
 // Чтобы спрятать консоль просто измени тип выходных данных
 // в настройках на приложение Windows
 
-namespace App2
+namespace SolidServer
 {
     
     internal class Program
@@ -18,14 +19,8 @@ namespace App2
         static void Main(string[] args) 
         {
             SolidWorksObjectDefiner.DoResearch();
-
-            //SolidWorksObjectDefiner.DoTest();
-
-
-
             Console.ReadLine();
             //RunServer();
-
         }
         static void RunServer()
         {

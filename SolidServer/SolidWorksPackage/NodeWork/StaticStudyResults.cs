@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using App2.SolidWorksPackage.Simulation.MaterialWorker;
-using App2.util.mathutils;
+using SolidServer.SolidWorksPackage.Simulation.MaterialWorker;
+using SolidServer.util.mathutils;
 using ConsoleApp1.SolidWorksPackage.NodeWork;
 using SolidWorks.Interop.cosworks;
 
-namespace App2.SolidWorksPackage.NodeWork
+namespace SolidServer.SolidWorksPackage.NodeWork
 {
     public class StaticStudyResults
     {

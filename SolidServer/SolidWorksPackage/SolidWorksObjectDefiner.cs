@@ -1,11 +1,11 @@
 ﻿using SolidWorks.Interop.sldworks;
 using System.Collections.Generic;
 using System.Linq;
-using App2.Simulation.Study;
-using App2.SolidWorksPackage.Simulation.FeatureFace;
-using App2.SolidWorksPackage.Simulation.MaterialWorker;
-using App2.SolidWorksPackage.Simulation.MeshWorker;
-using App2.SolidWorksPackage.Simulation.Study;
+using SolidServer.Simulation.Study;
+using SolidServer.SolidWorksPackage.Simulation.FeatureFace;
+using SolidServer.SolidWorksPackage.Simulation.MaterialWorker;
+using SolidServer.SolidWorksPackage.Simulation.MeshWorker;
+using SolidServer.SolidWorksPackage.Simulation.Study;
 using System;
 
 using ConsoleApp1.SolidWorksPackage.NodeWork;
@@ -13,7 +13,7 @@ using ConsoleApp1.SolidWorksPackage.NodeWork;
 using ConsoleApp1.util;
 using System.Windows.Forms;
 
-namespace App2.SolidWorksPackage
+namespace SolidServer.SolidWorksPackage
 {
     internal class SolidWorksObjectDefiner
     {
@@ -110,7 +110,10 @@ namespace App2.SolidWorksPackage
                     foreach (var area in cutElementAreas)
                     {
                         areas.Add(area);
-                        features[counter].AddRange(ElementAreaWorker.DrawElementArea(activeDoc, null, area));
+                        features[counter].AddRange(
+                            ElementAreaWorker.DrawElementArea(
+                                activeDoc, null,
+                            ElementAreaWorker.SqueezeArea( area)));
                         Console.WriteLine("Конец выреза промежуточной области");
 
                     }
@@ -131,11 +134,15 @@ namespace App2.SolidWorksPackage
                 }
 
                 var crashNodes = studyResults.DefineNodesPerStressParam(param, criticalValue, studyResults.DefineMinMaxStressValues(param)["max"]);
-                NodeElementAreaWorker.DefineAreaElementDistances(areas, crashNodes);
-                Console.WriteLine("Вывод графика расстояний критических узлов и областей. ...");
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new FormChart(NodeElementAreaWorker.area_distances, areas));
+                if (crashNodes.Count() != 0)
+                {
+                    NodeElementAreaWorker.DefineAreaElementDistances(areas, crashNodes);
+                    Console.WriteLine("Вывод графика расстояний критических узлов и областей. ...");
+                    Application.EnableVisualStyles();
+                    Application.SetCompatibleTextRenderingDefault(false);
+                    Application.Run(new FormChart(NodeElementAreaWorker.area_distances, areas));
+                }
+                
 
                 // отброс последней итерации
                 if (counter != 0)
@@ -174,7 +181,6 @@ namespace App2.SolidWorksPackage
             return new StaticStudyRecord(0, material, fixFaces, loadFaces, mesh);
 
         }
-
 
     }
 }

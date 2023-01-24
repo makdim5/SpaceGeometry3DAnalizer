@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App2.SolidWorksPackage.NodeWork
+namespace SolidServer.SolidWorksPackage.NodeWork
 {
     interface IParameters
     {
