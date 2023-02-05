@@ -28,7 +28,7 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
             this.elements = elements;
             areaCenter = DefineAreaCenter();
             maxRadius = DefineAreaRadius();
-            dimensions  = DefineDimensions();
+            
         }
 
         public HashSet<Node> DefineInsideNodes(IEnumerable<Node> nodes)

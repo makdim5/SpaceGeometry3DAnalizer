@@ -12,6 +12,7 @@ using ConsoleApp1.SolidWorksPackage.NodeWork;
 
 using ConsoleApp1.util;
 using System.Windows.Forms;
+using SolidWorks.Interop.swconst;
 
 namespace SolidServer.SolidWorksPackage
 {
@@ -80,17 +81,18 @@ namespace SolidServer.SolidWorksPackage
 
                
                 string param = "VON";
+                string material = "AISI 1035 Сталь (SS)";// Сталь - Steel
                 //var strainValues = studyResults.DefineMinMaxStrainValues("ESTRN");
                 var stressValues = studyResults.DefineMinMaxStressValues(param);
                 double minvalue = stressValues["min"],
-                    criticalValue= 0.2 * MaterialManager.GetMaterials()["AISI 1035 Steel (SS)"].physicalProperties["SIGXT"], 
+                    criticalValue= 0.2 * MaterialManager.GetMaterials()[material].physicalProperties["SIGXT"], 
                     maxvalue = stressValues["max"]*0.1;
 
 
                 Console.WriteLine($" минимальное напряжение " +
                     $"VON =  {minvalue} // " +
                     $"максимальное напряжение по VON {stressValues["max"]}" +
-                    $"  // предел прочности при растяжении = {MaterialManager.GetMaterials()["AISI 1035 Steel (SS)"].physicalProperties["SIGXT"]}" +
+                    $"  // предел прочности при растяжении = {MaterialManager.GetMaterials()[material].physicalProperties["SIGXT"]}" +
                     $" критическое > максимальное по VON : {criticalValue > stressValues["max"]} критическое значение:{criticalValue}" 
                     );
 
@@ -102,13 +104,16 @@ namespace SolidServer.SolidWorksPackage
 
 
                 int counter = 0;
+                int surfCounter = 1;
                 while (cutElementAreas.Count() != 0)
                 {
                     counter++;
                     features.Add(counter, new());
                     Console.WriteLine("Начало выреза областей ...");
+                    
                     foreach (var area in cutElementAreas)
                     {
+                        
                         areas.Add(area);
                         features[counter].AddRange(
                             ElementAreaWorker.DrawElementArea(
@@ -117,6 +122,43 @@ namespace SolidServer.SolidWorksPackage
                         Console.WriteLine("Конец выреза промежуточной области");
 
                     }
+
+                    // cut
+                    surfCounter += cutElementAreas.Count();
+
+                    string mainBodyName;
+                    if (counter == 1){
+                        mainBodyName = "Вырез-Вытянуть2";
+                        
+                    }
+                    else
+                    {
+                        mainBodyName = $"Соединить{counter-1}";
+                    }
+
+                    activeDoc.Extension.SelectByID2(mainBodyName, "SOLIDBODY", 0, 0, 0, false, 1, null, 0);
+
+                    for (int i = surfCounter - cutElementAreas.Count(); i <= surfCounter; i++)
+                    {
+                        activeDoc.Extension.SelectByID2($"Импортированный{i}", "SOLIDBODY", 0, 0, 0, true, 2, null, 0); //Imported in engl
+
+                    }
+
+                    activeDoc.FeatureManager.InsertCombineFeature(
+                        (int)swBodyOperationType_e.SWBODYCUT, null, null);
+
+                    var comb = activeDoc.FeatureManager.InsertCombineFeature((int)swBodyOperationType_e.SWBODYCUT, null, Array.Empty<object>());
+                    if (comb != null)
+                    {
+                        var swCombineBodiesFeatureData = (CombineBodiesFeatureData)comb.GetDefinition();
+
+                        swCombineBodiesFeatureData.AccessSelections(activeDoc, null);
+                        swCombineBodiesFeatureData.ReleaseSelectionAccess();
+
+                    }
+
+                    activeDoc.ClearSelection2(true);
+
                     Console.WriteLine("Конец выреза областей");
                     Console.WriteLine("Повторное исследование ");
                     study.CreateDefaultMesh();

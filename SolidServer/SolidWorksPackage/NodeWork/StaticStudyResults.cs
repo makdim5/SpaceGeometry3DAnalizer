@@ -266,10 +266,9 @@ namespace SolidServer.SolidWorksPackage.NodeWork
 
             var elems = GetElements(cutNodes) as HashSet<Element>;
 
-            Console.WriteLine($" Количество элементов: {elems.Count()}");
             var newAreas = ElementAreaWorker.DefineElementAreas(elems);
 
-
+            
             return newAreas;
 
         }

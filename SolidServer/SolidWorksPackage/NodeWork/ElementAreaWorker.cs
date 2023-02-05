@@ -43,8 +43,15 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
                     areaElements.UnionWith(newAdjacentElements);
                 }
 
-                Console.WriteLine($"Формирование новой области с количеством элементов  - {areaElements.Count}");
-                areas.Add(new ElementArea(areaElements));
+
+                ElementArea newArea = new ElementArea(ElementAreaWorker.MakeAreaElementsCategories(new ElementArea(areaElements))["4n"]);
+                
+                if (newArea.elements.Count > 0)
+                {
+                    Console.WriteLine($"Формирование новой области с количеством элементов  - {newArea.elements.Count}");
+                    areas.Add(newArea);
+                }
+                
 
                 areaElements = new HashSet<Element>();
             }
@@ -53,7 +60,7 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
         }
 
 
-        public static ElementArea SqueezeArea(ElementArea area, double lessCoefficient=0.8)
+        public static ElementArea SqueezeArea(ElementArea area, double lessCoefficient=0.2)
         {
             var newElements = new HashSet<Element>();
           
@@ -118,18 +125,7 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
 
             swBody.CreateBodyFromSurfaces();
 
-            // cut
-            var mainBodyName = "Вырез-Вытянуть2";
-            doc.Extension.SelectByID2(mainBodyName, "SOLIDBODY", 0, 0, 0, false, 1, null, 0);
-
-            swBody.Select(false, 2);
-
-            doc.FeatureManager.InsertCombineFeature(
-                (int)swBodyOperationType_e.SWBODYCUT, null, Array.Empty<object>());
-
-         
-
-            doc.ClearSelection2(true);
+            
 
             //features.Add(swCombineBodiesFeatureData);
             return features;
