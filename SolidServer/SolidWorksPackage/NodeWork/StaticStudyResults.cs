@@ -7,6 +7,7 @@ using SolidServer.SolidWorksPackage.Simulation.MaterialWorker;
 using SolidServer.util.mathutils;
 using ConsoleApp1.SolidWorksPackage.NodeWork;
 using SolidWorks.Interop.cosworks;
+using SolidWorks.Interop.sldworks;
 
 namespace SolidServer.SolidWorksPackage.NodeWork
 {
@@ -246,7 +247,8 @@ namespace SolidServer.SolidWorksPackage.NodeWork
                    select node;
         }
 
-        public IEnumerable<ElementArea> DetermineCutAreas(string param, double minvalue, double maxvalue, double criticalvalue, List<ElementArea> areas)
+        public IEnumerable<ElementArea> DetermineCutAreas(string param, double minvalue, double maxvalue, double criticalvalue,
+            List<ElementArea> areas, ModelDoc2 doc)
         {
 
             var crashNodes = DefineNodesPerStressParam(param, criticalvalue, DefineMinMaxStressValues(param)["max"]);
@@ -262,6 +264,7 @@ namespace SolidServer.SolidWorksPackage.NodeWork
             Console.WriteLine($" Количество найденных узлов: {cutNodes.Count()}");
 
             cutNodes = ElementAreaWorker.ExceptInsideNodes(cutNodes, areas);
+            cutNodes = ElementAreaWorker.ExceptCloseNodes(cutNodes, SolidWorksObjectDefiner.GetFaces(doc));
             Console.WriteLine($" Количество отсортированных узлов: {cutNodes.Count()}");
 
             var elems = GetElements(cutNodes) as HashSet<Element>;

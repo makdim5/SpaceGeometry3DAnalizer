@@ -1,13 +1,9 @@
-﻿using SolidServer.SolidWorksPackage;
-using SolidServer.SolidWorksPackage.Cells;
-using SolidServer.SolidWorksPackage.NodeWork;
+﻿using SolidServer.SolidWorksPackage.NodeWork;
 using SolidServer.util.mathutils;
 using SolidWorks.Interop.sldworks;
-using SolidWorks.Interop.swconst;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace ConsoleApp1.SolidWorksPackage.NodeWork
@@ -43,8 +39,10 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
                     areaElements.UnionWith(newAdjacentElements);
                 }
 
-
-                ElementArea newArea = new ElementArea(ElementAreaWorker.MakeAreaElementsCategories(new ElementArea(areaElements))["4n"]);
+                var elemsCats = MakeAreaElementsCategories(new ElementArea(areaElements));
+                var union = elemsCats["4n"];
+                union.UnionWith(elemsCats["3n"]);
+                ElementArea newArea = new ElementArea(union);
                 
                 if (newArea.elements.Count > 0)
                 {
@@ -60,23 +58,29 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
         }
 
 
-        public static ElementArea SqueezeArea(ElementArea area, double lessCoefficient=0.2)
+        public static ElementArea SqueezeArea(ElementArea area, double lessCoefficient=0.0)
         {
-            var newElements = new HashSet<Element>();
-          
-            foreach(var item in area.elements)
+            ElementArea result = area;
+            if (lessCoefficient != 0.0)
             {
-                var nodePoints = item.GetMinimizedVertexes(lessCoefficient, area.areaCenter);
-                var nodes = new List<Node>();
-                for(int i = 0; i < 4; i++)
-                {
-                    nodes.Add(new Node(item.vertexNodes[i].number, nodePoints[i],
-                        item.vertexNodes[i].stress, item.vertexNodes[i].strain));
-                }
-                newElements.Add(new Element(item.number, nodes, item.center ));
-            }
+                var newElements = new HashSet<Element>();
 
-            return new ElementArea(newElements);
+                foreach (var item in area.elements)
+                {
+                    var nodePoints = item.GetMinimizedVertexes(lessCoefficient, area.areaCenter);
+                    var nodes = new List<Node>();
+                    for (int i = 0; i < 4; i++)
+                    {
+                        nodes.Add(new Node(item.vertexNodes[i].number, nodePoints[i],
+                            item.vertexNodes[i].stress, item.vertexNodes[i].strain));
+                    }
+                    newElements.Add(new Element(item.number, nodes, item.center));
+                }
+
+                result = new ElementArea(newElements);
+            }
+            
+            return result;
         }
 
 
@@ -99,6 +103,48 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
             }
 
             return newNodes;
+        }
+
+        public static HashSet<Node> ExceptCloseNodes(IEnumerable<Node> nodes, HashSet<Face> faces)
+        {
+            var exceptedNodes = new HashSet<Node>(nodes);
+            
+            int i = 0;
+            foreach (var face in faces)
+            {
+
+                exceptedNodes.ExceptWith(DefineCloseNodesToFace(exceptedNodes, face));
+                i++;
+                Console.WriteLine($"Пройдено {i} из {faces.Count} граней, количество узлов теперь: {exceptedNodes.Count}.");
+            }
+
+            
+
+            return exceptedNodes;
+
+        }
+
+
+        public static HashSet<Node> DefineCloseNodesToFace(HashSet<Node> nodes, Face face)
+        {
+            HashSet<Node> closeNodes = new();
+
+            foreach (var node in nodes)
+            {
+               
+                var closestPointCoords = face.GetClosestPointOn(node.point.x, node.point.y, node.point.z);
+                if (closestPointCoords != null)
+                {
+                    var closestPoint = new Point3D(closestPointCoords[0], closestPointCoords[1], closestPointCoords[2]);
+                    if (MathHelper.DefineDistanceBetweenPoints(node.point, closestPoint) < 25)
+                    {
+                        closeNodes.Add(node);
+                    }
+                }
+                
+            }
+
+            return closeNodes;
         }
 
 
@@ -214,8 +260,6 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
 
             return surfacesNodes;
         }
-
-
 
         public static Dictionary<string, HashSet<Element>> MakeAreaElementsCategories(ElementArea area)
         {
