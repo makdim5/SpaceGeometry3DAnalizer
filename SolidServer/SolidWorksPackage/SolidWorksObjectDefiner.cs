@@ -113,7 +113,11 @@ namespace SolidServer.SolidWorksPackage
                     
                     foreach (var area in cutElementAreas)
                     {
-                        
+                        if (area.elements.Count > 1200)
+                        {
+                            Console.WriteLine("Пропуск выреза");
+                            continue;
+                        }
                         areas.Add(area);
                         features[counter].AddRange(
                             ElementAreaWorker.DrawElementArea(

@@ -8,6 +8,8 @@ using SolidServer.util.mathutils;
 using ConsoleApp1.SolidWorksPackage.NodeWork;
 using SolidWorks.Interop.cosworks;
 using SolidWorks.Interop.sldworks;
+using ConsoleApp1.SolidWorksPackage.Simulation.FeatureFace;
+using System.Windows.Forms;
 
 namespace SolidServer.SolidWorksPackage.NodeWork
 {
@@ -264,14 +266,40 @@ namespace SolidServer.SolidWorksPackage.NodeWork
             Console.WriteLine($" Количество найденных узлов: {cutNodes.Count()}");
 
             cutNodes = ElementAreaWorker.ExceptInsideNodes(cutNodes, areas);
-            cutNodes = ElementAreaWorker.ExceptCloseNodes(cutNodes, SolidWorksObjectDefiner.GetFaces(doc));
+           
             Console.WriteLine($" Количество отсортированных узлов: {cutNodes.Count()}");
 
             var elems = GetElements(cutNodes) as HashSet<Element>;
 
             var newAreas = ElementAreaWorker.DefineElementAreas(elems);
 
+            var possibleNodes = new HashSet<Node>();
+
+            var faces = SolidWorksObjectDefiner.GetFaces(doc);
+
             
+
+
+            foreach (var area in newAreas)
+            {
+                var surfNodes = ElementAreaWorker.GetBodySurfacesNodes(area.elements);
+
+                var allAreaNodes = area.GetNodes();
+
+
+                List<SimplePlane> planes = ElementAreaWorker.GetPlanesFromAreaDims(area);
+
+                var exceptedNodes = ElementAreaWorker.ExceptCloseNodes(surfNodes, planes);
+
+                allAreaNodes.ExceptWith(exceptedNodes);
+
+                possibleNodes.UnionWith(allAreaNodes);
+            }
+
+            elems = GetElements(possibleNodes) as HashSet<Element>;
+
+            newAreas = ElementAreaWorker.DefineElementAreas(elems);
+
             return newAreas;
 
         }

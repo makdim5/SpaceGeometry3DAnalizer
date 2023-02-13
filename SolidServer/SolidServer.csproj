@@ -105,9 +105,11 @@
     <Compile Include="SolidWorksPackage\NodeWork\StaticStudyResults.cs" />
     <Compile Include="SolidWorksPackage\NodeWork\StrainNode.cs" />
     <Compile Include="SolidWorksPackage\NodeWork\StressNode.cs" />
+    <Compile Include="SolidWorksPackage\Simulation\FeatureFace\FacePlane.cs" />
     <Compile Include="SolidWorksPackage\Simulation\FeatureFace\FaceType.cs" />
     <Compile Include="SolidWorksPackage\Simulation\FeatureFace\FeatureFace.cs" />
     <Compile Include="SolidWorksPackage\Simulation\FeatureFace\FeatureFaceManager.cs" />
+    <Compile Include="SolidWorksPackage\Simulation\FeatureFace\SimplePlane.cs" />
     <Compile Include="SolidWorksPackage\Simulation\MaterialWorker\Material.cs" />
     <Compile Include="SolidWorksPackage\Simulation\MaterialWorker\MaterialManager.cs" />
     <Compile Include="SolidWorksPackage\Simulation\MeshWorker\Mesh.cs" />

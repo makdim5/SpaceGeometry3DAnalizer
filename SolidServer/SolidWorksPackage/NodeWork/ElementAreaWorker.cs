@@ -1,10 +1,11 @@
-﻿using SolidServer.SolidWorksPackage.NodeWork;
+﻿using ConsoleApp1.SolidWorksPackage.Simulation.FeatureFace;
+using SolidServer.SolidWorksPackage.NodeWork;
 using SolidServer.util.mathutils;
 using SolidWorks.Interop.sldworks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Runtime.InteropServices;
 
 namespace ConsoleApp1.SolidWorksPackage.NodeWork
 {
@@ -39,17 +40,17 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
                     areaElements.UnionWith(newAdjacentElements);
                 }
 
-                var elemsCats = MakeAreaElementsCategories(new ElementArea(areaElements));
-                var union = elemsCats["4n"];
-                union.UnionWith(elemsCats["3n"]);
-                ElementArea newArea = new ElementArea(union);
-                
+                //var elemsCats = MakeAreaElementsCategories();
+                //var union = elemsCats["4n"];
+                //union.UnionWith(elemsCats["3n"]);
+                ElementArea newArea = new ElementArea(areaElements);
+
                 if (newArea.elements.Count > 0)
                 {
                     Console.WriteLine($"Формирование новой области с количеством элементов  - {newArea.elements.Count}");
                     areas.Add(newArea);
                 }
-                
+
 
                 areaElements = new HashSet<Element>();
             }
@@ -58,7 +59,54 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
         }
 
 
-        public static ElementArea SqueezeArea(ElementArea area, double lessCoefficient=0.0)
+        public static List<SimplePlane> GetPlanesFromAreaDims(ElementArea area)
+        {
+            var dims = area.dimensions;
+            List<SimplePlane> planes = new List<SimplePlane>()  
+            { 
+             new SimplePlane
+             (
+                new Point3D (dims["minX"], dims["minY"], dims["minZ"]),
+                new Point3D(dims["minX"], dims["minY"], dims["maxZ"]),
+                new Point3D(dims["minX"], dims["maxY"], dims["minZ"])
+              ),
+             new SimplePlane
+             (
+                new Point3D (dims["maxX"], dims["minY"], dims["minZ"]),
+                new Point3D(dims["minX"], dims["minY"], dims["minZ"]),
+                new Point3D(dims["minX"], dims["minY"], dims["maxZ"])
+              ),
+             new SimplePlane
+             (
+                new Point3D (dims["maxX"], dims["minY"], dims["minZ"]),
+                new Point3D(dims["minX"], dims["maxY"], dims["minZ"]),
+                new Point3D(dims["minX"], dims["minY"], dims["minZ"])
+              ),
+             new SimplePlane
+             (
+                new Point3D (dims["maxX"], dims["maxY"], dims["minZ"]),
+                new Point3D(dims["maxX"], dims["minY"], dims["maxZ"]),
+                new Point3D(dims["maxX"], dims["minY"], dims["minZ"])
+              ),
+             new SimplePlane
+             (
+                new Point3D (dims["maxX"], dims["maxY"], dims["minZ"]),
+                new Point3D(dims["minX"], dims["maxY"], dims["maxZ"]),
+                new Point3D(dims["minX"], dims["maxY"], dims["minZ"])
+              ),
+             new SimplePlane
+             (
+                new Point3D (dims["maxX"], dims["minY"], dims["maxZ"]),
+                new Point3D(dims["minX"], dims["maxY"], dims["maxZ"]),
+                new Point3D(dims["minX"], dims["minY"], dims["maxZ"])
+              )
+            };
+
+            return planes;
+        }
+
+
+        public static ElementArea SqueezeArea(ElementArea area, double lessCoefficient = 0.0)
         {
             ElementArea result = area;
             if (lessCoefficient != 0.0)
@@ -79,7 +127,7 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
 
                 result = new ElementArea(newElements);
             }
-            
+
             return result;
         }
 
@@ -105,46 +153,67 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
             return newNodes;
         }
 
-        public static HashSet<Node> ExceptCloseNodes(IEnumerable<Node> nodes, HashSet<Face> faces)
+        public static HashSet<Node> ExceptCloseNodes(IEnumerable<Node[]> nodes, IEnumerable
+            <SimplePlane> faces)
         {
-            var exceptedNodes = new HashSet<Node>(nodes);
-            
-            int i = 0;
-            foreach (var face in faces)
-            {
+            var allNodes = new HashSet<Node>();
 
-                exceptedNodes.ExceptWith(DefineCloseNodesToFace(exceptedNodes, face));
-                i++;
-                Console.WriteLine($"Пройдено {i} из {faces.Count} граней, количество узлов теперь: {exceptedNodes.Count}.");
+            foreach (var node in nodes) 
+            {
+                allNodes.Add(node[0]);
+                allNodes.Add(node[1]);
+                allNodes.Add(node[2]);
             }
 
-            
+            var exceptedCloseNodes = new HashSet<Node>();
 
-            return exceptedNodes;
+            int i = 0;
+            Console.WriteLine($"Проход по граням , узлы = {allNodes.Count()}  ...");
+            foreach (var face in faces)
+            {
+                var exNodes = DefineNesNodesToFace(allNodes, face);
+                allNodes.ExceptWith(exNodes);
+                exceptedCloseNodes.UnionWith(exNodes);
+                i++;
+                Console.WriteLine($"Пройдено {i} из {faces.Count()} граней, количество узлов теперь: {allNodes.Count}.");
+            }
+
+
+            return exceptedCloseNodes;
 
         }
 
-
-        public static HashSet<Node> DefineCloseNodesToFace(HashSet<Node> nodes, Face face)
+        public static HashSet<Node> DefineNesNodesToFace(HashSet<Node> nodes, SimplePlane face)
         {
-            HashSet<Node> closeNodes = new();
+            HashSet<Node> nesNodes = new();
 
             foreach (var node in nodes)
             {
-               
-                var closestPointCoords = face.GetClosestPointOn(node.point.x, node.point.y, node.point.z);
-                if (closestPointCoords != null)
+
+                var dist = DefinePointToFaceDistance(node.point, face);
+
+                if (dist < 0.1)
                 {
-                    var closestPoint = new Point3D(closestPointCoords[0], closestPointCoords[1], closestPointCoords[2]);
-                    if (MathHelper.DefineDistanceBetweenPoints(node.point, closestPoint) < 25)
-                    {
-                        closeNodes.Add(node);
-                    }
+                    Console.WriteLine($"{node} -  {dist}");
+                    nesNodes.Add(node);
                 }
-                
+
             }
 
-            return closeNodes;
+            Console.WriteLine(nesNodes.Count());
+
+            return nesNodes;
+        }
+
+
+        public static double DefinePointToFaceDistance(Point3D point, SimplePlane face)
+        {
+            
+            double distance = Math.Abs(point.x * face.A + point.y * face.B + point.z * face.C + face.D) / 
+                Math.Sqrt(face.A * face.A + face.B * face.B + face.C * face.C);
+
+            return distance;
+
         }
 
 
@@ -171,7 +240,7 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
 
             swBody.CreateBodyFromSurfaces();
 
-            
+
 
             //features.Add(swCombineBodiesFeatureData);
             return features;
@@ -191,7 +260,7 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
             _ = swBody.CreatePlanarTrimSurfaceDLL(nPt, null);
         }
 
-        private static IEnumerable<Node[]> GetBodySurfacesNodes(IEnumerable<Element> elements)
+        public static IEnumerable<Node[]> GetBodySurfacesNodes(IEnumerable<Element> elements)
         {
             var list = new List<Node[]>();
             var surfacesNodes = new List<Node[]>();

@@ -20,14 +20,15 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
 
         public ElementArea()
         {
-            dimensions = new();
+           
         }
 
-        public ElementArea(HashSet<Element> elements) : base()
+        public ElementArea(HashSet<Element> elements)
         {
             this.elements = elements;
             areaCenter = DefineAreaCenter();
             maxRadius = DefineAreaRadius();
+            dimensions = DefineDimensions();
             
         }
 
@@ -74,19 +75,11 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
 
         public Dictionary<string, double> DefineDimensions()
         {
-            var nodes = new HashSet<Node>();
+            var nodes = GetNodes();
 
-            foreach(var element in elements)
-            {
-                foreach(var node in element.vertexNodes)
-                {
-                    nodes.Add(node);
-                }
-            }
-
-            double minX = nodes.ElementAt(0).point.x, maxX = nodes.ElementAt(0).point.x,
-                 minY = nodes.ElementAt(0).point.y, maxY = nodes.ElementAt(0).point.y,
-                 minZ = nodes.ElementAt(0).point.z, maxZ = nodes.ElementAt(0).point.z;
+            double minX = nodes.First().point.x, maxX = nodes.First().point.x,
+                 minY = nodes.First().point.y, maxY = nodes.First().point.y,
+                 minZ = nodes.First().point.z, maxZ = nodes.First().point.z;
 
             foreach(Node node in nodes)
             {

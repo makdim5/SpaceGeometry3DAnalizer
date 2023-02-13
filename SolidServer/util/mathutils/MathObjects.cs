@@ -47,6 +47,11 @@ namespace SolidServer.util.mathutils
             
             return hashcode;
         }
+
+        public override string ToString()
+        {
+            return $"Point ({x},{y},{z})";
+        }
     }
 
     public struct Vector3D
