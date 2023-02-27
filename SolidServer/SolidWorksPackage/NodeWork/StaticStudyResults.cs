@@ -318,28 +318,28 @@ namespace SolidServer.SolidWorksPackage.NodeWork
 
 
 
-            //double unit = 1000;
-            //doc.ClearSelection();
-            //doc.SketchManager.Insert3DSketch(true);
-            
-            //foreach (var node in cutNodes)
-            //{
-               
-            //    doc.SketchManager.CreatePoint(node.point.x / unit, node.point.y / unit, node.point.z / unit);
-            //    //foreach (var face in faces)
-            //    //{
-                   
-            //    //    var p = node.point;
-            //    //    Console.WriteLine($"{node} distance is {ElementAreaWorker.DefinePointToFaceDistance(p, face)}");
-            //    //}
-                
-               
-            //}
+            double unit = 1000;
+            doc.ClearSelection();
+            doc.SketchManager.Insert3DSketch(true);
 
-            //doc.SketchManager.Insert3DSketch(false);
-            //doc.ClearSelection();
+            foreach (var node in cutNodes)
+            {
 
-           // System.Environment.Exit(-1);
+                doc.SketchManager.CreatePoint(node.point.x / unit, node.point.y / unit, node.point.z / unit);
+                foreach (var face in faces)
+                {
+
+                    var p = node.point;
+                    Console.WriteLine($"{node} расстояние {ElementAreaWorker.DefinePointToFaceDistance(p, face)}");
+                }
+
+
+            }
+
+            doc.SketchManager.Insert3DSketch(false);
+            doc.ClearSelection();
+
+            System.Environment.Exit(-1);
 
             var elems = GetElements(cutNodes) as HashSet<Element>;
 
