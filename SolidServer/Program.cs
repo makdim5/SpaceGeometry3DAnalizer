@@ -19,6 +19,7 @@ namespace SolidServer
         static void Main(string[] args) 
         {
             SolidWorksObjectDefiner.DoResearch();
+            //SolidWorksObjectDefiner.DoTest();
             Console.ReadLine();
             //RunServer();
         }

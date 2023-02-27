@@ -40,5 +40,33 @@ namespace SolidServer.SolidWorksPackage.NodeWork
 
             return text;
         }
+
+        public override bool Equals(object о)
+        {
+            if (о != null && о is Node)
+            {
+
+                // Теперь проверим, что данный объект Person
+
+                // и текущий объект (this) несут одинаковую информацию.
+
+               Node temp = (Node)о;
+
+                if (temp.point.x == this.point.x && temp.point.y == this.point.y && temp.point.z == this.point.z)
+                    return true;
+
+            }
+
+            return false;
+
+        }
+
+        public override int GetHashCode()
+        {
+            int hashcode = point.x.GetHashCode();
+            hashcode = 31 * hashcode + point.y.GetHashCode();
+            hashcode = 31 * hashcode + point.z.GetHashCode();
+            return hashcode;
+        }
     }
 }

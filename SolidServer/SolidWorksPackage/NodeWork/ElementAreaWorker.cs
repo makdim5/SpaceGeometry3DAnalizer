@@ -165,24 +165,26 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
                 allNodes.Add(node[2]);
             }
 
+
+            return ExceptCloseNodes(allNodes,faces);
+        }
+
+        public static HashSet<Node> ExceptCloseNodes(HashSet<Node> allNodes, IEnumerable
+            <SimplePlane> faces)
+        {
             var exceptedCloseNodes = new HashSet<Node>();
 
-            int i = 0;
-            Console.WriteLine($"Проход по граням , узлы = {allNodes.Count()}  ...");
+
             foreach (var face in faces)
             {
                 var exNodes = DefineNesNodesToFace(allNodes, face);
                 allNodes.ExceptWith(exNodes);
                 exceptedCloseNodes.UnionWith(exNodes);
-                i++;
-                Console.WriteLine($"Пройдено {i} из {faces.Count()} граней, количество узлов теперь: {allNodes.Count}.");
+
             }
 
-
             return exceptedCloseNodes;
-
         }
-
         public static HashSet<Node> DefineNesNodesToFace(HashSet<Node> nodes, SimplePlane face)
         {
             HashSet<Node> nesNodes = new();
@@ -192,15 +194,12 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
 
                 var dist = DefinePointToFaceDistance(node.point, face);
 
-                if (dist < 0.1)
+                if (dist < 1)
                 {
-                    Console.WriteLine($"{node} -  {dist}");
                     nesNodes.Add(node);
                 }
 
             }
-
-            Console.WriteLine(nesNodes.Count());
 
             return nesNodes;
         }

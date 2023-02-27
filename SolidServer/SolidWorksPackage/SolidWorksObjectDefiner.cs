@@ -13,6 +13,8 @@ using ConsoleApp1.SolidWorksPackage.NodeWork;
 using ConsoleApp1.util;
 using System.Windows.Forms;
 using SolidWorks.Interop.swconst;
+using ConsoleApp1.SolidWorksPackage.Simulation.FeatureFace;
+using System.Drawing;
 
 namespace SolidServer.SolidWorksPackage
 {
@@ -204,6 +206,48 @@ namespace SolidServer.SolidWorksPackage
             {
                 Console.WriteLine("" + ex);
             }
+        }
+
+        public static void DoTest()
+        {
+            Console.WriteLine("The number of processors " +
+        "on this computer is {0}.",
+        System.Environment.ProcessorCount);
+            SolidWorksAppWorker.DefineSolidWorksApp();
+            var activeDoc = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
+
+            Console.WriteLine("TEST: Приложение SW и документ определены!\n");
+            var faces = new List<FacePlane>();
+
+            foreach (var face in GetFaces(activeDoc))
+            {
+                var plane = new FacePlane(face, activeDoc);
+                if (plane.isPlane)
+                {
+                    faces.Add(plane);
+
+                    double[] param = face.MaterialPropertyValues;
+
+                    if (param == null)
+                    {
+                        param = new double[9] {
+                    0, 0, 0,
+                    1, 1, 0.5,
+                    0.4, 0, 0
+                };
+                    }
+
+                    param[0] = 131 / 255f;
+                    param[1] = 231 / 255f;
+                    param[2] = 111 / 255f;
+
+                    face.MaterialPropertyValues = param;
+                }
+                
+            }
+
+            Console.WriteLine("The End!");
+
         }
 
         public static StaticStudyRecord CreateSimpleRecord() 

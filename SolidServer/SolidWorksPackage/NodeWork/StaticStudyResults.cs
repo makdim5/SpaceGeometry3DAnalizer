@@ -10,6 +10,7 @@ using SolidWorks.Interop.cosworks;
 using SolidWorks.Interop.sldworks;
 using ConsoleApp1.SolidWorksPackage.Simulation.FeatureFace;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace SolidServer.SolidWorksPackage.NodeWork
 {
@@ -262,43 +263,87 @@ namespace SolidServer.SolidWorksPackage.NodeWork
                 return new List<ElementArea>();
             }
 
-            var cutNodes = DefineNodesPerStressParam(param, minvalue, maxvalue);
-            Console.WriteLine($" Количество найденных узлов: {cutNodes.Count()}");
+            var findNodes = DefineNodesPerStressParam(param, minvalue, maxvalue);
+            Console.WriteLine($" Количество найденных узлов: {findNodes.Count()}");
 
-            cutNodes = ElementAreaWorker.ExceptInsideNodes(cutNodes, areas);
-           
+            HashSet<Node> cutNodes = ElementAreaWorker.ExceptInsideNodes(findNodes, areas);
+
+            List<HashSet<Node>> nodeParts = new();
+            for (int i = 0; i < System.Environment.ProcessorCount; i++)
+            {
+                HashSet<Node> part = new();
+                for(int j = (int) i*cutNodes.Count()/ System.Environment.ProcessorCount;
+                    j < (int)(i+1) * cutNodes.Count() / System.Environment.ProcessorCount;
+                    j++)
+                {
+                    part.Add(cutNodes.ElementAt(j));
+                }
+                nodeParts.Add(part);
+            }
+            
+            var faces = new List<FacePlane>();
+
+            foreach (var face in SolidWorksObjectDefiner.GetFaces(doc))
+            {
+                var plane = new FacePlane(face,doc);
+                if (plane.isPlane)
+                    faces.Add(plane);
+            }
+
+            List<Thread> threads= new List<Thread>();
+            List<HashSet<Node>> notCloseNodes = new();
+            foreach (var part in nodeParts)
+            {
+                var thread = new Thread(() => { notCloseNodes.Add(ElementAreaWorker.ExceptCloseNodes(part, faces)); });
+                threads.Add(thread);
+            }
+
+            foreach (var thread in threads)
+            {
+                thread.Start();
+            }
+
+            foreach (var thread in threads)
+            {
+                thread.Join();
+            }
+
+            HashSet<Node> rightNodes = new();
+            foreach (var nodes in notCloseNodes)
+            {
+                rightNodes.UnionWith(nodes);
+            }
+            cutNodes.ExceptWith(rightNodes);
             Console.WriteLine($" Количество отсортированных узлов: {cutNodes.Count()}");
+
+
+
+            //double unit = 1000;
+            //doc.ClearSelection();
+            //doc.SketchManager.Insert3DSketch(true);
+            
+            //foreach (var node in cutNodes)
+            //{
+               
+            //    doc.SketchManager.CreatePoint(node.point.x / unit, node.point.y / unit, node.point.z / unit);
+            //    //foreach (var face in faces)
+            //    //{
+                   
+            //    //    var p = node.point;
+            //    //    Console.WriteLine($"{node} distance is {ElementAreaWorker.DefinePointToFaceDistance(p, face)}");
+            //    //}
+                
+               
+            //}
+
+            //doc.SketchManager.Insert3DSketch(false);
+            //doc.ClearSelection();
+
+           // System.Environment.Exit(-1);
 
             var elems = GetElements(cutNodes) as HashSet<Element>;
 
             var newAreas = ElementAreaWorker.DefineElementAreas(elems);
-
-            var possibleNodes = new HashSet<Node>();
-
-            var faces = SolidWorksObjectDefiner.GetFaces(doc);
-
-            
-
-
-            foreach (var area in newAreas)
-            {
-                var surfNodes = ElementAreaWorker.GetBodySurfacesNodes(area.elements);
-
-                var allAreaNodes = area.GetNodes();
-
-
-                List<SimplePlane> planes = ElementAreaWorker.GetPlanesFromAreaDims(area);
-
-                var exceptedNodes = ElementAreaWorker.ExceptCloseNodes(surfNodes, planes);
-
-                allAreaNodes.ExceptWith(exceptedNodes);
-
-                possibleNodes.UnionWith(allAreaNodes);
-            }
-
-            elems = GetElements(possibleNodes) as HashSet<Element>;
-
-            newAreas = ElementAreaWorker.DefineElementAreas(elems);
 
             return newAreas;
 
