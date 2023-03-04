@@ -1,12 +1,10 @@
 ﻿using ConsoleApp1.SolidWorksPackage.Simulation.FeatureFace;
-using SolidServer.SolidWorksPackage;
 using SolidServer.SolidWorksPackage.NodeWork;
 using SolidServer.util.mathutils;
 using SolidWorks.Interop.sldworks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Threading;
 
 namespace ConsoleApp1.SolidWorksPackage.NodeWork

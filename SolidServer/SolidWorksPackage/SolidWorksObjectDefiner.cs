@@ -207,12 +207,14 @@ namespace SolidServer.SolidWorksPackage
                 }
 
 
-                Console.WriteLine("Выполнение программы завершено. Закройте окно для завершения!");
+                
             }
             catch (Exception ex)
             {
-                Console.WriteLine("" + ex);
+                Console.WriteLine("" + ex.Message);
             }
+
+            Console.WriteLine("Выполнение программы завершено. Закройте окно для завершения!");
         }
 
         public static void DoTest()
