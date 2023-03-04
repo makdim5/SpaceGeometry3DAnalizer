@@ -45,23 +45,34 @@ namespace SolidServer.SolidWorksPackage.NodeWork
         }
 
 
-        public IEnumerable<Element> GetElements(IEnumerable<Node> nodes)
+        public IEnumerable<Element> GetElements(HashSet<Node> nodes)
         {
 
             HashSet<Element> findArea = new HashSet<Element>();
 
-            foreach (Node node in nodes)
-            {
-                IEnumerable<Element> area =
-                    meshElements.Where(
-                        (element) =>
-                        {
-                            return element.Contains(node);
-                        }
-                    );
 
-                findArea.UnionWith(area);
+            foreach (var elem in meshElements)
+            {
+                HashSet<Node> elemNodes = elem.vertexNodes;
+                var intersection = nodes.Intersect(elemNodes);
+                if (intersection.Count() > 2)
+                {
+                    findArea.Add(elem);
+                }
             }
+
+            //foreach (Node node in nodes)
+            //{
+            //    IEnumerable<Element> area =
+            //        meshElements.Where(
+            //            (element) =>
+            //            {
+            //                return element.Contains(node);
+            //            }
+            //        );
+
+            //    findArea.UnionWith(area);
+            //}
 
             return findArea;
         }
@@ -251,7 +262,7 @@ namespace SolidServer.SolidWorksPackage.NodeWork
         }
 
         public IEnumerable<ElementArea> DetermineCutAreas(string param, double minvalue, double maxvalue, double criticalvalue,
-            List<ElementArea> areas, ModelDoc2 doc)
+            List<ElementArea> areas, ModelDoc2 doc, List<FacePlane> facePlanes)
         {
 
             var crashNodes = DefineNodesPerStressParam(param, criticalvalue, DefineMinMaxStressValues(param)["max"]);
@@ -268,84 +279,36 @@ namespace SolidServer.SolidWorksPackage.NodeWork
 
             HashSet<Node> cutNodes = ElementAreaWorker.ExceptInsideNodes(findNodes, areas);
 
-            List<HashSet<Node>> nodeParts = new();
-            for (int i = 0; i < System.Environment.ProcessorCount; i++)
-            {
-                HashSet<Node> part = new();
-                for(int j = (int) i*cutNodes.Count()/ System.Environment.ProcessorCount;
-                    j < (int)(i+1) * cutNodes.Count() / System.Environment.ProcessorCount;
-                    j++)
-                {
-                    part.Add(cutNodes.ElementAt(j));
-                }
-                nodeParts.Add(part);
-            }
-            
-            var faces = new List<FacePlane>();
-
-            foreach (var face in SolidWorksObjectDefiner.GetFaces(doc))
-            {
-                var plane = new FacePlane(face,doc);
-                if (plane.isPlane)
-                    faces.Add(plane);
-            }
-
-            List<Thread> threads= new List<Thread>();
-            List<HashSet<Node>> notCloseNodes = new();
-            foreach (var part in nodeParts)
-            {
-                var thread = new Thread(() => { notCloseNodes.Add(ElementAreaWorker.ExceptCloseNodes(part, faces)); });
-                threads.Add(thread);
-            }
-
-            foreach (var thread in threads)
-            {
-                thread.Start();
-            }
-
-            foreach (var thread in threads)
-            {
-                thread.Join();
-            }
-
-            HashSet<Node> rightNodes = new();
-            foreach (var nodes in notCloseNodes)
-            {
-                rightNodes.UnionWith(nodes);
-            }
-            cutNodes.ExceptWith(rightNodes);
             Console.WriteLine($" Количество отсортированных узлов: {cutNodes.Count()}");
 
-
-
-            double unit = 1000;
-            doc.ClearSelection();
-            doc.SketchManager.Insert3DSketch(true);
-
-            foreach (var node in cutNodes)
-            {
-
-                doc.SketchManager.CreatePoint(node.point.x / unit, node.point.y / unit, node.point.z / unit);
-                foreach (var face in faces)
-                {
-
-                    var p = node.point;
-                    Console.WriteLine($"{node} расстояние {ElementAreaWorker.DefinePointToFaceDistance(p, face)}");
-                }
-
-
-            }
-
-            doc.SketchManager.Insert3DSketch(false);
-            doc.ClearSelection();
-
-            System.Environment.Exit(-1);
 
             var elems = GetElements(cutNodes) as HashSet<Element>;
 
             var newAreas = ElementAreaWorker.DefineElementAreas(elems);
 
-            return newAreas;
+            List<ElementArea> general = new();
+
+            foreach (var area in newAreas)
+            {
+                HashSet<Node> wholeNodes = area.GetNodes();
+                wholeNodes.ExceptWith(ElementAreaWorker.ExceptFaceClosestNodes(wholeNodes, facePlanes));
+                var newElems = GetElements(wholeNodes) as HashSet<Element>;
+                foreach (var a in ElementAreaWorker.DefineElementAreas(newElems))
+                {
+                    var elemsCats = ElementAreaWorker.MakeAreaElementsCategories(a);
+                    var union = elemsCats["4n"];
+                    union.UnionWith(elemsCats["3n"]);
+                    union.UnionWith(elemsCats["2n"]);
+                    if (union.Count > 0 )
+                    {
+                        var newElementArea = (new ElementArea(union));
+                        Console.WriteLine($"Формирование новой области с количеством элементов  - {newElementArea.elements.Count}");
+                        general.Add(newElementArea);
+                    }
+                }
+            }
+
+            return general;
 
         }
 

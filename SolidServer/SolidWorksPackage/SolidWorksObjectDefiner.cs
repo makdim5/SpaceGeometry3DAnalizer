@@ -58,6 +58,15 @@ namespace SolidServer.SolidWorksPackage
 
                 Dictionary<int, List<Feature>> features = new();
 
+                var facePlenes = new List<FacePlane>();
+
+                foreach (var face in SolidWorksObjectDefiner.GetFaces(activeDoc))
+                {
+                    var plane = new FacePlane(face, activeDoc);
+                    if (plane.isPlane)
+                        facePlenes.Add(plane);
+                }
+
                 var studyManager = new StudyManager();
 
                 var study = studyManager.GetExistingCompletedStudy();
@@ -83,7 +92,7 @@ namespace SolidServer.SolidWorksPackage
 
                
                 string param = "VON";
-                string material = "AISI 1035 Steel (SS)";// Сталь - Steel
+                string material = "AISI 1035 Сталь (SS)";// Сталь - Steel
                 //var strainValues = studyResults.DefineMinMaxStrainValues("ESTRN");
                 var stressValues = studyResults.DefineMinMaxStressValues(param);
                 double minvalue = stressValues["min"],
@@ -91,17 +100,19 @@ namespace SolidServer.SolidWorksPackage
                     maxvalue = stressValues["max"]*0.1;
 
 
-                Console.WriteLine($" минимальное напряжение " +
-                    $"VON =  {minvalue} // " +
-                    $"максимальное напряжение по VON {stressValues["max"]}" +
-                    $"  // предел прочности при растяжении = {MaterialManager.GetMaterials()[material].physicalProperties["SIGXT"]}" +
-                    $" критическое > максимальное по VON : {criticalValue > stressValues["max"]} критическое значение:{criticalValue}" 
+                Console.WriteLine($"\nМинимальное напряжение VON =  {minvalue}" +
+                    $"\nмаксимальное напряжение по VON {stressValues["max"]}" +
+                    $"\nпредел прочности при растяжении = " +
+                    $"{MaterialManager.GetMaterials()[material].physicalProperties["SIGXT"]}" +
+                    $"\nкритическое > максимальное по VON : {criticalValue > stressValues["max"]}" +
+                    $"\nкритическое значение:{criticalValue}" 
                     );
 
                 
                 var areas = new List<ElementArea>();
                 Console.WriteLine("Начало поиска областей");
-                var cutElementAreas = studyResults.DetermineCutAreas(param, minvalue, maxvalue, criticalValue, areas, activeDoc);
+                var cutElementAreas = studyResults.DetermineCutAreas(param, minvalue, maxvalue,
+                    criticalValue, areas, activeDoc, facePlenes);
                 Console.WriteLine($"Окончание поиска областей. Их общее количество - {cutElementAreas.Count()}");
 
 
@@ -115,16 +126,12 @@ namespace SolidServer.SolidWorksPackage
                     
                     foreach (var area in cutElementAreas)
                     {
-                        if (area.elements.Count > 1200)
-                        {
-                            Console.WriteLine("Пропуск выреза");
-                            continue;
-                        }
+                    
                         areas.Add(area);
                         features[counter].AddRange(
                             ElementAreaWorker.DrawElementArea(
                                 activeDoc, null,
-                            ElementAreaWorker.SqueezeArea( area)));
+                            ElementAreaWorker.SqueezeArea( area, 0.4)));
                         Console.WriteLine("Конец выреза промежуточной области");
 
                     }
@@ -146,7 +153,7 @@ namespace SolidServer.SolidWorksPackage
 
                     for (int i = surfCounter - cutElementAreas.Count(); i <= surfCounter; i++)
                     {
-                        activeDoc.Extension.SelectByID2($"Imported{i}", "SOLIDBODY", 0, 0, 0, true, 2, null, 0); //Imported in engl
+                        activeDoc.Extension.SelectByID2($"Импортированный{i}", "SOLIDBODY", 0, 0, 0, true, 2, null, 0); //Imported in engl
 
                     }
 
@@ -174,7 +181,7 @@ namespace SolidServer.SolidWorksPackage
                     studyResults = study.GetResult();
 
                     Console.WriteLine("Начало поиска областей");
-                    cutElementAreas = studyResults.DetermineCutAreas(param, minvalue, maxvalue, criticalValue, areas, activeDoc);
+                    cutElementAreas = studyResults.DetermineCutAreas(param, minvalue, maxvalue, criticalValue, areas, activeDoc, facePlenes);
                     Console.WriteLine($"Окончание поиска областей. Их общее количество - {cutElementAreas.Count()}\n" +
                     $"Сами области:{cutElementAreas}");
 

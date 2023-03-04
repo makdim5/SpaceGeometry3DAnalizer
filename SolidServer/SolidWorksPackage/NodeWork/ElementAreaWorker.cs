@@ -1,4 +1,5 @@
 ﻿using ConsoleApp1.SolidWorksPackage.Simulation.FeatureFace;
+using SolidServer.SolidWorksPackage;
 using SolidServer.SolidWorksPackage.NodeWork;
 using SolidServer.util.mathutils;
 using SolidWorks.Interop.sldworks;
@@ -6,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace ConsoleApp1.SolidWorksPackage.NodeWork
 {
@@ -40,14 +42,10 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
                     areaElements.UnionWith(newAdjacentElements);
                 }
 
-                //var elemsCats = MakeAreaElementsCategories();
-                //var union = elemsCats["4n"];
-                //union.UnionWith(elemsCats["3n"]);
                 ElementArea newArea = new ElementArea(areaElements);
 
                 if (newArea.elements.Count > 0)
                 {
-                    Console.WriteLine($"Формирование новой области с количеством элементов  - {newArea.elements.Count}");
                     areas.Add(newArea);
                 }
 
@@ -56,6 +54,49 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
             }
 
             return areas;
+        }
+
+
+        public static HashSet<Node> ExceptFaceClosestNodes(IEnumerable<Node> cutNodes, List<FacePlane> facePlanes)
+        {
+            List<HashSet<Node>> nodeParts = new();
+            for (int i = 0; i < System.Environment.ProcessorCount; i++)
+            {
+                HashSet<Node> part = new();
+                for (int j = (int)i * cutNodes.Count() / System.Environment.ProcessorCount;
+                    j < (int)(i + 1) * cutNodes.Count() / System.Environment.ProcessorCount;
+                    j++)
+                {
+                    part.Add(cutNodes.ElementAt(j));
+                }
+                nodeParts.Add(part);
+            }
+
+            List<Thread> threads = new List<Thread>();
+            List<HashSet<Node>> notCloseNodes = new();
+            foreach (var part in nodeParts)
+            {
+                var thread = new Thread(() => { notCloseNodes.Add(ElementAreaWorker.ExceptCloseNodes(part, facePlanes)); });
+                threads.Add(thread);
+            }
+
+            foreach (var thread in threads)
+            {
+                thread.Start();
+            }
+
+            foreach (var thread in threads)
+            {
+                thread.Join();
+            }
+
+            HashSet<Node> rightNodes = new();
+            foreach (var nodes in notCloseNodes)
+            {
+                rightNodes.UnionWith(nodes);
+            }
+
+            return rightNodes;
         }
 
 
@@ -119,8 +160,8 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
                     var nodes = new List<Node>();
                     for (int i = 0; i < 4; i++)
                     {
-                        nodes.Add(new Node(item.vertexNodes[i].number, nodePoints[i],
-                            item.vertexNodes[i].stress, item.vertexNodes[i].strain));
+                        nodes.Add(new Node(item.vertexNodes.ElementAt(i).number, nodePoints[i],
+                            item.vertexNodes.ElementAt(i).stress, item.vertexNodes.ElementAt(i).strain));
                     }
                     newElements.Add(new Element(item.number, nodes, item.center));
                 }
@@ -329,6 +370,9 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
             return surfacesNodes;
         }
 
+
+
+
         public static Dictionary<string, HashSet<Element>> MakeAreaElementsCategories(ElementArea area)
         {
             Dictionary<string, HashSet<Element>> categories = new Dictionary<string, HashSet<Element>>()
@@ -382,10 +426,7 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
                     elems.Remove(element);
                 }
 
-
             }
-
-
 
             return categories;
         }

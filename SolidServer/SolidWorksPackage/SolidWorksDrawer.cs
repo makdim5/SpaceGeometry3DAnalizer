@@ -1,4 +1,6 @@
-﻿using SolidServer.SolidWorksPackage.Cells;
+﻿using ConsoleApp1.SolidWorksPackage.NodeWork;
+using SolidServer.SolidWorksPackage.Cells;
+using SolidServer.SolidWorksPackage.NodeWork;
 using SolidServer.util.mathutils;
 
 using SolidWorks.Interop.sldworks;
@@ -6,6 +8,7 @@ using SolidWorks.Interop.swconst;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,8 +16,22 @@ namespace SolidServer.SolidWorksPackage
 {
     internal class SolidWorksDrawer
     {
-        
+        public static void DrawNodes(ModelDoc2 doc, IEnumerable<Node> nodes)
+        {
+            double unit = 1000;
+            doc.ClearSelection();
+            doc.SketchManager.Insert3DSketch(true);
 
+            foreach (var node in nodes)
+            {
+
+                doc.SketchManager.CreatePoint(node.point.x / unit, node.point.y / unit, node.point.z / unit);
+               
+            }
+
+            doc.SketchManager.Insert3DSketch(false);
+            doc.ClearSelection();
+        }
         public static Feature DrawPyramid(ModelDoc2 doc, PyramidFourVertexArea area, int mode=1)
         {
             double unit = 1000;

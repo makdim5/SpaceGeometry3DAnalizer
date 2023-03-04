@@ -17,7 +17,7 @@ namespace SolidServer.SolidWorksPackage.NodeWork
         public readonly IEnumerable<Node> nodes;
 
         //Верщины
-        public readonly List<Node> vertexNodes;
+        public readonly HashSet<Node> vertexNodes;
 
         //Центр области 
         public readonly Point3D center;
@@ -31,7 +31,7 @@ namespace SolidServer.SolidWorksPackage.NodeWork
 
             this.nodes = nodes;
 
-            this.vertexNodes = new List<Node>() {
+            this.vertexNodes = new HashSet<Node>() {
                 nodes.ElementAt(0) ,
                 nodes.ElementAt(1) ,
                 nodes.ElementAt(2) ,
