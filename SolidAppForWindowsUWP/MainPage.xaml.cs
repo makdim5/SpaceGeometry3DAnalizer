@@ -24,6 +24,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 using MUXC = Microsoft.UI.Xaml.Controls;
+using Microsoft.Toolkit.Uwp.Notifications;
 
 // Документацию по шаблону элемента "Пустая страница" см. по адресу https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x419
 
@@ -201,7 +202,7 @@ namespace SolidAppForWindowsUWP
 
         private async void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
         {
-           
+
             ContentDialog dialog = new ContentDialog();
             dialog.Title = "Параметры";
             dialog.PrimaryButtonText = "Закрыть";
@@ -217,12 +218,37 @@ namespace SolidAppForWindowsUWP
             dialog.Title = "O программе SolidSpaceAnalizer";
             dialog.PrimaryButtonText = "OK";
             dialog.DefaultButton = ContentDialogButton.Primary;
-            dialog.Content = new TextBlock() { Text = "Версия 1.0\nПрограмма для топологической оптимизации" +
+            dialog.Content = new TextBlock()
+            {
+                Text = "Версия 1.0\nПрограмма для топологической оптимизации" +
                 "\nмонолитных деталей с помощью SolidWorks."
             };
 
             await dialog.ShowAsync();
 
+        }
+
+        private void MenuFlyoutItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            if (Window.Current.Content is FrameworkElement rootElement)
+            {
+                if (rootElement.RequestedTheme == ElementTheme.Dark)
+                {
+                    rootElement.RequestedTheme = ElementTheme.Light;
+                }
+                else
+                {
+                    rootElement.RequestedTheme = ElementTheme.Dark;
+                };
+            }
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            new ToastContentBuilder()
+                .AddText("Send a message.")
+                .Show();
         }
     }
 }

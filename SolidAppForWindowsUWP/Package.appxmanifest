@@ -32,7 +32,7 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="SolidAppForWindowsUWP.App">
       <uap:VisualElements
-        DisplayName="SolidAppForWindowsUWP"
+        DisplayName="SolidSpaceAnalizer"
         Square150x150Logo="Assets\Logo.png"
         Description="SolidAppForWindowsUWP"
         BackgroundColor="transparent" Square44x44Logo="Assets\Logo.png">
@@ -42,7 +42,7 @@
             <uap:ShowOn Tile="square150x150Logo"/>
           </uap:ShowNameOnTiles>
         </uap:DefaultTile >
-        <uap:SplashScreen Image="Assets\Screen.png" />
+        <uap:SplashScreen Image="Assets\SPace.png" />
       </uap:VisualElements>
     </Application>
   </Applications>

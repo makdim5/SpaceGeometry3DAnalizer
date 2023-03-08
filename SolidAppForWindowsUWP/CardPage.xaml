@@ -7,7 +7,7 @@
     x:Class="SolidAppForWindowsUWP.CardPage"
     mc:Ignorable="d">
 
-    <Grid Background="White">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="2*"/>
