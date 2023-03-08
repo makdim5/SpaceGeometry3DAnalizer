@@ -8,90 +8,70 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
     mc:Ignorable="d"
-     
-    Background="{ThemeResource SystemControlAcrylicWindowBrush}"
-    >
+    Background="{ThemeResource SystemControlAcrylicWindowBrush}"    >
 
 
-    <Pivot >
 
-        <PivotItem Header="Действия в SolidWorks">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock x:Name="textBlock"  TextWrapping="WrapWholeWords" Text="Сообщение для вывода"></TextBlock>
-                <!--<Button  Click="Button_Click_2">Открыть SW</Button>
+    <Grid>
+        <muxc:MenuBar VerticalAlignment="Top">
+            <muxc:MenuBarItem Title="Управление SolidWorks">
+                <MenuFlyoutItem Text="Открыть SolidWorks"/>
+                <MenuFlyoutItem Text="Открыть Simulation"/>
+                <MenuFlyoutItem Text="Закрыть SolidWorks"/>
+            </muxc:MenuBarItem>
+
+            <muxc:MenuBarItem Title="Настройки">
+                <MenuFlyoutItem Text="Открыть параметры" Click="MenuFlyoutItem_Click"/>
+            </muxc:MenuBarItem>
+
+            <muxc:MenuBarItem Title="Справка">
+                <MenuFlyoutItem Text="О программе" Click="MenuFlyoutItem_Click_1"/>
+            </muxc:MenuBarItem>
+        </muxc:MenuBar>
+        <StackPanel Orientation="Vertical"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20, 100, 20, 0">
+            <!--<Button  Click="Button_Click_2">Открыть SW</Button>
                 <Button  Click="Button_Click_3">Закрыть SW</Button>
                 <Button  Click="Button_Click_4">Создать новый документ</Button>
                 <Button  Click="Button_Click_5">Открыть существующий документ</Button>-->
-                <!--<Button x:Name="myButton" Click="myButton_Click">Подключить</Button>
+            <!--<Button x:Name="myButton" Click="myButton_Click">Подключить</Button>
                 <Button x:Name="myButton2" Click="myButton2_Click">Построить</Button>-->
-                
-                <TextBlock Text="A connected animation between elements on the same page" />
-                <Frame x:Name="CardFrame" MinWidth="500" MinHeight="300" MaxHeight="700" />
+            <!--<Frame x:Name="CardFrame" MinWidth="500" MinHeight="300" MaxHeight="700" />-->
+
+            
+            <Image Source="Assets/introwall.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            <AppBarButton Icon="Play" Label="Открыть мастер" HorizontalAlignment="Center" ToolTipService.ToolTip="Нажмите для открытия мастера исследования" Click="Button_Click_5"  />
+            
+        </StackPanel>
 
 
-            </StackPanel>
-        </PivotItem>
-        <PivotItem Header="Параметры">
-
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-
-                </Grid.RowDefinitions>
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5*" />
-                    <ColumnDefinition Width="100" />
-                </Grid.ColumnDefinitions>
-
-
-                <ComboBox x:Name="swloader_combobox" SelectionChanged="swloader_combobox_SelectionChanged" 
-                          SelectedIndex="0" Header="Параметры загрузки SolidWorks" Grid.Column="0"  Grid.Row="0"
-                          HorizontalAlignment="Stretch" VerticalAlignment="Center">
-                    <x:String>Автоматическая</x:String>
-                    <x:String>Ручная</x:String>
-
-                </ComboBox>
-
-                <muxc:TeachingTip x:Name="SWLoadTip"
-                    Target="{x:Bind swloader_combobox}"
-                    Subtitle="Автоматическая загрузка позволяет автоматически открыть SolidWorks, при ручной загрузке это нужно делать самостоятельно!">
-                </muxc:TeachingTip>
-
-                <Button Margin ="10" Content="?" Click="Button_Click" Grid.Column="1"  Grid.Row="0"></Button>
-
-
-                <ComboBox x:Name="swdocloader_combobox" SelectionChanged="swdocloader_combobox_SelectionChanged"
-                          SelectedIndex="0" Header="Параметры загрузки документа SolidWorks" Grid.Column="0"  Grid.Row="1"
-                          HorizontalAlignment="Stretch" VerticalAlignment="Center">
-                    <x:String>Создать новый пустой документ</x:String>
-                    <x:String>Загрузить из последнего открытого файла</x:String>
-                    <x:String>Загрузить из файла</x:String>
-                </ComboBox>
-
-                <muxc:TeachingTip x:Name="SWLoadDocTip"
-                    Target="{x:Bind swdocloader_combobox}"
-                    Title="Параметры загрузки документа 3д детали"
-                    Subtitle="Выберите режим для эффективной работы с документом SolidWorks!">
-                </muxc:TeachingTip>
-
-                <Button Margin ="10" Content="?" Click="Button_Click_1" Grid.Column="1"  Grid.Row="1"></Button>
-
-                <ComboBox x:Name="theme_combobox" SelectionChanged="theme_combobox_SelectionChanged"
-                          SelectedIndex="0" Header="Параметры темы приложения" Grid.Column="0"  Grid.Row="3"
-                          HorizontalAlignment="Stretch" VerticalAlignment="Center">
-                    <x:String>Системная</x:String>
-                    <x:String>Темная</x:String>
-                    <x:String>Светлая</x:String>
-                    <x:String>Системный цвет</x:String>
-                </ComboBox>
-
-
+        <Grid x:Name="SmokeGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Collapsed" Margin="50, 70, 50, 100" >
+            <Grid.Background>
+                <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.8" />
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+                <RowDefinition Height="10*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemAccentColor}">
+                <TextBlock x:Name="smokeHeader"  Text="Header" Style="{ThemeResource HeaderTextBlockStyle}" Margin="12" VerticalAlignment="Center" />
+                <Button Click="BackButton_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="40" Margin="5" 
+                            ToolTipService.ToolTip="Close" AutomationProperties.Name="Close">
+                    <Button.Content>
+                        <SymbolIcon Symbol="Clear" />
+                    </Button.Content>
+                </Button>
             </Grid>
-        </PivotItem>
+            <Frame Grid.Row="1" x:Name="simpleFrame" BorderBrush="{ThemeResource SystemAccentColor}" BorderThickness="2">
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition  />
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
 
-    </Pivot>
+            </Frame>
 
+
+        </Grid>
+
+    </Grid>
 </Page>

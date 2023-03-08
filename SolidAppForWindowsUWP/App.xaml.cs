@@ -30,7 +30,10 @@ namespace SolidAppForWindowsUWP
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            
         }
+
+       
 
         /// <summary>
         /// Вызывается при обычном запуске приложения пользователем. Будут использоваться другие точки входа,
