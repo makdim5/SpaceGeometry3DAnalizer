@@ -1,5 +1,4 @@
 ﻿using SolidServer.SolidWorksPackage;
-using SolidServer;
 using System;
 using System.Net.Sockets;
 using System.Net;
@@ -7,7 +6,7 @@ using System.Text;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace ConsoleApp1.util
+namespace SolidServer.util
 {
     internal class ConnectionWorker
     {
@@ -23,13 +22,44 @@ namespace ConsoleApp1.util
         private const string CUT_AREAS = "cut areas";
         private static bool keepListening = true;
 
-        private const int PORT = 8005;
+        private const int SERVER_PORT = 8005;
+        private const int CLIENT_PORT = 8004;
         private const string IP_ADDRESS = "127.0.0.1";
 
+
+        public static string ConnectToUnionService(string jsonData)
+        {
+            string responce_json = "";
+            using TcpClient tcpClient = new TcpClient();
+            tcpClient.Connect(IP_ADDRESS, CLIENT_PORT);
+            var stream = tcpClient.GetStream();
+            var response = new List<byte>();
+            int bytesRead = 10000000;
+            byte[] data = Encoding.UTF8.GetBytes(jsonData);
+            // отправляем данные
+            Console.WriteLine("Отправка узлов на UnionService для кластеризации!");
+            stream.Write(data, 0, data.Length);
+
+            while (true)
+            {
+                bytesRead = stream.ReadByte();
+                if (bytesRead == -1)
+                {
+                    break;
+                }
+                // добавляем в буфер
+                response.Add((byte)bytesRead);
+            }
+            responce_json = Encoding.UTF8.GetString(response.ToArray());
+            response.Clear();
+
+            Console.WriteLine("Данные от UnionService получены!");
+            return responce_json;
+        }
         public static void RunServer()
         {
             var manager = new SolidWorksResearchManager();
-            IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(IP_ADDRESS), PORT);
+            IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(IP_ADDRESS), SERVER_PORT);
             Socket listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             try
             {

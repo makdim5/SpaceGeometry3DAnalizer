@@ -1,5 +1,6 @@
-﻿using ConsoleApp1.util;
+﻿using ConsoleApp1.SolidWorksPackage;
 using SolidServer.SolidWorksPackage;
+using SolidServer.util;
 using System;
 using System.Linq;
 
@@ -13,9 +14,12 @@ namespace SolidServer
         static void Main(string[] args)
         {
             //ConnectionWorker.RunServer();
-            DoResearch();
-            Console.ReadLine();
+            DoUnionResearch();
             
+
+
+            Console.ReadLine();
+
         }
 
         static void DoResearch()
@@ -34,14 +38,32 @@ namespace SolidServer
                     manager.GetCompletedStudyResults();
                     manager.DefineAreas();
                 }
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
 
             Console.WriteLine("Выполнение программы завершено!");
-            
+        }
 
+        static void DoUnionResearch()
+        {
+            try
+            {
+                var manager = new UnionClusterResearchManager();
+                manager.DefineActiveDoc();
+                manager.GetCompletedStudyResults();
+                manager.DefineCriticalValues();
+                manager.DefineAreas();
+                manager.CutAreas();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            Console.WriteLine("Выполнение программы завершено!");
 
         }
     }

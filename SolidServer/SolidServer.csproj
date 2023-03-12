@@ -121,6 +121,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolidWorksPackage\Cells\PyramidFourVertexArea.cs" />
+    <Compile Include="SolidWorksPackage\Cells\Sphere.cs" />
     <Compile Include="SolidWorksPackage\NodeWork\Element.cs" />
     <Compile Include="SolidWorksPackage\NodeWork\ElementArea.cs" />
     <Compile Include="SolidWorksPackage\NodeWork\ElementAreaWorker.cs" />
@@ -144,6 +145,7 @@
     <Compile Include="SolidWorksPackage\SolidWorksAppWorker.cs" />
     <Compile Include="SolidWorksPackage\SolidWorksDrawer.cs" />
     <Compile Include="SolidWorksPackage\SolidWorksResearchManager.cs" />
+    <Compile Include="SolidWorksPackage\UnionClusterResearchManager.cs" />
     <Compile Include="util\ConnectionWorker.cs" />
     <Compile Include="util\ExcelWorker.cs" />
     <Compile Include="util\FormChart.cs">

@@ -1,16 +1,10 @@
-﻿using ConsoleApp1.SolidWorksPackage.NodeWork;
-using SolidServer.SolidWorksPackage.Cells;
+﻿using SolidServer.SolidWorksPackage.Cells;
 using SolidServer.SolidWorksPackage.NodeWork;
 using SolidServer.util.mathutils;
-
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SolidServer.SolidWorksPackage
 {
@@ -178,6 +172,10 @@ namespace SolidServer.SolidWorksPackage
             doc.ClearSelection();
         }
 
+        public static void CutSphiere (ModelDoc2 doc, Sphere sphere)
+        {
+            CutSphiere(doc, sphere.center.x, sphere.center.y, sphere.center.z, sphere.radious);
+        }
         public static void CutSphiere(ModelDoc2 doc, double xc, double yc, double zc, double rad = 0.005)
         {
             double unit = 1000;
