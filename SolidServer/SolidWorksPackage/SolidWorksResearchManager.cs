@@ -120,49 +120,47 @@ namespace SolidServer.SolidWorksPackage
             {
 
                 areas.Add(area);
-                ElementAreaWorker.DrawElementArea(
-                        activeDoc, null,
-                    ElementAreaWorker.SqueezeArea(area, 0.4));
+                ElementAreaWorker.DrawElementArea(activeDoc, area);
                 Console.WriteLine("Конец выреза промежуточной области");
 
             }
 
-            // cut
-            surfCounter += cutElementAreas.Count();
+            //// cut
+            //surfCounter += cutElementAreas.Count();
 
-            string mainBodyName;
-            if (counter == 1)
-            {
-                mainBodyName = startModelName;
+            //string mainBodyName;
+            //if (counter == 1)
+            //{
+            //    mainBodyName = startModelName;
 
-            }
-            else
-            {
-                mainBodyName = $"Соединить{counter - 1}";
-            }
+            //}
+            //else
+            //{
+            //    mainBodyName = $"Соединить{counter - 1}";
+            //}
 
-            activeDoc.Extension.SelectByID2(mainBodyName, "SOLIDBODY", 0, 0, 0, false, 1, null, 0);
+            //activeDoc.Extension.SelectByID2(mainBodyName, "SOLIDBODY", 0, 0, 0, false, 1, null, 0);
 
-            for (int i = surfCounter - cutElementAreas.Count(); i <= surfCounter; i++)
-            {
-                activeDoc.Extension.SelectByID2($"{impotedConst}{i}", "SOLIDBODY", 0, 0, 0, true, 2, null, 0); //Imported in engl
+            //for (int i = surfCounter - cutElementAreas.Count(); i <= surfCounter; i++)
+            //{
+            //    activeDoc.Extension.SelectByID2($"{impotedConst}{i}", "SOLIDBODY", 0, 0, 0, true, 2, null, 0); //Imported in engl
 
-            }
+            //}
 
-            activeDoc.FeatureManager.InsertCombineFeature(
-                (int)swBodyOperationType_e.SWBODYCUT, null, null);
+            //activeDoc.FeatureManager.InsertCombineFeature(
+            //    (int)swBodyOperationType_e.SWBODYCUT, null, null);
 
-            var comb = activeDoc.FeatureManager.InsertCombineFeature((int)swBodyOperationType_e.SWBODYCUT, null, Array.Empty<object>());
-            if (comb != null)
-            {
-                var swCombineBodiesFeatureData = (CombineBodiesFeatureData)comb.GetDefinition();
+            //var comb = activeDoc.FeatureManager.InsertCombineFeature((int)swBodyOperationType_e.SWBODYCUT, null, Array.Empty<object>());
+            //if (comb != null)
+            //{
+            //    var swCombineBodiesFeatureData = (CombineBodiesFeatureData)comb.GetDefinition();
 
-                swCombineBodiesFeatureData.AccessSelections(activeDoc, null);
-                swCombineBodiesFeatureData.ReleaseSelectionAccess();
+            //    swCombineBodiesFeatureData.AccessSelections(activeDoc, null);
+            //    swCombineBodiesFeatureData.ReleaseSelectionAccess();
 
-            }
-            counter++;
-            activeDoc.ClearSelection2(true);
+            //}
+            //counter++;
+            //activeDoc.ClearSelection2(true);
 
             Console.WriteLine("Конец выреза областей");
         }

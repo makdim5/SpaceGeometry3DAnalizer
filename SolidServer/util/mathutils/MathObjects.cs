@@ -68,6 +68,30 @@ namespace SolidServer.util.mathutils
 
     public class MathHelper
     {
+
+        public static List<Point3D> GetLessCoordinatesOfPyramid(
+            IEnumerable<Point3D> vertexes, Point3D center, double lessCoefficient)
+        {
+            if (lessCoefficient < 0 && lessCoefficient > 1)
+            {
+                throw new ArgumentException("lessCoefficient must be positive or 0," +
+                    $"given {lessCoefficient}");
+
+            }
+            var coefficient = 1 - lessCoefficient;
+            var newVertexes = new List<Point3D>();
+            for (int index = 0; index < vertexes.Count(); index++)
+            {
+                var item = vertexes.ElementAt(index);
+                newVertexes.Add(new Point3D(
+                    ChangeEndCoordinateOfLineSegment(center.x, item.x, coefficient),
+                    ChangeEndCoordinateOfLineSegment(center.y, item.y, coefficient),
+                    ChangeEndCoordinateOfLineSegment(center.z, item.z, coefficient)));
+
+            }
+
+            return newVertexes;
+        }
         public static double DefineMaxVertexDistanceFromPyramidCenter(
             IEnumerable<Point3D> vertexes, Point3D center)
         {

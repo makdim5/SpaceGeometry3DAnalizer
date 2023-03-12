@@ -83,7 +83,21 @@ namespace SolidServer.SolidWorksPackage.NodeWork
                 );
         }
 
-
+        public IEnumerable<Point3D> GetDrawingVertexes(double coefficient = 0.03)
+        {
+            return MathHelper.GetLessCoordinatesOfPyramid
+                (
+                    new List<Point3D>()
+                        {
+                            vertexNodes.ElementAt(0).point,
+                            vertexNodes.ElementAt(1).point,
+                            vertexNodes.ElementAt(2).point,
+                            vertexNodes.ElementAt(3).point
+                        },
+                    center,
+                    coefficient
+                );
+        }
 
         public List<Point3D> GetNodesCoords()
         {

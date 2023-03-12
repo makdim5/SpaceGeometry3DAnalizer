@@ -1,4 +1,6 @@
 ﻿using ConsoleApp1.SolidWorksPackage.Simulation.FeatureFace;
+using SolidServer.SolidWorksPackage;
+using SolidServer.SolidWorksPackage.Cells;
 using SolidServer.SolidWorksPackage.NodeWork;
 using SolidServer.util.mathutils;
 using SolidWorks.Interop.sldworks;
@@ -255,28 +257,28 @@ namespace ConsoleApp1.SolidWorksPackage.NodeWork
         }
 
 
-        public static List<Feature> DrawElementArea(ModelDoc2 doc, ModelDoc2 additionalDoc, ElementArea area)
+        public static List<Feature> DrawElementArea(ModelDoc2 doc, ElementArea area)
         {
             List<Feature> features = new List<Feature>();
 
 
-            //foreach (var element in area.elements)
-            //{
-            //    var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes(0, area.areaCenter));
-            //    features.Add(SolidWorksDrawer.DrawPyramid(doc, elementPyramid));
-            //}
-
-            // preparing
-            doc.ClearSelection2(true);
-            PartDoc? part = (PartDoc)doc;
-            var swBody = (Body2)part.CreateNewBody();
-
-            foreach (var surfaceNodes in GetBodySurfacesNodes(area.elements))
+            foreach (var element in area.elements)
             {
-                CreateSurface(new[] { surfaceNodes[0].point, surfaceNodes[1].point, surfaceNodes[2].point }, swBody);
+                var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes());
+                features.Add(SolidWorksDrawer.DrawPyramid(doc, elementPyramid));
             }
 
-            swBody.CreateBodyFromSurfaces();
+            // preparing
+            //doc.ClearSelection2(true);
+            //PartDoc? part = (PartDoc)doc;
+            //var swBody = (Body2)part.CreateNewBody();
+
+            //foreach (var surfaceNodes in GetBodySurfacesNodes(area.elements))
+            //{
+            //    CreateSurface(new[] { surfaceNodes[0].point, surfaceNodes[1].point, surfaceNodes[2].point }, swBody);
+            //}
+
+            //swBody.CreateBodyFromSurfaces();
 
 
 
