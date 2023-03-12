@@ -23,7 +23,7 @@ namespace SolidServer.SolidWorksPackage.Simulation.FeatureFace
         public FeatureFaceManager(ModelDoc2 swDoc)
         {
 
-            freeFaces = GetFeatureFaces(SolidWorksObjectDefiner.GetFaces(swDoc));
+            freeFaces = GetFeatureFaces(new SolidWorksResearchManager().GetFaces(swDoc));
             swDoc.GraphicsRedraw2();
 
         }

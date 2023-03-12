@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Uwp.Notifications;
+using System;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -55,6 +56,11 @@ namespace SolidAppForWindowsUWP.util
 
         }
 
-
+        public static void ShowAsNotification(string msg)
+        {
+            new ToastContentBuilder()
+                .AddText(msg)
+                .Show();
+        }
     }
 }

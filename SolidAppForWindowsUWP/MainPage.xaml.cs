@@ -1,30 +1,14 @@
-﻿using Microsoft.UI.Xaml.Controls;
-using SolidAppForWindowsUWP.util;
+﻿using SolidAppForWindowsUWP.util;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading;
-using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Foundation.Metadata;
-using Windows.UI;
 using Windows.UI.Core;
-using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
-using Windows.UI.Xaml.Navigation;
-using MUXC = Microsoft.UI.Xaml.Controls;
 using Microsoft.Toolkit.Uwp.Notifications;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+using Windows.Storage.Pickers;
+using Windows.Storage;
 
 // Документацию по шаблону элемента "Пустая страница" см. по адресу https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x419
 
@@ -35,9 +19,10 @@ namespace SolidAppForWindowsUWP
     /// </summary>
     public sealed partial class MainPage : Page
     {
-
+        Dictionary<string, string> dataToSend;
         public MainPage()
         {
+            dataToSend= new Dictionary<string, string>();
             this.InitializeComponent();
 
         }
@@ -249,6 +234,62 @@ namespace SolidAppForWindowsUWP
             new ToastContentBuilder()
                 .AddText("Send a message.")
                 .Show();
+        }
+
+        private void MenuFlyoutItem_Click_3(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                dataToSend["command"] = "opensw";
+                ClientSocketUtil.SendMsgToServer(JsonConvert.SerializeObject(dataToSend));
+                Message.ShowAsNotification("Solidworks открыт!");
+            }
+            catch
+            {
+                Message.Show("Нет соединения с сервером!", XamlRoot);
+            }
+
+        }
+
+        private void MenuFlyoutItem_Click_4(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                dataToSend["command"] = "closesw";
+                ClientSocketUtil.SendMsgToServer(JsonConvert.SerializeObject(dataToSend));
+                Message.ShowAsNotification("Solidworks закрыт!");
+            }
+            catch
+            {
+
+                Message.Show("Нет соединения с сервером!", XamlRoot);
+            }
+        }
+        private async void MenuFlyoutItem_Click_5(object sender, RoutedEventArgs e)
+        {
+            FileOpenPicker openPicker = new FileOpenPicker();
+            openPicker.ViewMode = PickerViewMode.Thumbnail;
+            openPicker.SuggestedStartLocation = PickerLocationId.Desktop;
+            openPicker.FileTypeFilter.Add(".SLDPRT");
+           
+            StorageFile file = await openPicker.PickSingleFileAsync();
+            if (file != null)
+            {
+                try
+                {
+                    dataToSend["command"] = "opendoc";
+                    dataToSend["docPath"] = file.Path;
+                    ClientSocketUtil.SendMsgToServer(JsonConvert.SerializeObject(dataToSend));
+                    Message.ShowAsNotification("Simulation закрыт!");
+                }
+                catch
+                {
+
+                    Message.Show("Нет соединения с сервером!", XamlRoot);
+                }
+            }
+            
+            
         }
     }
 }

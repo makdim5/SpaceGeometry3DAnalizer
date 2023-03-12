@@ -15,9 +15,9 @@
     <Grid>
         <muxc:MenuBar VerticalAlignment="Top">
             <muxc:MenuBarItem Title="Управление SolidWorks">
-                <MenuFlyoutItem Text="Открыть SolidWorks"/>
-                <MenuFlyoutItem Text="Открыть Simulation"/>
-                <MenuFlyoutItem Text="Закрыть SolidWorks"/>
+                <MenuFlyoutItem Text="Открыть SolidWorks" Click="MenuFlyoutItem_Click_3"/>
+                <MenuFlyoutItem Text="Открыть Документ SW" Click="MenuFlyoutItem_Click_5"/>
+                <MenuFlyoutItem Text="Закрыть SolidWorks" Click="MenuFlyoutItem_Click_4"/>
             </muxc:MenuBarItem>
 
             <muxc:MenuBarItem Title="Настройки">
@@ -30,17 +30,15 @@
             </muxc:MenuBarItem>
         </muxc:MenuBar>
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20, 100, 20, 0">
-            <!--<Button  Click="Button_Click_2">Открыть SW</Button>
-                <Button  Click="Button_Click_3">Закрыть SW</Button>
-                <Button  Click="Button_Click_4">Создать новый документ</Button>
-                <Button  Click="Button_Click_5">Открыть существующий документ</Button>-->
-            <!--<Button x:Name="myButton" Click="myButton_Click">Подключить</Button>
-                <Button x:Name="myButton2" Click="myButton2_Click">Построить</Button>-->
-            <!--<Frame x:Name="CardFrame" MinWidth="500" MinHeight="300" MaxHeight="700" />-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
             <ParallaxView
+                        Grid.Row="0"
                         x:Name="headerImageView"
-                        Height="256"
-                        VerticalAlignment="Top">
+                        
+                       >
                 <Grid CornerRadius="{StaticResource ControlCornerRadius}">
                     <Image
                                 x:Name="headerImage"
@@ -50,7 +48,7 @@
                 </Grid>
             </ParallaxView>
 
-            <Grid HorizontalAlignment="Stretch" Height="200" Margin="20" VerticalAlignment="Top" >
+            <Grid Grid.Row="0" HorizontalAlignment="Stretch"  Margin="20" VerticalAlignment="Center" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="2*"/>
@@ -61,30 +59,31 @@
             </Grid>
 
             <muxc:InfoBar
-    IsOpen="True"
-    IsIconVisible="True"
-    IsClosable="True"
-    Background="{ThemeResource SystemControlAcrylicWindowBrush}"
-    Title="Сообщение"
-    Message="Возможно у вас не открыт SolidWorks!" />
-            <Button Margin="20" FontSize="40" BorderThickness="2" HorizontalAlignment="Center" ToolTipService.ToolTip="Нажмите для открытия мастера исследования" Click="Button_Click_5">
+                Grid.Row="0"
+                IsOpen="False"
+                IsIconVisible="True"
+                IsClosable="True"
+                Background="{ThemeResource SystemControlAcrylicWindowBrush}"
+                Title="Сообщение"
+                Message="Возможно у вас ..." />
+            <Button Grid.Row="1" Margin="20" FontSize="40" BorderThickness="2" VerticalAlignment="Top" HorizontalAlignment="Center" ToolTipService.ToolTip="Нажмите для открытия мастера исследования" Click="Button_Click_5">
                 <StackPanel Orientation="Horizontal">
                     <SymbolIcon Symbol="Play"/>
                     <TextBlock Text=" Запуск мастера исследований"/>
                 </StackPanel>
             </Button>
-            <Button VerticalAlignment="Bottom" Content="Посмотреть уведомление!" Click="Button_Click"></Button>
 
         </Grid>
 
 
-        <Grid x:Name="SmokeGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Collapsed" Margin="50, 70, 50, 100" >
+        <Grid  x:Name="SmokeGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Visibility="Collapsed" Margin="50, 70, 50, 100" CornerRadius="{StaticResource ControlCornerRadius}">
             <Grid.Background>
                 <SolidColorBrush Color="{ThemeResource SystemChromeAltHighColor}" Opacity="0.9" />
             </Grid.Background>
             <Grid.RowDefinitions>
                 <RowDefinition Height="80" />
                 <RowDefinition Height="10*" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{ThemeResource SystemAccentColor}">
                 <TextBlock x:Name="smokeHeader"  Text="Header" Style="{ThemeResource HeaderTextBlockStyle}" Margin="12" VerticalAlignment="Center" />
@@ -103,6 +102,10 @@
                 </Frame.ContentTransitions>
 
             </Frame>
+
+            <Grid Grid.Row="2"  HorizontalAlignment="Stretch" Background="{ThemeResource SystemAccentColor}">
+                <Button x:Name="nextBtn" HorizontalAlignment="Center" Content="Далее"></Button>
+            </Grid>
 
 
         </Grid>

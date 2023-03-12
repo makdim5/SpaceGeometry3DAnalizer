@@ -14,7 +14,7 @@ namespace SolidAppForWindowsUWP
         public CardPage()
         {
             this.InitializeComponent();
-           
+            processShower.Visibility= Visibility.Collapsed;
         }
 
         

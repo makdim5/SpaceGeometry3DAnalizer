@@ -12,11 +12,19 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <Image Grid.Column="0"  Source="Assets/giphy.gif"/>
-        <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Подождите, процесс выполняется ..." HorizontalAlignment="Left" Margin="0, 0, 0, 100" FontSize="40"></TextBlock>
-            <Custom:ProgressRing Height="400" Width="400"/>
-            <Button FontSize="20" Content="Hello" VerticalAlignment="Top"/>
+        <Image Stretch="Fill" Grid.Column="0"  Source="Assets/9lZ7.gif"/>
+        <StackPanel Margin="20" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Stretch">
+            <TextBlock x:Name="processTitle" Foreground="CornflowerBlue" Text="Процесс" HorizontalAlignment="Center" Margin="0, 0, 0, 100" FontSize="30"></TextBlock>
+            <StackPanel x:Name="processShower" VerticalAlignment="Center">
+                <TextBlock Text="Подождите, процесс выполняется ..." HorizontalAlignment="Center" Margin="0, 0, 0, 20" FontSize="20"></TextBlock>
+                <Custom:ProgressRing HorizontalAlignment="Center" Height="100" Width="100"/>
+            </StackPanel>
+
+            <ScrollViewer Height="300" HorizontalAlignment="Stretch">
+                <RichTextBlock x:Name="resultTextBlock" FontSize="20" >
+                    
+                </RichTextBlock>
+            </ScrollViewer>
         </StackPanel>
 
     </Grid>
