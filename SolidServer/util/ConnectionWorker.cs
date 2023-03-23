@@ -5,6 +5,8 @@ using System.Net;
 using System.Text;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace SolidServer.util
 {
@@ -27,32 +29,15 @@ namespace SolidServer.util
         private const string IP_ADDRESS = "127.0.0.1";
 
 
-        public static string ConnectToUnionService(string jsonData)
+        public static async Task<string> ConnectToUnionService(string jsonData)
         {
-            string responce_json = "";
-            using TcpClient tcpClient = new TcpClient();
-            tcpClient.Connect(IP_ADDRESS, CLIENT_PORT);
-            var stream = tcpClient.GetStream();
-            var response = new List<byte>();
-            int bytesRead = 10000000;
-            byte[] data = Encoding.UTF8.GetBytes(jsonData);
-            // отправляем данные
-            Console.WriteLine("Отправка узлов на UnionService для кластеризации!");
-            stream.Write(data, 0, data.Length);
+            HttpClient httpClient = new HttpClient();
 
-            while (true)
-            {
-                bytesRead = stream.ReadByte();
-                if (bytesRead == -1)
-                {
-                    break;
-                }
-                // добавляем в буфер
-                response.Add((byte)bytesRead);
-            }
-            responce_json = Encoding.UTF8.GetString(response.ToArray());
-            response.Clear();
-
+            httpClient.Timeout = TimeSpan.FromMinutes(40);
+            HttpResponseMessage response = await httpClient.PostAsync("http://127.0.0.1:5000/union",
+                 new StringContent(jsonData, Encoding.UTF8, "application/json")); 
+            string responce_json = await response.Content.ReadAsStringAsync();
+            
             Console.WriteLine("Данные от UnionService получены!");
             return responce_json;
         }

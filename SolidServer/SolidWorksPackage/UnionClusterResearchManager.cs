@@ -16,6 +16,9 @@ using SolidServer.SolidWorksPackage;
 using Newtonsoft.Json;
 using SolidServer.util;
 using SolidServer.util.mathutils;
+using System.Threading.Tasks;
+using System.IO;
+
 
 namespace ConsoleApp1.SolidWorksPackage
 {
@@ -106,16 +109,26 @@ namespace ConsoleApp1.SolidWorksPackage
             }
 
             var findNodes = studyResults.DefineNodesPerStressParam(param, minvalue, maxvalue);
-            Console.WriteLine($" Количество найденных узлов: {findNodes.Count()}");
+           
 
-            var sendData = SerializeNodesToJSON(findNodes);
-            string spheresJson = ConnectionWorker.ConnectToUnionService(sendData);
+            HashSet<Node> wholeNodes = new HashSet<Node>(findNodes);
+            wholeNodes.ExceptWith(ElementAreaWorker.ExceptFaceClosestNodes(wholeNodes, facePlanes));
+            Console.WriteLine($" Количество найденных узлов: {wholeNodes.Count()}");
+            var sendData = SerializeNodesToJSON(wholeNodes);
+            string spheresJson;
+
+            var task = Task.Run(() => ConnectionWorker.ConnectToUnionService(sendData));
+            task.Wait();
+            spheresJson = task.Result;
+
+
+            //spheresJson = File.ReadAllText(@"D:\My programming\SolidSpaceAnalizer\ML_Union_Algorithm\sph.json");
+
 
             Dictionary<string, List<Sphere>> result = JsonConvert.DeserializeObject<Dictionary<string, List<Sphere>>>(spheresJson);
             sphereList = result["spheres"];
 
             Console.WriteLine($"Окончание поиска областей. Их общее количество - {sphereList.Count}");
-
         }
 
         public void CutAreas()

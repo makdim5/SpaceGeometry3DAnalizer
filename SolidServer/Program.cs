@@ -1,6 +1,5 @@
 ﻿using ConsoleApp1.SolidWorksPackage;
 using SolidServer.SolidWorksPackage;
-using SolidServer.util;
 using System;
 using System.Linq;
 
@@ -11,13 +10,11 @@ namespace SolidServer
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             //ConnectionWorker.RunServer();
+
             DoUnionResearch();
-            
-
-
             Console.ReadLine();
 
         }
