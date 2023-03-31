@@ -34,12 +34,7 @@ class Union(Resource):
                         }, "radious": rad/1000}
                     )
 
-            print("Подготовка сфеерических областей и отправление!")
-
-            value = {"spheres": spheres_list}
-            import json
-            file_writer = open("sph.json", mode="w", encoding="utf-8")
-            json.dump(value, file_writer)
-            return value
+            print("Кластеризация выполнена, области отправлены!")
+            return {"spheres": spheres_list}
         except Exception:
             abort(400)
