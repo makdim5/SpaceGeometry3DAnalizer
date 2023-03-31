@@ -14,7 +14,7 @@ namespace SolidServer
         {
             //ConnectionWorker.RunServer();
 
-            DoUnionResearch();
+            DoDBSCANResearch();
             Console.ReadLine();
 
         }
@@ -29,6 +29,32 @@ namespace SolidServer
                 manager.DefineCriticalValues();
                 manager.DefineAreas();
                 while (manager.cutElementAreas.Count() > 0)
+                {
+                    manager.CutAreas();
+                    manager.RunStudy();
+                    manager.GetCompletedStudyResults();
+                    manager.DefineAreas();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            Console.WriteLine("Выполнение программы завершено!");
+        }
+
+        static void DoDBSCANResearch()
+        {
+            try
+            {
+                var manager = new DbScanResearchManger();
+                manager.DefineActiveDoc();
+                manager.GetCompletedStudyResults();
+                manager.DefineCriticalValues();
+                manager.DefineAreas();
+                //manager.CutAreas();
+                while (manager.areasList.Count() > 0)
                 {
                     manager.CutAreas();
                     manager.RunStudy();

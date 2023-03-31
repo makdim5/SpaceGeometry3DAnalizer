@@ -1,4 +1,5 @@
-﻿using SolidServer.SolidWorksPackage.Cells;
+﻿using ConsoleApp1.SolidWorksPackage.Cells;
+using SolidServer.SolidWorksPackage.Cells;
 using SolidServer.SolidWorksPackage.NodeWork;
 using SolidServer.util.mathutils;
 using SolidWorks.Interop.sldworks;
@@ -286,8 +287,11 @@ namespace SolidServer.SolidWorksPackage
             doc.ClearSelection();
         }
 
-
-      
+        public static void CutParallelepiped(ModelDoc2 doc, Parallelepiped parallelepiped)
+        {
+            CutParallelepiped(doc, parallelepiped.minX, parallelepiped.maxX, parallelepiped.minY,
+                parallelepiped.maxY, parallelepiped.minZ, parallelepiped.maxZ);
+        }
         public static Feature CutParallelepiped(ModelDoc2 doc, double x1, double x2, double y1, double y2, double z1, double z2)
         {
             double unit = 1000;
@@ -295,8 +299,8 @@ namespace SolidServer.SolidWorksPackage
             doc.SketchManager.Insert3DSketch(true);
             var sketchPoint1 = doc.SketchManager.CreatePoint(x1 / unit, y1 / unit, z1 / unit);
 
-            var sketchPoint2 = doc.SketchManager.CreatePoint(x1 / unit, y2 / unit, z1 / unit);
-            var sketchPoint3 = doc.SketchManager.CreatePoint(x2 / unit, y1 / unit, z1 / unit);
+            var sketchPoint2 = doc.SketchManager.CreatePoint((x1 + 10 )/ unit, y2 / unit, z1 / unit);
+            var sketchPoint3 = doc.SketchManager.CreatePoint(x1 / unit, (y1 + 10) / unit, z1 / unit);
 
             doc.SketchManager.Insert3DSketch(false);
             doc.ClearSelection();

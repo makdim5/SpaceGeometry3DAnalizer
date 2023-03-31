@@ -18,6 +18,7 @@ using SolidServer.util;
 using SolidServer.util.mathutils;
 using System.Threading.Tasks;
 using System.IO;
+using static System.Net.Mime.MediaTypeNames;
 
 
 namespace ConsoleApp1.SolidWorksPackage
@@ -32,7 +33,7 @@ namespace ConsoleApp1.SolidWorksPackage
         private string param = "VON";
         private string material = "AISI 1035 Steel (SS)";// Сталь - Steel
         private double minvalue, maxvalue, criticalValue;
-        private List<Sphere> sphereList;
+        public List<Sphere> sphereList;
 
         public UnionClusterResearchManager()
         {
@@ -115,9 +116,17 @@ namespace ConsoleApp1.SolidWorksPackage
             wholeNodes.ExceptWith(ElementAreaWorker.ExceptFaceClosestNodes(wholeNodes, facePlanes));
             Console.WriteLine($" Количество найденных узлов: {wholeNodes.Count()}");
             var sendData = SerializeNodesToJSON(wholeNodes);
+
+            //using (StreamWriter writer = new StreamWriter("nodes.json", false))
+            //{
+            //    writer.Write(sendData);
+            //}
+
+            //System.Environment.Exit(0);
+
             string spheresJson;
 
-            var task = Task.Run(() => ConnectionWorker.ConnectToUnionService(sendData));
+            var task = Task.Run(() => ConnectionWorker.ConnectToClusterizationService(sendData, "http://127.0.0.1:5000/union"));
             task.Wait();
             spheresJson = task.Result;
 

@@ -29,16 +29,16 @@ namespace SolidServer.util
         private const string IP_ADDRESS = "127.0.0.1";
 
 
-        public static async Task<string> ConnectToUnionService(string jsonData)
+        public static async Task<string> ConnectToClusterizationService(string jsonData, string url= "http://127.0.0.1:5000/dbscan")
         {
             HttpClient httpClient = new HttpClient();
 
             httpClient.Timeout = TimeSpan.FromMinutes(40);
-            HttpResponseMessage response = await httpClient.PostAsync("http://127.0.0.1:5000/union",
+            HttpResponseMessage response = await httpClient.PostAsync(url,
                  new StringContent(jsonData, Encoding.UTF8, "application/json")); 
             string responce_json = await response.Content.ReadAsStringAsync();
             
-            Console.WriteLine("Данные от UnionService получены!");
+            Console.WriteLine("Данные по кластеризации получены!");
             return responce_json;
         }
         public static void RunServer()
