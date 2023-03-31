@@ -17,17 +17,25 @@ class DensityBasedSpatialClustering(Resource):
             nodes_df["cluster"] = af.labels_
 
             areas_to_send = []
-            squeeze_coefficient = 0.8
+            min_border_squeeze_coefficient = 0.01
+            max_border_squeeze_coefficient = 0.01
             for i in range(max(af.labels_) + 1):
                 area = {}
                 df = nodes_df[nodes_df["cluster"] == i]
-                area["minX"] = min(df["x"].values)
-                area["minY"] = min(df["y"].values)
-                area["minZ"] = min(df["z"].values)
-                area["maxX"] = max(df["x"].values) * squeeze_coefficient
-                area["maxY"] = max(df["y"].values) * squeeze_coefficient
-                area["maxZ"] = max(df["z"].values) * squeeze_coefficient
-                areas_to_send.append(area)
+                area["minX"] = min(df["x"].values) + min_border_squeeze_coefficient*abs(min(df["x"].values))
+                area["maxX"] = max(df["x"].values) - max_border_squeeze_coefficient*abs(max(df["x"].values))
+                area["minY"] = min(df["y"].values) + min_border_squeeze_coefficient*abs(min(df["y"].values))
+                area["maxY"] = max(df["y"].values) - max_border_squeeze_coefficient*abs(max(df["y"].values))
+                area["minZ"] = min(df["z"].values) + min_border_squeeze_coefficient*abs(min(df["z"].values))
+                area["maxZ"] = max(df["z"].values) - max_border_squeeze_coefficient*abs(max(df["z"].values))
+
+                x_delta = abs(area["maxX"] - area["minX"])
+                y_delta = abs(area["maxY"] - area["minY"])
+                z_delta = abs(area["maxY"] - area["minY"])
+
+                threshold = 0.5
+                if x_delta > threshold and y_delta > threshold and z_delta > threshold:
+                    areas_to_send.append(area)
 
             print("Кластеризация выполнена, области отправлены!")
             return areas_to_send
