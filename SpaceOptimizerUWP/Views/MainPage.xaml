@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="SpaceOptimizerUWP.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:ui="using:Microsoft.Toolkit.Uwp.UI"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    
+    mc:Ignorable="d">
+    <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
+        <Grid >
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20, 100, 20, 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <ParallaxView
+                        Grid.Row="0"
+                        x:Name="headerImageView"
+                       >
+
+                    <controls:ImageEx
+                        
+                        CornerRadius="20"
+                                HorizontalAlignment="Center"
+                                Source="/Assets/introwallpaper.jpg"
+                                Stretch="Fill" />
+
+                </ParallaxView>
+
+                <Grid Grid.Row="0" HorizontalAlignment="Stretch"  Margin="20" VerticalAlignment="Center" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="/Assets/SPace.gif" />
+                    <TextBlock Grid.Column ="1"  HorizontalAlignment="Right" VerticalAlignment="Center" x:Uid="Main_Introduction" TextWrapping="Wrap" FontSize="50" Foreground="#FFFBFBFB" />
+                </Grid>
+                <StackPanel Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Button Content="Открыть SW" Click="Button_Click"/>
+                    <Button Content="Открыть документ SW" Click="Button_Click_2"/>
+                    <Button Content="Закрыть SW" Click="Button_Click_1"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

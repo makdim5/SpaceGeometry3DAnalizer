@@ -116,49 +116,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="exceptions\NotSWAppFound.cs" />
-    <Compile Include="exceptions\NotSWDocumentFoundException.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="SolidWorksPackage\SolidWorksApplicationPackage\AppWorkExeptions.cs" />
+    <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SolidWorksPackage\Cells\Parallelepiped.cs" />
-    <Compile Include="SolidWorksPackage\Cells\PyramidFourVertexArea.cs" />
-    <Compile Include="SolidWorksPackage\Cells\Sphere.cs" />
-    <Compile Include="SolidWorksPackage\DbScanResearchManger.cs" />
-    <Compile Include="SolidWorksPackage\NodeWork\Element.cs" />
-    <Compile Include="SolidWorksPackage\NodeWork\ElementArea.cs" />
-    <Compile Include="SolidWorksPackage\NodeWork\ElementAreaWorker.cs" />
-    <Compile Include="SolidWorksPackage\NodeWork\IParameters.cs" />
-    <Compile Include="SolidWorksPackage\NodeWork\Node.cs" />
-    <Compile Include="SolidWorksPackage\NodeWork\NodeElementAreaWorker.cs" />
-    <Compile Include="SolidWorksPackage\NodeWork\StaticStudyResults.cs" />
-    <Compile Include="SolidWorksPackage\NodeWork\StrainNode.cs" />
-    <Compile Include="SolidWorksPackage\NodeWork\StressNode.cs" />
-    <Compile Include="SolidWorksPackage\Simulation\FeatureFace\FacePlane.cs" />
-    <Compile Include="SolidWorksPackage\Simulation\FeatureFace\FaceType.cs" />
-    <Compile Include="SolidWorksPackage\Simulation\FeatureFace\FeatureFace.cs" />
-    <Compile Include="SolidWorksPackage\Simulation\FeatureFace\FeatureFaceManager.cs" />
-    <Compile Include="SolidWorksPackage\Simulation\FeatureFace\SimplePlane.cs" />
-    <Compile Include="SolidWorksPackage\Simulation\MaterialWorker\Material.cs" />
-    <Compile Include="SolidWorksPackage\Simulation\MaterialWorker\MaterialManager.cs" />
-    <Compile Include="SolidWorksPackage\Simulation\MeshWorker\Mesh.cs" />
-    <Compile Include="SolidWorksPackage\Simulation\Study\StaticStudy.cs" />
-    <Compile Include="SolidWorksPackage\Simulation\Study\StaticStudyRecord.cs" />
-    <Compile Include="SolidWorksPackage\Simulation\Study\StudyManager.cs" />
-    <Compile Include="SolidWorksPackage\SolidWorksAppWorker.cs" />
-    <Compile Include="SolidWorksPackage\SolidWorksDrawer.cs" />
-    <Compile Include="SolidWorksPackage\SolidWorksResearchManager.cs" />
-    <Compile Include="SolidWorksPackage\UnionClusterResearchManager.cs" />
-    <Compile Include="util\ConnectionWorker.cs" />
-    <Compile Include="util\ExcelWorker.cs" />
-    <Compile Include="util\FormChart.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="util\FormChart.Designer.cs">
-      <DependentUpon>FormChart.cs</DependentUpon>
-    </Compile>
-    <Compile Include="util\JsonWorker.cs" />
-    <Compile Include="util\mathutils\MathObjects.cs" />
-    <Compile Include="util\ROTManager.cs" />
+    <Compile Include="SolidWorksPackage\DrawPackage\CellForms\Parallelepiped.cs" />
+    <Compile Include="SolidWorksPackage\DrawPackage\CellForms\PyramidFourVertexArea.cs" />
+    <Compile Include="SolidWorksPackage\DrawPackage\CellForms\Sphere.cs" />
+    <Compile Include="Researches\DbScanResearchManger.cs" />
+    <Compile Include="SolidWorksPackage\ResearchPackage\ResearchStructures\Element\Element.cs" />
+    <Compile Include="AreaWorkPackage\ElementArea.cs" />
+    <Compile Include="AreaWorkPackage\ElementAreaWorker.cs" />
+    <Compile Include="SolidWorksPackage\ResearchPackage\ResearchStructures\Node\IParameters.cs" />
+    <Compile Include="SolidWorksPackage\ResearchPackage\ResearchStructures\Node\Node.cs" />
+    <Compile Include="AreaWorkPackage\NodeElementAreaWorker.cs" />
+    <Compile Include="SolidWorksPackage\ResearchPackage\Study\StaticStudyResults.cs" />
+    <Compile Include="SolidWorksPackage\ResearchPackage\ResearchStructures\Node\StrainNodeParameters.cs" />
+    <Compile Include="SolidWorksPackage\ResearchPackage\ResearchStructures\Node\StressNodeParameters.cs" />
+    <Compile Include="SolidWorksPackage\ResearchPackage\FeatureFace\FacePlane.cs" />
+    <Compile Include="SolidWorksPackage\ResearchPackage\FeatureFace\FaceType.cs" />
+    <Compile Include="SolidWorksPackage\ResearchPackage\FeatureFace\FeatureFace.cs" />
+    <Compile Include="SolidWorksPackage\ResearchPackage\FeatureFace\FeatureFaceManager.cs" />
+    <Compile Include="SolidWorksPackage\ResearchPackage\FeatureFace\SimplePlane.cs" />
+    <Compile Include="SolidWorksPackage\ResearchPackage\MaterialWorker\Material.cs" />
+    <Compile Include="SolidWorksPackage\ResearchPackage\MaterialWorker\MaterialManager.cs" />
+    <Compile Include="SolidWorksPackage\ResearchPackage\MeshWorker\Mesh.cs" />
+    <Compile Include="SolidWorksPackage\ResearchPackage\Study\StaticStudy.cs" />
+    <Compile Include="SolidWorksPackage\ResearchPackage\Study\StaticStudyRecord.cs" />
+    <Compile Include="SolidWorksPackage\ResearchPackage\Study\StudyManager.cs" />
+    <Compile Include="SolidWorksPackage\SolidWorksApplicationPackage\SolidWorksAppWorker.cs" />
+    <Compile Include="SolidWorksPackage\DrawPackage\SolidWorksDrawer.cs" />
+    <Compile Include="Researches\SolidWorksResearchManager.cs" />
+    <Compile Include="Researches\UnionClusterResearchManager.cs" />
+    <Compile Include="Utilites\ConnectionWorker.cs" />
+    <Compile Include="Utilites\DataFormatUtils\ExcelWorker.cs" />
+    <Compile Include="Utilites\DataFormatUtils\JsonWorker.cs" />
+    <Compile Include="Utilites\MathUtils\MathObjects.cs" />
+    <Compile Include="SolidWorksPackage\SolidWorksApplicationPackage\ROTManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -174,11 +167,6 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="util\FormChart.resx">
-      <DependentUpon>FormChart.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

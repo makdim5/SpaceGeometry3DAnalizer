@@ -24,5 +24,6 @@ for i in range(max(af.labels_) + 1):
     df = nodes_df[nodes_df["cluster"] == i]
     ax.scatter(df["x"].values, df["y"].values, df["z"].values, c=generate_color())
 
+nodes_df.to_csv("nodes.csv")
 
 plt.show()
