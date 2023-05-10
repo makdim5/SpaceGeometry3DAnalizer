@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SolidServer.SolidWorksPackage.ResearchPackage;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -35,12 +36,25 @@ namespace SolidServer.Utitlites
                         new Dictionary<string, string>();
                 }
             }
-            catch (FileNotFoundException ex)
+            catch (FileNotFoundException)
             {
                 File.Create(SETTINGS_PATH).Close();
                 return new Dictionary<string, string>();
             }
 
+        }
+
+        public static string SerializeNodesToPointsInJSON(IEnumerable<Node> nodes)
+        {
+            List<Point3D> pointsJson = new();
+
+            foreach (var node in nodes)
+            {
+                pointsJson.Add(node.point);
+
+            }
+
+            return JsonConvert.SerializeObject(pointsJson);
         }
 
     }
