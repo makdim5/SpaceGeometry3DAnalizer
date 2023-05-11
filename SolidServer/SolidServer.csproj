@@ -113,6 +113,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AreaWorkPackage\NodeArea.cs" />
     <Compile Include="Researches\BaseResearchManager.cs" />
     <Compile Include="SolidWorksPackage\SolidWorksApplicationPackage\AppWorkExeptions.cs" />
     <Compile Include="Main.cs" />
@@ -148,7 +149,7 @@
     <Compile Include="Utilites\ConnectionWorker.cs" />
     <Compile Include="Utilites\DataFormatUtils\ExcelWorker.cs" />
     <Compile Include="Utilites\DataFormatUtils\JsonWorker.cs" />
-    <Compile Include="Utilites\MathUtils\MathObjects.cs" />
+    <Compile Include="Utilites\MathObjects.cs" />
     <Compile Include="SolidWorksPackage\SolidWorksApplicationPackage\ROTManager.cs" />
   </ItemGroup>
   <ItemGroup>

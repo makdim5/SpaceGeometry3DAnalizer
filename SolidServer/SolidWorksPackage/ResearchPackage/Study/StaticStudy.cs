@@ -26,8 +26,7 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
 
         private static swsLinearUnit_e LINEAR_UNIT = swsLinearUnit_e.swsLinearUnitMillimeters;
 
-        public string MaterialName => solidManager.GetComponentAt(0, out int errorCode1).GetSolidBodyAt(0, out int errCode2).GetSolidBodyMaterial().MaterialName;
-
+        public string MaterialName;
         public StaticStudy() { }
 
         
@@ -53,6 +52,9 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
             int errorMesh = 0;
             int errorFix = 0;
             int errorLoad = 0;
+
+            MaterialName = solidManager.GetComponentAt(0, out int errorCode1).GetSolidBodyAt(0, out int errCode2).GetSolidBodyMaterial().MaterialName;
+
 
             errorMesh = CreateMesh(record.mesh);
             errorFix = FixFaces(record.fixFaces.ToArray());
@@ -104,6 +106,7 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
             this.restraintsManager = study.LoadsAndRestraintsManager;
             this.solidBodies = GetSolidBodies(this.solidManager);
             mesh = study.Mesh;
+            MaterialName = solidManager.GetComponentAt(0, out int errorCode1).GetSolidBodyAt(0, out int errCode2).GetSolidBodyMaterial().MaterialName;
         }
 
         public string GetMaterialName()

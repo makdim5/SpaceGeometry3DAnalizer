@@ -65,5 +65,27 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
                 }
             }
         }
+
+        public StaticStudyRecord CreateSimpleRecord(string materialName)
+        {
+            // Задание сетки и материала
+            Material material = MaterialManager.GetMaterials()[materialName];
+            var mesh = new Mesh();
+
+            FeatureFaceManager faceManager = new FeatureFaceManager(
+                SolidWorksAppWorker.DefineActiveSolidWorksDocument());
+
+            // Определение фиксированных граней
+            faceManager.DefineFace("Грань 1", FaceType.Fixed);
+            var fixFaces = faceManager.GetFacesPerType(FaceType.Fixed);
+
+            // Определение нагруженных граней с силой в 100 Н
+            faceManager.DefineFace("Грань 2", FaceType.ForceLoad, 100);
+            var loadFaces = faceManager.GetFacesPerType(FaceType.ForceLoad);
+
+
+            return new StaticStudyRecord(0, material, fixFaces, loadFaces, mesh);
+
+        }
     }
 }

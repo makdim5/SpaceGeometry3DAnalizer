@@ -108,22 +108,22 @@ namespace SolidServer.Utitlites
                         Console.WriteLine("SolidWorks закрыт!");
                         break;
                     }
-                case DETERMINE_RESEARCH_RESULTS:
-                    {
-                        if (manager != null)
-                        {
-                            SendData(manager.GetCompletedStudyResults());
-                        }
-                        break;
-                    }
-                case DETERMINE_CONDITIONS:
-                    {
-                        if (manager != null)
-                        {
-                            SendData(manager.DefineCriticalValues());
-                        }
-                        break;
-                    }
+                //case DETERMINE_RESEARCH_RESULTS:
+                //    {
+                //        if (manager != null)
+                //        {
+                //            SendData(manager.GetCompletedStudyResults());
+                //        }
+                //        break;
+                //    }
+                //case DETERMINE_CONDITIONS:
+                //    {
+                //        if (manager != null)
+                //        {
+                //            SendData(manager.DefineCriticalValues());
+                //        }
+                //        break;
+                //    }
                 case DETERMINE_AREAS:
                     {
                         if (manager != null)

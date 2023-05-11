@@ -13,168 +13,124 @@ namespace SolidServer.Researches
         protected ModelDoc2 activeDoc;
         protected Dictionary<int, List<Feature>> features;
         protected List<FacePlane> facePlanes;
+        protected IEnumerable<Node> crashNodes;
         protected StudyManager studyManager;
         protected StaticStudy study;
         protected StaticStudyResults studyResults;
         protected string param = "VON";
-        protected string material = "AISI 1035 Steel (SS)";// Сталь - Steel
         protected double minvalue, maxvalue, criticalValue;
         protected List<ElementArea> areas;
-        public IEnumerable<ElementArea> cutElementAreas;
-
+        protected HashSet<Node> wholeNodes;
+        public IEnumerable<object> cutAreas;
         public BaseResearchManager()
         {
+            cutAreas = new List<object>();
+            crashNodes = new List<Node>();
             facePlanes = new List<FacePlane>();
             areas = new List<ElementArea>();
-        }
-
-        public void DefineActiveDoc()
-        {
-            SolidWorksAppWorker.DefineSolidWorksApp();
             activeDoc = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
-
-
-            foreach (var face in GetFaces(activeDoc))
-            {
-                var plane = new FacePlane(face, activeDoc);
-                if (plane.isPlane)
-                    facePlanes.Add(plane);
-            }
-
-            Console.WriteLine("Приложение SW и документ определены!\n");
+            studyManager = new StudyManager();
+            Console.WriteLine("Приложение SolidWorks и документ определены!\n");
         }
 
+        public void RunInLoop()
+        {
+            try
+            {
+                GetCompletedStudyResults();
+                DefineCriticalNodes();
+                DetermineCutAreas();
+                while (crashNodes.Count() == 0)
+                {
+                    CutAreas();
+                    RunStudy();
+                    GetCompletedStudyResults();
+                    DefineCriticalNodes();
+                    DetermineCutAreas();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public Dictionary<string, object> GetCompletedStudyResults()
+        {
+            study = studyManager.GetExistingCompletedStudy();
+            studyResults = study.GetResult();
+            string msg = ("Загружено активное исследование!" +
+            $"\nРезультаты исследования: кол-во элементов - {studyResults.meshElements.Count()}, узлов - {studyResults.nodes.Count()}");
+
+            Console.WriteLine(msg);
+            return new Dictionary<string, object>() { { "msg", msg } };
+
+        }
+
+        public Dictionary<string, object> DefineCriticalNodes()
+        {
+            var stressValues = studyResults.DefineMinMaxStressValues(param);
+            var materialInfo = MaterialManager.GetMaterials()[study.MaterialName];
+            minvalue = stressValues["min"];
+            criticalValue = 0.2 * materialInfo.physicalProperties["SIGXT"];
+            maxvalue = stressValues["max"] * 0.1;
+
+            string msg = ($"\nМинимальное напряжение {param} =  {minvalue}" +
+                $"\nмаксимальное напряжение по {param} {stressValues["max"]}" +
+                $"\nпредел прочности при растяжении = " +
+                $"{materialInfo.physicalProperties["SIGXT"]}" +
+                $"\nкритическое > максимальное по {param} : {criticalValue > stressValues["max"]}" +
+                $"\nкритическое значение:{criticalValue}\n"
+                );
+            if (studyResults.DefineMinMaxStressValues(param)["max"] >= criticalValue)
+            {
+                crashNodes = studyResults.DefineNodesPerStressParam(param, criticalValue, studyResults.DefineMinMaxStressValues(param)["max"]);
+                msg += ($"Были найдены узлы с превышенной нагрузкой в количестве : {crashNodes.Count()}");
+
+            }
+            Console.WriteLine(msg);
+            return new Dictionary<string, object>() { { "msg", msg } };
+        }
+
+        public Dictionary<string, object> DetermineCutAreas()
+        {
+            if (crashNodes.Count() > 0)
+            {
+                return new Dictionary<string, object>();
+            }
+            Console.WriteLine("Начало поиска областей");
+            facePlanes = FeatureFaceManager.DefineFacePlanes(activeDoc);
+            //var cutNodes = ElementAreaWorker.ExceptInsideNodes(
+            // studyResults.DefineNodesPerStressParam(param, minvalue, maxvalue), areas);
+            wholeNodes = new HashSet<Node>(studyResults.DefineNodesPerStressParam(param, minvalue, maxvalue));
+            wholeNodes.ExceptWith(ElementAreaWorker.ExceptFaceClosestNodes(wholeNodes, facePlanes));
+            string msg = $"Количество узлов для выявления областей" +
+                $": {wholeNodes.Count()}\n";
+
+            var result = DefineAreas();
+
+            Console.WriteLine(msg + $"Окончание поиска областей. Их общее количество - {result["cutElementAreasCount"]}");
+            return result;
+
+        }
+        public abstract Dictionary<string, object> DefineAreas();
+        public abstract void CutArea(int index);
+        public void CutAreas()
+        {
+            Console.WriteLine("Начало выреза областей ...");
+            for (int i = 0; i < cutAreas.Count(); i++)
+            {
+                CutArea(i);
+            }
+            cutAreas = new List<ElementArea>();
+            Console.WriteLine("Конец выреза областей");
+
+        }
         public void RunStudy()
         {
             study.CreateDefaultMesh();
             study.RunStudy();
         }
 
-        public string GetCompletedStudyResults()
-        {
-            studyManager = new StudyManager();
-            study = studyManager.GetExistingCompletedStudy();
-            studyResults = study.GetResult();
-            string msg = ("Загружено активное исследование!" +
-            $"\nРезультаты исследования: кол-во элементов: {studyResults.meshElements.Count()}, узлов: {studyResults.nodes.Count()}");
-
-            Console.WriteLine(msg);
-            return msg;
-
-        }
-
-        public string DefineCriticalValues()
-        {
-
-            var stressValues = studyResults.DefineMinMaxStressValues(param);
-            minvalue = stressValues["min"];
-            criticalValue = 0.2 * MaterialManager.GetMaterials()[material].physicalProperties["SIGXT"];
-            maxvalue = stressValues["max"] * 0.1;
-
-            string msg = ($"\nМинимальное напряжение VON =  {minvalue}" +
-                $"\nмаксимальное напряжение по VON {stressValues["max"]}" +
-                $"\nпредел прочности при растяжении = " +
-                $"{MaterialManager.GetMaterials()[material].physicalProperties["SIGXT"]}" +
-                $"\nкритическое > максимальное по VON : {criticalValue > stressValues["max"]}" +
-                $"\nкритическое значение:{criticalValue}"
-                );
-
-            Console.WriteLine(msg);
-            return msg;
-
-        }
-
-        public abstract void DefineAreas();
-
-        public abstract void CutAreas();
-
-        //public void DoTest()
-        //{
-        //    Console.WriteLine("The number of processors " +
-        //"on this computer is {0}.",
-        //System.Environment.ProcessorCount);
-        //    SolidWorksAppWorker.DefineSolidWorksApp();
-        //    var activeDoc = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
-
-        //    Console.WriteLine("TEST: Приложение SW и документ определены!\n");
-        //    var faces = new List<FacePlane>();
-
-        //    foreach (var face in GetFaces(activeDoc))
-        //    {
-        //        var plane = new FacePlane(face, activeDoc);
-        //        if (plane.isPlane)
-        //        {
-        //            faces.Add(plane);
-
-        //            double[] param = face.MaterialPropertyValues;
-
-        //            if (param == null)
-        //            {
-        //                param = new double[9] {
-        //            0, 0, 0,
-        //            1, 1, 0.5,
-        //            0.4, 0, 0
-        //        };
-        //            }
-
-        //            param[0] = 131 / 255f;
-        //            param[1] = 231 / 255f;
-        //            param[2] = 111 / 255f;
-
-        //            face.MaterialPropertyValues = param;
-        //        }
-
-        //    }
-
-        //    Console.WriteLine("The End!");
-
-        //}
-
-        public HashSet<Face> GetFaces(ModelDoc2 swDoc)
-        {
-
-            HashSet<object> result = new HashSet<object>();
-
-            object[] features = swDoc.FeatureManager.GetFeatures(true) as object[];
-
-            foreach (Feature feature in features)
-            {
-
-                object[] faces = (object[])feature.GetFaces();
-
-                if (faces != null)
-                {
-                    foreach (Face face in faces)
-                    {
-                        result.Add(face);
-                    }
-
-                }
-            }
-
-            return new HashSet<Face>(result.Cast<Face>());
-        }
-
-        public StaticStudyRecord CreateSimpleRecord()
-        {
-            // Задание сетки и материала
-            Material material = MaterialManager.GetMaterials()["Copper"];
-            var mesh = new Mesh();
-
-            FeatureFaceManager faceManager = new FeatureFaceManager(
-                SolidWorksAppWorker.DefineActiveSolidWorksDocument());
-
-            // Определение фиксированных граней
-            faceManager.DefineFace("Грань 1", FaceType.Fixed);
-            var fixFaces = faceManager.GetFacesPerType(FaceType.Fixed);
-
-            // Определение нагруженных граней с силой в 100 Н
-            faceManager.DefineFace("Грань 2", FaceType.ForceLoad, 100);
-            var loadFaces = faceManager.GetFacesPerType(FaceType.ForceLoad);
-
-
-            return new StaticStudyRecord(0, material, fixFaces, loadFaces, mesh);
-
-        }
     }
 }

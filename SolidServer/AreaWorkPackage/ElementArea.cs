@@ -123,8 +123,6 @@ namespace SolidServer.AreaWorkPackage
 
         }
 
-
-
         public double DefineAreaRadius()
         {
             double maxRadius = 0, distance;

@@ -62,11 +62,8 @@ namespace SolidServer.Utitlites
         }
     }
 
-
-
     public class MathHelper
     {
-
         public static List<Point3D> GetLessCoordinatesOfPyramid(
             IEnumerable<Point3D> vertexes, Point3D center, double lessCoefficient)
         {

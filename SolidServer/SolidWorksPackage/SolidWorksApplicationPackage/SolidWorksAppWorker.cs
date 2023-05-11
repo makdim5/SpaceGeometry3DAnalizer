@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
-using SolidServer.Utitlites;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 
@@ -17,7 +16,6 @@ namespace SolidServer.SolidWorksApplicationPackage
 
         public static void DefineSolidWorksApp()
         {
-            
             try
             {
                 app = Marshal.GetActiveObject("SldWorks.Application") as SldWorks;
@@ -25,7 +23,6 @@ namespace SolidServer.SolidWorksApplicationPackage
             {
                 throw new NotSWAppFoundException();
             }
-
         }
 
         public static void OpenSolidWorksApp()
@@ -37,10 +34,7 @@ namespace SolidServer.SolidWorksApplicationPackage
                 app.Visible = true;
 
                 app.LoadAddIn(app.GetExecutablePath() + @"\Simulation\cosworks.dll");
-
-            
             }
-
         }
 
         public static void CloseSolidWorksApp()
@@ -54,22 +48,18 @@ namespace SolidServer.SolidWorksApplicationPackage
             {
                 proc.Kill();
             }
-
-
         }
-
 
         public static ModelDoc2 DefineActiveSolidWorksDocument()
         {
             if (app == null)
             {
-                throw new NotSWAppFoundException();
+                DefineSolidWorksApp();
             }
             ModelDoc2 swDoc = (ModelDoc2)app.ActiveDoc;
             if (swDoc == null)
             {
                 throw new NotSWDocumentFoundException();
-
             }
 
             int pref_toggle = (int)swUserPreferenceToggle_e.swInputDimValOnCreate;
@@ -78,9 +68,6 @@ namespace SolidServer.SolidWorksApplicationPackage
 
             return swDoc;
         }
-
-
-
         public static ModelDoc2 OpenDocument(string path)
         {
             if (app == null)
@@ -101,7 +88,6 @@ namespace SolidServer.SolidWorksApplicationPackage
                 ref fileWarning
             );
 
-
             if (swDoc != null)
             {
                 //Set the working directory to the document directory
@@ -117,8 +103,6 @@ namespace SolidServer.SolidWorksApplicationPackage
             return app.NewPart();
         }
 
-
-        //Получить путь к файлам с материалами
         public static string[] GetPathsMaterialDataBase()
         {
             if (app == null)
@@ -139,7 +123,6 @@ namespace SolidServer.SolidWorksApplicationPackage
             
             int swVersion = Convert.ToInt32(app.RevisionNumber().Substring(0, 2));
 
-            
             dynamic COSMOSObject = app.GetAddInObject($"SldWorks.Simulation.{swVersion - 15}");
 
             return COSMOSObject == null ? null : COSMOSObject.CosmosWorks;

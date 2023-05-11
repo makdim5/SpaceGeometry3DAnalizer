@@ -10,6 +10,28 @@ namespace SolidServer.SolidWorksPackage
 {
     internal class SolidWorksDrawer
     {
+        public static void ColorFaces(HashSet<Face> faces, int r, int g, int b)
+        {
+            foreach (var face in faces)
+            {
+                double[] param = face.MaterialPropertyValues;
+
+                if (param == null)
+                {
+                    param = new double[9] {
+                    0, 0, 0,
+                    1, 1, 0.5,
+                    0.4, 0, 0
+                };
+                }
+
+                param[0] = r / 255f;
+                param[1] = g / 255f;
+                param[2] = b / 255f;
+
+                face.MaterialPropertyValues = param;
+            }
+        }
         public static void DrawNodes(ModelDoc2 doc, IEnumerable<Node> nodes)
         {
             double unit = 1000;
@@ -20,13 +42,13 @@ namespace SolidServer.SolidWorksPackage
             {
 
                 doc.SketchManager.CreatePoint(node.point.x / unit, node.point.y / unit, node.point.z / unit);
-               
+
             }
 
             doc.SketchManager.Insert3DSketch(false);
             doc.ClearSelection();
         }
-        public static Feature DrawPyramid(ModelDoc2 doc, PyramidFourVertexArea area, int mode=1)
+        public static Feature DrawPyramid(ModelDoc2 doc, PyramidFourVertexArea area, int mode = 1)
         {
             double unit = 1000;
             doc.ClearSelection();
@@ -85,7 +107,7 @@ namespace SolidServer.SolidWorksPackage
                     cut = doc.FeatureManager.InsertNetBlend2(0, 2, 0, false, 0.0001, true, true, true, true, false,
                         -1, -1, false, -1, false, false, -1, false, -1, false, false);
                 }
-                
+
 
             }
             doc.ClearSelection();
@@ -172,7 +194,7 @@ namespace SolidServer.SolidWorksPackage
             doc.ClearSelection();
         }
 
-        public static void CutSphiere (ModelDoc2 doc, Sphere sphere)
+        public static void CutSphiere(ModelDoc2 doc, Sphere sphere)
         {
             CutSphiere(doc, sphere.center.x, sphere.center.y, sphere.center.z, sphere.radious);
         }
@@ -298,7 +320,7 @@ namespace SolidServer.SolidWorksPackage
             doc.SketchManager.Insert3DSketch(true);
             var sketchPoint1 = doc.SketchManager.CreatePoint(x1 / unit, y1 / unit, z1 / unit);
 
-            var sketchPoint2 = doc.SketchManager.CreatePoint((x1 + 10 )/ unit, y2 / unit, z1 / unit);
+            var sketchPoint2 = doc.SketchManager.CreatePoint((x1 + 10) / unit, y2 / unit, z1 / unit);
             var sketchPoint3 = doc.SketchManager.CreatePoint(x1 / unit, (y1 + 10) / unit, z1 / unit);
 
             doc.SketchManager.Insert3DSketch(false);
@@ -317,7 +339,7 @@ namespace SolidServer.SolidWorksPackage
                 x2 / unit, y2 / unit, z1 / unit);
 
 
-            var cut  = doc.FeatureManager.FeatureCut4(true, false, false, 0, 0, (z2-z1)/unit, (z2 - z1) / unit, false, false, false, false, 1.74532925199433E-02, 1.74532925199433E-02, false, false, false,
+            var cut = doc.FeatureManager.FeatureCut4(true, false, false, 0, 0, (z2 - z1) / unit, (z2 - z1) / unit, false, false, false, false, 1.74532925199433E-02, 1.74532925199433E-02, false, false, false,
                 false, false, true, true, true, true, false, 0, 0, false, false);
 
             doc.InsertSketch2(false);
@@ -327,14 +349,14 @@ namespace SolidServer.SolidWorksPackage
         }
 
 
-        public static void UndoFeaturesCuts (ModelDoc2 doc, List<Feature> features)
+        public static void UndoFeaturesCuts(ModelDoc2 doc, List<Feature> features)
         {
-            foreach(var item in features)
+            foreach (var item in features)
             {
                 doc.Extension.SelectByID2(item.Name, "BODYFEATURE", 0, 0, 0, false, 0, null, 0);
                 doc.EditDelete();
             }
-            
+
         }
 
     }

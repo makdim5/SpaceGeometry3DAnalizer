@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using System;
 using SolidServer.AreaWorkPackage;
+using System.Collections.Generic;
+using SolidServer.SolidWorksPackage.ResearchPackage;
 
 // Before start open SolidWorks and <3d Part document>
 // with "Simulation" AddIn (NOT "Flow Simulation")
@@ -9,31 +11,41 @@ namespace SolidServer.Researches
 { 
     public class SolidWorksResearchManager : BaseResearchManager
     {
-     
-        public override void DefineAreas()
+        public override Dictionary<string, object> DefineAreas()
         {
-            Console.WriteLine("Начало поиска областей");
-            cutElementAreas = studyResults.DetermineCutAreas(param, minvalue, maxvalue,
-                criticalValue, areas, activeDoc, facePlanes);
-            Console.WriteLine($"Окончание поиска областей. Их общее количество - {cutElementAreas.Count()}");
+            var elems = studyResults.GetElements(wholeNodes) as HashSet<Element>;
 
-        }
+            var newAreas = ElementAreaWorker.DefineElementAreas(elems);
 
-        public override void CutAreas()
-        {
-            Console.WriteLine("Начало выреза областей ...");
-            foreach (var area in cutElementAreas)
+            List<ElementArea> general = new();
+
+            foreach (var area in newAreas)
             {
-
-                areas.Add(area);
-                ElementAreaWorker.DrawElementArea(activeDoc, area);
-                Console.WriteLine("Конец выреза промежуточной области");
-
+                HashSet<Node> wholeNodes = area.GetNodes();
+                wholeNodes.ExceptWith(ElementAreaWorker.ExceptFaceClosestNodes(wholeNodes, facePlanes));
+                var newElems = studyResults.GetElements(wholeNodes) as HashSet<Element>;
+                foreach (var a in ElementAreaWorker.DefineElementAreas(newElems))
+                {
+                    var elemsCats = ElementAreaWorker.MakeAreaElementsCategories(a);
+                    var union = elemsCats["4n"];
+                    union.UnionWith(elemsCats["3n"]);
+                    union.UnionWith(elemsCats["2n"]);
+                    if (union.Count > 0)
+                    {
+                        var newElementArea = (new ElementArea(union));
+                        Console.WriteLine($"Формирование новой области с количеством элементов  - {newElementArea.elements.Count}");
+                        general.Add(newElementArea);
+                    }
+                }
             }
-            Console.WriteLine("Конец выреза областей");
+            cutAreas = general;
+            return new Dictionary<string, object>() { { "cutElementAreasCount", cutAreas.Count() } };
         }
 
-      
-
+        public override void CutArea(int index)
+        {
+            ElementAreaWorker.DrawElementArea(activeDoc, cutAreas.ElementAt(index) as ElementArea);
+            Console.WriteLine($"Конец выреза промежуточной области - {index}");
+        }
     }
 }

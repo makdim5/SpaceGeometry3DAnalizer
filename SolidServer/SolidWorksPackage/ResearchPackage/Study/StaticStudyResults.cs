@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SolidServer.AreaWorkPackage;
 using SolidServer.Utitlites;
 using SolidWorks.Interop.cosworks;
-using SolidWorks.Interop.sldworks;
 
 namespace SolidServer.SolidWorksPackage.ResearchPackage
 {
@@ -27,7 +25,6 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
 
         public StaticStudyResults(ICWStudy study)
         {
-
             this.cWStudy = study;
             this.nodes = GetNodes(
                 study.Mesh.GetNodes(),
@@ -35,10 +32,7 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
                 GetStrain(study.Results));
 
             this.meshElements = GetMeshElements(this.nodes, study.Mesh.GetElements());
-
         }
-
-
         public IEnumerable<Element> GetElements(HashSet<Node> nodes)
         {
 
@@ -54,19 +48,6 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
                     findArea.Add(elem);
                 }
             }
-
-            //foreach (Node node in nodes)
-            //{
-            //    IEnumerable<Element> area =
-            //        meshElements.Where(
-            //            (element) =>
-            //            {
-            //                return element.Contains(node);
-            //            }
-            //        );
-
-            //    findArea.UnionWith(area);
-            //}
 
             return findArea;
         }
@@ -254,60 +235,6 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
                    where node.stress.GetParam(param) > startBorder && node.stress.GetParam(param) < endBorder
                    select node;
         }
-
-        public IEnumerable<ElementArea> DetermineCutAreas(string param, double minvalue, double maxvalue, double criticalvalue,
-            List<ElementArea> areas, ModelDoc2 doc, List<FacePlane> facePlanes)
-        {
-
-            var crashNodes = DefineNodesPerStressParam(param, criticalvalue, DefineMinMaxStressValues(param)["max"]);
-
-            if (DefineMinMaxStressValues(param)["max"] >= criticalvalue)
-            {
-                Console.WriteLine($" Были найдены узлы с превышенной нагрузкой в количестве : " +
-                    $"{crashNodes.Count()}");
-                return new List<ElementArea>();
-            }
-
-            var findNodes = DefineNodesPerStressParam(param, minvalue, maxvalue);
-            Console.WriteLine($" Количество найденных узлов: {findNodes.Count()}");
-
-            HashSet<Node> cutNodes = ElementAreaWorker.ExceptInsideNodes(findNodes, areas);
-
-            Console.WriteLine($" Количество отсортированных узлов: {cutNodes.Count()}");
-
-
-            var elems = GetElements(cutNodes) as HashSet<Element>;
-
-            var newAreas = ElementAreaWorker.DefineElementAreas(elems);
-
-            List<ElementArea> general = new();
-
-            foreach (var area in newAreas)
-            {
-                HashSet<Node> wholeNodes = area.GetNodes();
-                wholeNodes.ExceptWith(ElementAreaWorker.ExceptFaceClosestNodes(wholeNodes, facePlanes));
-                var newElems = GetElements(wholeNodes) as HashSet<Element>;
-                foreach (var a in ElementAreaWorker.DefineElementAreas(newElems))
-                {
-                    var elemsCats = ElementAreaWorker.MakeAreaElementsCategories(a);
-                    var union = elemsCats["4n"];
-                    union.UnionWith(elemsCats["3n"]);
-                    union.UnionWith(elemsCats["2n"]);
-                    if (union.Count > 0 )
-                    {
-                        var newElementArea = (new ElementArea(union));
-                        Console.WriteLine($"Формирование новой области с количеством элементов  - {newElementArea.elements.Count}");
-                        general.Add(newElementArea);
-                    }
-                }
-            }
-
-            return general;
-
-        }
-
-
-
         public override string ToString()
         {
             string result = String.Format("StaticStudy Nodes:{0} Elements:{1}",
