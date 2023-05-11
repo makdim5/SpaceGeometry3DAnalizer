@@ -5,9 +5,11 @@ using System.Linq;
 
 namespace SolidServer.AreaWorkPackage
 {
-    public class ElementArea
+    public class Area
     {
         public HashSet<Element> elements;
+
+        public HashSet<Node> nodes;
 
         public Point3D areaCenter;
 
@@ -15,12 +17,19 @@ namespace SolidServer.AreaWorkPackage
 
         public Dictionary<string, double> dimensions;
 
-        public ElementArea()
+        public Area()
         {
            
         }
 
-        public ElementArea(HashSet<Element> elements)
+        public Area(HashSet<Node> nodes)
+        {
+            this.nodes = nodes;
+           
+
+        }
+
+        public Area(HashSet<Element> elements)
         {
             this.elements = elements;
             areaCenter = DefineAreaCenter();

@@ -10,11 +10,11 @@ using System.Threading;
 
 namespace SolidServer.AreaWorkPackage
 {
-    public class ElementAreaWorker
+    public class AreaWorker
     {
-        public static List<ElementArea> DefineElementAreas(HashSet<Element> elements)
+        public static List<Area> DefineElementAreas(HashSet<Element> elements)
         {
-            var areas = new List<ElementArea>();
+            var areas = new List<Area>();
 
             HashSet<Element> areaElements = new();
             HashSet<Element> currentAdjacentElements = new();
@@ -41,7 +41,7 @@ namespace SolidServer.AreaWorkPackage
                     areaElements.UnionWith(newAdjacentElements);
                 }
 
-                ElementArea newArea = new ElementArea(areaElements);
+                Area newArea = new Area(areaElements);
 
                 if (newArea.elements.Count > 0)
                 {
@@ -75,7 +75,7 @@ namespace SolidServer.AreaWorkPackage
             List<HashSet<Node>> notCloseNodes = new();
             foreach (var part in nodeParts)
             {
-                var thread = new Thread(() => { notCloseNodes.Add(ElementAreaWorker.ExceptCloseNodes(part, facePlanes)); });
+                var thread = new Thread(() => { notCloseNodes.Add(AreaWorker.ExceptCloseNodes(part, facePlanes)); });
                 threads.Add(thread);
             }
 
@@ -99,7 +99,7 @@ namespace SolidServer.AreaWorkPackage
         }
 
 
-        public static List<SimplePlane> GetPlanesFromAreaDims(ElementArea area)
+        public static List<SimplePlane> GetPlanesFromAreaDims(Area area)
         {
             var dims = area.dimensions;
             List<SimplePlane> planes = new List<SimplePlane>()  
@@ -146,9 +146,9 @@ namespace SolidServer.AreaWorkPackage
         }
 
 
-        public static ElementArea SqueezeArea(ElementArea area, double lessCoefficient = 0.0)
+        public static Area SqueezeArea(Area area, double lessCoefficient = 0.0)
         {
-            ElementArea result = area;
+            Area result = area;
             if (lessCoefficient != 0.0)
             {
                 var newElements = new HashSet<Element>();
@@ -165,14 +165,14 @@ namespace SolidServer.AreaWorkPackage
                     newElements.Add(new Element(item.number, nodes, item.center));
                 }
 
-                result = new ElementArea(newElements);
+                result = new Area(newElements);
             }
 
             return result;
         }
 
 
-        public static HashSet<Node> ExceptInsideNodes(IEnumerable<Node> nodes, List<ElementArea> areas)
+        public static HashSet<Node> ExceptInsideNodes(IEnumerable<Node> nodes, List<Area> areas)
         {
             var newNodes = new HashSet<Node>();
 
@@ -256,7 +256,7 @@ namespace SolidServer.AreaWorkPackage
         }
 
 
-        public static List<Feature> DrawElementArea(ModelDoc2 doc, ElementArea area)
+        public static List<Feature> DrawElementArea(ModelDoc2 doc, Area area)
         {
             List<Feature> features = new List<Feature>();
 
@@ -372,7 +372,7 @@ namespace SolidServer.AreaWorkPackage
 
 
 
-        public static Dictionary<string, HashSet<Element>> MakeAreaElementsCategories(ElementArea area)
+        public static Dictionary<string, HashSet<Element>> MakeAreaElementsCategories(Area area)
         {
             Dictionary<string, HashSet<Element>> categories = new Dictionary<string, HashSet<Element>>()
             {

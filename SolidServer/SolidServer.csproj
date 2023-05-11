@@ -113,7 +113,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AreaWorkPackage\NodeArea.cs" />
     <Compile Include="Researches\BaseResearchManager.cs" />
     <Compile Include="SolidWorksPackage\SolidWorksApplicationPackage\AppWorkExeptions.cs" />
     <Compile Include="Main.cs" />
@@ -123,11 +122,10 @@
     <Compile Include="SolidWorksPackage\DrawPackage\CellForms\Sphere.cs" />
     <Compile Include="Researches\DbScanResearchManger.cs" />
     <Compile Include="SolidWorksPackage\ResearchPackage\ResearchStructures\Element\Element.cs" />
-    <Compile Include="AreaWorkPackage\ElementArea.cs" />
-    <Compile Include="AreaWorkPackage\ElementAreaWorker.cs" />
+    <Compile Include="AreaWorkPackage\Area.cs" />
+    <Compile Include="AreaWorkPackage\AreaWorker.cs" />
     <Compile Include="SolidWorksPackage\ResearchPackage\ResearchStructures\Node\IParameters.cs" />
     <Compile Include="SolidWorksPackage\ResearchPackage\ResearchStructures\Node\Node.cs" />
-    <Compile Include="AreaWorkPackage\NodeElementAreaWorker.cs" />
     <Compile Include="SolidWorksPackage\ResearchPackage\Study\StaticStudyResults.cs" />
     <Compile Include="SolidWorksPackage\ResearchPackage\ResearchStructures\Node\StrainNodeParameters.cs" />
     <Compile Include="SolidWorksPackage\ResearchPackage\ResearchStructures\Node\StressNodeParameters.cs" />

@@ -1,4 +1,5 @@
-﻿using SolidServer.AreaWorkPackage;
+﻿using Newtonsoft.Json;
+using SolidServer.AreaWorkPackage;
 using SolidServer.SolidWorksApplicationPackage;
 using SolidServer.SolidWorksPackage.ResearchPackage;
 using SolidWorks.Interop.sldworks;
@@ -19,7 +20,7 @@ namespace SolidServer.Researches
         protected StaticStudyResults studyResults;
         protected string param = "VON";
         protected double minvalue, maxvalue, criticalValue;
-        protected List<ElementArea> areas;
+        protected List<Area> areas;
         protected HashSet<Node> wholeNodes;
         public IEnumerable<object> cutAreas;
         public BaseResearchManager()
@@ -27,7 +28,7 @@ namespace SolidServer.Researches
             cutAreas = new List<object>();
             crashNodes = new List<Node>();
             facePlanes = new List<FacePlane>();
-            areas = new List<ElementArea>();
+            areas = new List<Area>();
             activeDoc = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
             studyManager = new StudyManager();
             Console.WriteLine("Приложение SolidWorks и документ определены!\n");
@@ -89,7 +90,7 @@ namespace SolidServer.Researches
 
             }
             Console.WriteLine(msg);
-            return new Dictionary<string, object>() { { "msg", msg } };
+            return new Dictionary<string, object>() { { "msg", msg }, {"crashNodes", JsonConvert.SerializeObject(crashNodes) } };
         }
 
         public Dictionary<string, object> DetermineCutAreas()
@@ -103,7 +104,7 @@ namespace SolidServer.Researches
             //var cutNodes = ElementAreaWorker.ExceptInsideNodes(
             // studyResults.DefineNodesPerStressParam(param, minvalue, maxvalue), areas);
             wholeNodes = new HashSet<Node>(studyResults.DefineNodesPerStressParam(param, minvalue, maxvalue));
-            wholeNodes.ExceptWith(ElementAreaWorker.ExceptFaceClosestNodes(wholeNodes, facePlanes));
+            wholeNodes.ExceptWith(AreaWorker.ExceptFaceClosestNodes(wholeNodes, facePlanes));
             string msg = $"Количество узлов для выявления областей" +
                 $": {wholeNodes.Count()}\n";
 
@@ -122,7 +123,7 @@ namespace SolidServer.Researches
             {
                 CutArea(i);
             }
-            cutAreas = new List<ElementArea>();
+            cutAreas = new List<Area>();
             Console.WriteLine("Конец выреза областей");
 
         }

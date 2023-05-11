@@ -18,9 +18,9 @@ namespace SolidServer
 
         static void DoResearch()
         {
-            var manager = new DbScanResearchManger();
+            //var manager = new DbScanResearchManger();
             //var manager = new UnionClusterResearchManager();
-            //var manager = new SolidWorksResearchManager();
+            var manager = new SolidWorksResearchManager();
 
             manager.RunInLoop();
             Console.WriteLine("Выполнение программы завершено!");

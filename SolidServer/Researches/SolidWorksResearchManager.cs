@@ -15,24 +15,24 @@ namespace SolidServer.Researches
         {
             var elems = studyResults.GetElements(wholeNodes) as HashSet<Element>;
 
-            var newAreas = ElementAreaWorker.DefineElementAreas(elems);
+            var newAreas = AreaWorker.DefineElementAreas(elems);
 
-            List<ElementArea> general = new();
+            List<Area> general = new();
 
             foreach (var area in newAreas)
             {
                 HashSet<Node> wholeNodes = area.GetNodes();
-                wholeNodes.ExceptWith(ElementAreaWorker.ExceptFaceClosestNodes(wholeNodes, facePlanes));
+                wholeNodes.ExceptWith(AreaWorker.ExceptFaceClosestNodes(wholeNodes, facePlanes));
                 var newElems = studyResults.GetElements(wholeNodes) as HashSet<Element>;
-                foreach (var a in ElementAreaWorker.DefineElementAreas(newElems))
+                foreach (var a in AreaWorker.DefineElementAreas(newElems))
                 {
-                    var elemsCats = ElementAreaWorker.MakeAreaElementsCategories(a);
+                    var elemsCats = AreaWorker.MakeAreaElementsCategories(a);
                     var union = elemsCats["4n"];
                     union.UnionWith(elemsCats["3n"]);
                     union.UnionWith(elemsCats["2n"]);
                     if (union.Count > 0)
                     {
-                        var newElementArea = (new ElementArea(union));
+                        var newElementArea = (new Area(union));
                         Console.WriteLine($"Формирование новой области с количеством элементов  - {newElementArea.elements.Count}");
                         general.Add(newElementArea);
                     }
@@ -44,7 +44,7 @@ namespace SolidServer.Researches
 
         public override void CutArea(int index)
         {
-            ElementAreaWorker.DrawElementArea(activeDoc, cutAreas.ElementAt(index) as ElementArea);
+            AreaWorker.DrawElementArea(activeDoc, cutAreas.ElementAt(index) as Area);
             Console.WriteLine($"Конец выреза промежуточной области - {index}");
         }
     }
