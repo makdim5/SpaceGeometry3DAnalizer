@@ -21,9 +21,7 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
 
         public Vector3D GetNormal()
         {
-
             double[] normal = (double[]) face.Normal;
-
             return new Vector3D(normal[0], normal[1], normal[2]);
         }
 
@@ -38,7 +36,6 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
 
             double[] param = (double[]) surface.Evaluate(centerU, centerV, 0, 0);
 
-
             return new Point3D(param[0] * 1000, param[1] * 1000, param[2] * 1000);
         }
 
@@ -46,31 +43,23 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
         {
             this.entity = face as Entity;
             type = FaceType.NoneType;
-            
         }
+
         public FeatureFace(Face face, string name) :base()
         {
-            
             this.name = name;
             this.face = face;
-            
             this.color = GetColor();
-
         }
 
         public FeatureFace(Face face, string name, Color color) : this(face, name)
         {
-            
             this.color = color;
-
             SetColor(color);
-
-
         }
 
         public void SetColor(Color color)
         {
-
             double[] param = face.MaterialPropertyValues as double[];
 
             if (param == null)
@@ -81,18 +70,15 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
                     0.4, 0, 0
                 };
             }
-
             param[0] = color.R / 255f;
             param[1] = color.G / 255f;
             param[2] = color.B / 255f;
 
             face.MaterialPropertyValues = param;
-
         }
 
         public Color GetColor()
         {
-
             double[] param = face.MaterialPropertyValues as double[];
 
             if (param == null)
@@ -105,13 +91,11 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
                 Convert.ToInt32(param[1] * 255),
                 Convert.ToInt32(param[2] * 255)
                 );
-
             return color;
         }
 
         public Point3D[] GetVertixs()
         {
-
             object[] edges = face.GetEdges() as object[];
 
             HashSet<Point3D> vertices = new HashSet<Point3D>();
@@ -126,11 +110,8 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
 
                     vertices.Add(new Point3D(start[0] * 1000, start[1] * 1000, start[2] * 1000));
                     vertices.Add(new Point3D(end[0] * 1000, end[1] * 1000, end[2] * 1000));
-
                 }
-
             }
-
             return vertices.ToArray();
 
         }

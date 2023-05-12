@@ -1,11 +1,7 @@
 ﻿using Newtonsoft.Json;
-using SolidServer.SolidWorksPackage;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using SolidServer.Utitlites;
-using SolidServer.SolidWorksPackage.Cells;
 using SolidServer.SolidWorksPackage.ResearchPackage;
 using SolidServer.AreaWorkPackage;
 

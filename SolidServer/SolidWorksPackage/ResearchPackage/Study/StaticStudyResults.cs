@@ -35,7 +35,9 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
         }
         public IEnumerable<Element> GetElements(HashSet<Node> nodes)
         {
-
+            // Отбор элементов сетки по конкретным узлам.
+            // Можно брать только те элементы, у которых совпадение по узлам хотя бы nodesInteresectionAmount
+            int nodesInteresectionAmount = 2;
             HashSet<Element> findArea = new HashSet<Element>();
 
 
@@ -43,7 +45,7 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
             {
                 HashSet<Node> elemNodes = elem.vertexNodes;
                 var intersection = nodes.Intersect(elemNodes);
-                if (intersection.Count() > 2)
+                if (intersection.Count() > nodesInteresectionAmount)
                 {
                     findArea.Add(elem);
                 }
@@ -54,6 +56,8 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
 
         private static IEnumerable<Node> GetNodes(object[] nodes, object[] stress, object[] strain)
         {
+            // Числа в коде обозначают места в массиве, который отдает SolidWorks.
+            // Более подробно читай документацию
 
             List<Node> result = new();
 

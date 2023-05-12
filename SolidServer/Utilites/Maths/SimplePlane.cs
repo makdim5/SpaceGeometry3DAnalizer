@@ -1,9 +1,8 @@
-﻿using SolidServer.Utitlites;
-
-namespace SolidServer.SolidWorksPackage.ResearchPackage
+﻿namespace SolidServer.Utitlites
 {
     public class SimplePlane
     {
+        // A, B, C, D - коэффициенты плоскости, представленной уравнением Ax + By + Cz + D = 0
         public double A = 1;
         public double B = 1;
         public double C = 1;

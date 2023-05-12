@@ -38,31 +38,19 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
             this.center = center;
 
         }
-
-        
-
         public bool Contains(Node node)
         {
-
             return Contains(nodes, node);
-
         }
-
         private static bool Contains(IEnumerable<Node> nodes, Node node)
         {
-
             return nodes.Contains(node);
-
         }
 
         public bool isAdjacent(Element element)
         {
-
-
             IEnumerable<Node> result = vertexNodes.Intersect(element.vertexNodes);
-
-            return result?.Count() >= 3;
-
+            return result?.Count() >= 3; // элементы смежны, если у них 3 общих узла
         }
 
         public List<Point3D> GetMinimizedVertexes(double coefficient, Point3D point)
@@ -80,7 +68,6 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
                     coefficient
                 );
         }
-
         public IEnumerable<Point3D> GetDrawingVertexes(double coefficient = 0.03)
         {
             return MathHelper.GetLessCoordinatesOfPyramid

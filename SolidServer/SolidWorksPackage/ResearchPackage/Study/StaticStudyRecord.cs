@@ -32,7 +32,7 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
 
         public override string ToString()
         {
-            return $"Исследование №{index}: {text} Материал:{material}";
+            return $"Исследование {index}: {text} Материал:{material}";
         }
 
     }

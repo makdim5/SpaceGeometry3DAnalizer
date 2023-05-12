@@ -17,7 +17,7 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
 
         public FacePlane() { }
 
-        public FacePlane(Face face, ModelDoc2 doc)
+        public FacePlane(Face face)
         {
             object[] e = face.GetEdges() as object[];
             List<Edge> edges = new();
@@ -35,7 +35,6 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
                 point3 = new(edges[j].GetEndVertex().GetPoint()[0] * 1000, edges[j].GetEndVertex().GetPoint()[1] * 1000, edges[j].GetEndVertex().GetPoint()[2] * 1000);
                 DefinePlaneCoffs(point1, point2, point3);
 
-               
                 isPlane = true;
             }
             else
@@ -43,19 +42,6 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
                 isPlane= false;
                 Console.WriteLine($"Данная грань не является плоскостью : {edges}");
             }
-
         }
-
-
-        public void Draw(ModelDoc2 doc)
-        {
-          
-            doc.SketchManager.CreatePoint(point1.x/1000, point1.y/1000, point1.z / 1000);
-            doc.SketchManager.CreatePoint(point2.x/1000, point2.y/ 1000, point2.z / 1000);
-            doc.SketchManager.CreatePoint(point3.x/1000, point3.y / 1000, point3.z / 1000 );
-           
-        }
-
-
     }
 }

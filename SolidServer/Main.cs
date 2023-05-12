@@ -19,7 +19,9 @@ namespace SolidServer
 
         static void DoResearch()
         {
-            Dictionary<string, string> elementCusteringConfiguration = new Dictionary<string, string>();
+            Dictionary<string, string> elementCusteringConfiguration = new Dictionary<string, string>()
+            {
+            };
             Dictionary<string, string> dbscanCusteringConfiguration = new Dictionary<string, string>();
             Dictionary<string, string> cutConfiguration = new Dictionary<string, string>() 
             {

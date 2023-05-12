@@ -47,20 +47,21 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
             this.E2 = E2;
             this.E3 = E3;
 
-            this.param = new Dictionary<string, float>();
-
-            this.param.Add("SX", EPSx);
-            this.param.Add("SY", EPSy);
-            this.param.Add("SZ", EPSz);
-            this.param.Add("XY", GMxy);
-            this.param.Add("YZ", GMyz);
-            this.param.Add("XZ", GMxz);
-            this.param.Add("ESTRN", ESTRN);
-            this.param.Add("SEDENS", SEDENS);
-            this.param.Add("ENERGY", ENERGY);
-            this.param.Add("E1", E1);
-            this.param.Add("E2", E2);
-            this.param.Add("E3", E3);
+            this.param = new Dictionary<string, float>
+            {
+                { "SX", EPSx },
+                { "SY", EPSy },
+                { "SZ", EPSz },
+                { "XY", GMxy },
+                { "YZ", GMyz },
+                { "XZ", GMxz },
+                { "ESTRN", ESTRN },
+                { "SEDENS", SEDENS },
+                { "ENERGY", ENERGY },
+                { "E1", E1 },
+                { "E2", E2 },
+                { "E3", E3 }
+            };
 
         }
         public Dictionary<string, float> GetParameters()

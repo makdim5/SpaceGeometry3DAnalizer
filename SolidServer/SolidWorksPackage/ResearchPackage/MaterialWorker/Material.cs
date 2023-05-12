@@ -9,54 +9,24 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
         public readonly string name;
         public readonly Dictionary<string, double> physicalProperties;
 
-        //// Модуль упругости
-        //public readonly double EX;
-
-        //// Коэффициент Пуассона
-        //public readonly double NUXY;
-
-        //// Модуль сдвига
-        //public readonly double GXY;
-
-        //// Коэффициент теплового расширения
-        //public readonly double ALPX;
-
-        //// Массовая плотность
-        //public readonly double DENS;
-
-        //// Теплопроводность
-        //public readonly double KX;
-
-        //// Удельная теплоемкость
-        //public readonly double C;
-
-        //// Предел прочности при растяжении
-        //public readonly double SIGXT;
-
-        //// Предел текучести
-        //public readonly double SIGYLD;
-
         public Material() { }
 
         public Material(string category, string name, double[] physicalProperties)
         {
-
             this.category = category;
-
             this.name = name;
-
-            this.physicalProperties = new Dictionary<string, double>();
-
-            this.physicalProperties.Add("EX", physicalProperties[0]);
-            this.physicalProperties.Add("NUXY", physicalProperties[1]);
-            this.physicalProperties.Add("GXY", physicalProperties[2]);
-            this.physicalProperties.Add("ALPX", physicalProperties[3]);
-            this.physicalProperties.Add("DENS", physicalProperties[4]);
-            this.physicalProperties.Add("KX", physicalProperties[5]);
-            this.physicalProperties.Add("C", physicalProperties[6]);
-            this.physicalProperties.Add("SIGXT", physicalProperties[7]);
-            this.physicalProperties.Add("SIGYLD", physicalProperties[8]);
-
+            this.physicalProperties = new Dictionary<string, double>
+            {
+                { "EX", physicalProperties[0] }, // Модуль упругости
+                { "NUXY", physicalProperties[1] }, // Коэффициент Пуассона
+                { "GXY", physicalProperties[2] }, // Модуль сдвига
+                { "ALPX", physicalProperties[3] }, // Коэффициент теплового расширения
+                { "DENS", physicalProperties[4] }, // Массовая плотность
+                { "KX", physicalProperties[5] }, // Теплопроводность
+                { "C", physicalProperties[6] }, // Удельная теплоемкость
+                { "SIGXT", physicalProperties[7] }, // Предел прочности при растяжении
+                { "SIGYLD", physicalProperties[8] } // Предел текучести
+            };
         }
 
         public Material(
@@ -77,24 +47,23 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
 
             this.name = name;
 
-            physicalProperties = new Dictionary<string, double>();
-
-            physicalProperties.Add("EX", EX);
-            physicalProperties.Add("NUXY", NUXY);
-            physicalProperties.Add("GXY", GXY);
-            physicalProperties.Add("ALPX", ALPX);
-            physicalProperties.Add("DENS", DENS);
-            physicalProperties.Add("KX", KX);
-            physicalProperties.Add("C", C);
-            physicalProperties.Add("SIGXT", SIGXT);
-            physicalProperties.Add("SIGYLD", SIGYLD);
-
+            physicalProperties = new Dictionary<string, double>
+            {
+                { "EX", EX },
+                { "NUXY", NUXY },
+                { "GXY", GXY },
+                { "ALPX", ALPX },
+                { "DENS", DENS },
+                { "KX", KX },
+                { "C", C },
+                { "SIGXT", SIGXT },
+                { "SIGYLD", SIGYLD }
+            };
         }
 
         public override string ToString()
         {
-            return this.name;
+            return name;
         }
-
     }
 }

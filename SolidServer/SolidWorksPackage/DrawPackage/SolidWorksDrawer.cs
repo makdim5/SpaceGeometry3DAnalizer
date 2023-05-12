@@ -19,10 +19,10 @@ namespace SolidServer.SolidWorksPackage
                 if (param == null)
                 {
                     param = new double[9] {
-                    0, 0, 0,
-                    1, 1, 0.5,
-                    0.4, 0, 0
-                };
+                        0, 0, 0,
+                        1, 1, 0.5,
+                        0.4, 0, 0
+                    };
                 }
 
                 param[0] = r / 255f;
@@ -107,18 +107,13 @@ namespace SolidServer.SolidWorksPackage
                     cut = doc.FeatureManager.InsertNetBlend2(0, 2, 0, false, 0.0001, true, true, true, true, false,
                         -1, -1, false, -1, false, false, -1, false, -1, false, false);
                 }
-
-
             }
             doc.ClearSelection();
-
             return cut;
         }
 
-
         public static Feature DoTruba(ModelDoc2 doc, double[] points, double rad = 0.005)
         {
-
             doc.ClearSelection();
 
             doc.SketchManager.Insert3DSketch(true);
@@ -149,7 +144,6 @@ namespace SolidServer.SolidWorksPackage
             doc.ClearSelection();
             return cut;
         }
-
 
         public static Feature CutEllipsoid(ModelDoc2 doc, double xc, double yc, double zc, double radA = 0.005, double radB = 0.001, double radC = 0.005)
         {
@@ -343,7 +337,6 @@ namespace SolidServer.SolidWorksPackage
             doc.SketchManager.CreateCornerRectangle(x1 / unit, y1 / unit, z1 / unit,
                 x2 / unit, y2 / unit, z1 / unit);
 
-
             var cut = doc.FeatureManager.FeatureCut4(true, false, false, 0, 0, (z2 - z1) / unit, (z2 - z1) / unit, false, false, false, false, 1.74532925199433E-02, 1.74532925199433E-02, false, false, false,
                 false, false, true, true, true, true, false, 0, 0, false, false);
 
@@ -353,7 +346,6 @@ namespace SolidServer.SolidWorksPackage
             return cut;
         }
 
-
         public static void UndoFeaturesCuts(ModelDoc2 doc, List<Feature> features)
         {
             foreach (var item in features)
@@ -361,8 +353,6 @@ namespace SolidServer.SolidWorksPackage
                 doc.Extension.SelectByID2(item.Name, "BODYFEATURE", 0, 0, 0, false, 0, null, 0);
                 doc.EditDelete();
             }
-
         }
-
     }
 }

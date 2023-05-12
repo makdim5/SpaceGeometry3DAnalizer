@@ -28,9 +28,6 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
 
         public string MaterialName;
         public StaticStudy() { }
-
-        
-
         public StaticStudy(CWStudy study, StaticStudyRecord record)
         {
             this.study = study;
@@ -65,7 +62,6 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
 
         private static void StudyErrors(int errorMesh, int errorFix, int errorLoad)
         {
-
 
             bool error = false;
             string errorMsg = "";
@@ -321,26 +317,19 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
 
             }
 
-
-
             //errCode = SolidBody.SetSolidBodyMaterial(material.GetCWMaterial());
-
 
             return result.ToArray();
         }
 
         private object[] ConvertFacesToObjects(FeatureFace[] faces)
         {
-
             List<object> result = new List<object>();
 
             foreach (var face in faces)
             {
-
                 result.Add(face.face as object);
-
             }
-
             return result.ToArray();
         }
     }

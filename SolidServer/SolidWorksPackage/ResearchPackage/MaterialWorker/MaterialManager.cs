@@ -32,19 +32,15 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
         public static Dictionary<string, Material> GetMaterials()
         {
             var materialDictionary = new Dictionary<string, Material>();
-
             var paths = SolidWorksAppWorker.GetPathsMaterialDataBase();
 
             foreach (var path in paths)
             {
                 foreach (Material material in GetMaterialsFromPath( path))
                 {
-
                     materialDictionary.Add(material.name, material);
-
                 }
             }
-
             return materialDictionary;
         }
 
@@ -52,9 +48,7 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
         {
             var xDoc = new XmlDocument();
             xDoc.Load(path);
-
             var xRoot = xDoc.DocumentElement;
-
             List<Material> materials = new List<Material>();
 
             foreach (XmlNode xNode in xRoot)
@@ -63,11 +57,8 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
                 if (xNode.Name == XML_NODE_MATERIAL_CATEGORY)
                 {
                     string category = xNode.Attributes.GetNamedItem(XML_NODE_MATERIAL_CATEGORY_ATTR_NAME).Value;
-
                     materials.AddRange(GetMaterialsFromXmlChildNodes(xNode.ChildNodes, category));
-
                 }
-
             }
 
             return materials;
@@ -75,34 +66,23 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
 
         private static HashSet<Material> GetMaterialsFromXmlChildNodes(XmlNodeList xNodeList, string categoryName)
         {
-
             HashSet<Material> result = new HashSet<Material>();
 
             foreach (XmlNode xNode in xNodeList)
             {
-
                 if (xNode.Name == XML_NODE_MATERIAL)
                 {
-
                     string materialName = xNode.Attributes.GetNamedItem(XML_NODE_MATERIAL_ATTR_NAME).Value;
-
                     double[] physicalProperties = GetMaterialPhysicalProperties(xNode.ChildNodes);
-
                     Material material = new Material(categoryName, materialName, physicalProperties);
-
                     result.Add(material);
-
                 }
-
             }
-
             return result;
         }
-
         private static double[] GetMaterialPhysicalProperties(XmlNodeList xNodeList)
         {
-            double[] result = new double[9];
-
+            double[] result = new double[9]; // всего 9 физических параметров
             foreach (XmlNode xNode in xNodeList)
             {
                 if (xNode.Name == XML_NODE_MATERIAL_PHYSICAL_PROPERTIE)
@@ -135,13 +115,9 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
 
                     result[8] = GetMaterialPhysicalPropertieValue(xNodeListPhysicalProperties,
                         XML_NODE_MATERIAL_PHYSICAL_PROPERTIE_SIGYLD);
-
                     break;
-
                 }
-
             }
-
             return result;
         }
 
@@ -154,55 +130,12 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
                 if (xNode.Name == propertie)
                 {
                     string value = xNode.Attributes.GetNamedItem(XML_NODE_MATERIAL_PHYSICAL_PROPERTIE_ATTR_VALUE).Value;
-
                     value = value.Replace('.', ',');
-
                     result = Convert.ToDouble(value);
-
                     break;
                 }
-
             }
-
             return result;
         }
-
-
-        //public TreeNode[] GetTreeNodeView()
-        //{
-
-        //    List<TreeNode> result = new List<TreeNode>();
-
-        //    Dictionary<string, TreeNode> categories = new Dictionary<string, TreeNode>();
-
-        //    foreach (string name in materials.Keys)
-        //    {
-
-        //        Material material = materials[name];
-
-        //        string category = material.category;
-
-        //        TreeNode categoryNode;
-
-        //        if (!categories.TryGetValue(category, out categoryNode))
-        //        {
-
-        //            categoryNode = new TreeNode(category);
-
-        //            categories.Add(category, categoryNode);
-
-        //            result.Add(categoryNode);
-
-        //        }
-
-        //        categoryNode.Nodes.Add(name);
-
-        //    }
-
-        //    return result.ToArray();
-
-        //}
-
-
     }
 }

@@ -14,7 +14,6 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
 
         public readonly StrainNodeParameters strain;
 
-
         public Node(int number , Point3D point, StressNodeParameters stress, StrainNodeParameters strain) {
 
             this.number = number;
@@ -32,8 +31,6 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
                 point.y,
                 point.z);
 
-            //text += $"\n-Stress:\n{stress}\n-Strain:\n{strain}";
-
             return text;
         }
 
@@ -41,20 +38,12 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
         {
             if (о != null && о is Node)
             {
-
-                // Теперь проверим, что данный объект Person
-
-                // и текущий объект (this) несут одинаковую информацию.
-
                Node temp = (Node)о;
 
                 if (temp.point.x == this.point.x && temp.point.y == this.point.y && temp.point.z == this.point.z)
                     return true;
-
             }
-
             return false;
-
         }
 
         public override int GetHashCode()

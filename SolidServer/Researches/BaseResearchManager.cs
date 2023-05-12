@@ -91,7 +91,6 @@ namespace SolidServer.Researches
             {
                 crashNodes = studyResults.DefineNodesPerStressParam(param, criticalValue, studyResults.DefineMinMaxStressValues(param)["max"]);
                 msg += ($"Были найдены узлы с превышенной нагрузкой в количестве : {crashNodes.Count()}");
-
             }
             Console.WriteLine(msg);
             return new Dictionary<string, object>() { { "msg", msg }, { "crashNodes", JsonConvert.SerializeObject(crashNodes) } };
@@ -105,12 +104,9 @@ namespace SolidServer.Researches
             }
             Console.WriteLine("Начало поиска областей");
             facePlanes = FeatureFaceManager.DefineFacePlanes(activeDoc);
-            //var cutNodes = ElementAreaWorker.ExceptInsideNodes(
-            // studyResults.DefineNodesPerStressParam(param, minvalue, maxvalue), areas);
             wholeNodes = new HashSet<Node>(studyResults.DefineNodesPerStressParam(param, minvalue, maxvalue));
             wholeNodes.ExceptWith(AreaWorker.ExceptFaceClosestNodes(wholeNodes, facePlanes));
-            string msg = $"Количество узлов для выявления областей" +
-                $": {wholeNodes.Count()}\n";
+            string msg = $"Количество узлов для выявления областей : {wholeNodes.Count()}\n";
 
             var result = DefineAreas();
 
@@ -124,6 +120,7 @@ namespace SolidServer.Researches
             AreaWorker.DrawAreaPerConfiguration(activeDoc, cutAreas.ElementAt(index) as Area, studyResults, cutConfiguration);
             Console.WriteLine($"Конец выреза промежуточной области - {index}");
         }
+
         public void CutAreas()
         {
             Console.WriteLine("Начало выреза областей ...");
@@ -133,13 +130,12 @@ namespace SolidServer.Researches
             }
             cutAreas = new List<Area>();
             Console.WriteLine("Конец выреза областей");
-
         }
+
         public void RunStudy()
         {
             study.CreateDefaultMesh();
             study.RunStudy();
         }
-
     }
 }

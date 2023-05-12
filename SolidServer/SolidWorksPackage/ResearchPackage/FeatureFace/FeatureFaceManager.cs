@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
 using SolidWorks.Interop.sldworks;
+using System.Threading;
 
 namespace SolidServer.SolidWorksPackage.ResearchPackage
 {
@@ -71,7 +72,6 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
 
             foreach (Feature feature in features)
             {
-
                 object[] faces = (object[])feature.GetFaces();
 
                 if (faces != null)
@@ -80,7 +80,6 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
                     {
                         result.Add(face);
                     }
-
                 }
             }
             return new HashSet<Face>(result.Cast<Face>());
@@ -88,11 +87,26 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
         public static List<FacePlane> DefineFacePlanes(ModelDoc2 activeDoc)
         {
             List<FacePlane> facePlanes = new();
+            List<Thread> threads = new List<Thread>();
+            List<HashSet<Node>> notCloseNodes = new();
             foreach (var face in GetFaces(activeDoc))
             {
-                var plane = new FacePlane(face, activeDoc);
-                if (plane.isPlane)
-                    facePlanes.Add(plane);
+                var thread = new Thread(() => {
+                    var plane = new FacePlane(face);
+                    if (plane.isPlane)
+                        facePlanes.Add(plane);
+                });
+                threads.Add(thread);
+            }
+
+            foreach (var thread in threads)
+            {
+                thread.Start();
+            }
+
+            foreach (var thread in threads)
+            {
+                thread.Join();
             }
             return facePlanes;
         }

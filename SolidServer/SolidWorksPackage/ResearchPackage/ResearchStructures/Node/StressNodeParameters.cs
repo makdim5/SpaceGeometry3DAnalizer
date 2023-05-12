@@ -46,19 +46,20 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
             this.VON = VON;
             this.INT = INT;
 
-            this.param = new Dictionary<string, float>();
-
-            this.param.Add("SX", Sx);
-            this.param.Add("SY", Sy);
-            this.param.Add("SZ", Sz);
-            this.param.Add("XY", Txy);
-            this.param.Add("YZ", Tyz);
-            this.param.Add("XZ", Txz);
-            this.param.Add("P1", P1);
-            this.param.Add("P2", P2);
-            this.param.Add("P3", P3);
-            this.param.Add("VON", VON);
-            this.param.Add("INT", INT);
+            this.param = new Dictionary<string, float>
+            {
+                { "SX", Sx },
+                { "SY", Sy },
+                { "SZ", Sz },
+                { "XY", Txy },
+                { "YZ", Tyz },
+                { "XZ", Txz },
+                { "P1", P1 },
+                { "P2", P2 },
+                { "P3", P3 },
+                { "VON", VON },
+                { "INT", INT }
+            };
 
         }
 

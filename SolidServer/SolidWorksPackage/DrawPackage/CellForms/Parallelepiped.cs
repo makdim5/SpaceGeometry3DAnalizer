@@ -8,7 +8,6 @@
         public double maxX;
         public double maxY;
         public double maxZ;
-
         public Parallelepiped() { }
 
         public Parallelepiped(double minX, double minY, double minZ, double maxX, double maxY, double maxZ)
@@ -20,7 +19,6 @@
             this.maxY = maxY;
             this.maxZ = maxZ;
         }
-
         public override string ToString()
         {
             return $"Parallelepiped (minX={minX}, maxX={maxX}, minY={minY}, maxY={maxY}, minZ={minZ}, maxZ={maxZ})";

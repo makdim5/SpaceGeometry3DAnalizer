@@ -92,8 +92,8 @@ namespace SolidServer.Utitlites
         {
             List<double> distances = new();
             
-            for (int i = 0; i < 4; i++)
-                distances.Add(DefineDistanceBetweenPoints(center, vertexes.ElementAt(i)));
+            foreach (var vertex in vertexes)
+                distances.Add(DefineDistanceBetweenPoints(center, vertex));
 
             return distances.Max();
         }
