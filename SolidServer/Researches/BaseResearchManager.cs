@@ -40,8 +40,8 @@ namespace SolidServer.Researches
 
         public void RunInLoop()
         {
-            //try
-            //{
+            try
+            {
                 GetCompletedStudyResults();
                 DefineCriticalNodes();
                 DetermineCutAreas();
@@ -53,11 +53,11 @@ namespace SolidServer.Researches
                     DefineCriticalNodes();
                     DetermineCutAreas();
                 }
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine(ex.Message);
-            //}
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         public Dictionary<string, object> GetCompletedStudyResults()
@@ -94,7 +94,7 @@ namespace SolidServer.Researches
 
             }
             Console.WriteLine(msg);
-            return new Dictionary<string, object>() { { "msg", msg }, {"crashNodes", JsonConvert.SerializeObject(crashNodes) } };
+            return new Dictionary<string, object>() { { "msg", msg }, { "crashNodes", JsonConvert.SerializeObject(crashNodes) } };
         }
 
         public Dictionary<string, object> DetermineCutAreas()
