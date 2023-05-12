@@ -18,6 +18,8 @@ namespace SolidServer.AreaWorkPackage
 
         public Dictionary<string, double> dimensions;
 
+        public double Volume;
+
         public Area()
         {
             nodes = new();
@@ -148,18 +150,19 @@ namespace SolidServer.AreaWorkPackage
                 }
             }
 
-            double min1coef = 1, min2coef = 1;
-
-            return new Dictionary<string, double>()
+            var dims = new Dictionary<string, double>()
             {
-                { "minX", minX*min1coef },
-                { "maxX", maxX*min2coef },
-                { "minY", minY*min1coef },
-                { "maxY", maxY*min2coef },
-                { "minZ", minZ*min1coef },
-                { "maxZ", maxZ*min2coef },
+                { "minX", minX},
+                { "maxX", maxX},
+                { "minY", minY},
+                { "maxY", maxY},
+                { "minZ", minZ},
+                { "maxZ", maxZ},
 
             };
+            Volume = Math.Abs(dims["minX"] - dims["maxX"]) * Math.Abs(dims["minY"] - dims["maxY"]) * Math.Abs(dims["minZ"] - dims["maxZ"]);
+           
+            return dims;
 
         }
 

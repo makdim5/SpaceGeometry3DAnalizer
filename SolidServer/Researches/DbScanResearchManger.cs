@@ -4,17 +4,18 @@ using System.Threading.Tasks;
 using SolidServer.Utitlites;
 using SolidServer.SolidWorksPackage.ResearchPackage;
 using SolidServer.AreaWorkPackage;
+using System;
 
 namespace SolidServer.Researches
 {
     public class DbScanResearchManger : BaseResearchManager
     {
-        public DbScanResearchManger(Dictionary<string, string> clasteringConfiguration, Dictionary<string, string> cutConfiguration) :base(clasteringConfiguration, cutConfiguration) { }
+        public DbScanResearchManger(Dictionary<string, object> clasteringConfiguration, Dictionary<string, string> cutConfiguration) :base(clasteringConfiguration, cutConfiguration) { }
         public override Dictionary<string, object> DefineAreas()
         {
             Dictionary<string, object> dataToSend = new Dictionary<string, object>() {
-                {"eps", 2},
-                {"min_samples", 4},
+                {"eps", Convert.ToDouble(managerConfiguration["eps"])}, 
+                {"min_samples", Convert.ToInt32(managerConfiguration["minSamples"])},
                 {"nodes", wholeNodes}
             };
             var sendData = JsonConvert.SerializeObject(dataToSend);

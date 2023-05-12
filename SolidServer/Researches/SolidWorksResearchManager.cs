@@ -10,15 +10,18 @@ namespace SolidServer.Researches
 {
     public class SolidWorksResearchManager : BaseResearchManager
     {
-        public SolidWorksResearchManager(Dictionary<string, string> clasteringConfiguration, Dictionary<string, string> cutConfiguration) : base(clasteringConfiguration, cutConfiguration) { }
+        public SolidWorksResearchManager(Dictionary<string, object> clasteringConfiguration, Dictionary<string, string> cutConfiguration) : base(clasteringConfiguration, cutConfiguration) { }
         public override Dictionary<string, object> DefineAreas()
         {
-            var elems = studyResults.GetElements(wholeNodes) as HashSet<Element>;
+            // поиск областей по смежным элементам
+            var elems = studyResults.GetElements(wholeNodes,
+               Convert.ToInt32(managerConfiguration["nodesIntersectionAmount"])) as HashSet<Element>;
             var newAreas = AreaWorker.DefineAreasPerElementsAdjacent(elems);
             var squeezedAreas = new List<Area>();
             foreach (var area in newAreas)
             {
-                squeezedAreas.Add(AreaWorker.SqueezeArea(area, 0.8));
+                squeezedAreas.Add(AreaWorker.SqueezeArea(area,
+                    Convert.ToDouble(managerConfiguration["squeezeCoef"] as String)));
 
             }
             cutAreas = squeezedAreas;

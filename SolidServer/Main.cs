@@ -19,10 +19,46 @@ namespace SolidServer
 
         static void DoResearch()
         {
-            Dictionary<string, string> elementCusteringConfiguration = new Dictionary<string, string>()
+            Dictionary<string, object> elementCusteringConfiguration = new Dictionary<string, object>()
             {
+                { "meshParams", new Dictionary<string, string>()
+                    {
+                        {"Quality", "1" },
+                        {"UseJacobianCheck", "2" },
+                        {"MesherType", "1" },
+                        {"MinElementsInCircle","8" },
+                        {"GrowthRatio", "1,4" },
+                        {"SaveSettingsWithoutMeshing", "0" },
+                        {"Unit", "0" }
+                    }
+                },
+                {"filterParam", "VON" },
+                {"coef1", "0,2" },
+                {"coef2", "0,1" },
+                {"materialParam", "SIGXT" },
+                {"squeezeCoef", "0,8" },
+                {"nodesIntersectionAmount", "2" }
             };
-            Dictionary<string, string> dbscanCusteringConfiguration = new Dictionary<string, string>();
+            Dictionary<string, object> dbscanCusteringConfiguration = new Dictionary<string, object>() 
+            {
+                { "meshParams", new Dictionary<string, string>()
+                    {
+                        {"Quality", "1" },
+                        {"UseJacobianCheck", "2" },
+                        {"MesherType", "1" },
+                        {"MinElementsInCircle","8" },
+                        {"GrowthRatio", "1,4" },
+                        {"SaveSettingsWithoutMeshing", "0" },
+                        {"Unit", "0" }
+                    }
+                },
+                {"filterParam", "VON" },
+                {"coef1", "0,2" },
+                {"coef2", "0,1" },
+                {"materialParam", "SIGXT" },
+                {"eps", "2" },
+                {"minSamples", "4"}
+            };
             Dictionary<string, string> cutConfiguration = new Dictionary<string, string>() 
             {
                 {"cutType", "node"},

@@ -18,14 +18,14 @@ namespace SolidServer.Researches
         protected StudyManager studyManager;
         protected StaticStudy study;
         protected StaticStudyResults studyResults;
-        protected string param = "VON";
+        protected string param;
         protected double minvalue, maxvalue, criticalValue;
         protected List<Area> areas;
         protected HashSet<Node> wholeNodes;
         public List<Area> cutAreas;
         protected Dictionary<string, string> cutConfiguration;
-        protected Dictionary<string, string> managerConfiguration;
-        public BaseResearchManager(Dictionary<string, string> clasteringConfiguration, Dictionary<string, string> cutConfiguration)
+        protected Dictionary<string, object> managerConfiguration;
+        public BaseResearchManager(Dictionary<string, object> clasteringConfiguration, Dictionary<string, string> cutConfiguration)
         {
             this.cutConfiguration = cutConfiguration;
             cutAreas = new List<Area>();
@@ -36,20 +36,21 @@ namespace SolidServer.Researches
             studyManager = new StudyManager();
             Console.WriteLine("Приложение SolidWorks и документ определены!\n");
             this.managerConfiguration = clasteringConfiguration;
+            param = managerConfiguration["filterParam"] as String;
         }
 
         public void RunInLoop()
         {
             try
             {
-                GetCompletedStudyResults();
-                DefineCriticalNodes();
-                DetermineCutAreas();
+                GetCompletedStudyResults(); // получить результаты выполненного исследования
+                DefineCriticalNodes(); // определение критических точек
+                DetermineCutAreas(); // опре
                 while (crashNodes.Count() == 0 && cutAreas.Count() > 0)
                 {
                     CutAreas();
                     RunStudy();
-                    GetCompletedStudyResults();
+                    GetCompletedStudyResults(); // получить результаты выполненного исследования
                     DefineCriticalNodes();
                     DetermineCutAreas();
                 }
@@ -76,14 +77,15 @@ namespace SolidServer.Researches
         {
             var stressValues = studyResults.DefineMinMaxStressValues(param);
             var materialInfo = MaterialManager.GetMaterials()[study.MaterialName];
+            var materialParam = managerConfiguration["materialParam"] as String;
             minvalue = stressValues["min"];
-            criticalValue = 0.2 * materialInfo.physicalProperties["SIGXT"];
-            maxvalue = stressValues["max"] * 0.1;
+            criticalValue = Convert.ToDouble(managerConfiguration["coef1"]) * materialInfo.physicalProperties[materialParam];
+            maxvalue = stressValues["max"] * Convert.ToDouble(managerConfiguration["coef2"]);
 
             string msg = ($"\nМинимальное напряжение {param} =  {minvalue}" +
                 $"\nмаксимальное напряжение по {param} {stressValues["max"]}" +
                 $"\nпредел прочности при растяжении = " +
-                $"{materialInfo.physicalProperties["SIGXT"]}" +
+                $"{materialInfo.physicalProperties[materialParam]}" +
                 $"\nкритическое > максимальное по {param} : {criticalValue > stressValues["max"]}" +
                 $"\nкритическое значение:{criticalValue}\n"
                 );
@@ -98,14 +100,15 @@ namespace SolidServer.Researches
 
         public Dictionary<string, object> DetermineCutAreas()
         {
+            // Если существуют критические узлы, то области не формируем
             if (crashNodes.Count() > 0)
             {
                 return new Dictionary<string, object>();
             }
             Console.WriteLine("Начало поиска областей");
-            facePlanes = FeatureFaceManager.DefineFacePlanes(activeDoc);
-            wholeNodes = new HashSet<Node>(studyResults.DefineNodesPerStressParam(param, minvalue, maxvalue));
-            wholeNodes.ExceptWith(AreaWorker.ExceptFaceClosestNodes(wholeNodes, facePlanes));
+            facePlanes = FeatureFaceManager.DefineFacePlanes(activeDoc); // определение граней детали
+            wholeNodes = new HashSet<Node>(studyResults.DefineNodesPerStressParam(param, minvalue, maxvalue)); // 
+            wholeNodes.ExceptWith(AreaWorker.ExceptFaceClosestNodes(wholeNodes, facePlanes)); // 
             string msg = $"Количество узлов для выявления областей : {wholeNodes.Count()}\n";
 
             var result = DefineAreas();
@@ -134,7 +137,16 @@ namespace SolidServer.Researches
 
         public void RunStudy()
         {
-            study.CreateDefaultMesh();
+            var meshConf = managerConfiguration["meshParams"] as Dictionary<string, string>;
+            study.CreateDefaultMesh(
+                Convert.ToInt32(meshConf["Quality"]),
+                Convert.ToInt32(meshConf["UseJacobianCheck"]),
+                Convert.ToInt32(meshConf["MesherType"]),
+                Convert.ToInt32(meshConf["MinElementsInCircle"]),
+                Convert.ToDouble(meshConf["GrowthRatio"]),
+                Convert.ToInt32(meshConf["SaveSettingsWithoutMeshing"]),
+                Convert.ToInt32(meshConf["Unit"])
+                );
             study.RunStudy();
         }
     }

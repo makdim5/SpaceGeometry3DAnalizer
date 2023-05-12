@@ -1,10 +1,8 @@
-﻿using EdmLib;
-using SolidServer.SolidWorksPackage;
+﻿using SolidServer.SolidWorksPackage;
 using SolidServer.SolidWorksPackage.Cells;
 using SolidServer.SolidWorksPackage.ResearchPackage;
 using SolidServer.Utitlites;
 using SolidWorks.Interop.sldworks;
-using SolidWorks.Interop.swconst;
 using System;
 using System.Collections.Generic;
 using System.Linq;

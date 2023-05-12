@@ -132,7 +132,9 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
             SetSolidBodyMaterial(this.solidBodies, material);
         }
 
-        public int CreateDefaultMesh()
+        public int CreateDefaultMesh(int Quality=1, int UseJacobianCheck = 2, int MesherType=1,
+            int MinElementsInCircle=8, double GrowthRatio=1.4,
+            int SaveSettingsWithoutMeshing=0, int Unit=0)
         {
 
             double averageGlobalElementSize = Mesh.DEFAULT_ELEMENT_SIZE;
@@ -141,13 +143,13 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
 
             mesh = (ICWMesh)study.Mesh;
 
-            mesh.Quality = 1;
-            mesh.UseJacobianCheckForSolids = 2;
-            mesh.MesherType = 1;
-            mesh.MinElementsInCircle = 8;
-            mesh.GrowthRatio = 1.4; 
-            mesh.SaveSettingsWithoutMeshing = 0;
-            mesh.Unit = 0;
+            mesh.Quality = Quality;
+            mesh.UseJacobianCheckForSolids = UseJacobianCheck;
+            mesh.MesherType = MesherType;
+            mesh.MinElementsInCircle = MinElementsInCircle;
+            mesh.GrowthRatio = GrowthRatio; 
+            mesh.SaveSettingsWithoutMeshing = SaveSettingsWithoutMeshing;
+            mesh.Unit = Unit;
 
             mesh.GetDefaultElementSizeAndTolerance(
                 (int)LINEAR_UNIT,

@@ -33,13 +33,11 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
 
             this.meshElements = GetMeshElements(this.nodes, study.Mesh.GetElements());
         }
-        public IEnumerable<Element> GetElements(HashSet<Node> nodes)
+        public IEnumerable<Element> GetElements(HashSet<Node> nodes, int nodesInteresectionAmount = 2)
         {
             // Отбор элементов сетки по конкретным узлам.
             // Можно брать только те элементы, у которых совпадение по узлам хотя бы nodesInteresectionAmount
-            int nodesInteresectionAmount = 2;
             HashSet<Element> findArea = new HashSet<Element>();
-
 
             foreach (var elem in meshElements)
             {
