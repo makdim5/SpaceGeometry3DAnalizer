@@ -23,9 +23,11 @@ namespace SolidServer.Utitlites
         private const string OPEN_SIMULATION_MSG = "opensimulation";
         private const string DETERMINE_ACTIVE_DOC = "activedoc";
         private const string DETERMINE_RESEARCH_RESULTS = "research";
-        private const string DETERMINE_CONDITIONS = "conditions";
+        private const string DETERMINE_CRITICAL_NODES = "conditions";
         private const string DETERMINE_AREAS = "areas";
         private const string CUT_AREAS = "cut areas";
+        private const string INIT_MANAGER = "setmngr";
+        private const string RUN_STUDY = "runstudy";
         private static bool keepListening = true;
 
         private const int SERVER_PORT = 8005;
@@ -82,7 +84,7 @@ namespace SolidServer.Utitlites
         private static void DoCommand()
         {
             string command = context.Request.Headers["Command"];
-            SolidWorksResearchManager manager = null;
+            BaseResearchManager manager = null;
             switch (command)
             {
                 case OPEN_SW_MSG:
@@ -108,39 +110,69 @@ namespace SolidServer.Utitlites
                         Console.WriteLine("SolidWorks закрыт!");
                         break;
                     }
-                //case DETERMINE_RESEARCH_RESULTS:
-                //    {
-                //        if (manager != null)
-                //        {
-                //            SendData(manager.GetCompletedStudyResults());
-                //        }
-                //        break;
-                //    }
-                //case DETERMINE_CONDITIONS:
-                //    {
-                //        if (manager != null)
-                //        {
-                //            SendData(manager.DefineCriticalValues());
-                //        }
-                //        break;
-                //    }
+                case INIT_MANAGER:
+                    {
+                        var dict = JsonConvert.DeserializeObject<Dictionary<string, object>>(GetJson());
+                        var managerConfig = JsonConvert.DeserializeObject<Dictionary<string, object>>(dict["managerConfig"] as String);
+                        var cutConfig = JsonConvert.DeserializeObject<Dictionary<string, string>>(dict["cutConfig"] as String);
+                        var managerType = dict["managerType"] as String;
+                        if (managerType == "dbscan")
+                        {
+                            manager = new DbScanResearchManger(managerConfig, cutConfig);
+                            SendData("determened!");
+                        } else if (managerType == "adjacmentElements")
+                        {
+                            manager = new SolidWorksResearchManager(managerConfig, cutConfig);
+                            SendData("determened!");
+                        }
+                        else { SendData("error"); }
+                        break;
+                    }
+                case DETERMINE_RESEARCH_RESULTS:
+                    {
+                        if (manager != null)
+                        {
+                            SendData(JsonConvert.SerializeObject(manager.GetCompletedStudyResults()));
+                        }
+                        else { SendData("error"); }
+                        break;
+                    }
+                case DETERMINE_CRITICAL_NODES:
+                    {
+                        if (manager != null)
+                        {
+                            SendData(JsonConvert.SerializeObject(manager.DefineCriticalNodes()));
+                        }
+                        else { SendData("error"); }
+                        break;
+                    }
                 case DETERMINE_AREAS:
                     {
                         if (manager != null)
                         {
-                            manager.DefineAreas();
-                            SendData("Области определены!");
+                            SendData(JsonConvert.SerializeObject(manager.DetermineCutAreas()));
                         }
+                        else { SendData("error"); }
                         break;
                     }
                 case CUT_AREAS:
                     {
                         if (manager != null)
                         {
-                            manager.CutAreas();
-                            SendData("Области вырезаны!");
+                            var dict = JsonConvert.DeserializeObject<Dictionary<string, int>>(GetJson());
+                            manager.CutArea(dict["index"], manager.cutConfiguration);
+                            SendData("well");
+                        } else { SendData("error"); }
+                        break;
+                    }
+                case RUN_STUDY:
+                    {
+                        if (manager != null)
+                        {
+                            manager.RunStudy();
+                            SendData("well");
                         }
-                        
+                        else { SendData("error"); }
                         break;
                     }
                 case CLOSE_SERVER:
@@ -161,7 +193,6 @@ namespace SolidServer.Utitlites
                         break;
                     }
             }
-
         }
 
         private static void SendData(string data)

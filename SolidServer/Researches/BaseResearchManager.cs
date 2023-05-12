@@ -23,7 +23,7 @@ namespace SolidServer.Researches
         protected List<Area> areas;
         protected HashSet<Node> wholeNodes;
         public List<Area> cutAreas;
-        protected Dictionary<string, string> cutConfiguration;
+        public Dictionary<string, string> cutConfiguration;
         protected Dictionary<string, object> managerConfiguration;
         public BaseResearchManager(Dictionary<string, object> clasteringConfiguration, Dictionary<string, string> cutConfiguration)
         {
