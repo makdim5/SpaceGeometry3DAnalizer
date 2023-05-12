@@ -11,6 +11,7 @@ namespace SolidServer.Researches
 { 
     public class SolidWorksResearchManager : BaseResearchManager
     {
+        public SolidWorksResearchManager(Dictionary<string, string> clasteringConfiguration, Dictionary<string, string> cutConfiguration) : base(clasteringConfiguration, cutConfiguration) { }
         public override Dictionary<string, object> DefineAreas()
         {
             var elems = studyResults.GetElements(wholeNodes) as HashSet<Element>;
@@ -39,13 +40,7 @@ namespace SolidServer.Researches
                 }
             }
             cutAreas = general;
-            return new Dictionary<string, object>() { { "cutElementAreasCount", cutAreas.Count() } };
-        }
-
-        public override void CutArea(int index)
-        {
-            AreaWorker.DrawElementArea(activeDoc, cutAreas.ElementAt(index) as Area);
-            Console.WriteLine($"Конец выреза промежуточной области - {index}");
+            return new Dictionary<string, object>() { { "cutAreas", cutAreas } };
         }
     }
 }

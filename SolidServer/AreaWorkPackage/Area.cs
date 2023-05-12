@@ -1,5 +1,6 @@
 ﻿using SolidServer.SolidWorksPackage.ResearchPackage;
 using SolidServer.Utitlites;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,23 +20,21 @@ namespace SolidServer.AreaWorkPackage
 
         public Area()
         {
-           
+            nodes = new();
+            elements = new();
         }
 
-        public Area(HashSet<Node> nodes)
+        public Area(HashSet<Node> nodes):this()
         {
             this.nodes = nodes;
-           
-
         }
 
-        public Area(HashSet<Element> elements)
+        public Area(HashSet<Element> elements):this()
         {
             this.elements = elements;
-            areaCenter = DefineAreaCenter();
+            areaCenter = DefineAreaCenterThroughElements();
             maxRadius = DefineAreaRadius();
             dimensions = DefineDimensions();
-            
         }
 
         public HashSet<Node> DefineInsideNodes(IEnumerable<Node> nodes)
@@ -57,8 +56,12 @@ namespace SolidServer.AreaWorkPackage
             return realDistance < maxRadius * 1.2;
         }
 
-        public Point3D DefineAreaCenter()
+        public Point3D DefineAreaCenterThroughElements()
         {
+            if (!elements.Any())
+            {
+                return new Point3D(0, 0, 0);
+            }
             double TemporableSumX = 0;
             double TemporableSumY = 0;
             double TemporableSumZ = 0;
@@ -76,6 +79,32 @@ namespace SolidServer.AreaWorkPackage
                 x = TemporableSumX / elements.Count,
                 y = TemporableSumY / elements.Count,
                 z = TemporableSumZ / elements.Count
+            };
+        }
+
+        public Point3D DefineAreaCenterThroughNodes()
+        {
+            if (!nodes.Any())
+            {
+                return new Point3D(0,0,0);
+            }
+            double TemporableSumX = 0;
+            double TemporableSumY = 0;
+            double TemporableSumZ = 0;
+
+            foreach (var node in nodes)
+            {
+
+                TemporableSumX += node.point.x;
+                TemporableSumY += node.point.y;
+                TemporableSumZ += node.point.z;
+
+            }
+            return new Point3D
+            {
+                x = TemporableSumX / nodes.Count,
+                y = TemporableSumY / nodes.Count,
+                z = TemporableSumZ / nodes.Count
             };
         }
 
@@ -150,14 +179,34 @@ namespace SolidServer.AreaWorkPackage
             return maxRadius;
         }
 
+        public double DefineAreaRadiusThroughDimensions()
+        {
+            var dims = DefineDimensions();
+            var minLengths = new List<double>() 
+            {
+                Math.Abs(dims["maxX"] - dims["minX"]),
+                Math.Abs(dims["maxY"] - dims["minY"]),
+                Math.Abs(dims["maxZ"] - dims["minZ"]),
+            };
+
+            double radius = minLengths.Min() / 2;
+
+            return radius;
+        }
+
         public HashSet<Node> GetNodes()
         {
-            var nodes = new HashSet<Node>();
-            foreach (var element in elements)
+            var areaNodes = this.nodes;
+            if (elements.Count() > 0)
             {
-                nodes.UnionWith(element.vertexNodes);
+                areaNodes = new HashSet<Node>();
+                foreach (var element in elements)
+                {
+                    areaNodes.UnionWith(element.vertexNodes);
+                }
             }
-            return nodes;
+            
+            return areaNodes;
         }
 
         public override string ToString()

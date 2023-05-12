@@ -116,7 +116,7 @@ namespace SolidServer.SolidWorksPackage
         }
 
 
-        public static void DoTruba(ModelDoc2 doc, double[] points, double rad = 0.005)
+        public static Feature DoTruba(ModelDoc2 doc, double[] points, double rad = 0.005)
         {
 
             doc.ClearSelection();
@@ -144,13 +144,14 @@ namespace SolidServer.SolidWorksPackage
             swFeatData.TwistControlType = 0;
             swFeatData.SetTwistAngle(0);
             swFeatData.SetWallThickness(true, 0);
-            doc.FeatureManager.CreateFeature(swFeatData);
+            var cut = doc.FeatureManager.CreateFeature(swFeatData);
 
             doc.ClearSelection();
+            return cut;
         }
 
 
-        public static void CutEllipsoid(ModelDoc2 doc, double xc, double yc, double zc, double radA = 0.005, double radB = 0.001, double radC = 0.005)
+        public static Feature CutEllipsoid(ModelDoc2 doc, double xc, double yc, double zc, double radA = 0.005, double radB = 0.001, double radC = 0.005)
         {
             double unit = 1000;
             doc.ClearSelection();
@@ -188,17 +189,18 @@ namespace SolidServer.SolidWorksPackage
                 startArcPoint.x, startArcPoint.y, startArcPoint.z);
 
             line.Select2(false, 16);
-            doc.FeatureManager.FeatureRevolve2(true, true, false, true, false, false, 0, 0, 6.2831853071796, 0, false, false, radious, radious, 0, 0, 0, true, true, true);
+            var cut = doc.FeatureManager.FeatureRevolve2(true, true, false, true, false, false, 0, 0, 6.2831853071796, 0, false, false, radious, radious, 0, 0, 0, true, true, true);
             doc.SelectionManager.EnableContourSelection = false;
             doc.InsertSketch2(false);
             doc.ClearSelection();
+            return cut;
         }
 
-        public static void CutSphiere(ModelDoc2 doc, Sphere sphere)
+        public static Feature CutSphiere(ModelDoc2 doc, Sphere sphere)
         {
-            CutSphiere(doc, sphere.center.x, sphere.center.y, sphere.center.z, sphere.radious);
+           return CutSphiere(doc, sphere.center.x, sphere.center.y, sphere.center.z, sphere.radious);
         }
-        public static void CutSphiere(ModelDoc2 doc, double xc, double yc, double zc, double rad = 0.005)
+        public static Feature CutSphiere(ModelDoc2 doc, double xc, double yc, double zc, double rad = 0.005)
         {
             double unit = 1000;
             doc.ClearSelection();
@@ -234,13 +236,14 @@ namespace SolidServer.SolidWorksPackage
                 startArcPoint.x, startArcPoint.y, startArcPoint.z);
 
             line.Select2(false, 16);
-            doc.FeatureManager.FeatureRevolve2(true, true, false, true, false, false, 0, 0, 6.2831853071796, 0, false, false, radious, radious, 0, 0, 0, true, true, true);
+            var cut = doc.FeatureManager.FeatureRevolve2(true, true, false, true, false, false, 0, 0, 6.2831853071796, 0, false, false, radious, radious, 0, 0, 0, true, true, true);
             doc.SelectionManager.EnableContourSelection = false;
             doc.InsertSketch2(false);
             doc.ClearSelection();
+            return cut;
         }
 
-        public static void CutCilindr(ModelDoc2 doc, double xc, double yc, double zc, double height = 0.01, double radious = 0.005)
+        public static Feature CutCilindr(ModelDoc2 doc, double xc, double yc, double zc, double height = 0.01, double radious = 0.005)
         {
             double unit = 1000;
             doc.ClearSelection();
@@ -267,15 +270,16 @@ namespace SolidServer.SolidWorksPackage
             doc.SketchManager.CreateCircleByRadius(center.x, center.y, center.z, radious);
 
 
-            doc.FeatureManager.FeatureCut4(true, false, false, 0, 0, height, height, false, false, false, false, 1.74532925199433E-02, 1.74532925199433E-02, false, false, false,
+            var cut = doc.FeatureManager.FeatureCut4(true, false, false, 0, 0, height, height, false, false, false, false, 1.74532925199433E-02, 1.74532925199433E-02, false, false, false,
                 false, false, true, true, true, true, false, 0, 0, false, false);
 
             doc.InsertSketch2(false);
             doc.ClearSelection();
+            return cut;
 
         }
 
-        public static void CutCube(ModelDoc2 doc, double xc, double yc, double zc, double h1 = 0.002)
+        public static Feature CutCube(ModelDoc2 doc, double xc, double yc, double zc, double h1 = 0.002)
         {
             double unit = 1000;
             doc.ClearSelection();
@@ -301,16 +305,17 @@ namespace SolidServer.SolidWorksPackage
                 (xc + h1 / 2) / unit, (yc - h1 / 2) / unit, zc / unit);
 
 
-            doc.FeatureManager.FeatureCut4(true, false, false, 0, 0, h1, h1, false, false, false, false, 1.74532925199433E-02, 1.74532925199433E-02, false, false, false,
+            var cut = doc.FeatureManager.FeatureCut4(true, false, false, 0, 0, h1, h1, false, false, false, false, 1.74532925199433E-02, 1.74532925199433E-02, false, false, false,
                 false, false, true, true, true, true, false, 0, 0, false, false);
 
             doc.InsertSketch2(false);
             doc.ClearSelection();
+            return cut;
         }
 
-        public static void CutParallelepiped(ModelDoc2 doc, Parallelepiped parallelepiped)
+        public static Feature CutParallelepiped(ModelDoc2 doc, Parallelepiped parallelepiped)
         {
-            CutParallelepiped(doc, parallelepiped.minX, parallelepiped.maxX, parallelepiped.minY,
+            return CutParallelepiped(doc, parallelepiped.minX, parallelepiped.maxX, parallelepiped.minY,
                 parallelepiped.maxY, parallelepiped.minZ, parallelepiped.maxZ);
         }
         public static Feature CutParallelepiped(ModelDoc2 doc, double x1, double x2, double y1, double y2, double z1, double z2)

@@ -143,7 +143,6 @@
     <Compile Include="SolidWorksPackage\SolidWorksApplicationPackage\SolidWorksAppWorker.cs" />
     <Compile Include="SolidWorksPackage\DrawPackage\SolidWorksDrawer.cs" />
     <Compile Include="Researches\SolidWorksResearchManager.cs" />
-    <Compile Include="Researches\UnionClusterResearchManager.cs" />
     <Compile Include="Utilites\ConnectionWorker.cs" />
     <Compile Include="Utilites\DataFormatUtils\ExcelWorker.cs" />
     <Compile Include="Utilites\DataFormatUtils\JsonWorker.cs" />

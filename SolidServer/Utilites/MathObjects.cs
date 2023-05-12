@@ -137,5 +137,42 @@ namespace SolidServer.Utitlites
             
             return Math.Sqrt(coefficient) * (endCoordinate - staticCoordinate) + staticCoordinate;
         }
+
+        public static List<Point3D> DetermineCentersPerArea(Dictionary<string, double> areaDimensions, int xAmount, int yAmount, int zAmount)
+        {
+            List<Point3D> points = new();
+
+    
+            List<double> x_coords = getInterval(areaDimensions["minX"], areaDimensions["maxX"], xAmount);
+            List<double> y_coords = getInterval(areaDimensions["minY"], areaDimensions["maxY"], yAmount);
+            List<double> z_coords = getInterval(areaDimensions["minZ"], areaDimensions["maxZ"], zAmount);
+
+            foreach (var x in x_coords)
+            {
+                foreach (var y in y_coords)
+                {
+                    foreach (var z in z_coords)
+                    {
+                        points.Add(new Point3D(x, y, z));
+
+                    }
+                }
+            }
+            return points;
+        }
+
+        private static List<double> getInterval(double min, double max, int amount)
+        {
+            var step = (max - min) / amount;
+            var interval = new List<double>();
+            double vertex_coord = min + step/2;
+            while (vertex_coord < max)
+            {
+                interval.Add(vertex_coord);
+                vertex_coord += step;
+            }
+
+            return interval;
+        }
     }
 }

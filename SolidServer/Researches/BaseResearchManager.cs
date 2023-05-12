@@ -22,22 +22,26 @@ namespace SolidServer.Researches
         protected double minvalue, maxvalue, criticalValue;
         protected List<Area> areas;
         protected HashSet<Node> wholeNodes;
-        public IEnumerable<object> cutAreas;
-        public BaseResearchManager()
+        public List<Area> cutAreas;
+        protected Dictionary<string, string> cutConfiguration;
+        protected Dictionary<string, string> managerConfiguration;
+        public BaseResearchManager(Dictionary<string, string> clasteringConfiguration, Dictionary<string, string> cutConfiguration)
         {
-            cutAreas = new List<object>();
+            this.cutConfiguration = cutConfiguration;
+            cutAreas = new List<Area>();
             crashNodes = new List<Node>();
             facePlanes = new List<FacePlane>();
             areas = new List<Area>();
             activeDoc = SolidWorksAppWorker.DefineActiveSolidWorksDocument();
             studyManager = new StudyManager();
             Console.WriteLine("Приложение SolidWorks и документ определены!\n");
+            this.managerConfiguration = clasteringConfiguration;
         }
 
         public void RunInLoop()
         {
-            try
-            {
+            //try
+            //{
                 GetCompletedStudyResults();
                 DefineCriticalNodes();
                 DetermineCutAreas();
@@ -49,11 +53,11 @@ namespace SolidServer.Researches
                     DefineCriticalNodes();
                     DetermineCutAreas();
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
         }
 
         public Dictionary<string, object> GetCompletedStudyResults()
@@ -110,18 +114,22 @@ namespace SolidServer.Researches
 
             var result = DefineAreas();
 
-            Console.WriteLine(msg + $"Окончание поиска областей. Их общее количество - {result["cutElementAreasCount"]}");
+            Console.WriteLine(msg + $"Окончание поиска областей. Их общее количество - {cutAreas.Count()}");
             return result;
 
         }
         public abstract Dictionary<string, object> DefineAreas();
-        public abstract void CutArea(int index);
+        public void CutArea(int index, Dictionary<string, string> cutConfiguration)
+        {
+            AreaWorker.DrawAreaPerConfiguration(activeDoc, cutAreas.ElementAt(index) as Area, studyResults, cutConfiguration);
+            Console.WriteLine($"Конец выреза промежуточной области - {index}");
+        }
         public void CutAreas()
         {
             Console.WriteLine("Начало выреза областей ...");
             for (int i = 0; i < cutAreas.Count(); i++)
             {
-                CutArea(i);
+                CutArea(i, cutConfiguration);
             }
             cutAreas = new List<Area>();
             Console.WriteLine("Конец выреза областей");

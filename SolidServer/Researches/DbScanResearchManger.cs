@@ -6,25 +6,29 @@ using System.Linq;
 using System.Threading.Tasks;
 using SolidServer.Utitlites;
 using SolidServer.SolidWorksPackage.Cells;
+using SolidServer.SolidWorksPackage.ResearchPackage;
+using SolidServer.AreaWorkPackage;
 
-namespace SolidServer.Researches {
+namespace SolidServer.Researches
+{
     public class DbScanResearchManger : BaseResearchManager
     {
+        public DbScanResearchManger(Dictionary<string, string> clasteringConfiguration, Dictionary<string, string> cutConfiguration) :base(clasteringConfiguration, cutConfiguration) { }
         public override Dictionary<string, object> DefineAreas()
         {
-            var sendData = JsonWorker.SerializeNodesToPointsInJSON(wholeNodes);
+            var sendData = JsonConvert.SerializeObject(wholeNodes);
 
             var task = Task.Run(() => ConnectionWorker.ConnectToClusterizationService(sendData));
             task.Wait();
 
-            cutAreas = JsonConvert.DeserializeObject<List<Parallelepiped>>(task.Result);
-            return new Dictionary<string, object>() { { "cutElementAreasCount", cutAreas.Count() } };
-        }
+            var nodes_areas = JsonConvert.DeserializeObject<List<HashSet<Node>>>(task.Result);
 
-        public override void CutArea(int index)
-        {
-            SolidWorksDrawer.CutParallelepiped(activeDoc, cutAreas.ElementAt(index) as Parallelepiped);
-            Console.WriteLine($"Конец выреза промежуточной области - {index}");
+            cutAreas = new List<Area>();
+            foreach (HashSet<Node> nodes in nodes_areas)
+            {
+                cutAreas.Add(new Area(nodes));
+            }
+            return new Dictionary<string, object>() { { "cutAreas", cutAreas } };
         }
     }
 }

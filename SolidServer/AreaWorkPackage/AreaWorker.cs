@@ -1,8 +1,10 @@
-﻿using SolidServer.SolidWorksPackage;
+﻿using EdmLib;
+using SolidServer.SolidWorksPackage;
 using SolidServer.SolidWorksPackage.Cells;
 using SolidServer.SolidWorksPackage.ResearchPackage;
 using SolidServer.Utitlites;
 using SolidWorks.Interop.sldworks;
+using SolidWorks.Interop.swconst;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -102,8 +104,8 @@ namespace SolidServer.AreaWorkPackage
         public static List<SimplePlane> GetPlanesFromAreaDims(Area area)
         {
             var dims = area.dimensions;
-            List<SimplePlane> planes = new List<SimplePlane>()  
-            { 
+            List<SimplePlane> planes = new List<SimplePlane>()
+            {
              new SimplePlane
              (
                 new Point3D (dims["minX"], dims["minY"], dims["minZ"]),
@@ -198,7 +200,7 @@ namespace SolidServer.AreaWorkPackage
         {
             var allNodes = new HashSet<Node>();
 
-            foreach (var node in nodes) 
+            foreach (var node in nodes)
             {
                 allNodes.Add(node[0]);
                 allNodes.Add(node[1]);
@@ -206,7 +208,7 @@ namespace SolidServer.AreaWorkPackage
             }
 
 
-            return ExceptCloseNodes(allNodes,faces);
+            return ExceptCloseNodes(allNodes, faces);
         }
 
         public static HashSet<Node> ExceptCloseNodes(HashSet<Node> allNodes, IEnumerable
@@ -247,8 +249,8 @@ namespace SolidServer.AreaWorkPackage
 
         public static double DefinePointToFaceDistance(Point3D point, SimplePlane face)
         {
-            
-            double distance = Math.Abs(point.x * face.A + point.y * face.B + point.z * face.C + face.D) / 
+
+            double distance = Math.Abs(point.x * face.A + point.y * face.B + point.z * face.C + face.D) /
                 Math.Sqrt(face.A * face.A + face.B * face.B + face.C * face.C);
 
             return distance;
@@ -256,32 +258,81 @@ namespace SolidServer.AreaWorkPackage
         }
 
 
-        public static List<Feature> DrawElementArea(ModelDoc2 doc, Area area)
+        public static List<Feature> DrawAreaPerConfiguration(ModelDoc2 doc, Area area, StaticStudyResults staticStudyResults, Dictionary<string, string> configuration)
         {
             List<Feature> features = new List<Feature>();
 
-
-            foreach (var element in area.elements)
+            if (configuration["cutType"] == "element")
             {
-                var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes());
-                features.Add(SolidWorksDrawer.DrawPyramid(doc, elementPyramid));
+                if (area.elements.Count() == 0)
+                {
+                    area.elements = staticStudyResults.GetElements(area.nodes) as HashSet<Element>;
+                }
+
+                foreach (var element in area.elements)
+                {
+                    var elementPyramid = new PyramidFourVertexArea(element.GetDrawingVertexes());
+                    features.Add(SolidWorksDrawer.DrawPyramid(doc, elementPyramid));
+                }
             }
+            else if (configuration["cutType"] == "node")
+            {
+                if (area.nodes.Count() == 0)
+                {
+                    area.nodes = area.GetNodes();
+                }
+                var areaDimensions = area.DefineDimensions();
+                if (configuration["nodeCutWay"] == "figure")
+                {
+                    if (configuration["figureType"] == "rect")
+                    {
+                        var parralellepiped = new Parallelepiped(areaDimensions["minX"],
+                            areaDimensions["minY"],
+                            areaDimensions["minZ"],
+                            areaDimensions["maxX"],
+                            areaDimensions["maxY"],
+                            areaDimensions["maxZ"]);
+                        features.Add(SolidWorksDrawer.CutParallelepiped(doc, parralellepiped));
+                    }
+                    else if (configuration["figureType"] == "sphere")
+                    {
 
-            // preparing
-            //doc.ClearSelection2(true);
-            //PartDoc? part = (PartDoc)doc;
-            //var swBody = (Body2)part.CreateNewBody();
+                        var sphere = new Sphere(area.DefineAreaCenterThroughNodes(), area.DefineAreaRadiusThroughDimensions());
+                        features.Add(SolidWorksDrawer.CutSphiere(doc, sphere));
+                    }
 
-            //foreach (var surfaceNodes in GetBodySurfacesNodes(area.elements))
-            //{
-            //    CreateSurface(new[] { surfaceNodes[0].point, surfaceNodes[1].point, surfaceNodes[2].point }, swBody);
-            //}
+                }
+                else if (configuration["nodeCutWay"] == "ravn")
+                {
+                    if (configuration["figureType"] == "cube")
+                    {
+                        var cubesCenters = MathHelper.DetermineCentersPerArea(
+                            areaDimensions,
+                            Convert.ToInt32(configuration["xAmount"]),
+                            Convert.ToInt32(configuration["yAmount"]),
+                            Convert.ToInt32(configuration["zAmount"]));
 
-            //swBody.CreateBodyFromSurfaces();
+                        var minLenghts = new List<double>()
+                        {
+                            Math.Abs(areaDimensions["maxX"] - areaDimensions["minX"]) / Convert.ToInt32(configuration["xAmount"]),
+                            Math.Abs(areaDimensions["maxY"] - areaDimensions["minY"]) / Convert.ToInt32(configuration["yAmount"]),
+                            Math.Abs(areaDimensions["maxZ"] - areaDimensions["minZ"]) / Convert.ToInt32(configuration["zAmount"]),
+                        };
+                        foreach (var point in cubesCenters)
+                        {
+                            try
+                            {
 
+                                features.Add(SolidWorksDrawer.CutCube(doc, point.x, point.y, point.z, minLenghts.Average()));
+                            }
+                            catch
+                            {
 
-
-            //features.Add(swCombineBodiesFeatureData);
+                            }
+                        }
+                    }
+                }
+            }
             return features;
         }
 

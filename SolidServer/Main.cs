@@ -1,6 +1,7 @@
 ﻿using SolidServer.Researches;
 using SolidServer.Utitlites;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 // Чтобы спрятать консоль необходимо изменить тип выходных данных
@@ -18,9 +19,16 @@ namespace SolidServer
 
         static void DoResearch()
         {
-            //var manager = new DbScanResearchManger();
-            //var manager = new UnionClusterResearchManager();
-            var manager = new SolidWorksResearchManager();
+            Dictionary<string, string> elementCusteringConfiguration = new Dictionary<string, string>();
+            Dictionary<string, string> dbscanCusteringConfiguration = new Dictionary<string, string>();
+            Dictionary<string, string> cutConfiguration = new Dictionary<string, string>() 
+            {
+                {"cutType", "node"},
+                {"nodeCutWay", "figure"},
+                {"figureType", "rect" }
+            };
+            var manager = new DbScanResearchManger(dbscanCusteringConfiguration, cutConfiguration);
+            //var manager = new SolidWorksResearchManager(elementCusteringConfiguration , cutConfiguration);
 
             manager.RunInLoop();
             Console.WriteLine("Выполнение программы завершено!");

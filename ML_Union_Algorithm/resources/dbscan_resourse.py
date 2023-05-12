@@ -9,33 +9,17 @@ class DensityBasedSpatialClustering(Resource):
 
     def post(self):
         try:
-            print('DensityBasedSpatialClustering для кластеризации запущен...')
-
+            print(f'{self.__class__.__name__} для кластеризации запущен...')
             nodes_df = pd.DataFrame(request.json)
+            points_df = pd.DataFrame(nodes_df["point"].values.tolist())
+            af = DBSCAN(eps=2, min_samples=4).fit(points_df)
 
-            af = DBSCAN(eps=2, min_samples=4).fit(nodes_df)
             nodes_df["cluster"] = af.labels_
 
-            areas_to_send = []
-            min_border_squeeze_coefficient = 0.01
-            max_border_squeeze_coefficient = 0.01
-            for i in range(max(af.labels_) + 1):
-                area = {}
-                df = nodes_df[nodes_df["cluster"] == i]
-                area["minX"] = min(df["x"].values) + min_border_squeeze_coefficient*abs(min(df["x"].values))
-                area["maxX"] = max(df["x"].values) - max_border_squeeze_coefficient*abs(max(df["x"].values))
-                area["minY"] = min(df["y"].values) + min_border_squeeze_coefficient*abs(min(df["y"].values))
-                area["maxY"] = max(df["y"].values) - max_border_squeeze_coefficient*abs(max(df["y"].values))
-                area["minZ"] = min(df["z"].values) + min_border_squeeze_coefficient*abs(min(df["z"].values))
-                area["maxZ"] = max(df["z"].values) - max_border_squeeze_coefficient*abs(max(df["z"].values))
-
-                x_delta = abs(area["maxX"] - area["minX"])
-                y_delta = abs(area["maxY"] - area["minY"])
-                z_delta = abs(area["maxY"] - area["minY"])
-
-                threshold = 0.5
-                if x_delta > threshold and y_delta > threshold and z_delta > threshold:
-                    areas_to_send.append(area)
+            areas_to_send = [
+                nodes_df[nodes_df["cluster"] == i].drop(["cluster"], axis=1).to_dict(orient='records')
+                for i in range(max(af.labels_) + 1)
+            ]
 
             print("Кластеризация выполнена, области отправлены!")
             return areas_to_send
