@@ -92,9 +92,9 @@ namespace SolidServer.AreaWorkPackage
             }
 
             HashSet<Node> rightNodes = new();
-            foreach (var nodes in notCloseNodes)
+            foreach (HashSet<Node> items in notCloseNodes)
             {
-                rightNodes.UnionWith(nodes);
+                rightNodes.UnionWith(items);
             }
 
             return rightNodes;

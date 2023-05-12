@@ -148,14 +148,16 @@ namespace SolidServer.AreaWorkPackage
                 }
             }
 
+            double min1coef = 1.2, min2coef = 0.8;
+
             return new Dictionary<string, double>()
             {
-                { "minX", minX },
-                { "maxX", maxX },
-                { "minY", minY },
-                { "maxY", maxY },
-                { "minZ", minZ },
-                { "maxZ", maxZ },
+                { "minX", minX*min1coef },
+                { "maxX", maxX*min2coef },
+                { "minY", minY*min1coef },
+                { "maxY", maxY*min2coef },
+                { "minZ", minZ*min1coef },
+                { "maxZ", maxZ*min2coef },
 
             };
 
