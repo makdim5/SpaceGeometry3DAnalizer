@@ -148,7 +148,7 @@ namespace SolidServer.AreaWorkPackage
                 }
             }
 
-            double min1coef = 1.2, min2coef = 0.8;
+            double min1coef = 1, min2coef = 1;
 
             return new Dictionary<string, double>()
             {

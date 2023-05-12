@@ -10,9 +10,9 @@ class DensityBasedSpatialClustering(Resource):
     def post(self):
         try:
             print(f'{self.__class__.__name__} для кластеризации запущен...')
-            nodes_df = pd.DataFrame(request.json)
+            nodes_df = pd.DataFrame(request.json["nodes"])
             points_df = pd.DataFrame(nodes_df["point"].values.tolist())
-            af = DBSCAN(eps=2, min_samples=4).fit(points_df)
+            af = DBSCAN(eps=request.json["eps"], min_samples=request.json["min_samples"]).fit(points_df)
 
             nodes_df["cluster"] = af.labels_
 

@@ -40,12 +40,12 @@ namespace SolidServer.Researches
 
         public void RunInLoop()
         {
-            //try
-            //{
+            try
+            {
                 GetCompletedStudyResults();
                 DefineCriticalNodes();
                 DetermineCutAreas();
-                while (crashNodes.Count() == 0)
+                while (crashNodes.Count() == 0 && cutAreas.Count() > 0)
                 {
                     CutAreas();
                     RunStudy();
@@ -53,11 +53,11 @@ namespace SolidServer.Researches
                     DefineCriticalNodes();
                     DetermineCutAreas();
                 }
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine(ex.Message);
-            //}
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         public Dictionary<string, object> GetCompletedStudyResults()
@@ -118,7 +118,7 @@ namespace SolidServer.Researches
         public void CutArea(int index, Dictionary<string, string> cutConfiguration)
         {
             AreaWorker.DrawAreaPerConfiguration(activeDoc, cutAreas.ElementAt(index) as Area, studyResults, cutConfiguration);
-            Console.WriteLine($"Конец выреза промежуточной области - {index}");
+            Console.WriteLine($"Конец выреза промежуточной области - {index + 1}");
         }
 
         public void CutAreas()

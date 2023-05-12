@@ -12,7 +12,12 @@ namespace SolidServer.Researches
         public DbScanResearchManger(Dictionary<string, string> clasteringConfiguration, Dictionary<string, string> cutConfiguration) :base(clasteringConfiguration, cutConfiguration) { }
         public override Dictionary<string, object> DefineAreas()
         {
-            var sendData = JsonConvert.SerializeObject(wholeNodes);
+            Dictionary<string, object> dataToSend = new Dictionary<string, object>() {
+                {"eps", 2},
+                {"min_samples", 4},
+                {"nodes", wholeNodes}
+            };
+            var sendData = JsonConvert.SerializeObject(dataToSend);
 
             var task = Task.Run(() => ConnectionWorker.ConnectToClusterizationService(sendData));
             task.Wait();

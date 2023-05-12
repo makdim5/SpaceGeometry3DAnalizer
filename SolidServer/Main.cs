@@ -29,8 +29,8 @@ namespace SolidServer
                 {"nodeCutWay", "figure"},
                 {"figureType", "rect" }
             };
-            //var manager = new DbScanResearchManger(dbscanCusteringConfiguration, cutConfiguration);
-            var manager = new SolidWorksResearchManager(elementCusteringConfiguration, cutConfiguration);
+            var manager = new DbScanResearchManger(dbscanCusteringConfiguration, cutConfiguration);
+            //var manager = new SolidWorksResearchManager(elementCusteringConfiguration, cutConfiguration);
 
             manager.RunInLoop();
             Console.WriteLine("Выполнение программы завершено!");
