@@ -14,7 +14,7 @@ namespace SolidServer.AreaWorkPackage
 {
     public class AreaWorker
     {
-        public static List<Area> DefineElementAreas(HashSet<Element> elements)
+        public static List<Area> DefineAreasPerElementsAdjacent(HashSet<Element> elements)
         {
             var areas = new List<Area>();
 
@@ -332,6 +332,10 @@ namespace SolidServer.AreaWorkPackage
                         }
                     }
                 }
+            }
+            else if (configuration["cutType"] == "point")
+            {
+                SolidWorksDrawer.DrawNodes(doc, area.GetNodes());
             }
             return features;
         }
