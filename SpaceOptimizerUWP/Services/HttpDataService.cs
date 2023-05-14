@@ -73,18 +73,18 @@ namespace SpaceOptimizerUWP.Services
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<bool> PostAsJsonAsync<T>(string uri, string command,T item)
+        public async Task<String> PostAsJsonAsync<T>(string uri, string command,T item)
         {
             if (item == null)
             {
-                return false;
+                return "";
             }
             client.DefaultRequestHeaders.Add("Command", command);
             var serializedItem = JsonConvert.SerializeObject(item);
 
             var response = await client.PostAsync(uri, new StringContent(serializedItem, Encoding.UTF8, "application/json"));
-
-            return response.IsSuccessStatusCode;
+            var json = await response.Content.ReadAsStringAsync();
+            return json;
         }
 
         public async Task<bool> PutAsync<T>(string uri, T item)

@@ -34,6 +34,7 @@
             -->
             <winui:NavigationViewItem x:Uid="Shell_Main" Icon="Document" helpers:NavHelper.NavigateTo="views:MainPage" />
             <winui:NavigationViewItem x:Uid="Shell_AlgoWebView" Icon="Document" helpers:NavHelper.NavigateTo="views:AlgoWebViewPage" />
+            <winui:NavigationViewItem x:Uid="Test" Icon="Document" helpers:NavHelper.NavigateTo="views:FuncPage" />
         </winui:NavigationView.MenuItems>
         <i:Interaction.Behaviors>
             <behaviors:NavigationViewHeaderBehavior

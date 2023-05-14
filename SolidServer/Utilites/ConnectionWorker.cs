@@ -37,15 +37,15 @@ namespace SolidServer.Utitlites
         private static HttpListener server = new HttpListener();
         private static HttpListenerContext context = null;
 
-        public static async Task<string> ConnectToClusterizationService(string jsonData, string url= "http://127.0.0.1:5000/dbscan")
+        public static async Task<string> ConnectToClusterizationService(string jsonData, string url = "http://127.0.0.1:5000/dbscan")
         {
             HttpClient httpClient = new HttpClient();
 
             httpClient.Timeout = TimeSpan.FromMinutes(40);
             HttpResponseMessage response = await httpClient.PostAsync(url,
-                 new StringContent(jsonData, Encoding.UTF8, "application/json")); 
+                 new StringContent(jsonData, Encoding.UTF8, "application/json"));
             string responce_json = await response.Content.ReadAsStringAsync();
-            
+
             Console.WriteLine("Данные по кластеризации получены!");
             return responce_json;
         }
@@ -60,12 +60,12 @@ namespace SolidServer.Utitlites
                 while (keepListening)
                 {
                     context = server.GetContext();
-                    
+
                     try
                     {
                         DoCommand();
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         Console.WriteLine(ex);
                         SendData("Упс, что-то пошло не так!");
@@ -112,20 +112,30 @@ namespace SolidServer.Utitlites
                     }
                 case INIT_MANAGER:
                     {
-                        var dict = JsonConvert.DeserializeObject<Dictionary<string, object>>(GetJson());
-                        var managerConfig = JsonConvert.DeserializeObject<Dictionary<string, object>>(dict["managerConfig"] as String);
-                        var cutConfig = JsonConvert.DeserializeObject<Dictionary<string, string>>(dict["cutConfig"] as String);
+                        var jsn = GetJson();
+                        Console.WriteLine($"{jsn} lll");
+                        var dict = JsonConvert.DeserializeObject<Dictionary<string, object>>(jsn);
+                        var managerConfig = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonConvert.SerializeObject(dict["managerConfig"]));
+                        var cutConfig = JsonConvert.DeserializeObject<Dictionary<string, string>>(JsonConvert.SerializeObject(dict["cutConfig"]));
+                        managerConfig["meshParams"] = JsonConvert.DeserializeObject<Dictionary<string, string>>(JsonConvert.SerializeObject(managerConfig["meshParams"]));
                         var managerType = dict["managerType"] as String;
                         if (managerType == "dbscan")
                         {
                             manager = new DbScanResearchManger(managerConfig, cutConfig);
                             SendData("determened!");
-                        } else if (managerType == "adjacmentElements")
+                            Console.WriteLine($"Выбран менеджер {managerType}!");
+                        }
+                        else if (managerType == "adjacmentElements")
                         {
                             manager = new SolidWorksResearchManager(managerConfig, cutConfig);
                             SendData("determened!");
+                            Console.WriteLine($"Выбран менеджер {managerType}!");
                         }
-                        else { SendData("error"); }
+                        else
+                        {
+                            Console.WriteLine($"Ошибка выбора менеджера!");
+                            SendData("error");
+                        }
                         break;
                     }
                 case DETERMINE_RESEARCH_RESULTS:
@@ -162,7 +172,8 @@ namespace SolidServer.Utitlites
                             var dict = JsonConvert.DeserializeObject<Dictionary<string, int>>(GetJson());
                             manager.CutArea(dict["index"], manager.cutConfiguration);
                             SendData("well");
-                        } else { SendData("error"); }
+                        }
+                        else { SendData("error"); }
                         break;
                     }
                 case RUN_STUDY:

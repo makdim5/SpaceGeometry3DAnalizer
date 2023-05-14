@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="SpaceOptimizerUWP.Views.FuncPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SpaceOptimizerUWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0"  HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="Выбрать менеджера" Margin="5" Click="Button_Click"/>
+            <Button Margin="10"/>
+            <Button Margin="10"/>
+            <Button Margin="10"/>
+        </StackPanel>
+        
+        <TextBlock x:Name="outTextBlock" Text="Hello!" FontSize="50" TextAlignment="Center" TextWrapping="WrapWholeWords" Grid.Column="1"  />
+    </Grid>
+</Page>

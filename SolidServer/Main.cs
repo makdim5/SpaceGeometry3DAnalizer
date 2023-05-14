@@ -13,8 +13,8 @@ namespace SolidServer
     {
         static void Main()
         {
-            //StartAsServer();
-            DoResearch();
+            StartAsServer();
+            //DoResearch();
         }
 
         static void DoResearch()
