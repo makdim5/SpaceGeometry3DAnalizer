@@ -27,6 +27,7 @@ namespace SpaceOptimizerUWP.Models
         public Area(HashSet<Node> nodes):this()
         {
             this.nodes = nodes;
+            dimensions = DefineDimensions();
         }
 
         public Area(HashSet<Element> elements):this()
@@ -174,13 +175,8 @@ namespace SpaceOptimizerUWP.Models
 
         public override string ToString()
         {
-            string res = "ElementArea {";
-
-            foreach (var e in dimensions)
-            {
-                res += e.ToString() + "\n";
-            }
-            res += "}\n\n";
+            string res = $"ElementArea nodes count - {nodes.Count()}," +
+                $" elements count  - {elements.Count()}";
 
             return res;
         }

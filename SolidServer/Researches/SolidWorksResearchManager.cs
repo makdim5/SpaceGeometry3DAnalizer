@@ -11,7 +11,7 @@ namespace SolidServer.Researches
     public class SolidWorksResearchManager : BaseResearchManager
     {
         public SolidWorksResearchManager(Dictionary<string, object> clasteringConfiguration, Dictionary<string, string> cutConfiguration) : base(clasteringConfiguration, cutConfiguration) { }
-        public override Dictionary<string, object> DefineAreas()
+        public override List<Area> DefineAreas()
         {
             // поиск областей по смежным элементам
             var elems = studyResults.GetElements(wholeNodes,
@@ -25,7 +25,7 @@ namespace SolidServer.Researches
 
             }
             cutAreas = squeezedAreas;
-            return new Dictionary<string, object>() { { "cutAreas", cutAreas } };
+            return cutAreas;
         }
     }
 }

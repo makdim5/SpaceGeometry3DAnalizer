@@ -98,12 +98,12 @@ namespace SolidServer.Researches
             return new Dictionary<string, object>() { { "msg", msg }, { "crashNodes", JsonConvert.SerializeObject(crashNodes) } };
         }
 
-        public Dictionary<string, object> DetermineCutAreas()
+        public List<Area> DetermineCutAreas()
         {
             // Если существуют критические узлы, то области не формируем
             if (crashNodes.Count() > 0)
             {
-                return new Dictionary<string, object>();
+                return new();
             }
             Console.WriteLine("Начало поиска областей");
             facePlanes = FeatureFaceManager.DefineFacePlanes(activeDoc); // определение граней детали
@@ -117,7 +117,7 @@ namespace SolidServer.Researches
             return result;
 
         }
-        public abstract Dictionary<string, object> DefineAreas();
+        public abstract List<Area> DefineAreas();
         public void CutArea(int index, Dictionary<string, string> cutConfiguration)
         {
             AreaWorker.DrawAreaPerConfiguration(activeDoc, cutAreas.ElementAt(index) as Area, studyResults, cutConfiguration);

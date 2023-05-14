@@ -11,7 +11,7 @@ namespace SolidServer.Researches
     public class DbScanResearchManger : BaseResearchManager
     {
         public DbScanResearchManger(Dictionary<string, object> clasteringConfiguration, Dictionary<string, string> cutConfiguration) :base(clasteringConfiguration, cutConfiguration) { }
-        public override Dictionary<string, object> DefineAreas()
+        public override List<Area> DefineAreas()
         {
             Dictionary<string, object> dataToSend = new Dictionary<string, object>() {
                 {"eps", Convert.ToDouble(managerConfiguration["eps"])}, 
@@ -30,7 +30,7 @@ namespace SolidServer.Researches
             {
                 cutAreas.Add(new Area(nodes));
             }
-            return new Dictionary<string, object>() { { "cutAreas", cutAreas } };
+            return cutAreas;
         }
     }
 }
