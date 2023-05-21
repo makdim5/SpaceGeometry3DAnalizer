@@ -1,0 +1,14 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ConsoleApp1.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=C:\Users\makan\AppData\Local\Packages\b1a026de-6c21-4b07-a11f-8ec89dfcde8b_e5bh6m426kmxm\LocalState\Researches.db&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;Devart.Data.SQLite&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=C:\Users\makan\AppData\Local\Packages\b1a026de-6c21-4b07-a11f-8ec89dfcde8b_e5bh6m426kmxm\LocalState\Researches.db</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -40,7 +40,7 @@ namespace SpaceOptimizerUWP.Views
 
             using (ResearchDbContext db = new())
             {
-                db.DbScanResearchs.ToList();
+                db.Researchs.ToList();
             }
         }
 

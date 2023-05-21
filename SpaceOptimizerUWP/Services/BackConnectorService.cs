@@ -8,16 +8,20 @@ namespace SpaceOptimizerUWP.Services
 {
     public class BackConnectorService
     {
-        public bool CreateDBSCANResearchManagerInBack(DbscanResearch managerConfig, CutConfig cutConfig)
+        public bool CreateDBSCANResearchManagerInBack(BaseResearch managerConfig, CutConfig cutConfig, string type)
         {
             managerConfig.CheckIsRightAttributes();
             var isOk = false;
             try
             {
+                if (type != ResearchType.DBSCAN && type != ResearchType.ADJACMENT)
+                {
+                    return isOk;
+                }
                 var task = Task.Run(() =>
                 {
                     var data = new Dictionary<string, object>() {
-                    { "managerType", ResearchType.DBSCAN },
+                    { "managerType", type },
                     {"managerConfig", JsonConvert.SerializeObject(managerConfig) },
                     {"cutConfig", JsonConvert.SerializeObject(cutConfig) }
                     };
@@ -40,37 +44,6 @@ namespace SpaceOptimizerUWP.Services
             return isOk;
         }
 
-        public bool CreateAdjacmentResearchManagerInBack(AdjacmentResearch managerConfig, CutConfig cutConfig)
-        {
-            managerConfig.CheckIsRightAttributes();
-            var isOk = false;
-            try
-            {
-                var task = Task.Run(() =>
-                {
-                    var data = new Dictionary<string, object>() {
-                    { "managerType", ResearchType.ADJACMENT },
-                    {"managerConfig", JsonConvert.SerializeObject(managerConfig) },
-                    {"cutConfig", JsonConvert.SerializeObject(cutConfig) }
-                    };
-                    return new HttpDataService("http://127.0.0.1:8005/").PostAsJsonAsync("", "setmngr", data);
-
-                });
-                task.Wait();
-                var res = task.Result;
-                if (res == "ok")
-                {
-                    isOk = true;
-                }
-            }
-            catch
-            {
-                throw new Exception("Возникли проблемы с созданием менеджера по причине" +
-                    " разрыва соединения с сервером!");
-            }
-
-            return isOk;
-        }
         public string DetermineResearchResults()
         {
             try

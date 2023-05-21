@@ -2,7 +2,7 @@
 
 namespace SpaceOptimizerUWP.Models
 {
-    public abstract class BaseResearch
+    public class BaseResearch
     {
         public int Id { get; set; }
         public MeshParams meshParams {get; set;}
@@ -10,6 +10,13 @@ namespace SpaceOptimizerUWP.Models
         public string materialParam { get; set; }
         public string coef1 { get; set; }
         public string coef2 { get; set; }
+
+        public string squeezeCoef { get; set; }
+
+        public string nodesIntersectionAmount { get; set; }
+
+        public string minSamples { get; set; }
+        public string eps { get; set; }
 
         public BaseResearch() { }
 
@@ -61,6 +68,49 @@ namespace SpaceOptimizerUWP.Models
             CheckSpecial();
         }
 
-        protected abstract void CheckSpecial();
+        protected void CheckSpecial()
+        {
+            double squeezeCoef_;
+            int nodesIntersectionAmount_;
+
+            try
+            {
+                squeezeCoef_ = Convert.ToDouble(this.squeezeCoef);
+            }
+            catch
+            {
+                throw new ArgumentException("Impossible to convert squeezeCoef to double!");
+            }
+
+            try
+            {
+                nodesIntersectionAmount_ = Convert.ToInt32(this.nodesIntersectionAmount);
+            }
+            catch
+            {
+                throw new ArgumentException("Impossible to convert nodesIntersectionAmount to int!");
+            }
+
+            int minSamples_;
+            double eps_;
+
+            try
+            {
+                eps_ = Convert.ToDouble(this.eps);
+            }
+            catch
+            {
+                throw new ArgumentException("Impossible to convert eps to double!");
+            }
+
+            try
+            {
+                minSamples_ = Convert.ToInt32(this.coef1);
+            }
+            catch
+            {
+                throw new ArgumentException("Impossible to convert minSamples to int!");
+            }
+        }
     }
 }

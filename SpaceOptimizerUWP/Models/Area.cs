@@ -11,7 +11,7 @@ namespace SpaceOptimizerUWP.Models
 
         public HashSet<Node> nodes { get; set; }
 
-        public Point3D areaCenter { get; set; }
+        public Point3D areaCenter;
 
         public double maxRadius { get; set; }
 

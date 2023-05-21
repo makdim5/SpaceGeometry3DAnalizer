@@ -12,17 +12,19 @@ namespace SpaceOptimizerUWP.Models
         public int number { get; set; }
 
         //Первые 4 нода это вершины, остальные 6 это центры ребер
-        public IEnumerable<Node> nodes { get; set; }
+        public IEnumerable<Node> nodes;
 
         //Верщины
-        public HashSet<Node> vertexNodes { get; set; }
+        public HashSet<Node> vertexNodes;
+
+        public HashSet<NodeIndex> vertexIndexes { get; set; }
 
         //Центр области 
-        public Point3D center { get; set; }
+        public Point3D center;
 
         public Element() { }
 
-        public Element(int number, IEnumerable<Node> nodes, Point3D center)
+        public Element(int number, IEnumerable<Node> nodes)
         {
 
             this.number = number;
@@ -35,7 +37,14 @@ namespace SpaceOptimizerUWP.Models
                 nodes.ElementAt(2) ,
                 nodes.ElementAt(3) };
 
-            this.center = center;
+            vertexIndexes = new();
+            foreach (Node node in vertexNodes)
+            {
+                var index = new NodeIndex();
+                index.nodeIndex = node.number;
+
+                vertexIndexes.Add(index);
+            }
 
         }
         public bool Contains(Node node)
