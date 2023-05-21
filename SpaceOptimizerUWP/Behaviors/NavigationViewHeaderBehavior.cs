@@ -36,7 +36,7 @@ namespace SpaceOptimizerUWP.Behaviors
         }
 
         public static readonly DependencyProperty HeaderModeProperty =
-            DependencyProperty.RegisterAttached("HeaderMode", typeof(bool), typeof(NavigationViewHeaderBehavior), new PropertyMetadata(NavigationViewHeaderMode.Always, (d, e) => _current.UpdateHeader()));
+            DependencyProperty.RegisterAttached("HeaderMode", typeof(bool), typeof(NavigationViewHeaderBehavior), new PropertyMetadata(NavigationViewHeaderMode.Always));
 
         public static object GetHeaderContext(Page item)
         {
