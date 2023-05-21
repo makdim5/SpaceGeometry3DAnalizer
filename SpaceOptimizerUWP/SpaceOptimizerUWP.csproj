@@ -204,8 +204,8 @@
     <Compile Include="Views\FirstRunDialog.xaml.cs">
       <DependentUpon>FirstRunDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\FuncPage.xaml.cs">
-      <DependentUpon>FuncPage.xaml</DependentUpon>
+    <Compile Include="Views\ResearchesPage.xaml.cs">
+      <DependentUpon>ResearchesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -252,7 +252,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\FuncPage.xaml">
+    <Page Include="Views\ResearchesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

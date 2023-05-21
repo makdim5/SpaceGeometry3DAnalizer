@@ -7,6 +7,13 @@ namespace SpaceOptimizerUWP.Models.DbModels
     {
         public DbSet<AdjacmentResearchDbModel> AdjacmentResearchs { get; set; }
         public DbSet<DbScanResearchDbModel> DbScanResearchs { get; set; }
+        public DbSet<Area> Areas { get; set; }
+
+        public DbSet<Node> Nodes { get; set; }
+
+        public DbSet<Element> Elements { get; set; }
+
+        public DbSet<Point3D> Points { get; set; }
 
         public ResearchDbContext()
         {
@@ -14,7 +21,7 @@ namespace SpaceOptimizerUWP.Models.DbModels
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Filename=myresearches.db");
+            optionsBuilder.UseSqlite("Filename=Researches.db");
         }
     }
 }

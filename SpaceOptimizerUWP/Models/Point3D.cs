@@ -5,7 +5,9 @@ namespace SpaceOptimizerUWP.Models
     public class Point3D
     {
         public int Id { get; set; }
-        public double x, y, z;
+        public double x { get; set; }
+        public double y { get; set; }
+        public double z { get; set; }
 
         public Point3D(double x, double y, double z)
         {

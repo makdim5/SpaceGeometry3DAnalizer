@@ -6,19 +6,19 @@ namespace SpaceOptimizerUWP.Models
     public class StressNodeParameters : IParameters
     {
         public int Id { get; set; }
-        public readonly float Sx;
-        public readonly float Sy;
-        public readonly float Sz;
-        public readonly float Txy;
-        public readonly float Tyz;
-        public readonly float Txz;
-        public readonly float P1;
-        public readonly float P2;
-        public readonly float P3;
-        public readonly float VON;
-        public readonly float INT;
+        public float Sx{ get; set; }
+        public float Sy{ get; set; }
+        public float Sz { get; set; }
+        public float Txy{ get; set; }
+        public float Tyz{ get; set; }
+        public float Txz { get; set; }
+        public float P1{ get; set; }
+        public float P2{ get; set; }
+        public float P3 { get; set; }
+        public float VON{ get; set; }
+        public float INT { get; set; }
 
-        private readonly Dictionary<string,float> param;
+        private Dictionary<string, float> param;
 
         // показатели по напряжению
         public StressNodeParameters(

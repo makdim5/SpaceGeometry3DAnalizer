@@ -9,16 +9,16 @@ namespace SpaceOptimizerUWP.Models
     public class Element
     {
         public int Id { get; set; }
-        public readonly int number;
+        public int number { get; set; }
 
         //Первые 4 нода это вершины, остальные 6 это центры ребер
-        public readonly IEnumerable<Node> nodes;
+        public IEnumerable<Node> nodes { get; set; }
 
         //Верщины
-        public readonly HashSet<Node> vertexNodes;
+        public HashSet<Node> vertexNodes { get; set; }
 
         //Центр области 
-        public readonly Point3D center;
+        public Point3D center { get; set; }
 
         public Element() { }
 

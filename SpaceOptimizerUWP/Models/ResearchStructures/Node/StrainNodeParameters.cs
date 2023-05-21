@@ -6,20 +6,20 @@ namespace SpaceOptimizerUWP.Models
     public class StrainNodeParameters : IParameters
     {
         public int Id { get; set; }
-        public readonly float EPSx;
-        public readonly float EPSy;
-        public readonly float EPSz;
-        public readonly float GMxy;
-        public readonly float GMyz;
-        public readonly float GMxz;
-        public readonly float ESTRN;
-        public readonly float SEDENS;
-        public readonly float ENERGY;
-        public readonly float E1;
-        public readonly float E2;
-        public readonly float E3;
+        public float EPSx{ get; set; }
+        public float EPSy{ get; set; }
+        public float EPSz{ get; set; }
+        public float GMxy{ get; set; }
+        public float GMyz{ get; set; }
+        public float GMxz { get; set; }
+        public float ESTRN { get; set; }
+        public float SEDENS { get; set; }
+        public float ENERGY{ get; set; }
+        public float E1{ get; set; }
+        public float E2{ get; set; }
+        public float E3 { get; set; }
 
-        private readonly Dictionary<string, float> param;
+        private Dictionary<string, float> param;
         // показатели по деформации
         public StrainNodeParameters(
             float EPSx,

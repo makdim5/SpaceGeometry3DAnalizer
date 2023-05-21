@@ -6,13 +6,13 @@ namespace SpaceOptimizerUWP.Models
     public class Node
     {
         public int Id { get; set; }
-        public readonly int number;
+        public int number { get; set; }
 
-        public readonly Point3D point;
+        public Point3D point { get; set; }
 
-        public readonly StressNodeParameters stress;
+        public StressNodeParameters stress { get; set; }
 
-        public readonly StrainNodeParameters strain;
+        public StrainNodeParameters strain { get; set; }
 
         public Node(int number , Point3D point, StressNodeParameters stress, StrainNodeParameters strain) {
 

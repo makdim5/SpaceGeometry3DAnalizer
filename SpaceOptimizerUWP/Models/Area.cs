@@ -7,17 +7,17 @@ namespace SpaceOptimizerUWP.Models
     public class Area
     {
         public int Id { get; set; }
-        public HashSet<Element> elements;
+        public HashSet<Element> elements { get; set; }
 
-        public HashSet<Node> nodes;
+        public HashSet<Node> nodes { get; set; }
 
-        public Point3D areaCenter;
+        public Point3D areaCenter { get; set; }
 
-        public double maxRadius;
+        public double maxRadius { get; set; }
 
         public Dictionary<string, double> dimensions;
 
-        public double Volume;
+        public double Volume { get; set; }
 
         public Area()
         {
