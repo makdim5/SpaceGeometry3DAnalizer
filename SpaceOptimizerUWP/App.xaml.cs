@@ -1,10 +1,10 @@
 ﻿using System;
-using SpaceOptimizerUWP.Models.DbModels;
 using SpaceOptimizerUWP.Services;
 
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Microsoft.EntityFrameworkCore;
+using SpaceOptimizerUWP.Models;
 
 namespace SpaceOptimizerUWP
 {

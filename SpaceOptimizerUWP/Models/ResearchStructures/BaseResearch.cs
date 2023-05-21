@@ -65,7 +65,6 @@ namespace SpaceOptimizerUWP.Models
                     $" but given {coef2_}!");
             }
 
-            CheckSpecial();
         }
 
         protected void CheckSpecial()

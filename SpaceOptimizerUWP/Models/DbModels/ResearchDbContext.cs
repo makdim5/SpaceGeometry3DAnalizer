@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 
-namespace SpaceOptimizerUWP.Models.DbModels
+namespace SpaceOptimizerUWP.Models
 {
     public class ResearchDbContext : DbContext
     {

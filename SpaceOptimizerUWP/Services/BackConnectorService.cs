@@ -8,7 +8,7 @@ namespace SpaceOptimizerUWP.Services
 {
     public class BackConnectorService
     {
-        public bool CreateDBSCANResearchManagerInBack(BaseResearch managerConfig, CutConfig cutConfig, string type)
+        public static bool CreateDBSCANResearchManagerInBack(BaseResearch managerConfig, CutConfig cutConfig, string type)
         {
             managerConfig.CheckIsRightAttributes();
             var isOk = false;
@@ -35,7 +35,7 @@ namespace SpaceOptimizerUWP.Services
                     isOk = true;
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 throw new Exception("Возникли проблемы с созданием менеджера по причине разрыва" +
                     " соединения с сервером!");
@@ -44,7 +44,7 @@ namespace SpaceOptimizerUWP.Services
             return isOk;
         }
 
-        public string DetermineResearchResults()
+        public static string DetermineResearchResults()
         {
             try
             {
@@ -55,7 +55,7 @@ namespace SpaceOptimizerUWP.Services
                 task.Wait();
                 return task.Result;
             }
-            catch
+            catch (Exception ex)
             {
                 throw new Exception("Возникли проблемы с определением результатов исследования" +
                     " по причине разрыва соединения с сервером!");
@@ -63,7 +63,7 @@ namespace SpaceOptimizerUWP.Services
 
         }
 
-        public string DetermineCriticalNodes()
+        public static string DetermineCriticalNodes()
         {
             try
             {
@@ -75,7 +75,7 @@ namespace SpaceOptimizerUWP.Services
                 task.Wait();
                 return task.Result;
             }
-            catch
+            catch (Exception ex)
             {
                 throw new Exception("Возникли проблемы с определением критических узлов" +
                     " по причине разрыва соединения с сервером!");
@@ -83,7 +83,7 @@ namespace SpaceOptimizerUWP.Services
 
         }
 
-        public List<Area> DetermineAreas()
+        public static List<Area> DetermineAreas()
         {
             try
             {
@@ -94,14 +94,14 @@ namespace SpaceOptimizerUWP.Services
                 task.Wait();
                 return JsonConvert.DeserializeObject<List<Area>>(task.Result);
             }
-            catch
+            catch (Exception ex)
             {
                 throw new Exception("Возникли проблемы с определением областей" +
                     " по причине разрыва соединения с сервером!");
             }
         }
 
-        public bool CutArea(int counter)
+        public static bool CutArea(int counter)
         {
             bool isOk = false;
             try
@@ -120,7 +120,7 @@ namespace SpaceOptimizerUWP.Services
                 }
                 return isOk;
             }
-            catch
+            catch (Exception ex)
             {
                 throw new Exception("Возникли проблемы с вырезом области" +
                     " по причине разрыва соединения с сервером!");
@@ -128,14 +128,14 @@ namespace SpaceOptimizerUWP.Services
 
         }
 
-        public bool RunStudy()
+        public static bool RunStudy()
         {
             bool isOk = false;
             try
             {
                 var task = Task.Run(() =>
                 {
-                return new HttpDataService("http://127.0.0.1:8005/").PostAsJsonAsync("", "runstudy", "");
+                    return new HttpDataService("http://127.0.0.1:8005/").PostAsJsonAsync("", "runstudy", "");
                 });
                 task.Wait();
                 if (task.Result == "ok")
@@ -144,11 +144,72 @@ namespace SpaceOptimizerUWP.Services
                 }
                 return isOk;
             }
-            catch
+            catch (Exception ex)
             {
                 throw new Exception("Возникли проблемы с запуском исследования" +
                     " по причине разрыва соединения с сервером!");
             }
+        }
+
+        public static bool OpenDocument(string path)
+        {
+            bool isOk = false;
+            try
+            {
+                var data = new Dictionary<string, string>() { { "docPath", path } };
+                var task = Task.Run(() => new HttpDataService("http://127.0.0.1:8005/").PostAsJsonAsync<Dictionary<string, string>>("", "opendoc", data));
+                task.Wait();
+                if (task.Result == "ok")
+                {
+                    isOk = true;
+                }
+                return isOk;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Возникли проблемы с открытием документа" +
+                    " по причине разрыва соединения с сервером!");
+            }
+        }
+
+        public static bool OpenSolidWorks()
+        {
+            bool isOk = false;
+            try
+            {
+                var task = Task.Run(() => new HttpDataService("http://127.0.0.1:8005/").PostAsJsonAsync("", "opensw", ""));
+                task.Wait();
+                if (task.Result == "ok")
+                {
+                    isOk = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Возникли проблемы с открытием SolidWorks" +
+                    " по причине разрыва соединения с сервером!");
+            }
+            return isOk;
+        }
+
+        public static bool CloseSolidWorks()
+        {
+            bool isOk = false;
+            try
+            {
+                var task = Task.Run(() => new HttpDataService("http://127.0.0.1:8005/").PostAsJsonAsync("", "closesw", ""));
+                task.Wait();
+                if (task.Result == "ok")
+                {
+                    isOk = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Возникли проблемы с закрытием SolidWorks" +
+                    " по причине разрыва соединения с сервером!");
+            }
+            return isOk;
         }
     }
 }

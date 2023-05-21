@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SpaceOptimizerUWP.Models.DbModels
+namespace SpaceOptimizerUWP.Models
 {
     public class ResearchDbModel
     {

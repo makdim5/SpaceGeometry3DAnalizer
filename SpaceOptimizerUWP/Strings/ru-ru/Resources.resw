@@ -229,6 +229,6 @@
     <value>Добро пожаловать!</value>
   </data>
   <data name="Shell_Researches.Content" xml:space="preserve">
-    <value>Исследования</value>
+    <value>Проекты исследований</value>
   </data>
 </root>
