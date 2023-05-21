@@ -68,7 +68,7 @@
                         </StackPanel>
                     </Grid>
 
-                    <ListView ItemClick="researchesList_ItemClick" Grid.Row="2" x:Name="researchesList" Margin="20">
+                    <ListView IsItemClickEnabled="True" ItemClick="researchesList_ItemClick" Grid.Row="2" x:Name="researchesList" Margin="20">
                         <ListView.ItemTemplate >
                             <DataTemplate x:DataType="models:ResearchDbModel">
                                 <Grid Height="70" Margin="20">

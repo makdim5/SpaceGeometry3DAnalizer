@@ -82,7 +82,8 @@ namespace SpaceOptimizerUWP.Views
 
         private void researchesList_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            var item = (ResearchDbModel)e.ClickedItem;
+            Frame.Navigate(typeof(ResearchProjectPage), item, new EntranceNavigationTransitionInfo());
         }
 
         private async void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
