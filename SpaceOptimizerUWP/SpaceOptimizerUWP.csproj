@@ -159,11 +159,17 @@
     <Compile Include="Helpers\Singleton.cs" />
     <Compile Include="Models\Area.cs" />
     <Compile Include="Models\Point3D.cs" />
+    <Compile Include="Models\ResearchStructures\AdjacmentResearch.cs" />
+    <Compile Include="Models\ResearchStructures\BaseResearch.cs" />
+    <Compile Include="Models\ResearchStructures\CutConfig.cs" />
+    <Compile Include="Models\ResearchStructures\DbscanResearch.cs" />
     <Compile Include="Models\ResearchStructures\Element\Element.cs" />
+    <Compile Include="Models\ResearchStructures\MeshParams.cs" />
     <Compile Include="Models\ResearchStructures\Node\IParameters.cs" />
     <Compile Include="Models\ResearchStructures\Node\Node.cs" />
     <Compile Include="Models\ResearchStructures\Node\StrainNodeParameters.cs" />
     <Compile Include="Models\ResearchStructures\Node\StressNodeParameters.cs" />
+    <Compile Include="Models\ResearchStructures\Constants.cs" />
     <Compile Include="Models\ShareSourceData.cs" />
     <Compile Include="Models\ShareSourceItem.cs" />
     <Compile Include="Services\ActivationService.cs" />

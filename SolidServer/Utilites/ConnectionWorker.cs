@@ -94,7 +94,7 @@ namespace SolidServer.Utitlites
                     case OPEN_SW_MSG:
                         {
                             SolidWorksAppWorker.OpenSolidWorksApp();
-                            sendresult = ("opened!");
+                            sendresult = "ok";
                             Console.WriteLine("SolidWorks открыт!");
                             break;
                         }
@@ -103,14 +103,14 @@ namespace SolidServer.Utitlites
                             var dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(GetJson());
                             Console.WriteLine(dict["docPath"]);
                             SolidWorksAppWorker.OpenDocument(dict["docPath"]);
-                            sendresult = ("doc opened!");
+                            sendresult = "ok";
                             Console.WriteLine("Документ SolidWorks открыт!");
                             break;
                         }
                     case CLOSE_SW_MSG:
                         {
                             SolidWorksAppWorker.CloseSolidWorksApp();
-                            sendresult = ("closed!");
+                            sendresult = "ok";
                             Console.WriteLine("SolidWorks закрыт!");
                             break;
                         }
@@ -126,19 +126,19 @@ namespace SolidServer.Utitlites
                             if (managerType == "dbscan")
                             {
                                 manager = new DbScanResearchManger(managerConfig, cutConfig);
-                                sendresult = ("determened!");
+                                sendresult = "ok";
                                 Console.WriteLine($"Выбран менеджер {managerType}!");
                             }
                             else if (managerType == "adjacmentElements")
                             {
                                 manager = new SolidWorksResearchManager(managerConfig, cutConfig);
-                                sendresult = ("determened!");
+                                sendresult = "ok";
                                 Console.WriteLine($"Выбран менеджер {managerType}!");
                             }
                             else
                             {
                                 Console.WriteLine($"Ошибка выбора менеджера!");
-                                sendresult = ("error");
+                                sendresult = "error";
                             }
                             break;
                         }
@@ -149,7 +149,7 @@ namespace SolidServer.Utitlites
                                 sendresult = (JsonConvert.SerializeObject(manager.GetCompletedStudyResults()));
                                 Console.WriteLine("Результаты исследования прочтены!");
                             }
-                            else { sendresult = ("error"); }
+                            else { sendresult = "error"; }
                             break;
                         }
                     case DETERMINE_CRITICAL_NODES:
@@ -159,7 +159,7 @@ namespace SolidServer.Utitlites
                                 sendresult = (JsonConvert.SerializeObject(manager.DefineCriticalNodes()));
                                 Console.WriteLine("Определение параметров алгоритма и критических узлов завершено!");
                             }
-                            else { sendresult = ("error"); }
+                            else { sendresult = "error"; }
                             break;
                         }
                     case DETERMINE_AREAS:
@@ -168,7 +168,7 @@ namespace SolidServer.Utitlites
                             {
                                 sendresult = (JsonConvert.SerializeObject(manager.DetermineCutAreas()));
                             }
-                            else { sendresult = ("error"); }
+                            else { sendresult = "error"; }
                             break;
                         }
                     case CUT_AREAS:
@@ -179,9 +179,9 @@ namespace SolidServer.Utitlites
                                 var dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsn);
                                 manager.CutArea(Convert.ToInt32(dict["index"]), manager.cutConfiguration);
                                 Console.WriteLine($"Вырез {Convert.ToInt32(dict["index"])} области!");
-                                sendresult = ("well");
+                                sendresult = "ok";
                             }
-                            else { sendresult = ("error"); }
+                            else { sendresult = "error"; }
                             break;
                         }
                     case RUN_STUDY:
@@ -189,9 +189,9 @@ namespace SolidServer.Utitlites
                             if (manager != null)
                             {
                                 manager.RunStudy();
-                                sendresult = ("well");
+                                sendresult = "ok";
                             }
-                            else { sendresult = ("error"); }
+                            else { sendresult = "error"; }
                             break;
                         }
                     case CLOSE_SERVER:
