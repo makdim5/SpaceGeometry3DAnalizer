@@ -1,9 +1,10 @@
 ﻿using System;
-
+using SpaceOptimizerUWP.Models.DbModels;
 using SpaceOptimizerUWP.Services;
 
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
+using Microsoft.EntityFrameworkCore;
 
 namespace SpaceOptimizerUWP
 {
@@ -20,6 +21,11 @@ namespace SpaceOptimizerUWP
         {
             InitializeComponent();
             UnhandledException += OnAppUnhandledException;
+
+            using (var db = new ResearchDbContext())
+            {
+                db.Database.Migrate();
+            }
 
             // Deferred execution until used. Check https://docs.microsoft.com/dotnet/api/system.lazy-1 for further info on Lazy<T> class.
             _activationService = new Lazy<ActivationService>(CreateActivationService);

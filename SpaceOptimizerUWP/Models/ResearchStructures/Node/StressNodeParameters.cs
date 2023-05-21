@@ -5,7 +5,7 @@ namespace SpaceOptimizerUWP.Models
 {
     public class StressNodeParameters : IParameters
     {
-
+        public int Id { get; set; }
         public readonly float Sx;
         public readonly float Sy;
         public readonly float Sz;

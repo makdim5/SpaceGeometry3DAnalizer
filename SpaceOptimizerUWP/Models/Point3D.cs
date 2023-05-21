@@ -2,8 +2,9 @@ using System;
 
 namespace SpaceOptimizerUWP.Models
 {
-    public struct Point3D
+    public class Point3D
     {
+        public int Id { get; set; }
         public double x, y, z;
 
         public Point3D(double x, double y, double z)

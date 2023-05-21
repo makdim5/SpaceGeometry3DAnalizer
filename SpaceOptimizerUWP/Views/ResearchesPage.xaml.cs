@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using SpaceOptimizerUWP.Core.Helpers;
 using SpaceOptimizerUWP.Models;
+using SpaceOptimizerUWP.Models.DbModels;
 using SpaceOptimizerUWP.Services;
 using System;
 using System.Collections.Generic;
@@ -26,16 +27,21 @@ namespace SpaceOptimizerUWP.Views
     /// <summary>
     /// Пустая страница, которую можно использовать саму по себе или для перехода внутри фрейма.
     /// </summary>
-    public sealed partial class FuncPage : Page
+    public sealed partial class ResearchesPage : Page
     {
 
         List<Area> areas;
         int counter;
-        public FuncPage()
+        public ResearchesPage()
         {
             this.InitializeComponent();
             areas = new();
             counter = 0;
+
+            using (ResearchDbContext db = new())
+            {
+                db.DbScanResearchs.ToList();
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

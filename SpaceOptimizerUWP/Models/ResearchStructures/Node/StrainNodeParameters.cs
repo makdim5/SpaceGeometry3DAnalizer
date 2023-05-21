@@ -5,6 +5,7 @@ namespace SpaceOptimizerUWP.Models
 {
     public class StrainNodeParameters : IParameters
     {
+        public int Id { get; set; }
         public readonly float EPSx;
         public readonly float EPSy;
         public readonly float EPSz;

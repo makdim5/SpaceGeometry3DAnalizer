@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="SpaceOptimizerUWP.Views.FuncPage"
+    x:Class="SpaceOptimizerUWP.Views.ResearchesPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:SpaceOptimizerUWP.Views"
@@ -20,6 +20,7 @@
             <Button Content="Определить области" Margin="5" Click="Button_Click_3"/>
             <Button Content="Вырезать область" Margin="5" Click="Button_Click_4"/>
             <Button Content="Повторить исследование" Margin="5" Click="Button_Click_5"/>
+            
         </StackPanel>
         
         <TextBlock x:Name="outTextBlock" ScrollViewer.VerticalScrollMode="Auto" Text="Hello!" FontSize="20" TextAlignment="Center" TextWrapping="WrapWholeWords" Grid.Column="1"  />

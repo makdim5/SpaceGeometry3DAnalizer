@@ -4,6 +4,7 @@ namespace SpaceOptimizerUWP.Models
 {
     public class MeshParams
     {
+        public int Id { get; set; }
         public string Quality { get; set; }
         public string UseJacobianCheck { get; set; }
         public string MesherType { get; set; }

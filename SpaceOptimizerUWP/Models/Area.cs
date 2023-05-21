@@ -6,6 +6,7 @@ namespace SpaceOptimizerUWP.Models
 {
     public class Area
     {
+        public int Id { get; set; }
         public HashSet<Element> elements;
 
         public HashSet<Node> nodes;
@@ -33,58 +34,6 @@ namespace SpaceOptimizerUWP.Models
         public Area(HashSet<Element> elements):this()
         {
             this.elements = elements;
-        }
-
-        public Point3D DefineAreaCenterThroughElements()
-        {
-            if (!elements.Any())
-            {
-                return new Point3D(0, 0, 0);
-            }
-            double TemporableSumX = 0;
-            double TemporableSumY = 0;
-            double TemporableSumZ = 0;
-
-            foreach (var element in elements)
-            {
-                
-                    TemporableSumX += element.center.x;
-                    TemporableSumY += element.center.y;
-                    TemporableSumZ += element.center.z;
-                
-            }
-            return new Point3D
-            {
-                x = TemporableSumX / elements.Count,
-                y = TemporableSumY / elements.Count,
-                z = TemporableSumZ / elements.Count
-            };
-        }
-
-        public Point3D DefineAreaCenterThroughNodes()
-        {
-            if (!nodes.Any())
-            {
-                return new Point3D(0,0,0);
-            }
-            double TemporableSumX = 0;
-            double TemporableSumY = 0;
-            double TemporableSumZ = 0;
-
-            foreach (var node in nodes)
-            {
-
-                TemporableSumX += node.point.x;
-                TemporableSumY += node.point.y;
-                TemporableSumZ += node.point.z;
-
-            }
-            return new Point3D
-            {
-                x = TemporableSumX / nodes.Count,
-                y = TemporableSumY / nodes.Count,
-                z = TemporableSumZ / nodes.Count
-            };
         }
 
         public Dictionary<string, double> DefineDimensions()

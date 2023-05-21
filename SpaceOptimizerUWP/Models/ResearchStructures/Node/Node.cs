@@ -5,6 +5,7 @@ namespace SpaceOptimizerUWP.Models
 {
     public class Node
     {
+        public int Id { get; set; }
         public readonly int number;
 
         public readonly Point3D point;

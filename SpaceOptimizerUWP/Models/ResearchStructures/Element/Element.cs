@@ -8,6 +8,7 @@ namespace SpaceOptimizerUWP.Models
 {
     public class Element
     {
+        public int Id { get; set; }
         public readonly int number;
 
         //Первые 4 нода это вершины, остальные 6 это центры ребер

@@ -4,6 +4,7 @@ namespace SpaceOptimizerUWP.Models
 {
     public abstract class BaseResearch
     {
+        public int Id { get; set; }
         public MeshParams meshParams {get; set;}
         public string filterParam { get; set; }
         public string materialParam { get; set; }
