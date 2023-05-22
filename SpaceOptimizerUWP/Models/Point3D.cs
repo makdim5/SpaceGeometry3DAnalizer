@@ -9,6 +9,16 @@ namespace SpaceOptimizerUWP.Models
         public double y { get; set; }
         public double z { get; set; }
 
+        public Point3D()
+        {
+        }
+        public Point3D(int id, double x, double y, double z)
+        {
+            this.Id = id;
+            this.x = x;
+            this.y = y;
+            this.z = z;
+        }
         public Point3D(double x, double y, double z)
         {
             this.x = x; this.y = y; this.z = z;

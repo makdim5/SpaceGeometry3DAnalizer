@@ -24,6 +24,9 @@ namespace SpaceOptimizerUWP.Views
             using (var db = new ResearchDbContext())
             {
                 db.MeshConfigurations.ToList();
+                db.Areas.ToList();
+                db.Points.ToList();
+                db.Nodes.ToList();
                 var items = db.Researchs.Include(u => u.Research).ToList();
                 researchesList.ItemsSource = items;
             }

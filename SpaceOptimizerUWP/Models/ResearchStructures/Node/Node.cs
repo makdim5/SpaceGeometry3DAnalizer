@@ -14,6 +14,7 @@ namespace SpaceOptimizerUWP.Models
 
         public StrainNodeParameters strain { get; set; }
 
+        public Node() { }
         public Node(int number , Point3D point, StressNodeParameters stress, StrainNodeParameters strain) {
 
             this.number = number;
@@ -31,7 +32,7 @@ namespace SpaceOptimizerUWP.Models
                 point.y,
                 point.z);
 
-            text += "\nStrain:\n" + strain.ToString() + "\nStress:\n" + stress.ToString();
+            //text += "\nStrain:\n" + strain.ToString() + "\nStress:\n" + stress.ToString();
 
             return text;
         }
@@ -48,12 +49,6 @@ namespace SpaceOptimizerUWP.Models
             return false;
         }
 
-        public override int GetHashCode()
-        {
-            int hashcode = point.x.GetHashCode();
-            hashcode = 31 * hashcode + point.y.GetHashCode();
-            hashcode = 31 * hashcode + point.z.GetHashCode();
-            return hashcode;
-        }
+        
     }
 }

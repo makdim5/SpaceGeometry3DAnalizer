@@ -25,5 +25,29 @@
                
             </CommandBar>
         </Grid>
-    </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="4*" />
+            </Grid.ColumnDefinitions>
+            <ListView BorderBrush="Black" BorderThickness="2" IsItemClickEnabled="True" ItemClick="areasList_ItemClick" VerticalAlignment="Center" Grid.Column="0" x:Name="areasList" Margin="20">
+                <ListView.ItemTemplate >
+                    <DataTemplate x:DataType="models:Area">
+
+                        <TextBlock Grid.Row="0" Text="Область"  FontSize="26" />
+                       
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <GridView Grid.Column="1" x:Name="nodesList" IsItemClickEnabled="True" Margin="10" ItemClick="nodesList_ItemClick" >
+                <GridView.ItemTemplate >
+                    <DataTemplate x:DataType="models:Node">
+
+                        <TextBlock Grid.Row="0" Margin="10" Text="Узел"  FontSize="26" />
+
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+        </Grid>
+</Grid>
 </Page>

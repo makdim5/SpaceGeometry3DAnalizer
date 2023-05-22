@@ -26,6 +26,8 @@ namespace SpaceOptimizerUWP.Views
     public sealed partial class ResearchProjectPage : Page
     {
         ResearchDbModel model;
+        List<Area> areas;
+        HashSet<Node> nodes;
         public ResearchProjectPage()
         {
             this.InitializeComponent();
@@ -34,6 +36,8 @@ namespace SpaceOptimizerUWP.Views
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             model = (ResearchDbModel)e.Parameter;
+            areas = model.Areas;
+            areasList.ItemsSource = areas;
         }
 
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
@@ -70,6 +74,19 @@ namespace SpaceOptimizerUWP.Views
         private void AppBarButton_Click_2(object sender, RoutedEventArgs e)
         {
             Message.Show(model.Research.ToString(), Frame.XamlRoot, "Параметры исследования");
+        }
+
+        private void areasList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Area clickedArea = (Area)e.ClickedItem;
+            nodes = clickedArea.nodes;
+            nodesList.ItemsSource = nodes;
+        }
+
+        private void nodesList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Node clickedNode = (Node)e.ClickedItem;
+            Message.Show(clickedNode.ToString(), Frame.XamlRoot, $"Информация об узле #{clickedNode.number}");
         }
     }
 }
