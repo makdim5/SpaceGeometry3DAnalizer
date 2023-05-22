@@ -212,6 +212,9 @@
     <Compile Include="Views\ResearchProjectPage.xaml.cs">
       <DependentUpon>ResearchProjectPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\RunPage.xaml.cs">
+      <DependentUpon>RunPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
@@ -266,6 +269,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\RunPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SettingsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -284,6 +291,9 @@
     <Compile Include="Helpers\ResourceExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\4M52.gif" />
+    <Content Include="Assets\pyrams.gif" />
+    <Content Include="Assets\BHV2.gif" />
     <Content Include="Assets\introwallpaper.jpg" />
     <Content Include="Assets\SPace.gif" />
     <Content Include="Properties\Default.rd.xml" />

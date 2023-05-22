@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System.RemoteSystems;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -33,10 +34,37 @@ namespace SpaceOptimizerUWP.Views
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             model = (ResearchDbModel)e.Parameter;
-            Message.Show($"Исследование подгор {model.Title}!", Frame.XamlRoot);
-            
+        }
 
-           
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(RunPage), model);
+
+        }
+
+        private async void AppBarButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            ContentDialog dialog = new ContentDialog();
+            dialog.Title = "Вы действительно хотите удалить проект?";
+            dialog.PrimaryButtonText = "Да";
+            dialog.SecondaryButtonText = "Отмена";
+            
+            dialog.DefaultButton = ContentDialogButton.Primary;
+
+
+            var result = await dialog.ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+                using (var db = new ResearchDbContext())
+                {
+                    db.Researchs.Remove(model);
+                    db.SaveChanges();
+                }
+
+                Frame.Navigate(typeof(MainPage));
+            }
+
         }
     }
 }

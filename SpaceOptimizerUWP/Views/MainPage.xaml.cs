@@ -9,6 +9,7 @@ using Windows.Storage.Pickers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
+using Microsoft.EntityFrameworkCore;
 
 namespace SpaceOptimizerUWP.Views
 {
@@ -22,7 +23,9 @@ namespace SpaceOptimizerUWP.Views
 
             using (var db = new ResearchDbContext())
             {
-               researchesList.ItemsSource = db.Researchs.ToList();
+                db.MeshConfigurations.ToList();
+                var items = db.Researchs.Include(u => u.Research).ToList();
+                researchesList.ItemsSource = items;
             }
         }
 
@@ -90,10 +93,11 @@ namespace SpaceOptimizerUWP.Views
         {
             try
             {
-               Message.ProgressShow( () => { BackConnectorService.OpenSolidWorks(); },
-                    this.Frame.XamlRoot);
-                
-            } catch (Exception ex)
+                Message.ProgressShow(() => { BackConnectorService.OpenSolidWorks(); },
+                     this.Frame.XamlRoot);
+
+            }
+            catch (Exception ex)
             {
                 ContentDialog dialog1 = new ContentDialog();
                 dialog1.Title = "Произошла ошибка";
@@ -102,7 +106,7 @@ namespace SpaceOptimizerUWP.Views
                 dialog1.Content = new TextBlock() { Text = ex.Message };
                 await dialog1.ShowAsync();
             }
-            
+
         }
 
         private async void MenuFlyoutItem_Click_1(object sender, RoutedEventArgs e)

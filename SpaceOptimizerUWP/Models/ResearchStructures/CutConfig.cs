@@ -1,4 +1,6 @@
-﻿namespace SpaceOptimizerUWP.Models
+﻿using System.Collections.Generic;
+
+namespace SpaceOptimizerUWP.Models
 {
     public class CutConfig
     {
@@ -13,6 +15,15 @@
             this.cutType = cutType;
             this.nodeCutWay = nodeCutWay;
             this.figureType = figureType;
+        }
+
+        public Dictionary<string, string> ToJsonDict()
+        {
+            return new Dictionary<string, string>() {
+                {"cutType", cutType},
+                {"nodeCutWay", nodeCutWay},
+                {"figureType", figureType }
+            };
         }
     }
 }

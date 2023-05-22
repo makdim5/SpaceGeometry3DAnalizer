@@ -1,0 +1,56 @@
+﻿<Page
+    x:Class="SpaceOptimizerUWP.Views.RunPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SpaceOptimizerUWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+
+        </Grid.ColumnDefinitions>
+        <Image Grid.Column="0" Stretch="Fill" Source="/Assets/pyrams.gif" />
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+             <TextBlock Grid.Row="0" x:Name="headerTb" TextAlignment="Center" FontSize="25" Margin="20"  Text="Укажите способ выреза ячеистых структур"
+                       Style="{ThemeResource HeaderTextBlockStyle}" />
+            <muxc:ProgressRing x:Name="progressRing" Visibility="Collapsed" Grid.Row="1" IsActive="True" Height="200" Width="200"  />
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="1" x:Name="cutConfigPanel" >
+                <ComboBox x:Name="cutTypeBox" SelectionChanged="cutTypeBox_SelectionChanged" Header="Выбирите параметр основы для выреза">
+                    <x:String>Вырез на базе узлов</x:String>
+                    <x:String>Вырез на базе элементов</x:String>
+                    <x:String>Отрисовка узов в виде точек (вырез области не производится)</x:String>
+                </ComboBox>
+
+                <ComboBox x:Name="figureCutBox" Visibility="Collapsed" Header="Выбирите тип фигуры ячейки">
+                    <x:String>Параллелепипед</x:String>
+                    <x:String>Сфера</x:String>
+                </ComboBox>
+                <ComboBox x:Name="nodeCutWayBox" Visibility="Collapsed" Header="Выбирите способ выреза">
+                    <x:String>Каждая область - отдельная фигура</x:String>
+                    <x:String>Равномерное распределение фигур внутри области</x:String>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="1" x:Name="cutRunPanel">
+                
+                <muxc:ProgressBar x:Name="progressBar" Grid.Row="1" Width="200"  />
+                <TextBlock Grid.Row="0" x:Name="cutCounterTb" TextAlignment="Center" FontSize="20" Margin="20" 
+                       Style="{ThemeResource HeaderTextBlockStyle}" />
+            </StackPanel>
+            <TextBlock Grid.Row="1" Visibility="Collapsed" x:Name="infoTextBlock" FontSize="15" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="WrapWholeWords" ScrollViewer.IsVerticalRailEnabled="True"/>
+            <Button Grid.Row="2" HorizontalAlignment="Center" Content="Далее" x:Name="nextBtn" Click="nextBtn_Click" />
+            <Button Grid.Row="3" HorizontalAlignment="Center" Content="Закрыть" x:Name="closeBtn" Click="closeBtn_Click" />
+        </Grid>
+    </Grid>
+</Page>

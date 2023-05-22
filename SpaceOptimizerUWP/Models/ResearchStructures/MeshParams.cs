@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SpaceOptimizerUWP.Models
 {
@@ -25,6 +26,20 @@ namespace SpaceOptimizerUWP.Models
             this.GrowthRatio = GrowthRatio;
             this.SaveSettingsWithoutMeshing = SaveSettingsWithoutMeshing;
             this.Unit = Unit;
+        }
+
+        public Dictionary<string, string> ToJsonDict()
+        {
+            return new Dictionary<string, string>()
+                    {
+                        {"Quality", Quality },
+                        {"UseJacobianCheck", UseJacobianCheck },
+                        {"MesherType", MesherType },
+                        {"MinElementsInCircle", MinElementsInCircle },
+                        {"GrowthRatio", GrowthRatio },
+                        {"SaveSettingsWithoutMeshing", SaveSettingsWithoutMeshing },
+                        {"Unit",Unit }
+                    };
         }
 
         public void CheckIsRightAttributes()

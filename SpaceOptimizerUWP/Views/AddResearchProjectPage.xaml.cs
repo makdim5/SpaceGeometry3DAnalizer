@@ -148,6 +148,7 @@ namespace SpaceOptimizerUWP.Views
 
                 using (var db = new ResearchDbContext())
                 {
+                    
                     db.Researchs.Add(model);
                     db.SaveChanges();
                 }

@@ -8,10 +8,11 @@ namespace SpaceOptimizerUWP.Services
 {
     public class BackConnectorService
     {
-        public static bool CreateDBSCANResearchManagerInBack(BaseResearch managerConfig, CutConfig cutConfig, string type)
+        public static bool CreateResearchManagerInBack(BaseResearch managerConfig, CutConfig cutConfig)
         {
             managerConfig.CheckIsRightAttributes();
             var isOk = false;
+            string type = managerConfig.DetermineType();
             try
             {
                 if (type != ResearchType.DBSCAN && type != ResearchType.ADJACMENT)
@@ -22,8 +23,8 @@ namespace SpaceOptimizerUWP.Services
                 {
                     var data = new Dictionary<string, object>() {
                     { "managerType", type },
-                    {"managerConfig", JsonConvert.SerializeObject(managerConfig) },
-                    {"cutConfig", JsonConvert.SerializeObject(cutConfig) }
+                    {"managerConfig", managerConfig.ToJsonDict() },
+                    {"cutConfig", cutConfig.ToJsonDict() }
                     };
                     return new HttpDataService("http://127.0.0.1:8005/").PostAsJsonAsync("", "setmngr", data);
 

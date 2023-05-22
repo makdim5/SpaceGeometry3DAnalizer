@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SpaceOptimizerUWP.Models
 {
     public class BaseResearch
     {
         public int Id { get; set; }
-        public MeshParams meshParams {get; set;}
+        public MeshParams meshParams { get; set; }
         public string filterParam { get; set; }
         public string materialParam { get; set; }
         public string coef1 { get; set; }
@@ -28,6 +29,34 @@ namespace SpaceOptimizerUWP.Models
             this.materialParam = materialParam;
             this.coef1 = coef1;
             this.coef2 = coef2;
+        }
+
+        public Dictionary<string, object> ToJsonDict()
+        {
+            return new Dictionary<string, object>(){
+                { "meshParams", meshParams.ToJsonDict()},
+                { "filterParam", filterParam },
+                { "coef1", coef1 },
+                { "coef2", coef2 },
+                { "materialParam", materialParam },
+                { "eps", eps },
+                { "minSamples", minSamples},
+                {"squeezeCoef", squeezeCoef },
+                {"nodesIntersectionAmount", nodesIntersectionAmount }
+            };
+        }
+
+        public string DetermineType()
+        {
+            string type = ResearchType.DBSCAN;
+            if (squeezeCoef != null && nodesIntersectionAmount != null)
+            {
+                if (squeezeCoef != "" && nodesIntersectionAmount != "")
+                {
+                    type = ResearchType.ADJACMENT;
+                }
+            }
+            return type;
         }
 
         public void CheckIsRightAttributes()

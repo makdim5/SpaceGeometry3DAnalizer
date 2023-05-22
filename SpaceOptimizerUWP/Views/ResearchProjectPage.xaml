@@ -10,6 +10,19 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Background="Transparent"  Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Left" Grid.Column="0" TextAlignment="Center" Margin="10" Text="{x:Bind model.Title}" x:Name="headerBlock" FontSize="35"
+                       Style="{ThemeResource HeaderTextBlockStyle}" />
+            <CommandBar HorizontalAlignment="Right" Grid.Column="1" IsOpen="False" DefaultLabelPosition="Right">
+                <AppBarButton Icon="Play" Label="Запуск" Click="AppBarButton_Click"/>
+                <AppBarButton Icon="BrowsePhotos" Label="Об исследовании"/>
+                <AppBarButton Icon="Delete" Label="Удалить" Click="AppBarButton_Click_1"/>
+               
+            </CommandBar>
+        </Grid>
     </Grid>
 </Page>

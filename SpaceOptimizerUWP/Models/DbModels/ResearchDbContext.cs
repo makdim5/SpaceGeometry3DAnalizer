@@ -8,6 +8,9 @@ namespace SpaceOptimizerUWP.Models
         public DbSet<ResearchDbModel> Researchs { get; set; }
         public DbSet<Area> Areas { get; set; }
 
+        public DbSet<BaseResearch> ResearchConfigurations { get; set; }
+
+        public DbSet<MeshParams> MeshConfigurations { get; set; }
         public DbSet<Node> Nodes { get; set; }
 
         public DbSet<Element> Elements { get; set; }

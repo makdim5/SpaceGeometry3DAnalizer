@@ -24,27 +24,47 @@ namespace ConsoleApp1 {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class DataSet1 : global::System.Data.DataSet {
         
-        private AdjacmentResearchDataTable tableAdjacmentResearch;
-        
-        private AdjacmentResearchsDataTable tableAdjacmentResearchs;
+        private @__EFMigrationsHistoryDataTable table__EFMigrationsHistory;
         
         private AreasDataTable tableAreas;
         
-        private DbscanResearchDataTable tableDbscanResearch;
-        
-        private DbScanResearchsDataTable tableDbScanResearchs;
-        
         private ElementsDataTable tableElements;
         
-        private MeshParamsDataTable tableMeshParams;
+        private MeshConfigurationsDataTable tableMeshConfigurations;
+        
+        private NodeIndexesDataTable tableNodeIndexes;
         
         private NodesDataTable tableNodes;
         
         private PointsDataTable tablePoints;
         
+        private ResearchConfigurationsDataTable tableResearchConfigurations;
+        
+        private ResearchsDataTable tableResearchs;
+        
+        private sqlite_sequenceDataTable tablesqlite_sequence;
+        
         private StrainNodeParametersDataTable tableStrainNodeParameters;
         
         private StressNodeParametersDataTable tableStressNodeParameters;
+        
+        private global::System.Data.DataRelation relationFK_Areas_Researchs_0;
+        
+        private global::System.Data.DataRelation relationFK_Elements_Areas_0;
+        
+        private global::System.Data.DataRelation relationFK_NodeIndexes_Elements_0;
+        
+        private global::System.Data.DataRelation relationFK_Nodes_Areas_3;
+        
+        private global::System.Data.DataRelation relationFK_Nodes_Points_2;
+        
+        private global::System.Data.DataRelation relationFK_Nodes_StrainNodeParameters_1;
+        
+        private global::System.Data.DataRelation relationFK_Nodes_StressNodeParameters_0;
+        
+        private global::System.Data.DataRelation relationFK_ResearchConfigurations_MeshConfigurations_0;
+        
+        private global::System.Data.DataRelation relationFK_Researchs_ResearchConfigurations_0;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -74,32 +94,35 @@ namespace ConsoleApp1 {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["AdjacmentResearch"] != null)) {
-                    base.Tables.Add(new AdjacmentResearchDataTable(ds.Tables["AdjacmentResearch"]));
-                }
-                if ((ds.Tables["AdjacmentResearchs"] != null)) {
-                    base.Tables.Add(new AdjacmentResearchsDataTable(ds.Tables["AdjacmentResearchs"]));
+                if ((ds.Tables["__EFMigrationsHistory"] != null)) {
+                    base.Tables.Add(new @__EFMigrationsHistoryDataTable(ds.Tables["__EFMigrationsHistory"]));
                 }
                 if ((ds.Tables["Areas"] != null)) {
                     base.Tables.Add(new AreasDataTable(ds.Tables["Areas"]));
                 }
-                if ((ds.Tables["DbscanResearch"] != null)) {
-                    base.Tables.Add(new DbscanResearchDataTable(ds.Tables["DbscanResearch"]));
-                }
-                if ((ds.Tables["DbScanResearchs"] != null)) {
-                    base.Tables.Add(new DbScanResearchsDataTable(ds.Tables["DbScanResearchs"]));
-                }
                 if ((ds.Tables["Elements"] != null)) {
                     base.Tables.Add(new ElementsDataTable(ds.Tables["Elements"]));
                 }
-                if ((ds.Tables["MeshParams"] != null)) {
-                    base.Tables.Add(new MeshParamsDataTable(ds.Tables["MeshParams"]));
+                if ((ds.Tables["MeshConfigurations"] != null)) {
+                    base.Tables.Add(new MeshConfigurationsDataTable(ds.Tables["MeshConfigurations"]));
+                }
+                if ((ds.Tables["NodeIndexes"] != null)) {
+                    base.Tables.Add(new NodeIndexesDataTable(ds.Tables["NodeIndexes"]));
                 }
                 if ((ds.Tables["Nodes"] != null)) {
                     base.Tables.Add(new NodesDataTable(ds.Tables["Nodes"]));
                 }
                 if ((ds.Tables["Points"] != null)) {
                     base.Tables.Add(new PointsDataTable(ds.Tables["Points"]));
+                }
+                if ((ds.Tables["ResearchConfigurations"] != null)) {
+                    base.Tables.Add(new ResearchConfigurationsDataTable(ds.Tables["ResearchConfigurations"]));
+                }
+                if ((ds.Tables["Researchs"] != null)) {
+                    base.Tables.Add(new ResearchsDataTable(ds.Tables["Researchs"]));
+                }
+                if ((ds.Tables["sqlite_sequence"] != null)) {
+                    base.Tables.Add(new sqlite_sequenceDataTable(ds.Tables["sqlite_sequence"]));
                 }
                 if ((ds.Tables["StrainNodeParameters"] != null)) {
                     base.Tables.Add(new StrainNodeParametersDataTable(ds.Tables["StrainNodeParameters"]));
@@ -129,19 +152,9 @@ namespace ConsoleApp1 {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public AdjacmentResearchDataTable AdjacmentResearch {
+        public @__EFMigrationsHistoryDataTable @__EFMigrationsHistory {
             get {
-                return this.tableAdjacmentResearch;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public AdjacmentResearchsDataTable AdjacmentResearchs {
-            get {
-                return this.tableAdjacmentResearchs;
+                return this.table__EFMigrationsHistory;
             }
         }
         
@@ -159,26 +172,6 @@ namespace ConsoleApp1 {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public DbscanResearchDataTable DbscanResearch {
-            get {
-                return this.tableDbscanResearch;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public DbScanResearchsDataTable DbScanResearchs {
-            get {
-                return this.tableDbScanResearchs;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public ElementsDataTable Elements {
             get {
                 return this.tableElements;
@@ -189,9 +182,19 @@ namespace ConsoleApp1 {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public MeshParamsDataTable MeshParams {
+        public MeshConfigurationsDataTable MeshConfigurations {
             get {
-                return this.tableMeshParams;
+                return this.tableMeshConfigurations;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public NodeIndexesDataTable NodeIndexes {
+            get {
+                return this.tableNodeIndexes;
             }
         }
         
@@ -212,6 +215,36 @@ namespace ConsoleApp1 {
         public PointsDataTable Points {
             get {
                 return this.tablePoints;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ResearchConfigurationsDataTable ResearchConfigurations {
+            get {
+                return this.tableResearchConfigurations;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ResearchsDataTable Researchs {
+            get {
+                return this.tableResearchs;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public sqlite_sequenceDataTable sqlite_sequence {
+            get {
+                return this.tablesqlite_sequence;
             }
         }
         
@@ -302,32 +335,35 @@ namespace ConsoleApp1 {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["AdjacmentResearch"] != null)) {
-                    base.Tables.Add(new AdjacmentResearchDataTable(ds.Tables["AdjacmentResearch"]));
-                }
-                if ((ds.Tables["AdjacmentResearchs"] != null)) {
-                    base.Tables.Add(new AdjacmentResearchsDataTable(ds.Tables["AdjacmentResearchs"]));
+                if ((ds.Tables["__EFMigrationsHistory"] != null)) {
+                    base.Tables.Add(new @__EFMigrationsHistoryDataTable(ds.Tables["__EFMigrationsHistory"]));
                 }
                 if ((ds.Tables["Areas"] != null)) {
                     base.Tables.Add(new AreasDataTable(ds.Tables["Areas"]));
                 }
-                if ((ds.Tables["DbscanResearch"] != null)) {
-                    base.Tables.Add(new DbscanResearchDataTable(ds.Tables["DbscanResearch"]));
-                }
-                if ((ds.Tables["DbScanResearchs"] != null)) {
-                    base.Tables.Add(new DbScanResearchsDataTable(ds.Tables["DbScanResearchs"]));
-                }
                 if ((ds.Tables["Elements"] != null)) {
                     base.Tables.Add(new ElementsDataTable(ds.Tables["Elements"]));
                 }
-                if ((ds.Tables["MeshParams"] != null)) {
-                    base.Tables.Add(new MeshParamsDataTable(ds.Tables["MeshParams"]));
+                if ((ds.Tables["MeshConfigurations"] != null)) {
+                    base.Tables.Add(new MeshConfigurationsDataTable(ds.Tables["MeshConfigurations"]));
+                }
+                if ((ds.Tables["NodeIndexes"] != null)) {
+                    base.Tables.Add(new NodeIndexesDataTable(ds.Tables["NodeIndexes"]));
                 }
                 if ((ds.Tables["Nodes"] != null)) {
                     base.Tables.Add(new NodesDataTable(ds.Tables["Nodes"]));
                 }
                 if ((ds.Tables["Points"] != null)) {
                     base.Tables.Add(new PointsDataTable(ds.Tables["Points"]));
+                }
+                if ((ds.Tables["ResearchConfigurations"] != null)) {
+                    base.Tables.Add(new ResearchConfigurationsDataTable(ds.Tables["ResearchConfigurations"]));
+                }
+                if ((ds.Tables["Researchs"] != null)) {
+                    base.Tables.Add(new ResearchsDataTable(ds.Tables["Researchs"]));
+                }
+                if ((ds.Tables["sqlite_sequence"] != null)) {
+                    base.Tables.Add(new sqlite_sequenceDataTable(ds.Tables["sqlite_sequence"]));
                 }
                 if ((ds.Tables["StrainNodeParameters"] != null)) {
                     base.Tables.Add(new StrainNodeParametersDataTable(ds.Tables["StrainNodeParameters"]));
@@ -368,16 +404,10 @@ namespace ConsoleApp1 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableAdjacmentResearch = ((AdjacmentResearchDataTable)(base.Tables["AdjacmentResearch"]));
+            this.table__EFMigrationsHistory = ((@__EFMigrationsHistoryDataTable)(base.Tables["__EFMigrationsHistory"]));
             if ((initTable == true)) {
-                if ((this.tableAdjacmentResearch != null)) {
-                    this.tableAdjacmentResearch.InitVars();
-                }
-            }
-            this.tableAdjacmentResearchs = ((AdjacmentResearchsDataTable)(base.Tables["AdjacmentResearchs"]));
-            if ((initTable == true)) {
-                if ((this.tableAdjacmentResearchs != null)) {
-                    this.tableAdjacmentResearchs.InitVars();
+                if ((this.table__EFMigrationsHistory != null)) {
+                    this.table__EFMigrationsHistory.InitVars();
                 }
             }
             this.tableAreas = ((AreasDataTable)(base.Tables["Areas"]));
@@ -386,28 +416,22 @@ namespace ConsoleApp1 {
                     this.tableAreas.InitVars();
                 }
             }
-            this.tableDbscanResearch = ((DbscanResearchDataTable)(base.Tables["DbscanResearch"]));
-            if ((initTable == true)) {
-                if ((this.tableDbscanResearch != null)) {
-                    this.tableDbscanResearch.InitVars();
-                }
-            }
-            this.tableDbScanResearchs = ((DbScanResearchsDataTable)(base.Tables["DbScanResearchs"]));
-            if ((initTable == true)) {
-                if ((this.tableDbScanResearchs != null)) {
-                    this.tableDbScanResearchs.InitVars();
-                }
-            }
             this.tableElements = ((ElementsDataTable)(base.Tables["Elements"]));
             if ((initTable == true)) {
                 if ((this.tableElements != null)) {
                     this.tableElements.InitVars();
                 }
             }
-            this.tableMeshParams = ((MeshParamsDataTable)(base.Tables["MeshParams"]));
+            this.tableMeshConfigurations = ((MeshConfigurationsDataTable)(base.Tables["MeshConfigurations"]));
             if ((initTable == true)) {
-                if ((this.tableMeshParams != null)) {
-                    this.tableMeshParams.InitVars();
+                if ((this.tableMeshConfigurations != null)) {
+                    this.tableMeshConfigurations.InitVars();
+                }
+            }
+            this.tableNodeIndexes = ((NodeIndexesDataTable)(base.Tables["NodeIndexes"]));
+            if ((initTable == true)) {
+                if ((this.tableNodeIndexes != null)) {
+                    this.tableNodeIndexes.InitVars();
                 }
             }
             this.tableNodes = ((NodesDataTable)(base.Tables["Nodes"]));
@@ -422,6 +446,24 @@ namespace ConsoleApp1 {
                     this.tablePoints.InitVars();
                 }
             }
+            this.tableResearchConfigurations = ((ResearchConfigurationsDataTable)(base.Tables["ResearchConfigurations"]));
+            if ((initTable == true)) {
+                if ((this.tableResearchConfigurations != null)) {
+                    this.tableResearchConfigurations.InitVars();
+                }
+            }
+            this.tableResearchs = ((ResearchsDataTable)(base.Tables["Researchs"]));
+            if ((initTable == true)) {
+                if ((this.tableResearchs != null)) {
+                    this.tableResearchs.InitVars();
+                }
+            }
+            this.tablesqlite_sequence = ((sqlite_sequenceDataTable)(base.Tables["sqlite_sequence"]));
+            if ((initTable == true)) {
+                if ((this.tablesqlite_sequence != null)) {
+                    this.tablesqlite_sequence.InitVars();
+                }
+            }
             this.tableStrainNodeParameters = ((StrainNodeParametersDataTable)(base.Tables["StrainNodeParameters"]));
             if ((initTable == true)) {
                 if ((this.tableStrainNodeParameters != null)) {
@@ -434,6 +476,15 @@ namespace ConsoleApp1 {
                     this.tableStressNodeParameters.InitVars();
                 }
             }
+            this.relationFK_Areas_Researchs_0 = this.Relations["FK_Areas_Researchs_0"];
+            this.relationFK_Elements_Areas_0 = this.Relations["FK_Elements_Areas_0"];
+            this.relationFK_NodeIndexes_Elements_0 = this.Relations["FK_NodeIndexes_Elements_0"];
+            this.relationFK_Nodes_Areas_3 = this.Relations["FK_Nodes_Areas_3"];
+            this.relationFK_Nodes_Points_2 = this.Relations["FK_Nodes_Points_2"];
+            this.relationFK_Nodes_StrainNodeParameters_1 = this.Relations["FK_Nodes_StrainNodeParameters_1"];
+            this.relationFK_Nodes_StressNodeParameters_0 = this.Relations["FK_Nodes_StressNodeParameters_0"];
+            this.relationFK_ResearchConfigurations_MeshConfigurations_0 = this.Relations["FK_ResearchConfigurations_MeshConfigurations_0"];
+            this.relationFK_Researchs_ResearchConfigurations_0 = this.Relations["FK_Researchs_ResearchConfigurations_0"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -444,39 +495,71 @@ namespace ConsoleApp1 {
             this.Namespace = "http://tempuri.org/DataSet1.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableAdjacmentResearch = new AdjacmentResearchDataTable();
-            base.Tables.Add(this.tableAdjacmentResearch);
-            this.tableAdjacmentResearchs = new AdjacmentResearchsDataTable();
-            base.Tables.Add(this.tableAdjacmentResearchs);
+            this.table__EFMigrationsHistory = new @__EFMigrationsHistoryDataTable();
+            base.Tables.Add(this.table__EFMigrationsHistory);
             this.tableAreas = new AreasDataTable();
             base.Tables.Add(this.tableAreas);
-            this.tableDbscanResearch = new DbscanResearchDataTable();
-            base.Tables.Add(this.tableDbscanResearch);
-            this.tableDbScanResearchs = new DbScanResearchsDataTable();
-            base.Tables.Add(this.tableDbScanResearchs);
             this.tableElements = new ElementsDataTable();
             base.Tables.Add(this.tableElements);
-            this.tableMeshParams = new MeshParamsDataTable();
-            base.Tables.Add(this.tableMeshParams);
+            this.tableMeshConfigurations = new MeshConfigurationsDataTable();
+            base.Tables.Add(this.tableMeshConfigurations);
+            this.tableNodeIndexes = new NodeIndexesDataTable();
+            base.Tables.Add(this.tableNodeIndexes);
             this.tableNodes = new NodesDataTable();
             base.Tables.Add(this.tableNodes);
             this.tablePoints = new PointsDataTable();
             base.Tables.Add(this.tablePoints);
+            this.tableResearchConfigurations = new ResearchConfigurationsDataTable();
+            base.Tables.Add(this.tableResearchConfigurations);
+            this.tableResearchs = new ResearchsDataTable();
+            base.Tables.Add(this.tableResearchs);
+            this.tablesqlite_sequence = new sqlite_sequenceDataTable();
+            base.Tables.Add(this.tablesqlite_sequence);
             this.tableStrainNodeParameters = new StrainNodeParametersDataTable();
             base.Tables.Add(this.tableStrainNodeParameters);
             this.tableStressNodeParameters = new StressNodeParametersDataTable();
             base.Tables.Add(this.tableStressNodeParameters);
+            this.relationFK_Areas_Researchs_0 = new global::System.Data.DataRelation("FK_Areas_Researchs_0", new global::System.Data.DataColumn[] {
+                        this.tableResearchs.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableAreas.ResearchDbModelIdColumn}, false);
+            this.Relations.Add(this.relationFK_Areas_Researchs_0);
+            this.relationFK_Elements_Areas_0 = new global::System.Data.DataRelation("FK_Elements_Areas_0", new global::System.Data.DataColumn[] {
+                        this.tableAreas.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableElements.AreaIdColumn}, false);
+            this.Relations.Add(this.relationFK_Elements_Areas_0);
+            this.relationFK_NodeIndexes_Elements_0 = new global::System.Data.DataRelation("FK_NodeIndexes_Elements_0", new global::System.Data.DataColumn[] {
+                        this.tableElements.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableNodeIndexes.ElementIdColumn}, false);
+            this.Relations.Add(this.relationFK_NodeIndexes_Elements_0);
+            this.relationFK_Nodes_Areas_3 = new global::System.Data.DataRelation("FK_Nodes_Areas_3", new global::System.Data.DataColumn[] {
+                        this.tableAreas.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableNodes.AreaIdColumn}, false);
+            this.Relations.Add(this.relationFK_Nodes_Areas_3);
+            this.relationFK_Nodes_Points_2 = new global::System.Data.DataRelation("FK_Nodes_Points_2", new global::System.Data.DataColumn[] {
+                        this.tablePoints.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableNodes.pointIdColumn}, false);
+            this.Relations.Add(this.relationFK_Nodes_Points_2);
+            this.relationFK_Nodes_StrainNodeParameters_1 = new global::System.Data.DataRelation("FK_Nodes_StrainNodeParameters_1", new global::System.Data.DataColumn[] {
+                        this.tableStrainNodeParameters.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableNodes.strainIdColumn}, false);
+            this.Relations.Add(this.relationFK_Nodes_StrainNodeParameters_1);
+            this.relationFK_Nodes_StressNodeParameters_0 = new global::System.Data.DataRelation("FK_Nodes_StressNodeParameters_0", new global::System.Data.DataColumn[] {
+                        this.tableStressNodeParameters.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableNodes.stressIdColumn}, false);
+            this.Relations.Add(this.relationFK_Nodes_StressNodeParameters_0);
+            this.relationFK_ResearchConfigurations_MeshConfigurations_0 = new global::System.Data.DataRelation("FK_ResearchConfigurations_MeshConfigurations_0", new global::System.Data.DataColumn[] {
+                        this.tableMeshConfigurations.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableResearchConfigurations.meshParamsIdColumn}, false);
+            this.Relations.Add(this.relationFK_ResearchConfigurations_MeshConfigurations_0);
+            this.relationFK_Researchs_ResearchConfigurations_0 = new global::System.Data.DataRelation("FK_Researchs_ResearchConfigurations_0", new global::System.Data.DataColumn[] {
+                        this.tableResearchConfigurations.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableResearchs.ResearchIdColumn}, false);
+            this.Relations.Add(this.relationFK_Researchs_ResearchConfigurations_0);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeAdjacmentResearch() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeAdjacmentResearchs() {
+        private bool ShouldSerialize__EFMigrationsHistory() {
             return false;
         }
         
@@ -488,25 +571,19 @@ namespace ConsoleApp1 {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeDbscanResearch() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeDbScanResearchs() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private bool ShouldSerializeElements() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeMeshParams() {
+        private bool ShouldSerializeMeshConfigurations() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializeNodeIndexes() {
             return false;
         }
         
@@ -519,6 +596,24 @@ namespace ConsoleApp1 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private bool ShouldSerializePoints() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializeResearchConfigurations() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializeResearchs() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializesqlite_sequence() {
             return false;
         }
         
@@ -590,31 +685,34 @@ namespace ConsoleApp1 {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void AdjacmentResearchRowChangeEventHandler(object sender, AdjacmentResearchRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void AdjacmentResearchsRowChangeEventHandler(object sender, AdjacmentResearchsRowChangeEvent e);
+        public delegate void @__EFMigrationsHistoryRowChangeEventHandler(object sender, @__EFMigrationsHistoryRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void AreasRowChangeEventHandler(object sender, AreasRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void DbscanResearchRowChangeEventHandler(object sender, DbscanResearchRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void DbScanResearchsRowChangeEventHandler(object sender, DbScanResearchsRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void ElementsRowChangeEventHandler(object sender, ElementsRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void MeshParamsRowChangeEventHandler(object sender, MeshParamsRowChangeEvent e);
+        public delegate void MeshConfigurationsRowChangeEventHandler(object sender, MeshConfigurationsRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void NodeIndexesRowChangeEventHandler(object sender, NodeIndexesRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void NodesRowChangeEventHandler(object sender, NodesRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void PointsRowChangeEventHandler(object sender, PointsRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void ResearchConfigurationsRowChangeEventHandler(object sender, ResearchConfigurationsRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void ResearchsRowChangeEventHandler(object sender, ResearchsRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void sqlite_sequenceRowChangeEventHandler(object sender, sqlite_sequenceRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void StrainNodeParametersRowChangeEventHandler(object sender, StrainNodeParametersRowChangeEvent e);
@@ -627,12 +725,16 @@ namespace ConsoleApp1 {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class AdjacmentResearchDataTable : global::System.Data.TypedTableBase<AdjacmentResearchRow> {
+        public partial class @__EFMigrationsHistoryDataTable : global::System.Data.TypedTableBase<@__EFMigrationsHistoryRow> {
+            
+            private global::System.Data.DataColumn columnMigrationId;
+            
+            private global::System.Data.DataColumn columnProductVersion;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public AdjacmentResearchDataTable() {
-                this.TableName = "AdjacmentResearch";
+            public @__EFMigrationsHistoryDataTable() {
+                this.TableName = "__EFMigrationsHistory";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -640,7 +742,7 @@ namespace ConsoleApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal AdjacmentResearchDataTable(global::System.Data.DataTable table) {
+            internal @__EFMigrationsHistoryDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -657,9 +759,25 @@ namespace ConsoleApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected AdjacmentResearchDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected @__EFMigrationsHistoryDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn MigrationIdColumn {
+                get {
+                    return this.columnMigrationId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ProductVersionColumn {
+                get {
+                    return this.columnProductVersion;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -673,44 +791,53 @@ namespace ConsoleApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public AdjacmentResearchRow this[int index] {
+            public @__EFMigrationsHistoryRow this[int index] {
                 get {
-                    return ((AdjacmentResearchRow)(this.Rows[index]));
+                    return ((@__EFMigrationsHistoryRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event AdjacmentResearchRowChangeEventHandler AdjacmentResearchRowChanging;
+            public event @__EFMigrationsHistoryRowChangeEventHandler @__EFMigrationsHistoryRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event AdjacmentResearchRowChangeEventHandler AdjacmentResearchRowChanged;
+            public event @__EFMigrationsHistoryRowChangeEventHandler @__EFMigrationsHistoryRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event AdjacmentResearchRowChangeEventHandler AdjacmentResearchRowDeleting;
+            public event @__EFMigrationsHistoryRowChangeEventHandler @__EFMigrationsHistoryRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event AdjacmentResearchRowChangeEventHandler AdjacmentResearchRowDeleted;
+            public event @__EFMigrationsHistoryRowChangeEventHandler @__EFMigrationsHistoryRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddAdjacmentResearchRow(AdjacmentResearchRow row) {
+            public void Add__EFMigrationsHistoryRow(@__EFMigrationsHistoryRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public AdjacmentResearchRow AddAdjacmentResearchRow() {
-                AdjacmentResearchRow rowAdjacmentResearchRow = ((AdjacmentResearchRow)(this.NewRow()));
-                object[] columnValuesArray = new object[0];
-                rowAdjacmentResearchRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowAdjacmentResearchRow);
-                return rowAdjacmentResearchRow;
+            public @__EFMigrationsHistoryRow Add__EFMigrationsHistoryRow(string MigrationId, string ProductVersion) {
+                @__EFMigrationsHistoryRow row__EFMigrationsHistoryRow = ((@__EFMigrationsHistoryRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        MigrationId,
+                        ProductVersion};
+                row__EFMigrationsHistoryRow.ItemArray = columnValuesArray;
+                this.Rows.Add(row__EFMigrationsHistoryRow);
+                return row__EFMigrationsHistoryRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public @__EFMigrationsHistoryRow FindByMigrationId(string MigrationId) {
+                return ((@__EFMigrationsHistoryRow)(this.Rows.Find(new object[] {
+                            MigrationId})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                AdjacmentResearchDataTable cln = ((AdjacmentResearchDataTable)(base.Clone()));
+                @__EFMigrationsHistoryDataTable cln = ((@__EFMigrationsHistoryDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -718,43 +845,54 @@ namespace ConsoleApp1 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new AdjacmentResearchDataTable();
+                return new @__EFMigrationsHistoryDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
+                this.columnMigrationId = base.Columns["MigrationId"];
+                this.columnProductVersion = base.Columns["ProductVersion"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
+                this.columnMigrationId = new global::System.Data.DataColumn("MigrationId", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMigrationId);
+                this.columnProductVersion = new global::System.Data.DataColumn("ProductVersion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProductVersion);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnMigrationId}, true));
+                this.columnMigrationId.AllowDBNull = false;
+                this.columnMigrationId.Unique = true;
+                this.columnProductVersion.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public AdjacmentResearchRow NewAdjacmentResearchRow() {
-                return ((AdjacmentResearchRow)(this.NewRow()));
+            public @__EFMigrationsHistoryRow New__EFMigrationsHistoryRow() {
+                return ((@__EFMigrationsHistoryRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new AdjacmentResearchRow(builder);
+                return new @__EFMigrationsHistoryRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(AdjacmentResearchRow);
+                return typeof(@__EFMigrationsHistoryRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.AdjacmentResearchRowChanged != null)) {
-                    this.AdjacmentResearchRowChanged(this, new AdjacmentResearchRowChangeEvent(((AdjacmentResearchRow)(e.Row)), e.Action));
+                if ((this.@__EFMigrationsHistoryRowChanged != null)) {
+                    this.@__EFMigrationsHistoryRowChanged(this, new @__EFMigrationsHistoryRowChangeEvent(((@__EFMigrationsHistoryRow)(e.Row)), e.Action));
                 }
             }
             
@@ -762,8 +900,8 @@ namespace ConsoleApp1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.AdjacmentResearchRowChanging != null)) {
-                    this.AdjacmentResearchRowChanging(this, new AdjacmentResearchRowChangeEvent(((AdjacmentResearchRow)(e.Row)), e.Action));
+                if ((this.@__EFMigrationsHistoryRowChanging != null)) {
+                    this.@__EFMigrationsHistoryRowChanging(this, new @__EFMigrationsHistoryRowChangeEvent(((@__EFMigrationsHistoryRow)(e.Row)), e.Action));
                 }
             }
             
@@ -771,8 +909,8 @@ namespace ConsoleApp1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.AdjacmentResearchRowDeleted != null)) {
-                    this.AdjacmentResearchRowDeleted(this, new AdjacmentResearchRowChangeEvent(((AdjacmentResearchRow)(e.Row)), e.Action));
+                if ((this.@__EFMigrationsHistoryRowDeleted != null)) {
+                    this.@__EFMigrationsHistoryRowDeleted(this, new @__EFMigrationsHistoryRowChangeEvent(((@__EFMigrationsHistoryRow)(e.Row)), e.Action));
                 }
             }
             
@@ -780,14 +918,14 @@ namespace ConsoleApp1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.AdjacmentResearchRowDeleting != null)) {
-                    this.AdjacmentResearchRowDeleting(this, new AdjacmentResearchRowChangeEvent(((AdjacmentResearchRow)(e.Row)), e.Action));
+                if ((this.@__EFMigrationsHistoryRowDeleting != null)) {
+                    this.@__EFMigrationsHistoryRowDeleting(this, new @__EFMigrationsHistoryRowChangeEvent(((@__EFMigrationsHistoryRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveAdjacmentResearchRow(AdjacmentResearchRow row) {
+            public void Remove__EFMigrationsHistoryRow(@__EFMigrationsHistoryRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -814,240 +952,7 @@ namespace ConsoleApp1 {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "AdjacmentResearchDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class AdjacmentResearchsDataTable : global::System.Data.TypedTableBase<AdjacmentResearchsRow> {
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public AdjacmentResearchsDataTable() {
-                this.TableName = "AdjacmentResearchs";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal AdjacmentResearchsDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected AdjacmentResearchsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public AdjacmentResearchsRow this[int index] {
-                get {
-                    return ((AdjacmentResearchsRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event AdjacmentResearchsRowChangeEventHandler AdjacmentResearchsRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event AdjacmentResearchsRowChangeEventHandler AdjacmentResearchsRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event AdjacmentResearchsRowChangeEventHandler AdjacmentResearchsRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event AdjacmentResearchsRowChangeEventHandler AdjacmentResearchsRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddAdjacmentResearchsRow(AdjacmentResearchsRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public AdjacmentResearchsRow AddAdjacmentResearchsRow() {
-                AdjacmentResearchsRow rowAdjacmentResearchsRow = ((AdjacmentResearchsRow)(this.NewRow()));
-                object[] columnValuesArray = new object[0];
-                rowAdjacmentResearchsRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowAdjacmentResearchsRow);
-                return rowAdjacmentResearchsRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                AdjacmentResearchsDataTable cln = ((AdjacmentResearchsDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new AdjacmentResearchsDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal void InitVars() {
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            private void InitClass() {
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public AdjacmentResearchsRow NewAdjacmentResearchsRow() {
-                return ((AdjacmentResearchsRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new AdjacmentResearchsRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(AdjacmentResearchsRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.AdjacmentResearchsRowChanged != null)) {
-                    this.AdjacmentResearchsRowChanged(this, new AdjacmentResearchsRowChangeEvent(((AdjacmentResearchsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.AdjacmentResearchsRowChanging != null)) {
-                    this.AdjacmentResearchsRowChanging(this, new AdjacmentResearchsRowChangeEvent(((AdjacmentResearchsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.AdjacmentResearchsRowDeleted != null)) {
-                    this.AdjacmentResearchsRowDeleted(this, new AdjacmentResearchsRowChangeEvent(((AdjacmentResearchsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.AdjacmentResearchsRowDeleting != null)) {
-                    this.AdjacmentResearchsRowDeleting(this, new AdjacmentResearchsRowChangeEvent(((AdjacmentResearchsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveAdjacmentResearchsRow(AdjacmentResearchsRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "AdjacmentResearchsDataTable";
+                attribute2.FixedValue = "__EFMigrationsHistoryDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1095,6 +1000,14 @@ namespace ConsoleApp1 {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class AreasDataTable : global::System.Data.TypedTableBase<AreasRow> {
             
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnResearchDbModelId;
+            
+            private global::System.Data.DataColumn columnVolume;
+            
+            private global::System.Data.DataColumn columnmaxRadius;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public AreasDataTable() {
@@ -1126,6 +1039,38 @@ namespace ConsoleApp1 {
             protected AreasDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ResearchDbModelIdColumn {
+                get {
+                    return this.columnResearchDbModelId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn VolumeColumn {
+                get {
+                    return this.columnVolume;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn maxRadiusColumn {
+                get {
+                    return this.columnmaxRadius;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1165,12 +1110,26 @@ namespace ConsoleApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public AreasRow AddAreasRow() {
+            public AreasRow AddAreasRow(long Id, ResearchsRow parentResearchsRowByFK_Areas_Researchs_0, double Volume, double maxRadius) {
                 AreasRow rowAreasRow = ((AreasRow)(this.NewRow()));
-                object[] columnValuesArray = new object[0];
+                object[] columnValuesArray = new object[] {
+                        Id,
+                        null,
+                        Volume,
+                        maxRadius};
+                if ((parentResearchsRowByFK_Areas_Researchs_0 != null)) {
+                    columnValuesArray[1] = parentResearchsRowByFK_Areas_Researchs_0[0];
+                }
                 rowAreasRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowAreasRow);
                 return rowAreasRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public AreasRow FindById(long Id) {
+                return ((AreasRow)(this.Rows.Find(new object[] {
+                            Id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1190,11 +1149,29 @@ namespace ConsoleApp1 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
+                this.columnId = base.Columns["Id"];
+                this.columnResearchDbModelId = base.Columns["ResearchDbModelId"];
+                this.columnVolume = base.Columns["Volume"];
+                this.columnmaxRadius = base.Columns["maxRadius"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnResearchDbModelId = new global::System.Data.DataColumn("ResearchDbModelId", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnResearchDbModelId);
+                this.columnVolume = new global::System.Data.DataColumn("Volume", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVolume);
+                this.columnmaxRadius = new global::System.Data.DataColumn("maxRadius", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmaxRadius);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnId}, true));
+                this.columnId.AllowDBNull = false;
+                this.columnId.Unique = true;
+                this.columnVolume.AllowDBNull = false;
+                this.columnmaxRadius.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1326,473 +1303,13 @@ namespace ConsoleApp1 {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class DbscanResearchDataTable : global::System.Data.TypedTableBase<DbscanResearchRow> {
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DbscanResearchDataTable() {
-                this.TableName = "DbscanResearch";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal DbscanResearchDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected DbscanResearchDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DbscanResearchRow this[int index] {
-                get {
-                    return ((DbscanResearchRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event DbscanResearchRowChangeEventHandler DbscanResearchRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event DbscanResearchRowChangeEventHandler DbscanResearchRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event DbscanResearchRowChangeEventHandler DbscanResearchRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event DbscanResearchRowChangeEventHandler DbscanResearchRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddDbscanResearchRow(DbscanResearchRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DbscanResearchRow AddDbscanResearchRow() {
-                DbscanResearchRow rowDbscanResearchRow = ((DbscanResearchRow)(this.NewRow()));
-                object[] columnValuesArray = new object[0];
-                rowDbscanResearchRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowDbscanResearchRow);
-                return rowDbscanResearchRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                DbscanResearchDataTable cln = ((DbscanResearchDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new DbscanResearchDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal void InitVars() {
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            private void InitClass() {
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DbscanResearchRow NewDbscanResearchRow() {
-                return ((DbscanResearchRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new DbscanResearchRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(DbscanResearchRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.DbscanResearchRowChanged != null)) {
-                    this.DbscanResearchRowChanged(this, new DbscanResearchRowChangeEvent(((DbscanResearchRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.DbscanResearchRowChanging != null)) {
-                    this.DbscanResearchRowChanging(this, new DbscanResearchRowChangeEvent(((DbscanResearchRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.DbscanResearchRowDeleted != null)) {
-                    this.DbscanResearchRowDeleted(this, new DbscanResearchRowChangeEvent(((DbscanResearchRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.DbscanResearchRowDeleting != null)) {
-                    this.DbscanResearchRowDeleting(this, new DbscanResearchRowChangeEvent(((DbscanResearchRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveDbscanResearchRow(DbscanResearchRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "DbscanResearchDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class DbScanResearchsDataTable : global::System.Data.TypedTableBase<DbScanResearchsRow> {
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DbScanResearchsDataTable() {
-                this.TableName = "DbScanResearchs";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal DbScanResearchsDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected DbScanResearchsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DbScanResearchsRow this[int index] {
-                get {
-                    return ((DbScanResearchsRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event DbScanResearchsRowChangeEventHandler DbScanResearchsRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event DbScanResearchsRowChangeEventHandler DbScanResearchsRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event DbScanResearchsRowChangeEventHandler DbScanResearchsRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event DbScanResearchsRowChangeEventHandler DbScanResearchsRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddDbScanResearchsRow(DbScanResearchsRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DbScanResearchsRow AddDbScanResearchsRow() {
-                DbScanResearchsRow rowDbScanResearchsRow = ((DbScanResearchsRow)(this.NewRow()));
-                object[] columnValuesArray = new object[0];
-                rowDbScanResearchsRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowDbScanResearchsRow);
-                return rowDbScanResearchsRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                DbScanResearchsDataTable cln = ((DbScanResearchsDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new DbScanResearchsDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal void InitVars() {
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            private void InitClass() {
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DbScanResearchsRow NewDbScanResearchsRow() {
-                return ((DbScanResearchsRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new DbScanResearchsRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(DbScanResearchsRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.DbScanResearchsRowChanged != null)) {
-                    this.DbScanResearchsRowChanged(this, new DbScanResearchsRowChangeEvent(((DbScanResearchsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.DbScanResearchsRowChanging != null)) {
-                    this.DbScanResearchsRowChanging(this, new DbScanResearchsRowChangeEvent(((DbScanResearchsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.DbScanResearchsRowDeleted != null)) {
-                    this.DbScanResearchsRowDeleted(this, new DbScanResearchsRowChangeEvent(((DbScanResearchsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.DbScanResearchsRowDeleting != null)) {
-                    this.DbScanResearchsRowDeleting(this, new DbScanResearchsRowChangeEvent(((DbScanResearchsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveDbScanResearchsRow(DbScanResearchsRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSet1 ds = new DataSet1();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "DbScanResearchsDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class ElementsDataTable : global::System.Data.TypedTableBase<ElementsRow> {
+            
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnAreaId;
+            
+            private global::System.Data.DataColumn columnnumber;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -1825,6 +1342,30 @@ namespace ConsoleApp1 {
             protected ElementsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn AreaIdColumn {
+                get {
+                    return this.columnAreaId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn numberColumn {
+                get {
+                    return this.columnnumber;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1864,12 +1405,25 @@ namespace ConsoleApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ElementsRow AddElementsRow() {
+            public ElementsRow AddElementsRow(long Id, AreasRow parentAreasRowByFK_Elements_Areas_0, long number) {
                 ElementsRow rowElementsRow = ((ElementsRow)(this.NewRow()));
-                object[] columnValuesArray = new object[0];
+                object[] columnValuesArray = new object[] {
+                        Id,
+                        null,
+                        number};
+                if ((parentAreasRowByFK_Elements_Areas_0 != null)) {
+                    columnValuesArray[1] = parentAreasRowByFK_Elements_Areas_0[0];
+                }
                 rowElementsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowElementsRow);
                 return rowElementsRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ElementsRow FindById(long Id) {
+                return ((ElementsRow)(this.Rows.Find(new object[] {
+                            Id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1889,11 +1443,25 @@ namespace ConsoleApp1 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
+                this.columnId = base.Columns["Id"];
+                this.columnAreaId = base.Columns["AreaId"];
+                this.columnnumber = base.Columns["number"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnAreaId = new global::System.Data.DataColumn("AreaId", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAreaId);
+                this.columnnumber = new global::System.Data.DataColumn("number", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnumber);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnId}, true));
+                this.columnId.AllowDBNull = false;
+                this.columnId.Unique = true;
+                this.columnnumber.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2025,12 +1593,28 @@ namespace ConsoleApp1 {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class MeshParamsDataTable : global::System.Data.TypedTableBase<MeshParamsRow> {
+        public partial class MeshConfigurationsDataTable : global::System.Data.TypedTableBase<MeshConfigurationsRow> {
+            
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnGrowthRatio;
+            
+            private global::System.Data.DataColumn columnMesherType;
+            
+            private global::System.Data.DataColumn columnMinElementsInCircle;
+            
+            private global::System.Data.DataColumn columnQuality;
+            
+            private global::System.Data.DataColumn columnSaveSettingsWithoutMeshing;
+            
+            private global::System.Data.DataColumn columnUnit;
+            
+            private global::System.Data.DataColumn columnUseJacobianCheck;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public MeshParamsDataTable() {
-                this.TableName = "MeshParams";
+            public MeshConfigurationsDataTable() {
+                this.TableName = "MeshConfigurations";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -2038,7 +1622,7 @@ namespace ConsoleApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal MeshParamsDataTable(global::System.Data.DataTable table) {
+            internal MeshConfigurationsDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -2055,9 +1639,73 @@ namespace ConsoleApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected MeshParamsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected MeshConfigurationsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn GrowthRatioColumn {
+                get {
+                    return this.columnGrowthRatio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn MesherTypeColumn {
+                get {
+                    return this.columnMesherType;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn MinElementsInCircleColumn {
+                get {
+                    return this.columnMinElementsInCircle;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn QualityColumn {
+                get {
+                    return this.columnQuality;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SaveSettingsWithoutMeshingColumn {
+                get {
+                    return this.columnSaveSettingsWithoutMeshing;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn UnitColumn {
+                get {
+                    return this.columnUnit;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn UseJacobianCheckColumn {
+                get {
+                    return this.columnUseJacobianCheck;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2071,44 +1719,59 @@ namespace ConsoleApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public MeshParamsRow this[int index] {
+            public MeshConfigurationsRow this[int index] {
                 get {
-                    return ((MeshParamsRow)(this.Rows[index]));
+                    return ((MeshConfigurationsRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event MeshParamsRowChangeEventHandler MeshParamsRowChanging;
+            public event MeshConfigurationsRowChangeEventHandler MeshConfigurationsRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event MeshParamsRowChangeEventHandler MeshParamsRowChanged;
+            public event MeshConfigurationsRowChangeEventHandler MeshConfigurationsRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event MeshParamsRowChangeEventHandler MeshParamsRowDeleting;
+            public event MeshConfigurationsRowChangeEventHandler MeshConfigurationsRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event MeshParamsRowChangeEventHandler MeshParamsRowDeleted;
+            public event MeshConfigurationsRowChangeEventHandler MeshConfigurationsRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddMeshParamsRow(MeshParamsRow row) {
+            public void AddMeshConfigurationsRow(MeshConfigurationsRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public MeshParamsRow AddMeshParamsRow() {
-                MeshParamsRow rowMeshParamsRow = ((MeshParamsRow)(this.NewRow()));
-                object[] columnValuesArray = new object[0];
-                rowMeshParamsRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowMeshParamsRow);
-                return rowMeshParamsRow;
+            public MeshConfigurationsRow AddMeshConfigurationsRow(long Id, string GrowthRatio, string MesherType, string MinElementsInCircle, string Quality, string SaveSettingsWithoutMeshing, string Unit, string UseJacobianCheck) {
+                MeshConfigurationsRow rowMeshConfigurationsRow = ((MeshConfigurationsRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Id,
+                        GrowthRatio,
+                        MesherType,
+                        MinElementsInCircle,
+                        Quality,
+                        SaveSettingsWithoutMeshing,
+                        Unit,
+                        UseJacobianCheck};
+                rowMeshConfigurationsRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowMeshConfigurationsRow);
+                return rowMeshConfigurationsRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public MeshConfigurationsRow FindById(long Id) {
+                return ((MeshConfigurationsRow)(this.Rows.Find(new object[] {
+                            Id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                MeshParamsDataTable cln = ((MeshParamsDataTable)(base.Clone()));
+                MeshConfigurationsDataTable cln = ((MeshConfigurationsDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -2116,43 +1779,71 @@ namespace ConsoleApp1 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new MeshParamsDataTable();
+                return new MeshConfigurationsDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
+                this.columnId = base.Columns["Id"];
+                this.columnGrowthRatio = base.Columns["GrowthRatio"];
+                this.columnMesherType = base.Columns["MesherType"];
+                this.columnMinElementsInCircle = base.Columns["MinElementsInCircle"];
+                this.columnQuality = base.Columns["Quality"];
+                this.columnSaveSettingsWithoutMeshing = base.Columns["SaveSettingsWithoutMeshing"];
+                this.columnUnit = base.Columns["Unit"];
+                this.columnUseJacobianCheck = base.Columns["UseJacobianCheck"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnGrowthRatio = new global::System.Data.DataColumn("GrowthRatio", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGrowthRatio);
+                this.columnMesherType = new global::System.Data.DataColumn("MesherType", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMesherType);
+                this.columnMinElementsInCircle = new global::System.Data.DataColumn("MinElementsInCircle", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMinElementsInCircle);
+                this.columnQuality = new global::System.Data.DataColumn("Quality", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQuality);
+                this.columnSaveSettingsWithoutMeshing = new global::System.Data.DataColumn("SaveSettingsWithoutMeshing", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSaveSettingsWithoutMeshing);
+                this.columnUnit = new global::System.Data.DataColumn("Unit", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUnit);
+                this.columnUseJacobianCheck = new global::System.Data.DataColumn("UseJacobianCheck", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUseJacobianCheck);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnId}, true));
+                this.columnId.AllowDBNull = false;
+                this.columnId.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public MeshParamsRow NewMeshParamsRow() {
-                return ((MeshParamsRow)(this.NewRow()));
+            public MeshConfigurationsRow NewMeshConfigurationsRow() {
+                return ((MeshConfigurationsRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new MeshParamsRow(builder);
+                return new MeshConfigurationsRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(MeshParamsRow);
+                return typeof(MeshConfigurationsRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.MeshParamsRowChanged != null)) {
-                    this.MeshParamsRowChanged(this, new MeshParamsRowChangeEvent(((MeshParamsRow)(e.Row)), e.Action));
+                if ((this.MeshConfigurationsRowChanged != null)) {
+                    this.MeshConfigurationsRowChanged(this, new MeshConfigurationsRowChangeEvent(((MeshConfigurationsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2160,8 +1851,8 @@ namespace ConsoleApp1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.MeshParamsRowChanging != null)) {
-                    this.MeshParamsRowChanging(this, new MeshParamsRowChangeEvent(((MeshParamsRow)(e.Row)), e.Action));
+                if ((this.MeshConfigurationsRowChanging != null)) {
+                    this.MeshConfigurationsRowChanging(this, new MeshConfigurationsRowChangeEvent(((MeshConfigurationsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2169,8 +1860,8 @@ namespace ConsoleApp1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.MeshParamsRowDeleted != null)) {
-                    this.MeshParamsRowDeleted(this, new MeshParamsRowChangeEvent(((MeshParamsRow)(e.Row)), e.Action));
+                if ((this.MeshConfigurationsRowDeleted != null)) {
+                    this.MeshConfigurationsRowDeleted(this, new MeshConfigurationsRowChangeEvent(((MeshConfigurationsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2178,14 +1869,14 @@ namespace ConsoleApp1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.MeshParamsRowDeleting != null)) {
-                    this.MeshParamsRowDeleting(this, new MeshParamsRowChangeEvent(((MeshParamsRow)(e.Row)), e.Action));
+                if ((this.MeshConfigurationsRowDeleting != null)) {
+                    this.MeshConfigurationsRowDeleting(this, new MeshConfigurationsRowChangeEvent(((MeshConfigurationsRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveMeshParamsRow(MeshParamsRow row) {
+            public void RemoveMeshConfigurationsRow(MeshConfigurationsRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -2212,7 +1903,297 @@ namespace ConsoleApp1 {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "MeshParamsDataTable";
+                attribute2.FixedValue = "MeshConfigurationsDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class NodeIndexesDataTable : global::System.Data.TypedTableBase<NodeIndexesRow> {
+            
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnElementId;
+            
+            private global::System.Data.DataColumn columnnodeIndex;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public NodeIndexesDataTable() {
+                this.TableName = "NodeIndexes";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal NodeIndexesDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected NodeIndexesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ElementIdColumn {
+                get {
+                    return this.columnElementId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn nodeIndexColumn {
+                get {
+                    return this.columnnodeIndex;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public NodeIndexesRow this[int index] {
+                get {
+                    return ((NodeIndexesRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event NodeIndexesRowChangeEventHandler NodeIndexesRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event NodeIndexesRowChangeEventHandler NodeIndexesRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event NodeIndexesRowChangeEventHandler NodeIndexesRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event NodeIndexesRowChangeEventHandler NodeIndexesRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void AddNodeIndexesRow(NodeIndexesRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public NodeIndexesRow AddNodeIndexesRow(long Id, ElementsRow parentElementsRowByFK_NodeIndexes_Elements_0, long nodeIndex) {
+                NodeIndexesRow rowNodeIndexesRow = ((NodeIndexesRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Id,
+                        null,
+                        nodeIndex};
+                if ((parentElementsRowByFK_NodeIndexes_Elements_0 != null)) {
+                    columnValuesArray[1] = parentElementsRowByFK_NodeIndexes_Elements_0[0];
+                }
+                rowNodeIndexesRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowNodeIndexesRow);
+                return rowNodeIndexesRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public NodeIndexesRow FindById(long Id) {
+                return ((NodeIndexesRow)(this.Rows.Find(new object[] {
+                            Id})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                NodeIndexesDataTable cln = ((NodeIndexesDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new NodeIndexesDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnId = base.Columns["Id"];
+                this.columnElementId = base.Columns["ElementId"];
+                this.columnnodeIndex = base.Columns["nodeIndex"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnElementId = new global::System.Data.DataColumn("ElementId", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnElementId);
+                this.columnnodeIndex = new global::System.Data.DataColumn("nodeIndex", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnodeIndex);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnId}, true));
+                this.columnId.AllowDBNull = false;
+                this.columnId.Unique = true;
+                this.columnnodeIndex.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public NodeIndexesRow NewNodeIndexesRow() {
+                return ((NodeIndexesRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new NodeIndexesRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(NodeIndexesRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.NodeIndexesRowChanged != null)) {
+                    this.NodeIndexesRowChanged(this, new NodeIndexesRowChangeEvent(((NodeIndexesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.NodeIndexesRowChanging != null)) {
+                    this.NodeIndexesRowChanging(this, new NodeIndexesRowChangeEvent(((NodeIndexesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.NodeIndexesRowDeleted != null)) {
+                    this.NodeIndexesRowDeleted(this, new NodeIndexesRowChangeEvent(((NodeIndexesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.NodeIndexesRowDeleting != null)) {
+                    this.NodeIndexesRowDeleting(this, new NodeIndexesRowChangeEvent(((NodeIndexesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void RemoveNodeIndexesRow(NodeIndexesRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSet1 ds = new DataSet1();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "NodeIndexesDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2260,6 +2241,18 @@ namespace ConsoleApp1 {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class NodesDataTable : global::System.Data.TypedTableBase<NodesRow> {
             
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnAreaId;
+            
+            private global::System.Data.DataColumn columnnumber;
+            
+            private global::System.Data.DataColumn columnpointId;
+            
+            private global::System.Data.DataColumn columnstrainId;
+            
+            private global::System.Data.DataColumn columnstressId;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public NodesDataTable() {
@@ -2291,6 +2284,54 @@ namespace ConsoleApp1 {
             protected NodesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn AreaIdColumn {
+                get {
+                    return this.columnAreaId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn numberColumn {
+                get {
+                    return this.columnnumber;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn pointIdColumn {
+                get {
+                    return this.columnpointId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn strainIdColumn {
+                get {
+                    return this.columnstrainId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn stressIdColumn {
+                get {
+                    return this.columnstressId;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2330,12 +2371,37 @@ namespace ConsoleApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public NodesRow AddNodesRow() {
+            public NodesRow AddNodesRow(long Id, AreasRow parentAreasRowByFK_Nodes_Areas_3, long number, PointsRow parentPointsRowByFK_Nodes_Points_2, StrainNodeParametersRow parentStrainNodeParametersRowByFK_Nodes_StrainNodeParameters_1, StressNodeParametersRow parentStressNodeParametersRowByFK_Nodes_StressNodeParameters_0) {
                 NodesRow rowNodesRow = ((NodesRow)(this.NewRow()));
-                object[] columnValuesArray = new object[0];
+                object[] columnValuesArray = new object[] {
+                        Id,
+                        null,
+                        number,
+                        null,
+                        null,
+                        null};
+                if ((parentAreasRowByFK_Nodes_Areas_3 != null)) {
+                    columnValuesArray[1] = parentAreasRowByFK_Nodes_Areas_3[0];
+                }
+                if ((parentPointsRowByFK_Nodes_Points_2 != null)) {
+                    columnValuesArray[3] = parentPointsRowByFK_Nodes_Points_2[0];
+                }
+                if ((parentStrainNodeParametersRowByFK_Nodes_StrainNodeParameters_1 != null)) {
+                    columnValuesArray[4] = parentStrainNodeParametersRowByFK_Nodes_StrainNodeParameters_1[0];
+                }
+                if ((parentStressNodeParametersRowByFK_Nodes_StressNodeParameters_0 != null)) {
+                    columnValuesArray[5] = parentStressNodeParametersRowByFK_Nodes_StressNodeParameters_0[0];
+                }
                 rowNodesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowNodesRow);
                 return rowNodesRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public NodesRow FindById(long Id) {
+                return ((NodesRow)(this.Rows.Find(new object[] {
+                            Id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2355,11 +2421,34 @@ namespace ConsoleApp1 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
+                this.columnId = base.Columns["Id"];
+                this.columnAreaId = base.Columns["AreaId"];
+                this.columnnumber = base.Columns["number"];
+                this.columnpointId = base.Columns["pointId"];
+                this.columnstrainId = base.Columns["strainId"];
+                this.columnstressId = base.Columns["stressId"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnAreaId = new global::System.Data.DataColumn("AreaId", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAreaId);
+                this.columnnumber = new global::System.Data.DataColumn("number", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnumber);
+                this.columnpointId = new global::System.Data.DataColumn("pointId", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpointId);
+                this.columnstrainId = new global::System.Data.DataColumn("strainId", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstrainId);
+                this.columnstressId = new global::System.Data.DataColumn("stressId", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstressId);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnId}, true));
+                this.columnId.AllowDBNull = false;
+                this.columnId.Unique = true;
+                this.columnnumber.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2493,6 +2582,14 @@ namespace ConsoleApp1 {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class PointsDataTable : global::System.Data.TypedTableBase<PointsRow> {
             
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnx;
+            
+            private global::System.Data.DataColumn columny;
+            
+            private global::System.Data.DataColumn columnz;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public PointsDataTable() {
@@ -2524,6 +2621,38 @@ namespace ConsoleApp1 {
             protected PointsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn xColumn {
+                get {
+                    return this.columnx;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn yColumn {
+                get {
+                    return this.columny;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn zColumn {
+                get {
+                    return this.columnz;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2563,12 +2692,23 @@ namespace ConsoleApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public PointsRow AddPointsRow() {
+            public PointsRow AddPointsRow(long Id, double x, double y, double z) {
                 PointsRow rowPointsRow = ((PointsRow)(this.NewRow()));
-                object[] columnValuesArray = new object[0];
+                object[] columnValuesArray = new object[] {
+                        Id,
+                        x,
+                        y,
+                        z};
                 rowPointsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPointsRow);
                 return rowPointsRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public PointsRow FindById(long Id) {
+                return ((PointsRow)(this.Rows.Find(new object[] {
+                            Id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2588,11 +2728,30 @@ namespace ConsoleApp1 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
+                this.columnId = base.Columns["Id"];
+                this.columnx = base.Columns["x"];
+                this.columny = base.Columns["y"];
+                this.columnz = base.Columns["z"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnx = new global::System.Data.DataColumn("x", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnx);
+                this.columny = new global::System.Data.DataColumn("y", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columny);
+                this.columnz = new global::System.Data.DataColumn("z", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnz);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnId}, true));
+                this.columnId.AllowDBNull = false;
+                this.columnId.Unique = true;
+                this.columnx.AllowDBNull = false;
+                this.columny.AllowDBNull = false;
+                this.columnz.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2724,7 +2883,984 @@ namespace ConsoleApp1 {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ResearchConfigurationsDataTable : global::System.Data.TypedTableBase<ResearchConfigurationsRow> {
+            
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columncoef1;
+            
+            private global::System.Data.DataColumn columncoef2;
+            
+            private global::System.Data.DataColumn columneps;
+            
+            private global::System.Data.DataColumn columnfilterParam;
+            
+            private global::System.Data.DataColumn columnmaterialParam;
+            
+            private global::System.Data.DataColumn columnmeshParamsId;
+            
+            private global::System.Data.DataColumn columnminSamples;
+            
+            private global::System.Data.DataColumn columnnodesIntersectionAmount;
+            
+            private global::System.Data.DataColumn columnsqueezeCoef;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ResearchConfigurationsDataTable() {
+                this.TableName = "ResearchConfigurations";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal ResearchConfigurationsDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected ResearchConfigurationsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn coef1Column {
+                get {
+                    return this.columncoef1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn coef2Column {
+                get {
+                    return this.columncoef2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn epsColumn {
+                get {
+                    return this.columneps;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn filterParamColumn {
+                get {
+                    return this.columnfilterParam;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn materialParamColumn {
+                get {
+                    return this.columnmaterialParam;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn meshParamsIdColumn {
+                get {
+                    return this.columnmeshParamsId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn minSamplesColumn {
+                get {
+                    return this.columnminSamples;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn nodesIntersectionAmountColumn {
+                get {
+                    return this.columnnodesIntersectionAmount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn squeezeCoefColumn {
+                get {
+                    return this.columnsqueezeCoef;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ResearchConfigurationsRow this[int index] {
+                get {
+                    return ((ResearchConfigurationsRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event ResearchConfigurationsRowChangeEventHandler ResearchConfigurationsRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event ResearchConfigurationsRowChangeEventHandler ResearchConfigurationsRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event ResearchConfigurationsRowChangeEventHandler ResearchConfigurationsRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event ResearchConfigurationsRowChangeEventHandler ResearchConfigurationsRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void AddResearchConfigurationsRow(ResearchConfigurationsRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ResearchConfigurationsRow AddResearchConfigurationsRow(long Id, string coef1, string coef2, string eps, string filterParam, string materialParam, MeshConfigurationsRow parentMeshConfigurationsRowByFK_ResearchConfigurations_MeshConfigurations_0, string minSamples, string nodesIntersectionAmount, string squeezeCoef) {
+                ResearchConfigurationsRow rowResearchConfigurationsRow = ((ResearchConfigurationsRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Id,
+                        coef1,
+                        coef2,
+                        eps,
+                        filterParam,
+                        materialParam,
+                        null,
+                        minSamples,
+                        nodesIntersectionAmount,
+                        squeezeCoef};
+                if ((parentMeshConfigurationsRowByFK_ResearchConfigurations_MeshConfigurations_0 != null)) {
+                    columnValuesArray[6] = parentMeshConfigurationsRowByFK_ResearchConfigurations_MeshConfigurations_0[0];
+                }
+                rowResearchConfigurationsRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowResearchConfigurationsRow);
+                return rowResearchConfigurationsRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ResearchConfigurationsRow FindById(long Id) {
+                return ((ResearchConfigurationsRow)(this.Rows.Find(new object[] {
+                            Id})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ResearchConfigurationsDataTable cln = ((ResearchConfigurationsDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ResearchConfigurationsDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnId = base.Columns["Id"];
+                this.columncoef1 = base.Columns["coef1"];
+                this.columncoef2 = base.Columns["coef2"];
+                this.columneps = base.Columns["eps"];
+                this.columnfilterParam = base.Columns["filterParam"];
+                this.columnmaterialParam = base.Columns["materialParam"];
+                this.columnmeshParamsId = base.Columns["meshParamsId"];
+                this.columnminSamples = base.Columns["minSamples"];
+                this.columnnodesIntersectionAmount = base.Columns["nodesIntersectionAmount"];
+                this.columnsqueezeCoef = base.Columns["squeezeCoef"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columncoef1 = new global::System.Data.DataColumn("coef1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncoef1);
+                this.columncoef2 = new global::System.Data.DataColumn("coef2", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncoef2);
+                this.columneps = new global::System.Data.DataColumn("eps", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columneps);
+                this.columnfilterParam = new global::System.Data.DataColumn("filterParam", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfilterParam);
+                this.columnmaterialParam = new global::System.Data.DataColumn("materialParam", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmaterialParam);
+                this.columnmeshParamsId = new global::System.Data.DataColumn("meshParamsId", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmeshParamsId);
+                this.columnminSamples = new global::System.Data.DataColumn("minSamples", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnminSamples);
+                this.columnnodesIntersectionAmount = new global::System.Data.DataColumn("nodesIntersectionAmount", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnodesIntersectionAmount);
+                this.columnsqueezeCoef = new global::System.Data.DataColumn("squeezeCoef", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsqueezeCoef);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnId}, true));
+                this.columnId.AllowDBNull = false;
+                this.columnId.Unique = true;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ResearchConfigurationsRow NewResearchConfigurationsRow() {
+                return ((ResearchConfigurationsRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ResearchConfigurationsRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ResearchConfigurationsRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ResearchConfigurationsRowChanged != null)) {
+                    this.ResearchConfigurationsRowChanged(this, new ResearchConfigurationsRowChangeEvent(((ResearchConfigurationsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ResearchConfigurationsRowChanging != null)) {
+                    this.ResearchConfigurationsRowChanging(this, new ResearchConfigurationsRowChangeEvent(((ResearchConfigurationsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ResearchConfigurationsRowDeleted != null)) {
+                    this.ResearchConfigurationsRowDeleted(this, new ResearchConfigurationsRowChangeEvent(((ResearchConfigurationsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ResearchConfigurationsRowDeleting != null)) {
+                    this.ResearchConfigurationsRowDeleting(this, new ResearchConfigurationsRowChangeEvent(((ResearchConfigurationsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void RemoveResearchConfigurationsRow(ResearchConfigurationsRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSet1 ds = new DataSet1();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ResearchConfigurationsDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ResearchsDataTable : global::System.Data.TypedTableBase<ResearchsRow> {
+            
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnFilePath;
+            
+            private global::System.Data.DataColumn columnResearchId;
+            
+            private global::System.Data.DataColumn columnTitle;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ResearchsDataTable() {
+                this.TableName = "Researchs";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal ResearchsDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected ResearchsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FilePathColumn {
+                get {
+                    return this.columnFilePath;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ResearchIdColumn {
+                get {
+                    return this.columnResearchId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn TitleColumn {
+                get {
+                    return this.columnTitle;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ResearchsRow this[int index] {
+                get {
+                    return ((ResearchsRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event ResearchsRowChangeEventHandler ResearchsRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event ResearchsRowChangeEventHandler ResearchsRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event ResearchsRowChangeEventHandler ResearchsRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event ResearchsRowChangeEventHandler ResearchsRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void AddResearchsRow(ResearchsRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ResearchsRow AddResearchsRow(long Id, string FilePath, ResearchConfigurationsRow parentResearchConfigurationsRowByFK_Researchs_ResearchConfigurations_0, string Title) {
+                ResearchsRow rowResearchsRow = ((ResearchsRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Id,
+                        FilePath,
+                        null,
+                        Title};
+                if ((parentResearchConfigurationsRowByFK_Researchs_ResearchConfigurations_0 != null)) {
+                    columnValuesArray[2] = parentResearchConfigurationsRowByFK_Researchs_ResearchConfigurations_0[0];
+                }
+                rowResearchsRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowResearchsRow);
+                return rowResearchsRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ResearchsRow FindById(long Id) {
+                return ((ResearchsRow)(this.Rows.Find(new object[] {
+                            Id})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ResearchsDataTable cln = ((ResearchsDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ResearchsDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnId = base.Columns["Id"];
+                this.columnFilePath = base.Columns["FilePath"];
+                this.columnResearchId = base.Columns["ResearchId"];
+                this.columnTitle = base.Columns["Title"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnFilePath = new global::System.Data.DataColumn("FilePath", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFilePath);
+                this.columnResearchId = new global::System.Data.DataColumn("ResearchId", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnResearchId);
+                this.columnTitle = new global::System.Data.DataColumn("Title", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTitle);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnId}, true));
+                this.columnId.AllowDBNull = false;
+                this.columnId.Unique = true;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ResearchsRow NewResearchsRow() {
+                return ((ResearchsRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ResearchsRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ResearchsRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ResearchsRowChanged != null)) {
+                    this.ResearchsRowChanged(this, new ResearchsRowChangeEvent(((ResearchsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ResearchsRowChanging != null)) {
+                    this.ResearchsRowChanging(this, new ResearchsRowChangeEvent(((ResearchsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ResearchsRowDeleted != null)) {
+                    this.ResearchsRowDeleted(this, new ResearchsRowChangeEvent(((ResearchsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ResearchsRowDeleting != null)) {
+                    this.ResearchsRowDeleting(this, new ResearchsRowChangeEvent(((ResearchsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void RemoveResearchsRow(ResearchsRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSet1 ds = new DataSet1();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ResearchsDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class sqlite_sequenceDataTable : global::System.Data.TypedTableBase<sqlite_sequenceRow> {
+            
+            private global::System.Data.DataColumn columnname;
+            
+            private global::System.Data.DataColumn columnseq;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public sqlite_sequenceDataTable() {
+                this.TableName = "sqlite_sequence";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal sqlite_sequenceDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected sqlite_sequenceDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn nameColumn {
+                get {
+                    return this.columnname;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn seqColumn {
+                get {
+                    return this.columnseq;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public sqlite_sequenceRow this[int index] {
+                get {
+                    return ((sqlite_sequenceRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event sqlite_sequenceRowChangeEventHandler sqlite_sequenceRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event sqlite_sequenceRowChangeEventHandler sqlite_sequenceRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event sqlite_sequenceRowChangeEventHandler sqlite_sequenceRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event sqlite_sequenceRowChangeEventHandler sqlite_sequenceRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Addsqlite_sequenceRow(sqlite_sequenceRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public sqlite_sequenceRow Addsqlite_sequenceRow(string name, long seq) {
+                sqlite_sequenceRow rowsqlite_sequenceRow = ((sqlite_sequenceRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        name,
+                        seq};
+                rowsqlite_sequenceRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowsqlite_sequenceRow);
+                return rowsqlite_sequenceRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                sqlite_sequenceDataTable cln = ((sqlite_sequenceDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new sqlite_sequenceDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnname = base.Columns["name"];
+                this.columnseq = base.Columns["seq"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnname = new global::System.Data.DataColumn("name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnname);
+                this.columnseq = new global::System.Data.DataColumn("seq", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnseq);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public sqlite_sequenceRow Newsqlite_sequenceRow() {
+                return ((sqlite_sequenceRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new sqlite_sequenceRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(sqlite_sequenceRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.sqlite_sequenceRowChanged != null)) {
+                    this.sqlite_sequenceRowChanged(this, new sqlite_sequenceRowChangeEvent(((sqlite_sequenceRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.sqlite_sequenceRowChanging != null)) {
+                    this.sqlite_sequenceRowChanging(this, new sqlite_sequenceRowChangeEvent(((sqlite_sequenceRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.sqlite_sequenceRowDeleted != null)) {
+                    this.sqlite_sequenceRowDeleted(this, new sqlite_sequenceRowChangeEvent(((sqlite_sequenceRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.sqlite_sequenceRowDeleting != null)) {
+                    this.sqlite_sequenceRowDeleting(this, new sqlite_sequenceRowChangeEvent(((sqlite_sequenceRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Removesqlite_sequenceRow(sqlite_sequenceRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSet1 ds = new DataSet1();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "sqlite_sequenceDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class StrainNodeParametersDataTable : global::System.Data.TypedTableBase<StrainNodeParametersRow> {
+            
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnE1;
+            
+            private global::System.Data.DataColumn columnE2;
+            
+            private global::System.Data.DataColumn columnE3;
+            
+            private global::System.Data.DataColumn columnENERGY;
+            
+            private global::System.Data.DataColumn columnEPSx;
+            
+            private global::System.Data.DataColumn columnEPSy;
+            
+            private global::System.Data.DataColumn columnEPSz;
+            
+            private global::System.Data.DataColumn columnESTRN;
+            
+            private global::System.Data.DataColumn columnGMxy;
+            
+            private global::System.Data.DataColumn columnGMxz;
+            
+            private global::System.Data.DataColumn columnGMyz;
+            
+            private global::System.Data.DataColumn columnSEDENS;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -2757,6 +3893,110 @@ namespace ConsoleApp1 {
             protected StrainNodeParametersDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn E1Column {
+                get {
+                    return this.columnE1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn E2Column {
+                get {
+                    return this.columnE2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn E3Column {
+                get {
+                    return this.columnE3;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ENERGYColumn {
+                get {
+                    return this.columnENERGY;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn EPSxColumn {
+                get {
+                    return this.columnEPSx;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn EPSyColumn {
+                get {
+                    return this.columnEPSy;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn EPSzColumn {
+                get {
+                    return this.columnEPSz;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ESTRNColumn {
+                get {
+                    return this.columnESTRN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn GMxyColumn {
+                get {
+                    return this.columnGMxy;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn GMxzColumn {
+                get {
+                    return this.columnGMxz;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn GMyzColumn {
+                get {
+                    return this.columnGMyz;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SEDENSColumn {
+                get {
+                    return this.columnSEDENS;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2796,12 +4036,32 @@ namespace ConsoleApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public StrainNodeParametersRow AddStrainNodeParametersRow() {
+            public StrainNodeParametersRow AddStrainNodeParametersRow(long Id, double E1, double E2, double E3, double ENERGY, double EPSx, double EPSy, double EPSz, double ESTRN, double GMxy, double GMxz, double GMyz, double SEDENS) {
                 StrainNodeParametersRow rowStrainNodeParametersRow = ((StrainNodeParametersRow)(this.NewRow()));
-                object[] columnValuesArray = new object[0];
+                object[] columnValuesArray = new object[] {
+                        Id,
+                        E1,
+                        E2,
+                        E3,
+                        ENERGY,
+                        EPSx,
+                        EPSy,
+                        EPSz,
+                        ESTRN,
+                        GMxy,
+                        GMxz,
+                        GMyz,
+                        SEDENS};
                 rowStrainNodeParametersRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowStrainNodeParametersRow);
                 return rowStrainNodeParametersRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public StrainNodeParametersRow FindById(long Id) {
+                return ((StrainNodeParametersRow)(this.Rows.Find(new object[] {
+                            Id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2821,11 +4081,66 @@ namespace ConsoleApp1 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
+                this.columnId = base.Columns["Id"];
+                this.columnE1 = base.Columns["E1"];
+                this.columnE2 = base.Columns["E2"];
+                this.columnE3 = base.Columns["E3"];
+                this.columnENERGY = base.Columns["ENERGY"];
+                this.columnEPSx = base.Columns["EPSx"];
+                this.columnEPSy = base.Columns["EPSy"];
+                this.columnEPSz = base.Columns["EPSz"];
+                this.columnESTRN = base.Columns["ESTRN"];
+                this.columnGMxy = base.Columns["GMxy"];
+                this.columnGMxz = base.Columns["GMxz"];
+                this.columnGMyz = base.Columns["GMyz"];
+                this.columnSEDENS = base.Columns["SEDENS"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnE1 = new global::System.Data.DataColumn("E1", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnE1);
+                this.columnE2 = new global::System.Data.DataColumn("E2", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnE2);
+                this.columnE3 = new global::System.Data.DataColumn("E3", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnE3);
+                this.columnENERGY = new global::System.Data.DataColumn("ENERGY", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnENERGY);
+                this.columnEPSx = new global::System.Data.DataColumn("EPSx", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEPSx);
+                this.columnEPSy = new global::System.Data.DataColumn("EPSy", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEPSy);
+                this.columnEPSz = new global::System.Data.DataColumn("EPSz", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEPSz);
+                this.columnESTRN = new global::System.Data.DataColumn("ESTRN", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnESTRN);
+                this.columnGMxy = new global::System.Data.DataColumn("GMxy", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGMxy);
+                this.columnGMxz = new global::System.Data.DataColumn("GMxz", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGMxz);
+                this.columnGMyz = new global::System.Data.DataColumn("GMyz", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGMyz);
+                this.columnSEDENS = new global::System.Data.DataColumn("SEDENS", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSEDENS);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnId}, true));
+                this.columnId.AllowDBNull = false;
+                this.columnId.Unique = true;
+                this.columnE1.AllowDBNull = false;
+                this.columnE2.AllowDBNull = false;
+                this.columnE3.AllowDBNull = false;
+                this.columnENERGY.AllowDBNull = false;
+                this.columnEPSx.AllowDBNull = false;
+                this.columnEPSy.AllowDBNull = false;
+                this.columnEPSz.AllowDBNull = false;
+                this.columnESTRN.AllowDBNull = false;
+                this.columnGMxy.AllowDBNull = false;
+                this.columnGMxz.AllowDBNull = false;
+                this.columnGMyz.AllowDBNull = false;
+                this.columnSEDENS.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2959,6 +4274,30 @@ namespace ConsoleApp1 {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class StressNodeParametersDataTable : global::System.Data.TypedTableBase<StressNodeParametersRow> {
             
+            private global::System.Data.DataColumn columnId;
+            
+            private global::System.Data.DataColumn columnINT;
+            
+            private global::System.Data.DataColumn columnP1;
+            
+            private global::System.Data.DataColumn columnP2;
+            
+            private global::System.Data.DataColumn columnP3;
+            
+            private global::System.Data.DataColumn columnSx;
+            
+            private global::System.Data.DataColumn columnSy;
+            
+            private global::System.Data.DataColumn columnSz;
+            
+            private global::System.Data.DataColumn columnTxy;
+            
+            private global::System.Data.DataColumn columnTxz;
+            
+            private global::System.Data.DataColumn columnTyz;
+            
+            private global::System.Data.DataColumn columnVON;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public StressNodeParametersDataTable() {
@@ -2990,6 +4329,102 @@ namespace ConsoleApp1 {
             protected StressNodeParametersDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn INTColumn {
+                get {
+                    return this.columnINT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn P1Column {
+                get {
+                    return this.columnP1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn P2Column {
+                get {
+                    return this.columnP2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn P3Column {
+                get {
+                    return this.columnP3;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SxColumn {
+                get {
+                    return this.columnSx;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SyColumn {
+                get {
+                    return this.columnSy;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SzColumn {
+                get {
+                    return this.columnSz;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn TxyColumn {
+                get {
+                    return this.columnTxy;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn TxzColumn {
+                get {
+                    return this.columnTxz;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn TyzColumn {
+                get {
+                    return this.columnTyz;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn VONColumn {
+                get {
+                    return this.columnVON;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3029,12 +4464,31 @@ namespace ConsoleApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public StressNodeParametersRow AddStressNodeParametersRow() {
+            public StressNodeParametersRow AddStressNodeParametersRow(long Id, double INT, double P1, double P2, double P3, double Sx, double Sy, double Sz, double Txy, double Txz, double Tyz, double VON) {
                 StressNodeParametersRow rowStressNodeParametersRow = ((StressNodeParametersRow)(this.NewRow()));
-                object[] columnValuesArray = new object[0];
+                object[] columnValuesArray = new object[] {
+                        Id,
+                        INT,
+                        P1,
+                        P2,
+                        P3,
+                        Sx,
+                        Sy,
+                        Sz,
+                        Txy,
+                        Txz,
+                        Tyz,
+                        VON};
                 rowStressNodeParametersRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowStressNodeParametersRow);
                 return rowStressNodeParametersRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public StressNodeParametersRow FindById(long Id) {
+                return ((StressNodeParametersRow)(this.Rows.Find(new object[] {
+                            Id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3054,11 +4508,62 @@ namespace ConsoleApp1 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
+                this.columnId = base.Columns["Id"];
+                this.columnINT = base.Columns["INT"];
+                this.columnP1 = base.Columns["P1"];
+                this.columnP2 = base.Columns["P2"];
+                this.columnP3 = base.Columns["P3"];
+                this.columnSx = base.Columns["Sx"];
+                this.columnSy = base.Columns["Sy"];
+                this.columnSz = base.Columns["Sz"];
+                this.columnTxy = base.Columns["Txy"];
+                this.columnTxz = base.Columns["Txz"];
+                this.columnTyz = base.Columns["Tyz"];
+                this.columnVON = base.Columns["VON"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
+                this.columnINT = new global::System.Data.DataColumn("INT", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnINT);
+                this.columnP1 = new global::System.Data.DataColumn("P1", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnP1);
+                this.columnP2 = new global::System.Data.DataColumn("P2", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnP2);
+                this.columnP3 = new global::System.Data.DataColumn("P3", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnP3);
+                this.columnSx = new global::System.Data.DataColumn("Sx", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSx);
+                this.columnSy = new global::System.Data.DataColumn("Sy", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSy);
+                this.columnSz = new global::System.Data.DataColumn("Sz", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSz);
+                this.columnTxy = new global::System.Data.DataColumn("Txy", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTxy);
+                this.columnTxz = new global::System.Data.DataColumn("Txz", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTxz);
+                this.columnTyz = new global::System.Data.DataColumn("Tyz", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTyz);
+                this.columnVON = new global::System.Data.DataColumn("VON", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVON);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnId}, true));
+                this.columnId.AllowDBNull = false;
+                this.columnId.Unique = true;
+                this.columnINT.AllowDBNull = false;
+                this.columnP1.AllowDBNull = false;
+                this.columnP2.AllowDBNull = false;
+                this.columnP3.AllowDBNull = false;
+                this.columnSx.AllowDBNull = false;
+                this.columnSy.AllowDBNull = false;
+                this.columnSz.AllowDBNull = false;
+                this.columnTxy.AllowDBNull = false;
+                this.columnTxz.AllowDBNull = false;
+                this.columnTyz.AllowDBNull = false;
+                this.columnVON.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3188,30 +4693,37 @@ namespace ConsoleApp1 {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class AdjacmentResearchRow : global::System.Data.DataRow {
+        public partial class @__EFMigrationsHistoryRow : global::System.Data.DataRow {
             
-            private AdjacmentResearchDataTable tableAdjacmentResearch;
+            private @__EFMigrationsHistoryDataTable table__EFMigrationsHistory;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal AdjacmentResearchRow(global::System.Data.DataRowBuilder rb) : 
+            internal @__EFMigrationsHistoryRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableAdjacmentResearch = ((AdjacmentResearchDataTable)(this.Table));
+                this.table__EFMigrationsHistory = ((@__EFMigrationsHistoryDataTable)(this.Table));
             }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class AdjacmentResearchsRow : global::System.Data.DataRow {
-            
-            private AdjacmentResearchsDataTable tableAdjacmentResearchs;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal AdjacmentResearchsRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableAdjacmentResearchs = ((AdjacmentResearchsDataTable)(this.Table));
+            public string MigrationId {
+                get {
+                    return ((string)(this[this.table__EFMigrationsHistory.MigrationIdColumn]));
+                }
+                set {
+                    this[this.table__EFMigrationsHistory.MigrationIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string ProductVersion {
+                get {
+                    return ((string)(this[this.table__EFMigrationsHistory.ProductVersionColumn]));
+                }
+                set {
+                    this[this.table__EFMigrationsHistory.ProductVersionColumn] = value;
+                }
             }
         }
         
@@ -3228,35 +4740,99 @@ namespace ConsoleApp1 {
                     base(rb) {
                 this.tableAreas = ((AreasDataTable)(this.Table));
             }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class DbscanResearchRow : global::System.Data.DataRow {
-            
-            private DbscanResearchDataTable tableDbscanResearch;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal DbscanResearchRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableDbscanResearch = ((DbscanResearchDataTable)(this.Table));
+            public long Id {
+                get {
+                    return ((long)(this[this.tableAreas.IdColumn]));
+                }
+                set {
+                    this[this.tableAreas.IdColumn] = value;
+                }
             }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class DbScanResearchsRow : global::System.Data.DataRow {
-            
-            private DbScanResearchsDataTable tableDbScanResearchs;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal DbScanResearchsRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableDbScanResearchs = ((DbScanResearchsDataTable)(this.Table));
+            public long ResearchDbModelId {
+                get {
+                    try {
+                        return ((long)(this[this.tableAreas.ResearchDbModelIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ResearchDbModelId\' в таблице \'Areas\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAreas.ResearchDbModelIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double Volume {
+                get {
+                    return ((double)(this[this.tableAreas.VolumeColumn]));
+                }
+                set {
+                    this[this.tableAreas.VolumeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double maxRadius {
+                get {
+                    return ((double)(this[this.tableAreas.maxRadiusColumn]));
+                }
+                set {
+                    this[this.tableAreas.maxRadiusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ResearchsRow ResearchsRow {
+                get {
+                    return ((ResearchsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Areas_Researchs_0"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Areas_Researchs_0"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsResearchDbModelIdNull() {
+                return this.IsNull(this.tableAreas.ResearchDbModelIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetResearchDbModelIdNull() {
+                this[this.tableAreas.ResearchDbModelIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ElementsRow[] GetElementsRows() {
+                if ((this.Table.ChildRelations["FK_Elements_Areas_0"] == null)) {
+                    return new ElementsRow[0];
+                }
+                else {
+                    return ((ElementsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Elements_Areas_0"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public NodesRow[] GetNodesRows() {
+                if ((this.Table.ChildRelations["FK_Nodes_Areas_3"] == null)) {
+                    return new NodesRow[0];
+                }
+                else {
+                    return ((NodesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Nodes_Areas_3"])));
+                }
             }
         }
         
@@ -3273,20 +4849,389 @@ namespace ConsoleApp1 {
                     base(rb) {
                 this.tableElements = ((ElementsDataTable)(this.Table));
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long Id {
+                get {
+                    return ((long)(this[this.tableElements.IdColumn]));
+                }
+                set {
+                    this[this.tableElements.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long AreaId {
+                get {
+                    try {
+                        return ((long)(this[this.tableElements.AreaIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'AreaId\' в таблице \'Elements\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableElements.AreaIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long number {
+                get {
+                    return ((long)(this[this.tableElements.numberColumn]));
+                }
+                set {
+                    this[this.tableElements.numberColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public AreasRow AreasRow {
+                get {
+                    return ((AreasRow)(this.GetParentRow(this.Table.ParentRelations["FK_Elements_Areas_0"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Elements_Areas_0"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsAreaIdNull() {
+                return this.IsNull(this.tableElements.AreaIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetAreaIdNull() {
+                this[this.tableElements.AreaIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public NodeIndexesRow[] GetNodeIndexesRows() {
+                if ((this.Table.ChildRelations["FK_NodeIndexes_Elements_0"] == null)) {
+                    return new NodeIndexesRow[0];
+                }
+                else {
+                    return ((NodeIndexesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_NodeIndexes_Elements_0"])));
+                }
+            }
         }
         
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class MeshParamsRow : global::System.Data.DataRow {
+        public partial class MeshConfigurationsRow : global::System.Data.DataRow {
             
-            private MeshParamsDataTable tableMeshParams;
+            private MeshConfigurationsDataTable tableMeshConfigurations;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal MeshParamsRow(global::System.Data.DataRowBuilder rb) : 
+            internal MeshConfigurationsRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableMeshParams = ((MeshParamsDataTable)(this.Table));
+                this.tableMeshConfigurations = ((MeshConfigurationsDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long Id {
+                get {
+                    return ((long)(this[this.tableMeshConfigurations.IdColumn]));
+                }
+                set {
+                    this[this.tableMeshConfigurations.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string GrowthRatio {
+                get {
+                    try {
+                        return ((string)(this[this.tableMeshConfigurations.GrowthRatioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'GrowthRatio\' в таблице \'MeshConfigurations\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMeshConfigurations.GrowthRatioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string MesherType {
+                get {
+                    try {
+                        return ((string)(this[this.tableMeshConfigurations.MesherTypeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'MesherType\' в таблице \'MeshConfigurations\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMeshConfigurations.MesherTypeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string MinElementsInCircle {
+                get {
+                    try {
+                        return ((string)(this[this.tableMeshConfigurations.MinElementsInCircleColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'MinElementsInCircle\' в таблице \'MeshConfigurations\' равно D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMeshConfigurations.MinElementsInCircleColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Quality {
+                get {
+                    try {
+                        return ((string)(this[this.tableMeshConfigurations.QualityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Quality\' в таблице \'MeshConfigurations\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMeshConfigurations.QualityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string SaveSettingsWithoutMeshing {
+                get {
+                    try {
+                        return ((string)(this[this.tableMeshConfigurations.SaveSettingsWithoutMeshingColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'SaveSettingsWithoutMeshing\' в таблице \'MeshConfigurations\' " +
+                                "равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMeshConfigurations.SaveSettingsWithoutMeshingColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Unit {
+                get {
+                    try {
+                        return ((string)(this[this.tableMeshConfigurations.UnitColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Unit\' в таблице \'MeshConfigurations\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMeshConfigurations.UnitColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string UseJacobianCheck {
+                get {
+                    try {
+                        return ((string)(this[this.tableMeshConfigurations.UseJacobianCheckColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'UseJacobianCheck\' в таблице \'MeshConfigurations\' равно DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableMeshConfigurations.UseJacobianCheckColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsGrowthRatioNull() {
+                return this.IsNull(this.tableMeshConfigurations.GrowthRatioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetGrowthRatioNull() {
+                this[this.tableMeshConfigurations.GrowthRatioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsMesherTypeNull() {
+                return this.IsNull(this.tableMeshConfigurations.MesherTypeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetMesherTypeNull() {
+                this[this.tableMeshConfigurations.MesherTypeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsMinElementsInCircleNull() {
+                return this.IsNull(this.tableMeshConfigurations.MinElementsInCircleColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetMinElementsInCircleNull() {
+                this[this.tableMeshConfigurations.MinElementsInCircleColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsQualityNull() {
+                return this.IsNull(this.tableMeshConfigurations.QualityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetQualityNull() {
+                this[this.tableMeshConfigurations.QualityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsSaveSettingsWithoutMeshingNull() {
+                return this.IsNull(this.tableMeshConfigurations.SaveSettingsWithoutMeshingColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetSaveSettingsWithoutMeshingNull() {
+                this[this.tableMeshConfigurations.SaveSettingsWithoutMeshingColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsUnitNull() {
+                return this.IsNull(this.tableMeshConfigurations.UnitColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetUnitNull() {
+                this[this.tableMeshConfigurations.UnitColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsUseJacobianCheckNull() {
+                return this.IsNull(this.tableMeshConfigurations.UseJacobianCheckColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetUseJacobianCheckNull() {
+                this[this.tableMeshConfigurations.UseJacobianCheckColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ResearchConfigurationsRow[] GetResearchConfigurationsRows() {
+                if ((this.Table.ChildRelations["FK_ResearchConfigurations_MeshConfigurations_0"] == null)) {
+                    return new ResearchConfigurationsRow[0];
+                }
+                else {
+                    return ((ResearchConfigurationsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ResearchConfigurations_MeshConfigurations_0"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class NodeIndexesRow : global::System.Data.DataRow {
+            
+            private NodeIndexesDataTable tableNodeIndexes;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal NodeIndexesRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableNodeIndexes = ((NodeIndexesDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long Id {
+                get {
+                    return ((long)(this[this.tableNodeIndexes.IdColumn]));
+                }
+                set {
+                    this[this.tableNodeIndexes.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long ElementId {
+                get {
+                    try {
+                        return ((long)(this[this.tableNodeIndexes.ElementIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ElementId\' в таблице \'NodeIndexes\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNodeIndexes.ElementIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long nodeIndex {
+                get {
+                    return ((long)(this[this.tableNodeIndexes.nodeIndexColumn]));
+                }
+                set {
+                    this[this.tableNodeIndexes.nodeIndexColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ElementsRow ElementsRow {
+                get {
+                    return ((ElementsRow)(this.GetParentRow(this.Table.ParentRelations["FK_NodeIndexes_Elements_0"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_NodeIndexes_Elements_0"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsElementIdNull() {
+                return this.IsNull(this.tableNodeIndexes.ElementIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetElementIdNull() {
+                this[this.tableNodeIndexes.ElementIdColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3303,6 +5248,184 @@ namespace ConsoleApp1 {
                     base(rb) {
                 this.tableNodes = ((NodesDataTable)(this.Table));
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long Id {
+                get {
+                    return ((long)(this[this.tableNodes.IdColumn]));
+                }
+                set {
+                    this[this.tableNodes.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long AreaId {
+                get {
+                    try {
+                        return ((long)(this[this.tableNodes.AreaIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'AreaId\' в таблице \'Nodes\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNodes.AreaIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long number {
+                get {
+                    return ((long)(this[this.tableNodes.numberColumn]));
+                }
+                set {
+                    this[this.tableNodes.numberColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long pointId {
+                get {
+                    try {
+                        return ((long)(this[this.tableNodes.pointIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'pointId\' в таблице \'Nodes\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNodes.pointIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long strainId {
+                get {
+                    try {
+                        return ((long)(this[this.tableNodes.strainIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'strainId\' в таблице \'Nodes\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNodes.strainIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long stressId {
+                get {
+                    try {
+                        return ((long)(this[this.tableNodes.stressIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'stressId\' в таблице \'Nodes\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNodes.stressIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public AreasRow AreasRow {
+                get {
+                    return ((AreasRow)(this.GetParentRow(this.Table.ParentRelations["FK_Nodes_Areas_3"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Nodes_Areas_3"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public PointsRow PointsRow {
+                get {
+                    return ((PointsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Nodes_Points_2"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Nodes_Points_2"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public StrainNodeParametersRow StrainNodeParametersRow {
+                get {
+                    return ((StrainNodeParametersRow)(this.GetParentRow(this.Table.ParentRelations["FK_Nodes_StrainNodeParameters_1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Nodes_StrainNodeParameters_1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public StressNodeParametersRow StressNodeParametersRow {
+                get {
+                    return ((StressNodeParametersRow)(this.GetParentRow(this.Table.ParentRelations["FK_Nodes_StressNodeParameters_0"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Nodes_StressNodeParameters_0"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsAreaIdNull() {
+                return this.IsNull(this.tableNodes.AreaIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetAreaIdNull() {
+                this[this.tableNodes.AreaIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IspointIdNull() {
+                return this.IsNull(this.tableNodes.pointIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetpointIdNull() {
+                this[this.tableNodes.pointIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsstrainIdNull() {
+                return this.IsNull(this.tableNodes.strainIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetstrainIdNull() {
+                this[this.tableNodes.strainIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsstressIdNull() {
+                return this.IsNull(this.tableNodes.stressIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetstressIdNull() {
+                this[this.tableNodes.stressIdColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -3317,6 +5440,570 @@ namespace ConsoleApp1 {
             internal PointsRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tablePoints = ((PointsDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long Id {
+                get {
+                    return ((long)(this[this.tablePoints.IdColumn]));
+                }
+                set {
+                    this[this.tablePoints.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double x {
+                get {
+                    return ((double)(this[this.tablePoints.xColumn]));
+                }
+                set {
+                    this[this.tablePoints.xColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double y {
+                get {
+                    return ((double)(this[this.tablePoints.yColumn]));
+                }
+                set {
+                    this[this.tablePoints.yColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double z {
+                get {
+                    return ((double)(this[this.tablePoints.zColumn]));
+                }
+                set {
+                    this[this.tablePoints.zColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public NodesRow[] GetNodesRows() {
+                if ((this.Table.ChildRelations["FK_Nodes_Points_2"] == null)) {
+                    return new NodesRow[0];
+                }
+                else {
+                    return ((NodesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Nodes_Points_2"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ResearchConfigurationsRow : global::System.Data.DataRow {
+            
+            private ResearchConfigurationsDataTable tableResearchConfigurations;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal ResearchConfigurationsRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableResearchConfigurations = ((ResearchConfigurationsDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long Id {
+                get {
+                    return ((long)(this[this.tableResearchConfigurations.IdColumn]));
+                }
+                set {
+                    this[this.tableResearchConfigurations.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string coef1 {
+                get {
+                    try {
+                        return ((string)(this[this.tableResearchConfigurations.coef1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'coef1\' в таблице \'ResearchConfigurations\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableResearchConfigurations.coef1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string coef2 {
+                get {
+                    try {
+                        return ((string)(this[this.tableResearchConfigurations.coef2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'coef2\' в таблице \'ResearchConfigurations\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableResearchConfigurations.coef2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string eps {
+                get {
+                    try {
+                        return ((string)(this[this.tableResearchConfigurations.epsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'eps\' в таблице \'ResearchConfigurations\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableResearchConfigurations.epsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string filterParam {
+                get {
+                    try {
+                        return ((string)(this[this.tableResearchConfigurations.filterParamColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'filterParam\' в таблице \'ResearchConfigurations\' равно DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableResearchConfigurations.filterParamColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string materialParam {
+                get {
+                    try {
+                        return ((string)(this[this.tableResearchConfigurations.materialParamColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'materialParam\' в таблице \'ResearchConfigurations\' равно DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tableResearchConfigurations.materialParamColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long meshParamsId {
+                get {
+                    try {
+                        return ((long)(this[this.tableResearchConfigurations.meshParamsIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'meshParamsId\' в таблице \'ResearchConfigurations\' равно DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableResearchConfigurations.meshParamsIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string minSamples {
+                get {
+                    try {
+                        return ((string)(this[this.tableResearchConfigurations.minSamplesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'minSamples\' в таблице \'ResearchConfigurations\' равно DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableResearchConfigurations.minSamplesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string nodesIntersectionAmount {
+                get {
+                    try {
+                        return ((string)(this[this.tableResearchConfigurations.nodesIntersectionAmountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'nodesIntersectionAmount\' в таблице \'ResearchConfigurations\'" +
+                                " равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableResearchConfigurations.nodesIntersectionAmountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string squeezeCoef {
+                get {
+                    try {
+                        return ((string)(this[this.tableResearchConfigurations.squeezeCoefColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'squeezeCoef\' в таблице \'ResearchConfigurations\' равно DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableResearchConfigurations.squeezeCoefColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public MeshConfigurationsRow MeshConfigurationsRow {
+                get {
+                    return ((MeshConfigurationsRow)(this.GetParentRow(this.Table.ParentRelations["FK_ResearchConfigurations_MeshConfigurations_0"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ResearchConfigurations_MeshConfigurations_0"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Iscoef1Null() {
+                return this.IsNull(this.tableResearchConfigurations.coef1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Setcoef1Null() {
+                this[this.tableResearchConfigurations.coef1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Iscoef2Null() {
+                return this.IsNull(this.tableResearchConfigurations.coef2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Setcoef2Null() {
+                this[this.tableResearchConfigurations.coef2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsepsNull() {
+                return this.IsNull(this.tableResearchConfigurations.epsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetepsNull() {
+                this[this.tableResearchConfigurations.epsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsfilterParamNull() {
+                return this.IsNull(this.tableResearchConfigurations.filterParamColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetfilterParamNull() {
+                this[this.tableResearchConfigurations.filterParamColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsmaterialParamNull() {
+                return this.IsNull(this.tableResearchConfigurations.materialParamColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetmaterialParamNull() {
+                this[this.tableResearchConfigurations.materialParamColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsmeshParamsIdNull() {
+                return this.IsNull(this.tableResearchConfigurations.meshParamsIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetmeshParamsIdNull() {
+                this[this.tableResearchConfigurations.meshParamsIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsminSamplesNull() {
+                return this.IsNull(this.tableResearchConfigurations.minSamplesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetminSamplesNull() {
+                this[this.tableResearchConfigurations.minSamplesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsnodesIntersectionAmountNull() {
+                return this.IsNull(this.tableResearchConfigurations.nodesIntersectionAmountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetnodesIntersectionAmountNull() {
+                this[this.tableResearchConfigurations.nodesIntersectionAmountColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IssqueezeCoefNull() {
+                return this.IsNull(this.tableResearchConfigurations.squeezeCoefColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetsqueezeCoefNull() {
+                this[this.tableResearchConfigurations.squeezeCoefColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ResearchsRow[] GetResearchsRows() {
+                if ((this.Table.ChildRelations["FK_Researchs_ResearchConfigurations_0"] == null)) {
+                    return new ResearchsRow[0];
+                }
+                else {
+                    return ((ResearchsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Researchs_ResearchConfigurations_0"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ResearchsRow : global::System.Data.DataRow {
+            
+            private ResearchsDataTable tableResearchs;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal ResearchsRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableResearchs = ((ResearchsDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long Id {
+                get {
+                    return ((long)(this[this.tableResearchs.IdColumn]));
+                }
+                set {
+                    this[this.tableResearchs.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string FilePath {
+                get {
+                    try {
+                        return ((string)(this[this.tableResearchs.FilePathColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'FilePath\' в таблице \'Researchs\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableResearchs.FilePathColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long ResearchId {
+                get {
+                    try {
+                        return ((long)(this[this.tableResearchs.ResearchIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ResearchId\' в таблице \'Researchs\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableResearchs.ResearchIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Title {
+                get {
+                    try {
+                        return ((string)(this[this.tableResearchs.TitleColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Title\' в таблице \'Researchs\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableResearchs.TitleColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ResearchConfigurationsRow ResearchConfigurationsRow {
+                get {
+                    return ((ResearchConfigurationsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Researchs_ResearchConfigurations_0"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Researchs_ResearchConfigurations_0"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsFilePathNull() {
+                return this.IsNull(this.tableResearchs.FilePathColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetFilePathNull() {
+                this[this.tableResearchs.FilePathColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsResearchIdNull() {
+                return this.IsNull(this.tableResearchs.ResearchIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetResearchIdNull() {
+                this[this.tableResearchs.ResearchIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsTitleNull() {
+                return this.IsNull(this.tableResearchs.TitleColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetTitleNull() {
+                this[this.tableResearchs.TitleColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public AreasRow[] GetAreasRows() {
+                if ((this.Table.ChildRelations["FK_Areas_Researchs_0"] == null)) {
+                    return new AreasRow[0];
+                }
+                else {
+                    return ((AreasRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Areas_Researchs_0"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class sqlite_sequenceRow : global::System.Data.DataRow {
+            
+            private sqlite_sequenceDataTable tablesqlite_sequence;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal sqlite_sequenceRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablesqlite_sequence = ((sqlite_sequenceDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string name {
+                get {
+                    try {
+                        return ((string)(this[this.tablesqlite_sequence.nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'name\' в таблице \'sqlite_sequence\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesqlite_sequence.nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long seq {
+                get {
+                    try {
+                        return ((long)(this[this.tablesqlite_sequence.seqColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'seq\' в таблице \'sqlite_sequence\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesqlite_sequence.seqColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsnameNull() {
+                return this.IsNull(this.tablesqlite_sequence.nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetnameNull() {
+                this[this.tablesqlite_sequence.nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsseqNull() {
+                return this.IsNull(this.tablesqlite_sequence.seqColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetseqNull() {
+                this[this.tablesqlite_sequence.seqColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3333,6 +6020,160 @@ namespace ConsoleApp1 {
                     base(rb) {
                 this.tableStrainNodeParameters = ((StrainNodeParametersDataTable)(this.Table));
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long Id {
+                get {
+                    return ((long)(this[this.tableStrainNodeParameters.IdColumn]));
+                }
+                set {
+                    this[this.tableStrainNodeParameters.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double E1 {
+                get {
+                    return ((double)(this[this.tableStrainNodeParameters.E1Column]));
+                }
+                set {
+                    this[this.tableStrainNodeParameters.E1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double E2 {
+                get {
+                    return ((double)(this[this.tableStrainNodeParameters.E2Column]));
+                }
+                set {
+                    this[this.tableStrainNodeParameters.E2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double E3 {
+                get {
+                    return ((double)(this[this.tableStrainNodeParameters.E3Column]));
+                }
+                set {
+                    this[this.tableStrainNodeParameters.E3Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double ENERGY {
+                get {
+                    return ((double)(this[this.tableStrainNodeParameters.ENERGYColumn]));
+                }
+                set {
+                    this[this.tableStrainNodeParameters.ENERGYColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double EPSx {
+                get {
+                    return ((double)(this[this.tableStrainNodeParameters.EPSxColumn]));
+                }
+                set {
+                    this[this.tableStrainNodeParameters.EPSxColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double EPSy {
+                get {
+                    return ((double)(this[this.tableStrainNodeParameters.EPSyColumn]));
+                }
+                set {
+                    this[this.tableStrainNodeParameters.EPSyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double EPSz {
+                get {
+                    return ((double)(this[this.tableStrainNodeParameters.EPSzColumn]));
+                }
+                set {
+                    this[this.tableStrainNodeParameters.EPSzColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double ESTRN {
+                get {
+                    return ((double)(this[this.tableStrainNodeParameters.ESTRNColumn]));
+                }
+                set {
+                    this[this.tableStrainNodeParameters.ESTRNColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double GMxy {
+                get {
+                    return ((double)(this[this.tableStrainNodeParameters.GMxyColumn]));
+                }
+                set {
+                    this[this.tableStrainNodeParameters.GMxyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double GMxz {
+                get {
+                    return ((double)(this[this.tableStrainNodeParameters.GMxzColumn]));
+                }
+                set {
+                    this[this.tableStrainNodeParameters.GMxzColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double GMyz {
+                get {
+                    return ((double)(this[this.tableStrainNodeParameters.GMyzColumn]));
+                }
+                set {
+                    this[this.tableStrainNodeParameters.GMyzColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double SEDENS {
+                get {
+                    return ((double)(this[this.tableStrainNodeParameters.SEDENSColumn]));
+                }
+                set {
+                    this[this.tableStrainNodeParameters.SEDENSColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public NodesRow[] GetNodesRows() {
+                if ((this.Table.ChildRelations["FK_Nodes_StrainNodeParameters_1"] == null)) {
+                    return new NodesRow[0];
+                }
+                else {
+                    return ((NodesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Nodes_StrainNodeParameters_1"])));
+                }
+            }
         }
         
         /// <summary>
@@ -3348,62 +6189,171 @@ namespace ConsoleApp1 {
                     base(rb) {
                 this.tableStressNodeParameters = ((StressNodeParametersDataTable)(this.Table));
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public long Id {
+                get {
+                    return ((long)(this[this.tableStressNodeParameters.IdColumn]));
+                }
+                set {
+                    this[this.tableStressNodeParameters.IdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double INT {
+                get {
+                    return ((double)(this[this.tableStressNodeParameters.INTColumn]));
+                }
+                set {
+                    this[this.tableStressNodeParameters.INTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double P1 {
+                get {
+                    return ((double)(this[this.tableStressNodeParameters.P1Column]));
+                }
+                set {
+                    this[this.tableStressNodeParameters.P1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double P2 {
+                get {
+                    return ((double)(this[this.tableStressNodeParameters.P2Column]));
+                }
+                set {
+                    this[this.tableStressNodeParameters.P2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double P3 {
+                get {
+                    return ((double)(this[this.tableStressNodeParameters.P3Column]));
+                }
+                set {
+                    this[this.tableStressNodeParameters.P3Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double Sx {
+                get {
+                    return ((double)(this[this.tableStressNodeParameters.SxColumn]));
+                }
+                set {
+                    this[this.tableStressNodeParameters.SxColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double Sy {
+                get {
+                    return ((double)(this[this.tableStressNodeParameters.SyColumn]));
+                }
+                set {
+                    this[this.tableStressNodeParameters.SyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double Sz {
+                get {
+                    return ((double)(this[this.tableStressNodeParameters.SzColumn]));
+                }
+                set {
+                    this[this.tableStressNodeParameters.SzColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double Txy {
+                get {
+                    return ((double)(this[this.tableStressNodeParameters.TxyColumn]));
+                }
+                set {
+                    this[this.tableStressNodeParameters.TxyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double Txz {
+                get {
+                    return ((double)(this[this.tableStressNodeParameters.TxzColumn]));
+                }
+                set {
+                    this[this.tableStressNodeParameters.TxzColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double Tyz {
+                get {
+                    return ((double)(this[this.tableStressNodeParameters.TyzColumn]));
+                }
+                set {
+                    this[this.tableStressNodeParameters.TyzColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double VON {
+                get {
+                    return ((double)(this[this.tableStressNodeParameters.VONColumn]));
+                }
+                set {
+                    this[this.tableStressNodeParameters.VONColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public NodesRow[] GetNodesRows() {
+                if ((this.Table.ChildRelations["FK_Nodes_StressNodeParameters_0"] == null)) {
+                    return new NodesRow[0];
+                }
+                else {
+                    return ((NodesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Nodes_StressNodeParameters_0"])));
+                }
+            }
         }
         
         /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class AdjacmentResearchRowChangeEvent : global::System.EventArgs {
+        public class @__EFMigrationsHistoryRowChangeEvent : global::System.EventArgs {
             
-            private AdjacmentResearchRow eventRow;
+            private @__EFMigrationsHistoryRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public AdjacmentResearchRowChangeEvent(AdjacmentResearchRow row, global::System.Data.DataRowAction action) {
+            public @__EFMigrationsHistoryRowChangeEvent(@__EFMigrationsHistoryRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public AdjacmentResearchRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class AdjacmentResearchsRowChangeEvent : global::System.EventArgs {
-            
-            private AdjacmentResearchsRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public AdjacmentResearchsRowChangeEvent(AdjacmentResearchsRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public AdjacmentResearchsRow Row {
+            public @__EFMigrationsHistoryRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3456,74 +6406,6 @@ namespace ConsoleApp1 {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class DbscanResearchRowChangeEvent : global::System.EventArgs {
-            
-            private DbscanResearchRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DbscanResearchRowChangeEvent(DbscanResearchRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DbscanResearchRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class DbScanResearchsRowChangeEvent : global::System.EventArgs {
-            
-            private DbScanResearchsRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DbScanResearchsRowChangeEvent(DbScanResearchsRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DbScanResearchsRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public class ElementsRowChangeEvent : global::System.EventArgs {
             
             private ElementsRow eventRow;
@@ -3558,22 +6440,56 @@ namespace ConsoleApp1 {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class MeshParamsRowChangeEvent : global::System.EventArgs {
+        public class MeshConfigurationsRowChangeEvent : global::System.EventArgs {
             
-            private MeshParamsRow eventRow;
+            private MeshConfigurationsRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public MeshParamsRowChangeEvent(MeshParamsRow row, global::System.Data.DataRowAction action) {
+            public MeshConfigurationsRowChangeEvent(MeshConfigurationsRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public MeshParamsRow Row {
+            public MeshConfigurationsRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class NodeIndexesRowChangeEvent : global::System.EventArgs {
+            
+            private NodeIndexesRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public NodeIndexesRowChangeEvent(NodeIndexesRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public NodeIndexesRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3642,6 +6558,108 @@ namespace ConsoleApp1 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public PointsRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class ResearchConfigurationsRowChangeEvent : global::System.EventArgs {
+            
+            private ResearchConfigurationsRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ResearchConfigurationsRowChangeEvent(ResearchConfigurationsRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ResearchConfigurationsRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class ResearchsRowChangeEvent : global::System.EventArgs {
+            
+            private ResearchsRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ResearchsRowChangeEvent(ResearchsRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public ResearchsRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class sqlite_sequenceRowChangeEvent : global::System.EventArgs {
+            
+            private sqlite_sequenceRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public sqlite_sequenceRowChangeEvent(sqlite_sequenceRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public sqlite_sequenceRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3737,7 +6755,7 @@ namespace ConsoleApp1.DataSet1TableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class AdjacmentResearchTableAdapter : global::System.ComponentModel.Component {
+    public partial class @__EFMigrationsHistoryTableAdapter : global::System.ComponentModel.Component {
         
         private global::Devart.Data.SQLite.SQLiteDataAdapter _adapter;
         
@@ -3751,7 +6769,7 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public AdjacmentResearchTableAdapter() {
+        public @__EFMigrationsHistoryTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -3846,293 +6864,79 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitAdapter() {
             this._adapter = new global::Devart.Data.SQLite.SQLiteDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "__EFMigrationsHistory";
+            tableMapping.ColumnMappings.Add("MigrationId", "MigrationId");
+            tableMapping.ColumnMappings.Add("ProductVersion", "ProductVersion");
+            this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""main"".""AdjacmentResearch"" WHERE ((""Id"" = :Original_Id) AND ((:IsNull_coef1 = 1 AND ""coef1"" IS NULL) OR (""coef1"" = :Original_coef1)) AND ((:IsNull_coef2 = 1 AND ""coef2"" IS NULL) OR (""coef2"" = :Original_coef2)) AND ((:IsNull_filterParam = 1 AND ""filterParam"" IS NULL) OR (""filterParam"" = :Original_filterParam)) AND ((:IsNull_materialParam = 1 AND ""materialParam"" IS NULL) OR (""materialParam"" = :Original_materialParam)) AND ((:IsNull_meshParamsId = 1 AND ""meshParamsId"" IS NULL) OR (""meshParamsId"" = :Original_meshParamsId)) AND ((:IsNull_nodesIntersectionAmount = 1 AND ""nodesIntersectionAmount"" IS NULL) OR (""nodesIntersectionAmount"" = :Original_nodesIntersectionAmount)) AND ((:IsNull_squeezeCoef = 1 AND ""squeezeCoef"" IS NULL) OR (""squeezeCoef"" = :Original_squeezeCoef)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"main\".\"__EFMigrationsHistory\" WHERE ((\"MigrationId\" = :Original_Migr" +
+                "ationId) AND (\"ProductVersion\" = :Original_ProductVersion))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Devart.Data.SQLite.SQLiteParameter param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_MigrationId";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "MigrationId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_ProductVersion";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter7";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter8";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter9";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter10";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter11";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter12";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter13";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter14";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter15";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "ProductVersion";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO ""main"".""AdjacmentResearch"" (""Id"", ""coef1"", ""coef2"", ""filterParam"", ""materialParam"", ""meshParamsId"", ""nodesIntersectionAmount"", ""squeezeCoef"") VALUES (:Id, :coef1, :coef2, :filterParam, :materialParam, :meshParamsId, :nodesIntersectionAmount, :squeezeCoef)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"main\".\"__EFMigrationsHistory\" (\"MigrationId\", \"ProductVersion\") VALU" +
+                "ES (:MigrationId, :ProductVersion)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "MigrationId";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "MigrationId";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "ProductVersion";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter7";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter8";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "ProductVersion";
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""main"".""AdjacmentResearch"" SET ""Id"" = :Id, ""coef1"" = :coef1, ""coef2"" = :coef2, ""filterParam"" = :filterParam, ""materialParam"" = :materialParam, ""meshParamsId"" = :meshParamsId, ""nodesIntersectionAmount"" = :nodesIntersectionAmount, ""squeezeCoef"" = :squeezeCoef WHERE ((""Id"" = :Original_Id) AND ((:IsNull_coef1 = 1 AND ""coef1"" IS NULL) OR (""coef1"" = :Original_coef1)) AND ((:IsNull_coef2 = 1 AND ""coef2"" IS NULL) OR (""coef2"" = :Original_coef2)) AND ((:IsNull_filterParam = 1 AND ""filterParam"" IS NULL) OR (""filterParam"" = :Original_filterParam)) AND ((:IsNull_materialParam = 1 AND ""materialParam"" IS NULL) OR (""materialParam"" = :Original_materialParam)) AND ((:IsNull_meshParamsId = 1 AND ""meshParamsId"" IS NULL) OR (""meshParamsId"" = :Original_meshParamsId)) AND ((:IsNull_nodesIntersectionAmount = 1 AND ""nodesIntersectionAmount"" IS NULL) OR (""nodesIntersectionAmount"" = :Original_nodesIntersectionAmount)) AND ((:IsNull_squeezeCoef = 1 AND ""squeezeCoef"" IS NULL) OR (""squeezeCoef"" = :Original_squeezeCoef)))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE \"main\".\"__EFMigrationsHistory\" SET \"MigrationId\" = :MigrationId, \"ProductV" +
+                "ersion\" = :ProductVersion WHERE ((\"MigrationId\" = :Original_MigrationId) AND (\"P" +
+                "roductVersion\" = :Original_ProductVersion))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "MigrationId";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "MigrationId";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "ProductVersion";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "ProductVersion";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_MigrationId";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "MigrationId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_ProductVersion";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter7";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter8";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter9";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter10";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter11";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter12";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter13";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter14";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter15";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter16";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter17";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter18";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter19";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter20";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter21";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter22";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter23";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "ProductVersion";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
         }
         
@@ -4149,8 +6953,7 @@ namespace ConsoleApp1.DataSet1TableAdapters {
             this._commandCollection = new global::Devart.Data.SQLite.SQLiteCommand[1];
             this._commandCollection[0] = new global::Devart.Data.SQLite.SQLiteCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, coef1, coef2, filterParam, materialParam, meshParamsId, nodesIntersect" +
-                "ionAmount, squeezeCoef FROM \"main\".AdjacmentResearch";
+            this._commandCollection[0].CommandText = "SELECT MigrationId, ProductVersion FROM \"main\".__EFMigrationsHistory";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4158,7 +6961,7 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.AdjacmentResearchDataTable dataTable) {
+        public virtual int Fill(DataSet1.@__EFMigrationsHistoryDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4171,9 +6974,9 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.AdjacmentResearchDataTable GetData() {
+        public virtual DataSet1.@__EFMigrationsHistoryDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.AdjacmentResearchDataTable dataTable = new DataSet1.AdjacmentResearchDataTable();
+            DataSet1.@__EFMigrationsHistoryDataTable dataTable = new DataSet1.@__EFMigrationsHistoryDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4181,7 +6984,7 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.AdjacmentResearchDataTable dataTable) {
+        public virtual int Update(DataSet1.@__EFMigrationsHistoryDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -4189,7 +6992,7 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(DataSet1 dataSet) {
-            return this.Adapter.Update(dataSet, "AdjacmentResearch");
+            return this.Adapter.Update(dataSet, "__EFMigrationsHistory");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4211,96 +7014,18 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8, string Parameter9, string Parameter10, string Parameter11, string Parameter12, string Parameter13, string Parameter14, string Parameter15) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
+        public virtual int Delete(string Original_MigrationId, string Original_ProductVersion) {
+            if ((Original_MigrationId == null)) {
+                throw new global::System.ArgumentNullException("Original_MigrationId");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Parameter1));
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_MigrationId));
             }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
+            if ((Original_ProductVersion == null)) {
+                throw new global::System.ArgumentNullException("Original_ProductVersion");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Parameter3));
-            }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Parameter5));
-            }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            if ((Parameter7 == null)) {
-                throw new global::System.ArgumentNullException("Parameter7");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Parameter7));
-            }
-            if ((Parameter8 == null)) {
-                throw new global::System.ArgumentNullException("Parameter8");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Parameter8));
-            }
-            if ((Parameter9 == null)) {
-                throw new global::System.ArgumentNullException("Parameter9");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Parameter9));
-            }
-            if ((Parameter10 == null)) {
-                throw new global::System.ArgumentNullException("Parameter10");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((string)(Parameter10));
-            }
-            if ((Parameter11 == null)) {
-                throw new global::System.ArgumentNullException("Parameter11");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Parameter11));
-            }
-            if ((Parameter12 == null)) {
-                throw new global::System.ArgumentNullException("Parameter12");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((string)(Parameter12));
-            }
-            if ((Parameter13 == null)) {
-                throw new global::System.ArgumentNullException("Parameter13");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Parameter13));
-            }
-            if ((Parameter14 == null)) {
-                throw new global::System.ArgumentNullException("Parameter14");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((string)(Parameter14));
-            }
-            if ((Parameter15 == null)) {
-                throw new global::System.ArgumentNullException("Parameter15");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Parameter15));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_ProductVersion));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -4322,54 +7047,18 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
+        public virtual int Insert(string MigrationId, string ProductVersion) {
+            if ((MigrationId == null)) {
+                throw new global::System.ArgumentNullException("MigrationId");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Parameter1));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(MigrationId));
             }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
+            if ((ProductVersion == null)) {
+                throw new global::System.ArgumentNullException("ProductVersion");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Parameter3));
-            }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Parameter5));
-            }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            if ((Parameter7 == null)) {
-                throw new global::System.ArgumentNullException("Parameter7");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Parameter7));
-            }
-            if ((Parameter8 == null)) {
-                throw new global::System.ArgumentNullException("Parameter8");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(Parameter8));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(ProductVersion));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -4391,167 +7080,30 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    string Parameter1, 
-                    string Parameter2, 
-                    string Parameter3, 
-                    string Parameter4, 
-                    string Parameter5, 
-                    string Parameter6, 
-                    string Parameter7, 
-                    string Parameter8, 
-                    string Parameter9, 
-                    string Parameter10, 
-                    string Parameter11, 
-                    string Parameter12, 
-                    string Parameter13, 
-                    string Parameter14, 
-                    string Parameter15, 
-                    string Parameter16, 
-                    string Parameter17, 
-                    string Parameter18, 
-                    string Parameter19, 
-                    string Parameter20, 
-                    string Parameter21, 
-                    string Parameter22, 
-                    string Parameter23) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
+        public virtual int Update(string MigrationId, string ProductVersion, string Original_MigrationId, string Original_ProductVersion) {
+            if ((MigrationId == null)) {
+                throw new global::System.ArgumentNullException("MigrationId");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Parameter1));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(MigrationId));
             }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
+            if ((ProductVersion == null)) {
+                throw new global::System.ArgumentNullException("ProductVersion");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Parameter3));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(ProductVersion));
             }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
+            if ((Original_MigrationId == null)) {
+                throw new global::System.ArgumentNullException("Original_MigrationId");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Parameter5));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Original_MigrationId));
             }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            if ((Parameter7 == null)) {
-                throw new global::System.ArgumentNullException("Parameter7");
+            if ((Original_ProductVersion == null)) {
+                throw new global::System.ArgumentNullException("Original_ProductVersion");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Parameter7));
-            }
-            if ((Parameter8 == null)) {
-                throw new global::System.ArgumentNullException("Parameter8");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Parameter8));
-            }
-            if ((Parameter9 == null)) {
-                throw new global::System.ArgumentNullException("Parameter9");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Parameter9));
-            }
-            if ((Parameter10 == null)) {
-                throw new global::System.ArgumentNullException("Parameter10");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Parameter10));
-            }
-            if ((Parameter11 == null)) {
-                throw new global::System.ArgumentNullException("Parameter11");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Parameter11));
-            }
-            if ((Parameter12 == null)) {
-                throw new global::System.ArgumentNullException("Parameter12");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Parameter12));
-            }
-            if ((Parameter13 == null)) {
-                throw new global::System.ArgumentNullException("Parameter13");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Parameter13));
-            }
-            if ((Parameter14 == null)) {
-                throw new global::System.ArgumentNullException("Parameter14");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Parameter14));
-            }
-            if ((Parameter15 == null)) {
-                throw new global::System.ArgumentNullException("Parameter15");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Parameter15));
-            }
-            if ((Parameter16 == null)) {
-                throw new global::System.ArgumentNullException("Parameter16");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Parameter16));
-            }
-            if ((Parameter17 == null)) {
-                throw new global::System.ArgumentNullException("Parameter17");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Parameter17));
-            }
-            if ((Parameter18 == null)) {
-                throw new global::System.ArgumentNullException("Parameter18");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Parameter18));
-            }
-            if ((Parameter19 == null)) {
-                throw new global::System.ArgumentNullException("Parameter19");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Parameter19));
-            }
-            if ((Parameter20 == null)) {
-                throw new global::System.ArgumentNullException("Parameter20");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Parameter20));
-            }
-            if ((Parameter21 == null)) {
-                throw new global::System.ArgumentNullException("Parameter21");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Parameter21));
-            }
-            if ((Parameter22 == null)) {
-                throw new global::System.ArgumentNullException("Parameter22");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Parameter22));
-            }
-            if ((Parameter23 == null)) {
-                throw new global::System.ArgumentNullException("Parameter23");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Parameter23));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_ProductVersion));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -4565,450 +7117,6 @@ namespace ConsoleApp1.DataSet1TableAdapters {
             finally {
                 if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
                     this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class AdjacmentResearchsTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::Devart.Data.SQLite.SQLiteDataAdapter _adapter;
-        
-        private global::Devart.Data.SQLite.SQLiteConnection _connection;
-        
-        private global::System.Data.Common.DbTransaction _transaction;
-        
-        private global::Devart.Data.SQLite.SQLiteCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public AdjacmentResearchsTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected internal global::Devart.Data.SQLite.SQLiteDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::Devart.Data.SQLite.SQLiteConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::Devart.Data.SQLite.SQLiteCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::System.Data.Common.DbTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected global::Devart.Data.SQLite.SQLiteCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::Devart.Data.SQLite.SQLiteDataAdapter();
-            this._adapter.DeleteCommand = new global::Devart.Data.SQLite.SQLiteCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""main"".""AdjacmentResearchs"" WHERE ((""Id"" = :Original_Id) AND ((:IsNull_FilePath = 1 AND ""FilePath"" IS NULL) OR (""FilePath"" = :Original_FilePath)) AND ((:IsNull_ResearchId = 1 AND ""ResearchId"" IS NULL) OR (""ResearchId"" = :Original_ResearchId)) AND ((:IsNull_Title = 1 AND ""Title"" IS NULL) OR (""Title"" = :Original_Title)))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            global::Devart.Data.SQLite.SQLiteParameter param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter7";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            this._adapter.InsertCommand = new global::Devart.Data.SQLite.SQLiteCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"main\".\"AdjacmentResearchs\" (\"Id\", \"FilePath\", \"ResearchId\", \"Title\")" +
-                " VALUES (:Id, :FilePath, :ResearchId, :Title)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            this._adapter.UpdateCommand = new global::Devart.Data.SQLite.SQLiteCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""main"".""AdjacmentResearchs"" SET ""Id"" = :Id, ""FilePath"" = :FilePath, ""ResearchId"" = :ResearchId, ""Title"" = :Title WHERE ((""Id"" = :Original_Id) AND ((:IsNull_FilePath = 1 AND ""FilePath"" IS NULL) OR (""FilePath"" = :Original_FilePath)) AND ((:IsNull_ResearchId = 1 AND ""ResearchId"" IS NULL) OR (""ResearchId"" = :Original_ResearchId)) AND ((:IsNull_Title = 1 AND ""Title"" IS NULL) OR (""Title"" = :Original_Title)))";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter7";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter8";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter9";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter10";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter11";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::Devart.Data.SQLite.SQLiteConnection();
-            this._connection.ConnectionString = global::ConsoleApp1.Properties.Settings.Default.ConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::Devart.Data.SQLite.SQLiteCommand[1];
-            this._commandCollection[0] = new global::Devart.Data.SQLite.SQLiteCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, FilePath, ResearchId, Title FROM \"main\".AdjacmentResearchs";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.AdjacmentResearchsDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.AdjacmentResearchsDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.AdjacmentResearchsDataTable dataTable = new DataSet1.AdjacmentResearchsDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.AdjacmentResearchsDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1 dataSet) {
-            return this.Adapter.Update(dataSet, "AdjacmentResearchs");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Parameter1));
-            }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Parameter3));
-            }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Parameter5));
-            }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            if ((Parameter7 == null)) {
-                throw new global::System.ArgumentNullException("Parameter7");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Parameter7));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Parameter1, string Parameter2, string Parameter3, string Parameter4) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Parameter1));
-            }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Parameter3));
-            }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
                 }
             }
         }
@@ -5017,87 +7125,8 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8, string Parameter9, string Parameter10, string Parameter11) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Parameter1));
-            }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Parameter3));
-            }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Parameter5));
-            }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            if ((Parameter7 == null)) {
-                throw new global::System.ArgumentNullException("Parameter7");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Parameter7));
-            }
-            if ((Parameter8 == null)) {
-                throw new global::System.ArgumentNullException("Parameter8");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Parameter8));
-            }
-            if ((Parameter9 == null)) {
-                throw new global::System.ArgumentNullException("Parameter9");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Parameter9));
-            }
-            if ((Parameter10 == null)) {
-                throw new global::System.ArgumentNullException("Parameter10");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Parameter10));
-            }
-            if ((Parameter11 == null)) {
-                throw new global::System.ArgumentNullException("Parameter11");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Parameter11));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
+        public virtual int Update(string ProductVersion, string Original_MigrationId, string Original_ProductVersion) {
+            return this.Update(Original_MigrationId, ProductVersion, Original_MigrationId, Original_ProductVersion);
         }
     }
     
@@ -5219,199 +7248,167 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitAdapter() {
             this._adapter = new global::Devart.Data.SQLite.SQLiteDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Areas";
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("ResearchDbModelId", "ResearchDbModelId");
+            tableMapping.ColumnMappings.Add("Volume", "Volume");
+            tableMapping.ColumnMappings.Add("maxRadius", "maxRadius");
+            this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""main"".""Areas"" WHERE ((""Id"" = :Original_Id) AND ((:IsNull_AdjacmentResearchDbModelId = 1 AND ""AdjacmentResearchDbModelId"" IS NULL) OR (""AdjacmentResearchDbModelId"" = :Original_AdjacmentResearchDbModelId)) AND ((:IsNull_DbScanResearchDbModelId = 1 AND ""DbScanResearchDbModelId"" IS NULL) OR (""DbScanResearchDbModelId"" = :Original_DbScanResearchDbModelId)) AND (""Volume"" = :Original_Volume) AND ((:IsNull_areaCenterId = 1 AND ""areaCenterId"" IS NULL) OR (""areaCenterId"" = :Original_areaCenterId)) AND (""maxRadius"" = :Original_maxRadius))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"main\".\"Areas\" WHERE ((\"Id\" = :Original_Id) AND ((:IsNull_ResearchDbM" +
+                "odelId = 1 AND \"ResearchDbModelId\" IS NULL) OR (\"ResearchDbModelId\" = :Original_" +
+                "ResearchDbModelId)) AND (\"Volume\" = :Original_Volume) AND (\"maxRadius\" = :Origin" +
+                "al_maxRadius))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Devart.Data.SQLite.SQLiteParameter param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_ResearchDbModelId";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "ResearchDbModelId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_ResearchDbModelId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "ResearchDbModelId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Volume";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Volume";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_maxRadius";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter7";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter8";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter9";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "maxRadius";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"main\".\"Areas\" (\"Id\", \"AdjacmentResearchDbModelId\", \"DbScanResearchDb" +
-                "ModelId\", \"Volume\", \"areaCenterId\", \"maxRadius\") VALUES (:Id, :AdjacmentResearch" +
-                "DbModelId, :DbScanResearchDbModelId, :Volume, :areaCenterId, :maxRadius)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"main\".\"Areas\" (\"Id\", \"ResearchDbModelId\", \"Volume\", \"maxRadius\") VAL" +
+                "UES (:Id, :ResearchDbModelId, :Volume, :maxRadius)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "ResearchDbModelId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "ResearchDbModelId";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Volume";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Volume";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "maxRadius";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "maxRadius";
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""main"".""Areas"" SET ""Id"" = :Id, ""AdjacmentResearchDbModelId"" = :AdjacmentResearchDbModelId, ""DbScanResearchDbModelId"" = :DbScanResearchDbModelId, ""Volume"" = :Volume, ""areaCenterId"" = :areaCenterId, ""maxRadius"" = :maxRadius WHERE ((""Id"" = :Original_Id) AND ((:IsNull_AdjacmentResearchDbModelId = 1 AND ""AdjacmentResearchDbModelId"" IS NULL) OR (""AdjacmentResearchDbModelId"" = :Original_AdjacmentResearchDbModelId)) AND ((:IsNull_DbScanResearchDbModelId = 1 AND ""DbScanResearchDbModelId"" IS NULL) OR (""DbScanResearchDbModelId"" = :Original_DbScanResearchDbModelId)) AND (""Volume"" = :Original_Volume) AND ((:IsNull_areaCenterId = 1 AND ""areaCenterId"" IS NULL) OR (""areaCenterId"" = :Original_areaCenterId)) AND (""maxRadius"" = :Original_maxRadius))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""main"".""Areas"" SET ""Id"" = :Id, ""ResearchDbModelId"" = :ResearchDbModelId, ""Volume"" = :Volume, ""maxRadius"" = :maxRadius WHERE ((""Id"" = :Original_Id) AND ((:IsNull_ResearchDbModelId = 1 AND ""ResearchDbModelId"" IS NULL) OR (""ResearchDbModelId"" = :Original_ResearchDbModelId)) AND (""Volume"" = :Original_Volume) AND (""maxRadius"" = :Original_maxRadius))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "ResearchDbModelId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "ResearchDbModelId";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Volume";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Volume";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "maxRadius";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "maxRadius";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_ResearchDbModelId";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "ResearchDbModelId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter7";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_ResearchDbModelId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "ResearchDbModelId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter8";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Volume";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Volume";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter9";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_maxRadius";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter10";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter11";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter12";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter13";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter14";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter15";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "maxRadius";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
         }
         
@@ -5428,8 +7425,7 @@ namespace ConsoleApp1.DataSet1TableAdapters {
             this._commandCollection = new global::Devart.Data.SQLite.SQLiteCommand[1];
             this._commandCollection[0] = new global::Devart.Data.SQLite.SQLiteCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, AdjacmentResearchDbModelId, DbScanResearchDbModelId, Volume, areaCente" +
-                "rId, maxRadius FROM \"main\".Areas";
+            this._commandCollection[0].CommandText = "SELECT Id, ResearchDbModelId, Volume, maxRadius FROM \"main\".Areas";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -5490,61 +7486,18 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8, string Parameter9) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
+        public virtual int Delete(long Original_Id, global::System.Nullable<long> Original_ResearchDbModelId, double Original_Volume, double Original_maxRadius) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_Id));
+            if ((Original_ResearchDbModelId.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((long)(Original_ResearchDbModelId.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Parameter1));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Parameter3));
-            }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Parameter5));
-            }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            if ((Parameter7 == null)) {
-                throw new global::System.ArgumentNullException("Parameter7");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Parameter7));
-            }
-            if ((Parameter8 == null)) {
-                throw new global::System.ArgumentNullException("Parameter8");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Parameter8));
-            }
-            if ((Parameter9 == null)) {
-                throw new global::System.ArgumentNullException("Parameter9");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Parameter9));
-            }
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((double)(Original_Volume));
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((double)(Original_maxRadius));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5565,43 +7518,16 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
+        public virtual int Insert(long Id, global::System.Nullable<long> ResearchDbModelId, double Volume, double maxRadius) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((long)(Id));
+            if ((ResearchDbModelId.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((long)(ResearchDbModelId.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Parameter1));
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Parameter3));
-            }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Parameter5));
-            }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
+            this.Adapter.InsertCommand.Parameters[2].Value = ((double)(Volume));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((double)(maxRadius));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5622,97 +7548,27 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8, string Parameter9, string Parameter10, string Parameter11, string Parameter12, string Parameter13, string Parameter14, string Parameter15) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
+        public virtual int Update(long Id, global::System.Nullable<long> ResearchDbModelId, double Volume, double maxRadius, long Original_Id, global::System.Nullable<long> Original_ResearchDbModelId, double Original_Volume, double Original_maxRadius) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(Id));
+            if ((ResearchDbModelId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((long)(ResearchDbModelId.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Parameter1));
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((double)(Volume));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((double)(maxRadius));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((long)(Original_Id));
+            if ((Original_ResearchDbModelId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((long)(Original_ResearchDbModelId.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Parameter3));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Parameter5));
-            }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            if ((Parameter7 == null)) {
-                throw new global::System.ArgumentNullException("Parameter7");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Parameter7));
-            }
-            if ((Parameter8 == null)) {
-                throw new global::System.ArgumentNullException("Parameter8");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Parameter8));
-            }
-            if ((Parameter9 == null)) {
-                throw new global::System.ArgumentNullException("Parameter9");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Parameter9));
-            }
-            if ((Parameter10 == null)) {
-                throw new global::System.ArgumentNullException("Parameter10");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Parameter10));
-            }
-            if ((Parameter11 == null)) {
-                throw new global::System.ArgumentNullException("Parameter11");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Parameter11));
-            }
-            if ((Parameter12 == null)) {
-                throw new global::System.ArgumentNullException("Parameter12");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Parameter12));
-            }
-            if ((Parameter13 == null)) {
-                throw new global::System.ArgumentNullException("Parameter13");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Parameter13));
-            }
-            if ((Parameter14 == null)) {
-                throw new global::System.ArgumentNullException("Parameter14");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Parameter14));
-            }
-            if ((Parameter15 == null)) {
-                throw new global::System.ArgumentNullException("Parameter15");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Parameter15));
-            }
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((double)(Original_Volume));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((double)(Original_maxRadius));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5725,560 +7581,6 @@ namespace ConsoleApp1.DataSet1TableAdapters {
             finally {
                 if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
                     this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class DbscanResearchTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::Devart.Data.SQLite.SQLiteDataAdapter _adapter;
-        
-        private global::Devart.Data.SQLite.SQLiteConnection _connection;
-        
-        private global::System.Data.Common.DbTransaction _transaction;
-        
-        private global::Devart.Data.SQLite.SQLiteCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public DbscanResearchTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected internal global::Devart.Data.SQLite.SQLiteDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::Devart.Data.SQLite.SQLiteConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::Devart.Data.SQLite.SQLiteCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::System.Data.Common.DbTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected global::Devart.Data.SQLite.SQLiteCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::Devart.Data.SQLite.SQLiteDataAdapter();
-            this._adapter.DeleteCommand = new global::Devart.Data.SQLite.SQLiteCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""main"".""DbscanResearch"" WHERE ((""Id"" = :Original_Id) AND ((:IsNull_coef1 = 1 AND ""coef1"" IS NULL) OR (""coef1"" = :Original_coef1)) AND ((:IsNull_coef2 = 1 AND ""coef2"" IS NULL) OR (""coef2"" = :Original_coef2)) AND ((:IsNull_filterParam = 1 AND ""filterParam"" IS NULL) OR (""filterParam"" = :Original_filterParam)) AND ((:IsNull_materialParam = 1 AND ""materialParam"" IS NULL) OR (""materialParam"" = :Original_materialParam)) AND ((:IsNull_meshParamsId = 1 AND ""meshParamsId"" IS NULL) OR (""meshParamsId"" = :Original_meshParamsId)))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            global::Devart.Data.SQLite.SQLiteParameter param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter7";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter8";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter9";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter10";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter11";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            this._adapter.InsertCommand = new global::Devart.Data.SQLite.SQLiteCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"main\".\"DbscanResearch\" (\"Id\", \"coef1\", \"coef2\", \"filterParam\", \"mate" +
-                "rialParam\", \"meshParamsId\") VALUES (:Id, :coef1, :coef2, :filterParam, :material" +
-                "Param, :meshParamsId)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            this._adapter.UpdateCommand = new global::Devart.Data.SQLite.SQLiteCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""main"".""DbscanResearch"" SET ""Id"" = :Id, ""coef1"" = :coef1, ""coef2"" = :coef2, ""filterParam"" = :filterParam, ""materialParam"" = :materialParam, ""meshParamsId"" = :meshParamsId WHERE ((""Id"" = :Original_Id) AND ((:IsNull_coef1 = 1 AND ""coef1"" IS NULL) OR (""coef1"" = :Original_coef1)) AND ((:IsNull_coef2 = 1 AND ""coef2"" IS NULL) OR (""coef2"" = :Original_coef2)) AND ((:IsNull_filterParam = 1 AND ""filterParam"" IS NULL) OR (""filterParam"" = :Original_filterParam)) AND ((:IsNull_materialParam = 1 AND ""materialParam"" IS NULL) OR (""materialParam"" = :Original_materialParam)) AND ((:IsNull_meshParamsId = 1 AND ""meshParamsId"" IS NULL) OR (""meshParamsId"" = :Original_meshParamsId)))";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter7";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter8";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter9";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter10";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter11";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter12";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter13";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter14";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter15";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter16";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter17";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::Devart.Data.SQLite.SQLiteConnection();
-            this._connection.ConnectionString = global::ConsoleApp1.Properties.Settings.Default.ConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::Devart.Data.SQLite.SQLiteCommand[1];
-            this._commandCollection[0] = new global::Devart.Data.SQLite.SQLiteCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, coef1, coef2, filterParam, materialParam, meshParamsId FROM \"main\".Dbs" +
-                "canResearch";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.DbscanResearchDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.DbscanResearchDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.DbscanResearchDataTable dataTable = new DataSet1.DbscanResearchDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.DbscanResearchDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1 dataSet) {
-            return this.Adapter.Update(dataSet, "DbscanResearch");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8, string Parameter9, string Parameter10, string Parameter11) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Parameter1));
-            }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Parameter3));
-            }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Parameter5));
-            }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            if ((Parameter7 == null)) {
-                throw new global::System.ArgumentNullException("Parameter7");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Parameter7));
-            }
-            if ((Parameter8 == null)) {
-                throw new global::System.ArgumentNullException("Parameter8");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Parameter8));
-            }
-            if ((Parameter9 == null)) {
-                throw new global::System.ArgumentNullException("Parameter9");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Parameter9));
-            }
-            if ((Parameter10 == null)) {
-                throw new global::System.ArgumentNullException("Parameter10");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((string)(Parameter10));
-            }
-            if ((Parameter11 == null)) {
-                throw new global::System.ArgumentNullException("Parameter11");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Parameter11));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Parameter1));
-            }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Parameter3));
-            }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Parameter5));
-            }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
                 }
             }
         }
@@ -6287,671 +7589,8 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    string Parameter1, 
-                    string Parameter2, 
-                    string Parameter3, 
-                    string Parameter4, 
-                    string Parameter5, 
-                    string Parameter6, 
-                    string Parameter7, 
-                    string Parameter8, 
-                    string Parameter9, 
-                    string Parameter10, 
-                    string Parameter11, 
-                    string Parameter12, 
-                    string Parameter13, 
-                    string Parameter14, 
-                    string Parameter15, 
-                    string Parameter16, 
-                    string Parameter17) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Parameter1));
-            }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Parameter3));
-            }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Parameter5));
-            }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            if ((Parameter7 == null)) {
-                throw new global::System.ArgumentNullException("Parameter7");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Parameter7));
-            }
-            if ((Parameter8 == null)) {
-                throw new global::System.ArgumentNullException("Parameter8");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Parameter8));
-            }
-            if ((Parameter9 == null)) {
-                throw new global::System.ArgumentNullException("Parameter9");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Parameter9));
-            }
-            if ((Parameter10 == null)) {
-                throw new global::System.ArgumentNullException("Parameter10");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Parameter10));
-            }
-            if ((Parameter11 == null)) {
-                throw new global::System.ArgumentNullException("Parameter11");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Parameter11));
-            }
-            if ((Parameter12 == null)) {
-                throw new global::System.ArgumentNullException("Parameter12");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Parameter12));
-            }
-            if ((Parameter13 == null)) {
-                throw new global::System.ArgumentNullException("Parameter13");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Parameter13));
-            }
-            if ((Parameter14 == null)) {
-                throw new global::System.ArgumentNullException("Parameter14");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Parameter14));
-            }
-            if ((Parameter15 == null)) {
-                throw new global::System.ArgumentNullException("Parameter15");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Parameter15));
-            }
-            if ((Parameter16 == null)) {
-                throw new global::System.ArgumentNullException("Parameter16");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Parameter16));
-            }
-            if ((Parameter17 == null)) {
-                throw new global::System.ArgumentNullException("Parameter17");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Parameter17));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class DbScanResearchsTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::Devart.Data.SQLite.SQLiteDataAdapter _adapter;
-        
-        private global::Devart.Data.SQLite.SQLiteConnection _connection;
-        
-        private global::System.Data.Common.DbTransaction _transaction;
-        
-        private global::Devart.Data.SQLite.SQLiteCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public DbScanResearchsTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected internal global::Devart.Data.SQLite.SQLiteDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::Devart.Data.SQLite.SQLiteConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::Devart.Data.SQLite.SQLiteCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::System.Data.Common.DbTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected global::Devart.Data.SQLite.SQLiteCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::Devart.Data.SQLite.SQLiteDataAdapter();
-            this._adapter.DeleteCommand = new global::Devart.Data.SQLite.SQLiteCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""main"".""DbScanResearchs"" WHERE ((""Id"" = :Original_Id) AND ((:IsNull_FilePath = 1 AND ""FilePath"" IS NULL) OR (""FilePath"" = :Original_FilePath)) AND ((:IsNull_ResearchId = 1 AND ""ResearchId"" IS NULL) OR (""ResearchId"" = :Original_ResearchId)) AND ((:IsNull_Title = 1 AND ""Title"" IS NULL) OR (""Title"" = :Original_Title)))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            global::Devart.Data.SQLite.SQLiteParameter param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter7";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            this._adapter.InsertCommand = new global::Devart.Data.SQLite.SQLiteCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"main\".\"DbScanResearchs\" (\"Id\", \"FilePath\", \"ResearchId\", \"Title\") VA" +
-                "LUES (:Id, :FilePath, :ResearchId, :Title)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            this._adapter.UpdateCommand = new global::Devart.Data.SQLite.SQLiteCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""main"".""DbScanResearchs"" SET ""Id"" = :Id, ""FilePath"" = :FilePath, ""ResearchId"" = :ResearchId, ""Title"" = :Title WHERE ((""Id"" = :Original_Id) AND ((:IsNull_FilePath = 1 AND ""FilePath"" IS NULL) OR (""FilePath"" = :Original_FilePath)) AND ((:IsNull_ResearchId = 1 AND ""ResearchId"" IS NULL) OR (""ResearchId"" = :Original_ResearchId)) AND ((:IsNull_Title = 1 AND ""Title"" IS NULL) OR (""Title"" = :Original_Title)))";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter7";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter8";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter9";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter10";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter11";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::Devart.Data.SQLite.SQLiteConnection();
-            this._connection.ConnectionString = global::ConsoleApp1.Properties.Settings.Default.ConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::Devart.Data.SQLite.SQLiteCommand[1];
-            this._commandCollection[0] = new global::Devart.Data.SQLite.SQLiteCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, FilePath, ResearchId, Title FROM \"main\".DbScanResearchs";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.DbScanResearchsDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.DbScanResearchsDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.DbScanResearchsDataTable dataTable = new DataSet1.DbScanResearchsDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.DbScanResearchsDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1 dataSet) {
-            return this.Adapter.Update(dataSet, "DbScanResearchs");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Parameter1));
-            }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Parameter3));
-            }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Parameter5));
-            }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            if ((Parameter7 == null)) {
-                throw new global::System.ArgumentNullException("Parameter7");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Parameter7));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Parameter1, string Parameter2, string Parameter3, string Parameter4) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Parameter1));
-            }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Parameter3));
-            }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8, string Parameter9, string Parameter10, string Parameter11) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Parameter1));
-            }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Parameter3));
-            }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Parameter5));
-            }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            if ((Parameter7 == null)) {
-                throw new global::System.ArgumentNullException("Parameter7");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Parameter7));
-            }
-            if ((Parameter8 == null)) {
-                throw new global::System.ArgumentNullException("Parameter8");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Parameter8));
-            }
-            if ((Parameter9 == null)) {
-                throw new global::System.ArgumentNullException("Parameter9");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Parameter9));
-            }
-            if ((Parameter10 == null)) {
-                throw new global::System.ArgumentNullException("Parameter10");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Parameter10));
-            }
-            if ((Parameter11 == null)) {
-                throw new global::System.ArgumentNullException("Parameter11");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Parameter11));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
+        public virtual int Update(global::System.Nullable<long> ResearchDbModelId, double Volume, double maxRadius, long Original_Id, global::System.Nullable<long> Original_ResearchDbModelId, double Original_Volume, double Original_maxRadius) {
+            return this.Update(Original_Id, ResearchDbModelId, Volume, maxRadius, Original_Id, Original_ResearchDbModelId, Original_Volume, Original_maxRadius);
         }
     }
     
@@ -7073,138 +7712,137 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitAdapter() {
             this._adapter = new global::Devart.Data.SQLite.SQLiteDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Elements";
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("AreaId", "AreaId");
+            tableMapping.ColumnMappings.Add("number", "number");
+            this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""main"".""Elements"" WHERE ((""Id"" = :Original_Id) AND ((:IsNull_AreaId = 1 AND ""AreaId"" IS NULL) OR (""AreaId"" = :Original_AreaId)) AND ((:IsNull_centerId = 1 AND ""centerId"" IS NULL) OR (""centerId"" = :Original_centerId)) AND (""number"" = :Original_number))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"main\".\"Elements\" WHERE ((\"Id\" = :Original_Id) AND ((:IsNull_AreaId =" +
+                " 1 AND \"AreaId\" IS NULL) OR (\"AreaId\" = :Original_AreaId)) AND (\"number\" = :Orig" +
+                "inal_number))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Devart.Data.SQLite.SQLiteParameter param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_AreaId";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "AreaId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_AreaId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "AreaId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_number";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "number";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"main\".\"Elements\" (\"Id\", \"AreaId\", \"centerId\", \"number\") VALUES (:Id," +
-                " :AreaId, :centerId, :number)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"main\".\"Elements\" (\"Id\", \"AreaId\", \"number\") VALUES (:Id, :AreaId, :n" +
+                "umber)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "AreaId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "AreaId";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "number";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "number";
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""main"".""Elements"" SET ""Id"" = :Id, ""AreaId"" = :AreaId, ""centerId"" = :centerId, ""number"" = :number WHERE ((""Id"" = :Original_Id) AND ((:IsNull_AreaId = 1 AND ""AreaId"" IS NULL) OR (""AreaId"" = :Original_AreaId)) AND ((:IsNull_centerId = 1 AND ""centerId"" IS NULL) OR (""centerId"" = :Original_centerId)) AND (""number"" = :Original_number))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE \"main\".\"Elements\" SET \"Id\" = :Id, \"AreaId\" = :AreaId, \"number\" = :number W" +
+                "HERE ((\"Id\" = :Original_Id) AND ((:IsNull_AreaId = 1 AND \"AreaId\" IS NULL) OR (\"" +
+                "AreaId\" = :Original_AreaId)) AND (\"number\" = :Original_number))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "AreaId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "AreaId";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "number";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "number";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_AreaId";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "AreaId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_AreaId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "AreaId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter7";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_number";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter8";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter9";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter10";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "number";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
         }
         
@@ -7221,7 +7859,7 @@ namespace ConsoleApp1.DataSet1TableAdapters {
             this._commandCollection = new global::Devart.Data.SQLite.SQLiteCommand[1];
             this._commandCollection[0] = new global::Devart.Data.SQLite.SQLiteCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, AreaId, centerId, number FROM \"main\".Elements";
+            this._commandCollection[0].CommandText = "SELECT Id, AreaId, number FROM \"main\".Elements";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -7282,43 +7920,17 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
+        public virtual int Delete(long Original_Id, global::System.Nullable<long> Original_AreaId, long Original_number) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_Id));
+            if ((Original_AreaId.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((long)(Original_AreaId.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Parameter1));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Parameter3));
-            }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Parameter5));
-            }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((long)(Original_number));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7339,31 +7951,15 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Parameter1, string Parameter2, string Parameter3, string Parameter4) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
+        public virtual int Insert(long Id, global::System.Nullable<long> AreaId, long number) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((long)(Id));
+            if ((AreaId.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((long)(AreaId.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Parameter1));
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Parameter3));
-            }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
+            this.Adapter.InsertCommand.Parameters[2].Value = ((long)(number));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7384,67 +7980,25 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8, string Parameter9, string Parameter10) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
+        public virtual int Update(long Id, global::System.Nullable<long> AreaId, long number, long Original_Id, global::System.Nullable<long> Original_AreaId, long Original_number) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(Id));
+            if ((AreaId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((long)(AreaId.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Parameter1));
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((long)(number));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((long)(Original_Id));
+            if ((Original_AreaId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((long)(Original_AreaId.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Parameter3));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Parameter5));
-            }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            if ((Parameter7 == null)) {
-                throw new global::System.ArgumentNullException("Parameter7");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Parameter7));
-            }
-            if ((Parameter8 == null)) {
-                throw new global::System.ArgumentNullException("Parameter8");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Parameter8));
-            }
-            if ((Parameter9 == null)) {
-                throw new global::System.ArgumentNullException("Parameter9");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Parameter9));
-            }
-            if ((Parameter10 == null)) {
-                throw new global::System.ArgumentNullException("Parameter10");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Parameter10));
-            }
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((long)(Original_number));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7460,6 +8014,14 @@ namespace ConsoleApp1.DataSet1TableAdapters {
                 }
             }
         }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(global::System.Nullable<long> AreaId, long number, long Original_Id, global::System.Nullable<long> Original_AreaId, long Original_number) {
+            return this.Update(Original_Id, AreaId, number, Original_Id, Original_AreaId, Original_number);
+        }
     }
     
     /// <summary>
@@ -7471,7 +8033,7 @@ namespace ConsoleApp1.DataSet1TableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class MeshParamsTableAdapter : global::System.ComponentModel.Component {
+    public partial class MeshConfigurationsTableAdapter : global::System.ComponentModel.Component {
         
         private global::Devart.Data.SQLite.SQLiteDataAdapter _adapter;
         
@@ -7485,7 +8047,7 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public MeshParamsTableAdapter() {
+        public MeshConfigurationsTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -7580,293 +8142,367 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitAdapter() {
             this._adapter = new global::Devart.Data.SQLite.SQLiteDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "MeshConfigurations";
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("GrowthRatio", "GrowthRatio");
+            tableMapping.ColumnMappings.Add("MesherType", "MesherType");
+            tableMapping.ColumnMappings.Add("MinElementsInCircle", "MinElementsInCircle");
+            tableMapping.ColumnMappings.Add("Quality", "Quality");
+            tableMapping.ColumnMappings.Add("SaveSettingsWithoutMeshing", "SaveSettingsWithoutMeshing");
+            tableMapping.ColumnMappings.Add("Unit", "Unit");
+            tableMapping.ColumnMappings.Add("UseJacobianCheck", "UseJacobianCheck");
+            this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""main"".""MeshParams"" WHERE ((""Id"" = :Original_Id) AND ((:IsNull_GrowthRatio = 1 AND ""GrowthRatio"" IS NULL) OR (""GrowthRatio"" = :Original_GrowthRatio)) AND ((:IsNull_MesherType = 1 AND ""MesherType"" IS NULL) OR (""MesherType"" = :Original_MesherType)) AND ((:IsNull_MinElementsInCircle = 1 AND ""MinElementsInCircle"" IS NULL) OR (""MinElementsInCircle"" = :Original_MinElementsInCircle)) AND ((:IsNull_Quality = 1 AND ""Quality"" IS NULL) OR (""Quality"" = :Original_Quality)) AND ((:IsNull_SaveSettingsWithoutMeshing = 1 AND ""SaveSettingsWithoutMeshing"" IS NULL) OR (""SaveSettingsWithoutMeshing"" = :Original_SaveSettingsWithoutMeshing)) AND ((:IsNull_Unit = 1 AND ""Unit"" IS NULL) OR (""Unit"" = :Original_Unit)) AND ((:IsNull_UseJacobianCheck = 1 AND ""UseJacobianCheck"" IS NULL) OR (""UseJacobianCheck"" = :Original_UseJacobianCheck)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""main"".""MeshConfigurations"" WHERE ((""Id"" = :Original_Id) AND ((:IsNull_GrowthRatio = 1 AND ""GrowthRatio"" IS NULL) OR (""GrowthRatio"" = :Original_GrowthRatio)) AND ((:IsNull_MesherType = 1 AND ""MesherType"" IS NULL) OR (""MesherType"" = :Original_MesherType)) AND ((:IsNull_MinElementsInCircle = 1 AND ""MinElementsInCircle"" IS NULL) OR (""MinElementsInCircle"" = :Original_MinElementsInCircle)) AND ((:IsNull_Quality = 1 AND ""Quality"" IS NULL) OR (""Quality"" = :Original_Quality)) AND ((:IsNull_SaveSettingsWithoutMeshing = 1 AND ""SaveSettingsWithoutMeshing"" IS NULL) OR (""SaveSettingsWithoutMeshing"" = :Original_SaveSettingsWithoutMeshing)) AND ((:IsNull_Unit = 1 AND ""Unit"" IS NULL) OR (""Unit"" = :Original_Unit)) AND ((:IsNull_UseJacobianCheck = 1 AND ""UseJacobianCheck"" IS NULL) OR (""UseJacobianCheck"" = :Original_UseJacobianCheck)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Devart.Data.SQLite.SQLiteParameter param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_GrowthRatio";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "GrowthRatio";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_GrowthRatio";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "GrowthRatio";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_MesherType";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "MesherType";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_MesherType";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "MesherType";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_MinElementsInCircle";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "MinElementsInCircle";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter7";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_MinElementsInCircle";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "MinElementsInCircle";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter8";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_Quality";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Quality";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter9";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Quality";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Quality";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter10";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_SaveSettingsWithoutMeshing";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "SaveSettingsWithoutMeshing";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter11";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_SaveSettingsWithoutMeshing";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "SaveSettingsWithoutMeshing";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter12";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_Unit";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Unit";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter13";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Unit";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Unit";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter14";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_UseJacobianCheck";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "UseJacobianCheck";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter15";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_UseJacobianCheck";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "UseJacobianCheck";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO ""main"".""MeshParams"" (""Id"", ""GrowthRatio"", ""MesherType"", ""MinElementsInCircle"", ""Quality"", ""SaveSettingsWithoutMeshing"", ""Unit"", ""UseJacobianCheck"") VALUES (:Id, :GrowthRatio, :MesherType, :MinElementsInCircle, :Quality, :SaveSettingsWithoutMeshing, :Unit, :UseJacobianCheck)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO ""main"".""MeshConfigurations"" (""Id"", ""GrowthRatio"", ""MesherType"", ""MinElementsInCircle"", ""Quality"", ""SaveSettingsWithoutMeshing"", ""Unit"", ""UseJacobianCheck"") VALUES (:Id, :GrowthRatio, :MesherType, :MinElementsInCircle, :Quality, :SaveSettingsWithoutMeshing, :Unit, :UseJacobianCheck)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "GrowthRatio";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "GrowthRatio";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "MesherType";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "MesherType";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "MinElementsInCircle";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "MinElementsInCircle";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Quality";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Quality";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "SaveSettingsWithoutMeshing";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "SaveSettingsWithoutMeshing";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter7";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Unit";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Unit";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter8";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "UseJacobianCheck";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "UseJacobianCheck";
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""main"".""MeshParams"" SET ""Id"" = :Id, ""GrowthRatio"" = :GrowthRatio, ""MesherType"" = :MesherType, ""MinElementsInCircle"" = :MinElementsInCircle, ""Quality"" = :Quality, ""SaveSettingsWithoutMeshing"" = :SaveSettingsWithoutMeshing, ""Unit"" = :Unit, ""UseJacobianCheck"" = :UseJacobianCheck WHERE ((""Id"" = :Original_Id) AND ((:IsNull_GrowthRatio = 1 AND ""GrowthRatio"" IS NULL) OR (""GrowthRatio"" = :Original_GrowthRatio)) AND ((:IsNull_MesherType = 1 AND ""MesherType"" IS NULL) OR (""MesherType"" = :Original_MesherType)) AND ((:IsNull_MinElementsInCircle = 1 AND ""MinElementsInCircle"" IS NULL) OR (""MinElementsInCircle"" = :Original_MinElementsInCircle)) AND ((:IsNull_Quality = 1 AND ""Quality"" IS NULL) OR (""Quality"" = :Original_Quality)) AND ((:IsNull_SaveSettingsWithoutMeshing = 1 AND ""SaveSettingsWithoutMeshing"" IS NULL) OR (""SaveSettingsWithoutMeshing"" = :Original_SaveSettingsWithoutMeshing)) AND ((:IsNull_Unit = 1 AND ""Unit"" IS NULL) OR (""Unit"" = :Original_Unit)) AND ((:IsNull_UseJacobianCheck = 1 AND ""UseJacobianCheck"" IS NULL) OR (""UseJacobianCheck"" = :Original_UseJacobianCheck)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""main"".""MeshConfigurations"" SET ""Id"" = :Id, ""GrowthRatio"" = :GrowthRatio, ""MesherType"" = :MesherType, ""MinElementsInCircle"" = :MinElementsInCircle, ""Quality"" = :Quality, ""SaveSettingsWithoutMeshing"" = :SaveSettingsWithoutMeshing, ""Unit"" = :Unit, ""UseJacobianCheck"" = :UseJacobianCheck WHERE ((""Id"" = :Original_Id) AND ((:IsNull_GrowthRatio = 1 AND ""GrowthRatio"" IS NULL) OR (""GrowthRatio"" = :Original_GrowthRatio)) AND ((:IsNull_MesherType = 1 AND ""MesherType"" IS NULL) OR (""MesherType"" = :Original_MesherType)) AND ((:IsNull_MinElementsInCircle = 1 AND ""MinElementsInCircle"" IS NULL) OR (""MinElementsInCircle"" = :Original_MinElementsInCircle)) AND ((:IsNull_Quality = 1 AND ""Quality"" IS NULL) OR (""Quality"" = :Original_Quality)) AND ((:IsNull_SaveSettingsWithoutMeshing = 1 AND ""SaveSettingsWithoutMeshing"" IS NULL) OR (""SaveSettingsWithoutMeshing"" = :Original_SaveSettingsWithoutMeshing)) AND ((:IsNull_Unit = 1 AND ""Unit"" IS NULL) OR (""Unit"" = :Original_Unit)) AND ((:IsNull_UseJacobianCheck = 1 AND ""UseJacobianCheck"" IS NULL) OR (""UseJacobianCheck"" = :Original_UseJacobianCheck)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "GrowthRatio";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "GrowthRatio";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "MesherType";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "MesherType";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "MinElementsInCircle";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "MinElementsInCircle";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Quality";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Quality";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "SaveSettingsWithoutMeshing";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "SaveSettingsWithoutMeshing";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter7";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Unit";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Unit";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter8";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "UseJacobianCheck";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "UseJacobianCheck";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter9";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter10";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_GrowthRatio";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "GrowthRatio";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter11";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_GrowthRatio";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "GrowthRatio";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter12";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_MesherType";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "MesherType";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter13";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_MesherType";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "MesherType";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter14";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_MinElementsInCircle";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "MinElementsInCircle";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter15";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_MinElementsInCircle";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "MinElementsInCircle";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter16";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_Quality";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Quality";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter17";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Quality";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Quality";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter18";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_SaveSettingsWithoutMeshing";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "SaveSettingsWithoutMeshing";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter19";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_SaveSettingsWithoutMeshing";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "SaveSettingsWithoutMeshing";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter20";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_Unit";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Unit";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter21";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Unit";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Unit";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter22";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_UseJacobianCheck";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "UseJacobianCheck";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter23";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_UseJacobianCheck";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "UseJacobianCheck";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
         }
         
@@ -7884,7 +8520,7 @@ namespace ConsoleApp1.DataSet1TableAdapters {
             this._commandCollection[0] = new global::Devart.Data.SQLite.SQLiteCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Id, GrowthRatio, MesherType, MinElementsInCircle, Quality, SaveSettingsWit" +
-                "houtMeshing, Unit, UseJacobianCheck FROM \"main\".MeshParams";
+                "houtMeshing, Unit, UseJacobianCheck FROM \"main\".MeshConfigurations";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -7892,7 +8528,7 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.MeshParamsDataTable dataTable) {
+        public virtual int Fill(DataSet1.MeshConfigurationsDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -7905,9 +8541,9 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.MeshParamsDataTable GetData() {
+        public virtual DataSet1.MeshConfigurationsDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet1.MeshParamsDataTable dataTable = new DataSet1.MeshParamsDataTable();
+            DataSet1.MeshConfigurationsDataTable dataTable = new DataSet1.MeshConfigurationsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -7915,7 +8551,7 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSet1.MeshParamsDataTable dataTable) {
+        public virtual int Update(DataSet1.MeshConfigurationsDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -7923,7 +8559,7 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(DataSet1 dataSet) {
-            return this.Adapter.Update(dataSet, "MeshParams");
+            return this.Adapter.Update(dataSet, "MeshConfigurations");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7945,96 +8581,63 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8, string Parameter9, string Parameter10, string Parameter11, string Parameter12, string Parameter13, string Parameter14, string Parameter15) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
+        public virtual int Delete(long Original_Id, string Original_GrowthRatio, string Original_MesherType, string Original_MinElementsInCircle, string Original_Quality, string Original_SaveSettingsWithoutMeshing, string Original_Unit, string Original_UseJacobianCheck) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_Id));
+            if ((Original_GrowthRatio == null)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Parameter1));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_GrowthRatio));
             }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
+            if ((Original_MesherType == null)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Parameter3));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_MesherType));
             }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
+            if ((Original_MinElementsInCircle == null)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Parameter5));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_MinElementsInCircle));
             }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            if ((Parameter7 == null)) {
-                throw new global::System.ArgumentNullException("Parameter7");
+            if ((Original_Quality == null)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Parameter7));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_Quality));
             }
-            if ((Parameter8 == null)) {
-                throw new global::System.ArgumentNullException("Parameter8");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Parameter8));
-            }
-            if ((Parameter9 == null)) {
-                throw new global::System.ArgumentNullException("Parameter9");
+            if ((Original_SaveSettingsWithoutMeshing == null)) {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Parameter9));
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_SaveSettingsWithoutMeshing));
             }
-            if ((Parameter10 == null)) {
-                throw new global::System.ArgumentNullException("Parameter10");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((string)(Parameter10));
-            }
-            if ((Parameter11 == null)) {
-                throw new global::System.ArgumentNullException("Parameter11");
+            if ((Original_Unit == null)) {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Parameter11));
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_Unit));
             }
-            if ((Parameter12 == null)) {
-                throw new global::System.ArgumentNullException("Parameter12");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((string)(Parameter12));
-            }
-            if ((Parameter13 == null)) {
-                throw new global::System.ArgumentNullException("Parameter13");
+            if ((Original_UseJacobianCheck == null)) {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Parameter13));
-            }
-            if ((Parameter14 == null)) {
-                throw new global::System.ArgumentNullException("Parameter14");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((string)(Parameter14));
-            }
-            if ((Parameter15 == null)) {
-                throw new global::System.ArgumentNullException("Parameter15");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Parameter15));
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Original_UseJacobianCheck));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -8056,54 +8659,49 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
+        public virtual int Insert(long Id, string GrowthRatio, string MesherType, string MinElementsInCircle, string Quality, string SaveSettingsWithoutMeshing, string Unit, string UseJacobianCheck) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((long)(Id));
+            if ((GrowthRatio == null)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Parameter1));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(GrowthRatio));
             }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
+            if ((MesherType == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Parameter3));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(MesherType));
             }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
+            if ((MinElementsInCircle == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Parameter5));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(MinElementsInCircle));
             }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            if ((Parameter7 == null)) {
-                throw new global::System.ArgumentNullException("Parameter7");
+            if ((Quality == null)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Parameter7));
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Quality));
             }
-            if ((Parameter8 == null)) {
-                throw new global::System.ArgumentNullException("Parameter8");
+            if ((SaveSettingsWithoutMeshing == null)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(Parameter8));
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(SaveSettingsWithoutMeshing));
+            }
+            if ((Unit == null)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Unit));
+            }
+            if ((UseJacobianCheck == null)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(UseJacobianCheck));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -8126,166 +8724,121 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    string Parameter1, 
-                    string Parameter2, 
-                    string Parameter3, 
-                    string Parameter4, 
-                    string Parameter5, 
-                    string Parameter6, 
-                    string Parameter7, 
-                    string Parameter8, 
-                    string Parameter9, 
-                    string Parameter10, 
-                    string Parameter11, 
-                    string Parameter12, 
-                    string Parameter13, 
-                    string Parameter14, 
-                    string Parameter15, 
-                    string Parameter16, 
-                    string Parameter17, 
-                    string Parameter18, 
-                    string Parameter19, 
-                    string Parameter20, 
-                    string Parameter21, 
-                    string Parameter22, 
-                    string Parameter23) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
+                    long Id, 
+                    string GrowthRatio, 
+                    string MesherType, 
+                    string MinElementsInCircle, 
+                    string Quality, 
+                    string SaveSettingsWithoutMeshing, 
+                    string Unit, 
+                    string UseJacobianCheck, 
+                    long Original_Id, 
+                    string Original_GrowthRatio, 
+                    string Original_MesherType, 
+                    string Original_MinElementsInCircle, 
+                    string Original_Quality, 
+                    string Original_SaveSettingsWithoutMeshing, 
+                    string Original_Unit, 
+                    string Original_UseJacobianCheck) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(Id));
+            if ((GrowthRatio == null)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Parameter1));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(GrowthRatio));
             }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
+            if ((MesherType == null)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Parameter3));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(MesherType));
             }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
+            if ((MinElementsInCircle == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Parameter5));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(MinElementsInCircle));
             }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            if ((Parameter7 == null)) {
-                throw new global::System.ArgumentNullException("Parameter7");
+            if ((Quality == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Parameter7));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Quality));
             }
-            if ((Parameter8 == null)) {
-                throw new global::System.ArgumentNullException("Parameter8");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Parameter8));
-            }
-            if ((Parameter9 == null)) {
-                throw new global::System.ArgumentNullException("Parameter9");
+            if ((SaveSettingsWithoutMeshing == null)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Parameter9));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(SaveSettingsWithoutMeshing));
             }
-            if ((Parameter10 == null)) {
-                throw new global::System.ArgumentNullException("Parameter10");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Parameter10));
-            }
-            if ((Parameter11 == null)) {
-                throw new global::System.ArgumentNullException("Parameter11");
+            if ((Unit == null)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Parameter11));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Unit));
             }
-            if ((Parameter12 == null)) {
-                throw new global::System.ArgumentNullException("Parameter12");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Parameter12));
-            }
-            if ((Parameter13 == null)) {
-                throw new global::System.ArgumentNullException("Parameter13");
+            if ((UseJacobianCheck == null)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Parameter13));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(UseJacobianCheck));
             }
-            if ((Parameter14 == null)) {
-                throw new global::System.ArgumentNullException("Parameter14");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Parameter14));
-            }
-            if ((Parameter15 == null)) {
-                throw new global::System.ArgumentNullException("Parameter15");
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((long)(Original_Id));
+            if ((Original_GrowthRatio == null)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Parameter15));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_GrowthRatio));
             }
-            if ((Parameter16 == null)) {
-                throw new global::System.ArgumentNullException("Parameter16");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Parameter16));
-            }
-            if ((Parameter17 == null)) {
-                throw new global::System.ArgumentNullException("Parameter17");
+            if ((Original_MesherType == null)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Parameter17));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_MesherType));
             }
-            if ((Parameter18 == null)) {
-                throw new global::System.ArgumentNullException("Parameter18");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Parameter18));
-            }
-            if ((Parameter19 == null)) {
-                throw new global::System.ArgumentNullException("Parameter19");
+            if ((Original_MinElementsInCircle == null)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Parameter19));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_MinElementsInCircle));
             }
-            if ((Parameter20 == null)) {
-                throw new global::System.ArgumentNullException("Parameter20");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Parameter20));
-            }
-            if ((Parameter21 == null)) {
-                throw new global::System.ArgumentNullException("Parameter21");
+            if ((Original_Quality == null)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Parameter21));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_Quality));
             }
-            if ((Parameter22 == null)) {
-                throw new global::System.ArgumentNullException("Parameter22");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Parameter22));
-            }
-            if ((Parameter23 == null)) {
-                throw new global::System.ArgumentNullException("Parameter23");
+            if ((Original_SaveSettingsWithoutMeshing == null)) {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Parameter23));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_SaveSettingsWithoutMeshing));
+            }
+            if ((Original_Unit == null)) {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_Unit));
+            }
+            if ((Original_UseJacobianCheck == null)) {
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_UseJacobianCheck));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -8301,6 +8854,442 @@ namespace ConsoleApp1.DataSet1TableAdapters {
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
             }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string GrowthRatio, string MesherType, string MinElementsInCircle, string Quality, string SaveSettingsWithoutMeshing, string Unit, string UseJacobianCheck, long Original_Id, string Original_GrowthRatio, string Original_MesherType, string Original_MinElementsInCircle, string Original_Quality, string Original_SaveSettingsWithoutMeshing, string Original_Unit, string Original_UseJacobianCheck) {
+            return this.Update(Original_Id, GrowthRatio, MesherType, MinElementsInCircle, Quality, SaveSettingsWithoutMeshing, Unit, UseJacobianCheck, Original_Id, Original_GrowthRatio, Original_MesherType, Original_MinElementsInCircle, Original_Quality, Original_SaveSettingsWithoutMeshing, Original_Unit, Original_UseJacobianCheck);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class NodeIndexesTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::Devart.Data.SQLite.SQLiteDataAdapter _adapter;
+        
+        private global::Devart.Data.SQLite.SQLiteConnection _connection;
+        
+        private global::System.Data.Common.DbTransaction _transaction;
+        
+        private global::Devart.Data.SQLite.SQLiteCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public NodeIndexesTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected internal global::Devart.Data.SQLite.SQLiteDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::Devart.Data.SQLite.SQLiteConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::Devart.Data.SQLite.SQLiteCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.Common.DbTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected global::Devart.Data.SQLite.SQLiteCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::Devart.Data.SQLite.SQLiteDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "NodeIndexes";
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("ElementId", "ElementId");
+            tableMapping.ColumnMappings.Add("nodeIndex", "nodeIndex");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::Devart.Data.SQLite.SQLiteCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM \"main\".\"NodeIndexes\" WHERE ((\"Id\" = :Original_Id) AND ((:IsNull_Eleme" +
+                "ntId = 1 AND \"ElementId\" IS NULL) OR (\"ElementId\" = :Original_ElementId)) AND (\"" +
+                "nodeIndex\" = :Original_nodeIndex))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            global::Devart.Data.SQLite.SQLiteParameter param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "Id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_ElementId";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "ElementId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_ElementId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "ElementId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_nodeIndex";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "nodeIndex";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            this._adapter.InsertCommand = new global::Devart.Data.SQLite.SQLiteCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"main\".\"NodeIndexes\" (\"Id\", \"ElementId\", \"nodeIndex\") VALUES (:Id, :E" +
+                "lementId, :nodeIndex)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "Id";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "ElementId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "ElementId";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "nodeIndex";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "nodeIndex";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            this._adapter.UpdateCommand = new global::Devart.Data.SQLite.SQLiteCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""main"".""NodeIndexes"" SET ""Id"" = :Id, ""ElementId"" = :ElementId, ""nodeIndex"" = :nodeIndex WHERE ((""Id"" = :Original_Id) AND ((:IsNull_ElementId = 1 AND ""ElementId"" IS NULL) OR (""ElementId"" = :Original_ElementId)) AND (""nodeIndex"" = :Original_nodeIndex))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "Id";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "ElementId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "ElementId";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "nodeIndex";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "nodeIndex";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "Id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_ElementId";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "ElementId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_ElementId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "ElementId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_nodeIndex";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "nodeIndex";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::Devart.Data.SQLite.SQLiteConnection();
+            this._connection.ConnectionString = global::ConsoleApp1.Properties.Settings.Default.ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::Devart.Data.SQLite.SQLiteCommand[1];
+            this._commandCollection[0] = new global::Devart.Data.SQLite.SQLiteCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT Id, ElementId, nodeIndex FROM \"main\".NodeIndexes";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(DataSet1.NodeIndexesDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DataSet1.NodeIndexesDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            DataSet1.NodeIndexesDataTable dataTable = new DataSet1.NodeIndexesDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DataSet1.NodeIndexesDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DataSet1 dataSet) {
+            return this.Adapter.Update(dataSet, "NodeIndexes");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(long Original_Id, global::System.Nullable<long> Original_ElementId, long Original_nodeIndex) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_Id));
+            if ((Original_ElementId.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((long)(Original_ElementId.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((long)(Original_nodeIndex));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(long Id, global::System.Nullable<long> ElementId, long nodeIndex) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((long)(Id));
+            if ((ElementId.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((long)(ElementId.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.InsertCommand.Parameters[2].Value = ((long)(nodeIndex));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(long Id, global::System.Nullable<long> ElementId, long nodeIndex, long Original_Id, global::System.Nullable<long> Original_ElementId, long Original_nodeIndex) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(Id));
+            if ((ElementId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((long)(ElementId.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((long)(nodeIndex));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((long)(Original_Id));
+            if ((Original_ElementId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((long)(Original_ElementId.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((long)(Original_nodeIndex));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(global::System.Nullable<long> ElementId, long nodeIndex, long Original_Id, global::System.Nullable<long> Original_ElementId, long Original_nodeIndex) {
+            return this.Update(Original_Id, ElementId, nodeIndex, Original_Id, Original_ElementId, Original_nodeIndex);
         }
     }
     
@@ -8422,283 +9411,280 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitAdapter() {
             this._adapter = new global::Devart.Data.SQLite.SQLiteDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Nodes";
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("AreaId", "AreaId");
+            tableMapping.ColumnMappings.Add("number", "number");
+            tableMapping.ColumnMappings.Add("pointId", "pointId");
+            tableMapping.ColumnMappings.Add("strainId", "strainId");
+            tableMapping.ColumnMappings.Add("stressId", "stressId");
+            this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""main"".""Nodes"" WHERE ((""Id"" = :Original_Id) AND ((:IsNull_AreaId = 1 AND ""AreaId"" IS NULL) OR (""AreaId"" = :Original_AreaId)) AND ((:IsNull_ElementId = 1 AND ""ElementId"" IS NULL) OR (""ElementId"" = :Original_ElementId)) AND ((:IsNull_ElementId1 = 1 AND ""ElementId1"" IS NULL) OR (""ElementId1"" = :Original_ElementId1)) AND (""number"" = :Original_number) AND ((:IsNull_pointId = 1 AND ""pointId"" IS NULL) OR (""pointId"" = :Original_pointId)) AND ((:IsNull_strainId = 1 AND ""strainId"" IS NULL) OR (""strainId"" = :Original_strainId)) AND ((:IsNull_stressId = 1 AND ""stressId"" IS NULL) OR (""stressId"" = :Original_stressId)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""main"".""Nodes"" WHERE ((""Id"" = :Original_Id) AND ((:IsNull_AreaId = 1 AND ""AreaId"" IS NULL) OR (""AreaId"" = :Original_AreaId)) AND (""number"" = :Original_number) AND ((:IsNull_pointId = 1 AND ""pointId"" IS NULL) OR (""pointId"" = :Original_pointId)) AND ((:IsNull_strainId = 1 AND ""strainId"" IS NULL) OR (""strainId"" = :Original_strainId)) AND ((:IsNull_stressId = 1 AND ""stressId"" IS NULL) OR (""stressId"" = :Original_stressId)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Devart.Data.SQLite.SQLiteParameter param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_AreaId";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "AreaId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_AreaId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "AreaId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_number";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "number";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_pointId";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "pointId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_pointId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "pointId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter7";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_strainId";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "strainId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter8";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_strainId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "strainId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter9";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_stressId";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "stressId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter10";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_stressId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter11";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter12";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter13";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter14";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "stressId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO \"main\".\"Nodes\" (\"Id\", \"AreaId\", \"ElementId\", \"ElementId1\", \"number\", " +
-                "\"pointId\", \"strainId\", \"stressId\") VALUES (:Id, :AreaId, :ElementId, :ElementId1" +
-                ", :number, :pointId, :strainId, :stressId)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"main\".\"Nodes\" (\"Id\", \"AreaId\", \"number\", \"pointId\", \"strainId\", \"str" +
+                "essId\") VALUES (:Id, :AreaId, :number, :pointId, :strainId, :stressId)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "AreaId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "AreaId";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "number";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "number";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "pointId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "pointId";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "strainId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "strainId";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "stressId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter7";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter8";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "stressId";
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE ""main"".""Nodes"" SET ""Id"" = :Id, ""AreaId"" = :AreaId, ""ElementId"" = :ElementId, ""ElementId1"" = :ElementId1, ""number"" = :number, ""pointId"" = :pointId, ""strainId"" = :strainId, ""stressId"" = :stressId WHERE ((""Id"" = :Original_Id) AND ((:IsNull_AreaId = 1 AND ""AreaId"" IS NULL) OR (""AreaId"" = :Original_AreaId)) AND ((:IsNull_ElementId = 1 AND ""ElementId"" IS NULL) OR (""ElementId"" = :Original_ElementId)) AND ((:IsNull_ElementId1 = 1 AND ""ElementId1"" IS NULL) OR (""ElementId1"" = :Original_ElementId1)) AND (""number"" = :Original_number) AND ((:IsNull_pointId = 1 AND ""pointId"" IS NULL) OR (""pointId"" = :Original_pointId)) AND ((:IsNull_strainId = 1 AND ""strainId"" IS NULL) OR (""strainId"" = :Original_strainId)) AND ((:IsNull_stressId = 1 AND ""stressId"" IS NULL) OR (""stressId"" = :Original_stressId)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""main"".""Nodes"" SET ""Id"" = :Id, ""AreaId"" = :AreaId, ""number"" = :number, ""pointId"" = :pointId, ""strainId"" = :strainId, ""stressId"" = :stressId WHERE ((""Id"" = :Original_Id) AND ((:IsNull_AreaId = 1 AND ""AreaId"" IS NULL) OR (""AreaId"" = :Original_AreaId)) AND (""number"" = :Original_number) AND ((:IsNull_pointId = 1 AND ""pointId"" IS NULL) OR (""pointId"" = :Original_pointId)) AND ((:IsNull_strainId = 1 AND ""strainId"" IS NULL) OR (""strainId"" = :Original_strainId)) AND ((:IsNull_stressId = 1 AND ""stressId"" IS NULL) OR (""stressId"" = :Original_stressId)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "AreaId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "AreaId";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "number";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "number";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "pointId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "pointId";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "strainId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "strainId";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "stressId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "stressId";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter7";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter8";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_AreaId";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "AreaId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter9";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_AreaId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "AreaId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter10";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_number";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "number";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter11";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_pointId";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "pointId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter12";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_pointId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "pointId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter13";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_strainId";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "strainId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter14";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_strainId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "strainId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter15";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "IsNull_stressId";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "stressId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter16";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_stressId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter17";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter18";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter19";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter20";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter21";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter22";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "stressId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
         }
         
@@ -8715,8 +9701,7 @@ namespace ConsoleApp1.DataSet1TableAdapters {
             this._commandCollection = new global::Devart.Data.SQLite.SQLiteCommand[1];
             this._commandCollection[0] = new global::Devart.Data.SQLite.SQLiteCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, AreaId, ElementId, ElementId1, number, pointId, strainId, stressId FRO" +
-                "M \"main\".Nodes";
+            this._commandCollection[0].CommandText = "SELECT Id, AreaId, number, pointId, strainId, stressId FROM \"main\".Nodes";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -8777,90 +9762,40 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8, string Parameter9, string Parameter10, string Parameter11, string Parameter12, string Parameter13, string Parameter14) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
+        public virtual int Delete(long Original_Id, global::System.Nullable<long> Original_AreaId, long Original_number, global::System.Nullable<long> Original_pointId, global::System.Nullable<long> Original_strainId, global::System.Nullable<long> Original_stressId) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_Id));
+            if ((Original_AreaId.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((long)(Original_AreaId.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Parameter1));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((long)(Original_number));
+            if ((Original_pointId.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((long)(Original_pointId.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Parameter3));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
+            if ((Original_strainId.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((long)(Original_strainId.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Parameter5));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            if ((Parameter7 == null)) {
-                throw new global::System.ArgumentNullException("Parameter7");
+            if ((Original_stressId.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((long)(Original_stressId.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Parameter7));
-            }
-            if ((Parameter8 == null)) {
-                throw new global::System.ArgumentNullException("Parameter8");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Parameter8));
-            }
-            if ((Parameter9 == null)) {
-                throw new global::System.ArgumentNullException("Parameter9");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Parameter9));
-            }
-            if ((Parameter10 == null)) {
-                throw new global::System.ArgumentNullException("Parameter10");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((string)(Parameter10));
-            }
-            if ((Parameter11 == null)) {
-                throw new global::System.ArgumentNullException("Parameter11");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Parameter11));
-            }
-            if ((Parameter12 == null)) {
-                throw new global::System.ArgumentNullException("Parameter12");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((string)(Parameter12));
-            }
-            if ((Parameter13 == null)) {
-                throw new global::System.ArgumentNullException("Parameter13");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Parameter13));
-            }
-            if ((Parameter14 == null)) {
-                throw new global::System.ArgumentNullException("Parameter14");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((string)(Parameter14));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -8882,54 +9817,32 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
+        public virtual int Insert(long Id, global::System.Nullable<long> AreaId, long number, global::System.Nullable<long> pointId, global::System.Nullable<long> strainId, global::System.Nullable<long> stressId) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((long)(Id));
+            if ((AreaId.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((long)(AreaId.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Parameter1));
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
+            this.Adapter.InsertCommand.Parameters[2].Value = ((long)(number));
+            if ((pointId.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((long)(pointId.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Parameter3));
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
+            if ((strainId.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((long)(strainId.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Parameter5));
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            if ((Parameter7 == null)) {
-                throw new global::System.ArgumentNullException("Parameter7");
+            if ((stressId.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((long)(stressId.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Parameter7));
-            }
-            if ((Parameter8 == null)) {
-                throw new global::System.ArgumentNullException("Parameter8");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(Parameter8));
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -8951,160 +9864,66 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    string Parameter1, 
-                    string Parameter2, 
-                    string Parameter3, 
-                    string Parameter4, 
-                    string Parameter5, 
-                    string Parameter6, 
-                    string Parameter7, 
-                    string Parameter8, 
-                    string Parameter9, 
-                    string Parameter10, 
-                    string Parameter11, 
-                    string Parameter12, 
-                    string Parameter13, 
-                    string Parameter14, 
-                    string Parameter15, 
-                    string Parameter16, 
-                    string Parameter17, 
-                    string Parameter18, 
-                    string Parameter19, 
-                    string Parameter20, 
-                    string Parameter21, 
-                    string Parameter22) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
+        public virtual int Update(long Id, global::System.Nullable<long> AreaId, long number, global::System.Nullable<long> pointId, global::System.Nullable<long> strainId, global::System.Nullable<long> stressId, long Original_Id, global::System.Nullable<long> Original_AreaId, long Original_number, global::System.Nullable<long> Original_pointId, global::System.Nullable<long> Original_strainId, global::System.Nullable<long> Original_stressId) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(Id));
+            if ((AreaId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((long)(AreaId.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Parameter1));
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((long)(number));
+            if ((pointId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((long)(pointId.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Parameter3));
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
+            if ((strainId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((long)(strainId.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Parameter5));
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            if ((Parameter7 == null)) {
-                throw new global::System.ArgumentNullException("Parameter7");
+            if ((stressId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((long)(stressId.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Parameter7));
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((Parameter8 == null)) {
-                throw new global::System.ArgumentNullException("Parameter8");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Parameter8));
-            }
-            if ((Parameter9 == null)) {
-                throw new global::System.ArgumentNullException("Parameter9");
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((long)(Original_Id));
+            if ((Original_AreaId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((long)(Original_AreaId.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Parameter9));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((Parameter10 == null)) {
-                throw new global::System.ArgumentNullException("Parameter10");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Parameter10));
-            }
-            if ((Parameter11 == null)) {
-                throw new global::System.ArgumentNullException("Parameter11");
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((long)(Original_number));
+            if ((Original_pointId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((long)(Original_pointId.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Parameter11));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            if ((Parameter12 == null)) {
-                throw new global::System.ArgumentNullException("Parameter12");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Parameter12));
-            }
-            if ((Parameter13 == null)) {
-                throw new global::System.ArgumentNullException("Parameter13");
+            if ((Original_strainId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((long)(Original_strainId.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Parameter13));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
-            if ((Parameter14 == null)) {
-                throw new global::System.ArgumentNullException("Parameter14");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Parameter14));
-            }
-            if ((Parameter15 == null)) {
-                throw new global::System.ArgumentNullException("Parameter15");
+            if ((Original_stressId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((long)(Original_stressId.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Parameter15));
-            }
-            if ((Parameter16 == null)) {
-                throw new global::System.ArgumentNullException("Parameter16");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Parameter16));
-            }
-            if ((Parameter17 == null)) {
-                throw new global::System.ArgumentNullException("Parameter17");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Parameter17));
-            }
-            if ((Parameter18 == null)) {
-                throw new global::System.ArgumentNullException("Parameter18");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Parameter18));
-            }
-            if ((Parameter19 == null)) {
-                throw new global::System.ArgumentNullException("Parameter19");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Parameter19));
-            }
-            if ((Parameter20 == null)) {
-                throw new global::System.ArgumentNullException("Parameter20");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Parameter20));
-            }
-            if ((Parameter21 == null)) {
-                throw new global::System.ArgumentNullException("Parameter21");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Parameter21));
-            }
-            if ((Parameter22 == null)) {
-                throw new global::System.ArgumentNullException("Parameter22");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Parameter22));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -9120,6 +9939,14 @@ namespace ConsoleApp1.DataSet1TableAdapters {
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
             }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(global::System.Nullable<long> AreaId, long number, global::System.Nullable<long> pointId, global::System.Nullable<long> strainId, global::System.Nullable<long> stressId, long Original_Id, global::System.Nullable<long> Original_AreaId, long Original_number, global::System.Nullable<long> Original_pointId, global::System.Nullable<long> Original_strainId, global::System.Nullable<long> Original_stressId) {
+            return this.Update(Original_Id, AreaId, number, pointId, strainId, stressId, Original_Id, Original_AreaId, Original_number, Original_pointId, Original_strainId, Original_stressId);
         }
     }
     
@@ -9241,62 +10068,82 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitAdapter() {
             this._adapter = new global::Devart.Data.SQLite.SQLiteDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Points";
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("x", "x");
+            tableMapping.ColumnMappings.Add("y", "y");
+            tableMapping.ColumnMappings.Add("z", "z");
+            this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
             this._adapter.DeleteCommand.CommandText = "DELETE FROM \"main\".\"Points\" WHERE ((\"Id\" = :Original_Id) AND (\"x\" = :Original_x) " +
                 "AND (\"y\" = :Original_y) AND (\"z\" = :Original_z))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Devart.Data.SQLite.SQLiteParameter param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_x";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "x";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_y";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "y";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_z";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "z";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO \"main\".\"Points\" (\"Id\", \"x\", \"y\", \"z\") VALUES (:Id, :x, :y, :z)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "x";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "x";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "y";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "y";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "z";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "z";
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
@@ -9305,52 +10152,64 @@ namespace ConsoleApp1.DataSet1TableAdapters {
                 "inal_z))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "x";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "x";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "y";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "y";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "z";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "z";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_x";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "x";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter7";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_y";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "y";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter8";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_z";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "z";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
         }
         
@@ -9428,30 +10287,814 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Parameter1, string Parameter2, string Parameter3, string Parameter4) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
+        public virtual int Delete(long Original_Id, double Original_x, double Original_y, double Original_z) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_Id));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((double)(Original_x));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((double)(Original_y));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((double)(Original_z));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(long Id, double x, double y, double z) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((long)(Id));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((double)(x));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((double)(y));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((double)(z));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(long Id, double x, double y, double z, long Original_Id, double Original_x, double Original_y, double Original_z) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(Id));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((double)(x));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((double)(y));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((double)(z));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((long)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((double)(Original_x));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((double)(Original_y));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((double)(Original_z));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(double x, double y, double z, long Original_Id, double Original_x, double Original_y, double Original_z) {
+            return this.Update(Original_Id, x, y, z, Original_Id, Original_x, Original_y, Original_z);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class ResearchConfigurationsTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::Devart.Data.SQLite.SQLiteDataAdapter _adapter;
+        
+        private global::Devart.Data.SQLite.SQLiteConnection _connection;
+        
+        private global::System.Data.Common.DbTransaction _transaction;
+        
+        private global::Devart.Data.SQLite.SQLiteCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public ResearchConfigurationsTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected internal global::Devart.Data.SQLite.SQLiteDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::Devart.Data.SQLite.SQLiteConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::Devart.Data.SQLite.SQLiteCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.Common.DbTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected global::Devart.Data.SQLite.SQLiteCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::Devart.Data.SQLite.SQLiteDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "ResearchConfigurations";
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("coef1", "coef1");
+            tableMapping.ColumnMappings.Add("coef2", "coef2");
+            tableMapping.ColumnMappings.Add("eps", "eps");
+            tableMapping.ColumnMappings.Add("filterParam", "filterParam");
+            tableMapping.ColumnMappings.Add("materialParam", "materialParam");
+            tableMapping.ColumnMappings.Add("meshParamsId", "meshParamsId");
+            tableMapping.ColumnMappings.Add("minSamples", "minSamples");
+            tableMapping.ColumnMappings.Add("nodesIntersectionAmount", "nodesIntersectionAmount");
+            tableMapping.ColumnMappings.Add("squeezeCoef", "squeezeCoef");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::Devart.Data.SQLite.SQLiteCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""main"".""ResearchConfigurations"" WHERE ((""Id"" = :Original_Id) AND ((:IsNull_coef1 = 1 AND ""coef1"" IS NULL) OR (""coef1"" = :Original_coef1)) AND ((:IsNull_coef2 = 1 AND ""coef2"" IS NULL) OR (""coef2"" = :Original_coef2)) AND ((:IsNull_eps = 1 AND ""eps"" IS NULL) OR (""eps"" = :Original_eps)) AND ((:IsNull_filterParam = 1 AND ""filterParam"" IS NULL) OR (""filterParam"" = :Original_filterParam)) AND ((:IsNull_materialParam = 1 AND ""materialParam"" IS NULL) OR (""materialParam"" = :Original_materialParam)) AND ((:IsNull_meshParamsId = 1 AND ""meshParamsId"" IS NULL) OR (""meshParamsId"" = :Original_meshParamsId)) AND ((:IsNull_minSamples = 1 AND ""minSamples"" IS NULL) OR (""minSamples"" = :Original_minSamples)) AND ((:IsNull_nodesIntersectionAmount = 1 AND ""nodesIntersectionAmount"" IS NULL) OR (""nodesIntersectionAmount"" = :Original_nodesIntersectionAmount)) AND ((:IsNull_squeezeCoef = 1 AND ""squeezeCoef"" IS NULL) OR (""squeezeCoef"" = :Original_squeezeCoef)))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            global::Devart.Data.SQLite.SQLiteParameter param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "Id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_coef1";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "coef1";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_coef1";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "coef1";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_coef2";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "coef2";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_coef2";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "coef2";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_eps";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "eps";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_eps";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "eps";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_filterParam";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "filterParam";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_filterParam";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "filterParam";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_materialParam";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "materialParam";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_materialParam";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "materialParam";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_meshParamsId";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "meshParamsId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_meshParamsId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "meshParamsId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_minSamples";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "minSamples";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_minSamples";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "minSamples";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_nodesIntersectionAmount";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "nodesIntersectionAmount";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_nodesIntersectionAmount";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "nodesIntersectionAmount";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_squeezeCoef";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "squeezeCoef";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_squeezeCoef";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "squeezeCoef";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            this._adapter.InsertCommand = new global::Devart.Data.SQLite.SQLiteCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO ""main"".""ResearchConfigurations"" (""Id"", ""coef1"", ""coef2"", ""eps"", ""filterParam"", ""materialParam"", ""meshParamsId"", ""minSamples"", ""nodesIntersectionAmount"", ""squeezeCoef"") VALUES (:Id, :coef1, :coef2, :eps, :filterParam, :materialParam, :meshParamsId, :minSamples, :nodesIntersectionAmount, :squeezeCoef)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "Id";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "coef1";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "coef1";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "coef2";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "coef2";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "eps";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "eps";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "filterParam";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "filterParam";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "materialParam";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "materialParam";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "meshParamsId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "meshParamsId";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "minSamples";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "minSamples";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "nodesIntersectionAmount";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "nodesIntersectionAmount";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "squeezeCoef";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "squeezeCoef";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            this._adapter.UpdateCommand = new global::Devart.Data.SQLite.SQLiteCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""main"".""ResearchConfigurations"" SET ""Id"" = :Id, ""coef1"" = :coef1, ""coef2"" = :coef2, ""eps"" = :eps, ""filterParam"" = :filterParam, ""materialParam"" = :materialParam, ""meshParamsId"" = :meshParamsId, ""minSamples"" = :minSamples, ""nodesIntersectionAmount"" = :nodesIntersectionAmount, ""squeezeCoef"" = :squeezeCoef WHERE ((""Id"" = :Original_Id) AND ((:IsNull_coef1 = 1 AND ""coef1"" IS NULL) OR (""coef1"" = :Original_coef1)) AND ((:IsNull_coef2 = 1 AND ""coef2"" IS NULL) OR (""coef2"" = :Original_coef2)) AND ((:IsNull_eps = 1 AND ""eps"" IS NULL) OR (""eps"" = :Original_eps)) AND ((:IsNull_filterParam = 1 AND ""filterParam"" IS NULL) OR (""filterParam"" = :Original_filterParam)) AND ((:IsNull_materialParam = 1 AND ""materialParam"" IS NULL) OR (""materialParam"" = :Original_materialParam)) AND ((:IsNull_meshParamsId = 1 AND ""meshParamsId"" IS NULL) OR (""meshParamsId"" = :Original_meshParamsId)) AND ((:IsNull_minSamples = 1 AND ""minSamples"" IS NULL) OR (""minSamples"" = :Original_minSamples)) AND ((:IsNull_nodesIntersectionAmount = 1 AND ""nodesIntersectionAmount"" IS NULL) OR (""nodesIntersectionAmount"" = :Original_nodesIntersectionAmount)) AND ((:IsNull_squeezeCoef = 1 AND ""squeezeCoef"" IS NULL) OR (""squeezeCoef"" = :Original_squeezeCoef)))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "Id";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "coef1";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "coef1";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "coef2";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "coef2";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "eps";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "eps";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "filterParam";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "filterParam";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "materialParam";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "materialParam";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "meshParamsId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "meshParamsId";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "minSamples";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "minSamples";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "nodesIntersectionAmount";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "nodesIntersectionAmount";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "squeezeCoef";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "squeezeCoef";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "Id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_coef1";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "coef1";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_coef1";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "coef1";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_coef2";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "coef2";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_coef2";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "coef2";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_eps";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "eps";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_eps";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "eps";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_filterParam";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "filterParam";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_filterParam";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "filterParam";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_materialParam";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "materialParam";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_materialParam";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "materialParam";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_meshParamsId";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "meshParamsId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_meshParamsId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "meshParamsId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_minSamples";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "minSamples";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_minSamples";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "minSamples";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_nodesIntersectionAmount";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "nodesIntersectionAmount";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_nodesIntersectionAmount";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "nodesIntersectionAmount";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_squeezeCoef";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "squeezeCoef";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_squeezeCoef";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "squeezeCoef";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::Devart.Data.SQLite.SQLiteConnection();
+            this._connection.ConnectionString = global::ConsoleApp1.Properties.Settings.Default.ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::Devart.Data.SQLite.SQLiteCommand[1];
+            this._commandCollection[0] = new global::Devart.Data.SQLite.SQLiteCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT Id, coef1, coef2, eps, filterParam, materialParam, meshParamsId, minSample" +
+                "s, nodesIntersectionAmount, squeezeCoef FROM \"main\".ResearchConfigurations";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(DataSet1.ResearchConfigurationsDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DataSet1.ResearchConfigurationsDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            DataSet1.ResearchConfigurationsDataTable dataTable = new DataSet1.ResearchConfigurationsDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DataSet1.ResearchConfigurationsDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DataSet1 dataSet) {
+            return this.Adapter.Update(dataSet, "ResearchConfigurations");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(long Original_Id, string Original_coef1, string Original_coef2, string Original_eps, string Original_filterParam, string Original_materialParam, global::System.Nullable<long> Original_meshParamsId, string Original_minSamples, string Original_nodesIntersectionAmount, string Original_squeezeCoef) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_Id));
+            if ((Original_coef1 == null)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Parameter1));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_coef1));
             }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
+            if ((Original_coef2 == null)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Parameter3));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_coef2));
             }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
+            if ((Original_eps == null)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Parameter4));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_eps));
+            }
+            if ((Original_filterParam == null)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_filterParam));
+            }
+            if ((Original_materialParam == null)) {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_materialParam));
+            }
+            if ((Original_meshParamsId.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((long)(Original_meshParamsId.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            if ((Original_minSamples == null)) {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Original_minSamples));
+            }
+            if ((Original_nodesIntersectionAmount == null)) {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((string)(Original_nodesIntersectionAmount));
+            }
+            if ((Original_squeezeCoef == null)) {
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((string)(Original_squeezeCoef));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -9473,30 +11116,61 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Parameter1, string Parameter2, string Parameter3, string Parameter4) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
+        public virtual int Insert(long Id, string coef1, string coef2, string eps, string filterParam, string materialParam, global::System.Nullable<long> meshParamsId, string minSamples, string nodesIntersectionAmount, string squeezeCoef) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((long)(Id));
+            if ((coef1 == null)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Parameter1));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(coef1));
             }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
+            if ((coef2 == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Parameter3));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(coef2));
             }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
+            if ((eps == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Parameter4));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(eps));
+            }
+            if ((filterParam == null)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(filterParam));
+            }
+            if ((materialParam == null)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(materialParam));
+            }
+            if ((meshParamsId.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((long)(meshParamsId.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((minSamples == null)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(minSamples));
+            }
+            if ((nodesIntersectionAmount == null)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(nodesIntersectionAmount));
+            }
+            if ((squeezeCoef == null)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(squeezeCoef));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -9518,54 +11192,154 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
+        public virtual int Update(
+                    long Id, 
+                    string coef1, 
+                    string coef2, 
+                    string eps, 
+                    string filterParam, 
+                    string materialParam, 
+                    global::System.Nullable<long> meshParamsId, 
+                    string minSamples, 
+                    string nodesIntersectionAmount, 
+                    string squeezeCoef, 
+                    long Original_Id, 
+                    string Original_coef1, 
+                    string Original_coef2, 
+                    string Original_eps, 
+                    string Original_filterParam, 
+                    string Original_materialParam, 
+                    global::System.Nullable<long> Original_meshParamsId, 
+                    string Original_minSamples, 
+                    string Original_nodesIntersectionAmount, 
+                    string Original_squeezeCoef) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(Id));
+            if ((coef1 == null)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Parameter1));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(coef1));
             }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
+            if ((coef2 == null)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Parameter3));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(coef2));
             }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
+            if ((eps == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Parameter5));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(eps));
             }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            if ((Parameter7 == null)) {
-                throw new global::System.ArgumentNullException("Parameter7");
+            if ((filterParam == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Parameter7));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(filterParam));
             }
-            if ((Parameter8 == null)) {
-                throw new global::System.ArgumentNullException("Parameter8");
+            if ((materialParam == null)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Parameter8));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(materialParam));
+            }
+            if ((meshParamsId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((long)(meshParamsId.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((minSamples == null)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(minSamples));
+            }
+            if ((nodesIntersectionAmount == null)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(nodesIntersectionAmount));
+            }
+            if ((squeezeCoef == null)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(squeezeCoef));
+            }
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((long)(Original_Id));
+            if ((Original_coef1 == null)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_coef1));
+            }
+            if ((Original_coef2 == null)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_coef2));
+            }
+            if ((Original_eps == null)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_eps));
+            }
+            if ((Original_filterParam == null)) {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_filterParam));
+            }
+            if ((Original_materialParam == null)) {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_materialParam));
+            }
+            if ((Original_meshParamsId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((long)(Original_meshParamsId.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
+            }
+            if ((Original_minSamples == null)) {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_minSamples));
+            }
+            if ((Original_nodesIntersectionAmount == null)) {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(Original_nodesIntersectionAmount));
+            }
+            if ((Original_squeezeCoef == null)) {
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(Original_squeezeCoef));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -9579,6 +11353,817 @@ namespace ConsoleApp1.DataSet1TableAdapters {
             finally {
                 if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
                     this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    string coef1, 
+                    string coef2, 
+                    string eps, 
+                    string filterParam, 
+                    string materialParam, 
+                    global::System.Nullable<long> meshParamsId, 
+                    string minSamples, 
+                    string nodesIntersectionAmount, 
+                    string squeezeCoef, 
+                    long Original_Id, 
+                    string Original_coef1, 
+                    string Original_coef2, 
+                    string Original_eps, 
+                    string Original_filterParam, 
+                    string Original_materialParam, 
+                    global::System.Nullable<long> Original_meshParamsId, 
+                    string Original_minSamples, 
+                    string Original_nodesIntersectionAmount, 
+                    string Original_squeezeCoef) {
+            return this.Update(Original_Id, coef1, coef2, eps, filterParam, materialParam, meshParamsId, minSamples, nodesIntersectionAmount, squeezeCoef, Original_Id, Original_coef1, Original_coef2, Original_eps, Original_filterParam, Original_materialParam, Original_meshParamsId, Original_minSamples, Original_nodesIntersectionAmount, Original_squeezeCoef);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class ResearchsTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::Devart.Data.SQLite.SQLiteDataAdapter _adapter;
+        
+        private global::Devart.Data.SQLite.SQLiteConnection _connection;
+        
+        private global::System.Data.Common.DbTransaction _transaction;
+        
+        private global::Devart.Data.SQLite.SQLiteCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public ResearchsTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected internal global::Devart.Data.SQLite.SQLiteDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::Devart.Data.SQLite.SQLiteConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::Devart.Data.SQLite.SQLiteCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.Common.DbTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected global::Devart.Data.SQLite.SQLiteCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::Devart.Data.SQLite.SQLiteDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Researchs";
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("FilePath", "FilePath");
+            tableMapping.ColumnMappings.Add("ResearchId", "ResearchId");
+            tableMapping.ColumnMappings.Add("Title", "Title");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::Devart.Data.SQLite.SQLiteCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""main"".""Researchs"" WHERE ((""Id"" = :Original_Id) AND ((:IsNull_FilePath = 1 AND ""FilePath"" IS NULL) OR (""FilePath"" = :Original_FilePath)) AND ((:IsNull_ResearchId = 1 AND ""ResearchId"" IS NULL) OR (""ResearchId"" = :Original_ResearchId)) AND ((:IsNull_Title = 1 AND ""Title"" IS NULL) OR (""Title"" = :Original_Title)))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            global::Devart.Data.SQLite.SQLiteParameter param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "Id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_FilePath";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "FilePath";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_FilePath";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "FilePath";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_ResearchId";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "ResearchId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_ResearchId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "ResearchId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_Title";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "Title";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_Title";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "Title";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            this._adapter.InsertCommand = new global::Devart.Data.SQLite.SQLiteCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"main\".\"Researchs\" (\"Id\", \"FilePath\", \"ResearchId\", \"Title\") VALUES (" +
+                ":Id, :FilePath, :ResearchId, :Title)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "Id";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "FilePath";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "FilePath";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "ResearchId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "ResearchId";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Title";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "Title";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            this._adapter.UpdateCommand = new global::Devart.Data.SQLite.SQLiteCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE ""main"".""Researchs"" SET ""Id"" = :Id, ""FilePath"" = :FilePath, ""ResearchId"" = :ResearchId, ""Title"" = :Title WHERE ((""Id"" = :Original_Id) AND ((:IsNull_FilePath = 1 AND ""FilePath"" IS NULL) OR (""FilePath"" = :Original_FilePath)) AND ((:IsNull_ResearchId = 1 AND ""ResearchId"" IS NULL) OR (""ResearchId"" = :Original_ResearchId)) AND ((:IsNull_Title = 1 AND ""Title"" IS NULL) OR (""Title"" = :Original_Title)))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "Id";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "FilePath";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "FilePath";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "ResearchId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "ResearchId";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Title";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "Title";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "Id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_FilePath";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "FilePath";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_FilePath";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "FilePath";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_ResearchId";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "ResearchId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_ResearchId";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "ResearchId";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "IsNull_Title";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "Title";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "Original_Title";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "Title";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::Devart.Data.SQLite.SQLiteConnection();
+            this._connection.ConnectionString = global::ConsoleApp1.Properties.Settings.Default.ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::Devart.Data.SQLite.SQLiteCommand[1];
+            this._commandCollection[0] = new global::Devart.Data.SQLite.SQLiteCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT Id, FilePath, ResearchId, Title FROM \"main\".Researchs";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(DataSet1.ResearchsDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DataSet1.ResearchsDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            DataSet1.ResearchsDataTable dataTable = new DataSet1.ResearchsDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DataSet1.ResearchsDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DataSet1 dataSet) {
+            return this.Adapter.Update(dataSet, "Researchs");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(long Original_Id, string Original_FilePath, global::System.Nullable<long> Original_ResearchId, string Original_Title) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_Id));
+            if ((Original_FilePath == null)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_FilePath));
+            }
+            if ((Original_ResearchId.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((long)(Original_ResearchId.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((Original_Title == null)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_Title));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(long Id, string FilePath, global::System.Nullable<long> ResearchId, string Title) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((long)(Id));
+            if ((FilePath == null)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(FilePath));
+            }
+            if ((ResearchId.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((long)(ResearchId.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((Title == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Title));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(long Id, string FilePath, global::System.Nullable<long> ResearchId, string Title, long Original_Id, string Original_FilePath, global::System.Nullable<long> Original_ResearchId, string Original_Title) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(Id));
+            if ((FilePath == null)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(FilePath));
+            }
+            if ((ResearchId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((long)(ResearchId.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((Title == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Title));
+            }
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((long)(Original_Id));
+            if ((Original_FilePath == null)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_FilePath));
+            }
+            if ((Original_ResearchId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((long)(Original_ResearchId.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((Original_Title == null)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_Title));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string FilePath, global::System.Nullable<long> ResearchId, string Title, long Original_Id, string Original_FilePath, global::System.Nullable<long> Original_ResearchId, string Original_Title) {
+            return this.Update(Original_Id, FilePath, ResearchId, Title, Original_Id, Original_FilePath, Original_ResearchId, Original_Title);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class sqlite_sequenceTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::Devart.Data.SQLite.SQLiteDataAdapter _adapter;
+        
+        private global::Devart.Data.SQLite.SQLiteConnection _connection;
+        
+        private global::System.Data.Common.DbTransaction _transaction;
+        
+        private global::Devart.Data.SQLite.SQLiteCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public sqlite_sequenceTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected internal global::Devart.Data.SQLite.SQLiteDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::Devart.Data.SQLite.SQLiteConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::Devart.Data.SQLite.SQLiteCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.Common.DbTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected global::Devart.Data.SQLite.SQLiteCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::Devart.Data.SQLite.SQLiteDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "sqlite_sequence";
+            tableMapping.ColumnMappings.Add("name", "name");
+            tableMapping.ColumnMappings.Add("seq", "seq");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.InsertCommand = new global::Devart.Data.SQLite.SQLiteCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO \"main\".\"sqlite_sequence\" (\"name\", \"seq\") VALUES (:name, :seq)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            global::Devart.Data.SQLite.SQLiteParameter param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "name";
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Text;
+            param.IsNullable = true;
+            param.SourceColumn = "name";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::Devart.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "seq";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
+            param.IsNullable = true;
+            param.SourceColumn = "seq";
+            this._adapter.InsertCommand.Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::Devart.Data.SQLite.SQLiteConnection();
+            this._connection.ConnectionString = global::ConsoleApp1.Properties.Settings.Default.ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::Devart.Data.SQLite.SQLiteCommand[1];
+            this._commandCollection[0] = new global::Devart.Data.SQLite.SQLiteCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT name, seq FROM \"main\".\"sqlite_sequence\"";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(DataSet1.sqlite_sequenceDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DataSet1.sqlite_sequenceDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            DataSet1.sqlite_sequenceDataTable dataTable = new DataSet1.sqlite_sequenceDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DataSet1.sqlite_sequenceDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DataSet1 dataSet) {
+            return this.Adapter.Update(dataSet, "sqlite_sequence");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(string name, global::System.Nullable<long> seq) {
+            if ((name == null)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(name));
+            }
+            if ((seq.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((long)(seq.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
                 }
             }
         }
@@ -9702,87 +12287,130 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitAdapter() {
             this._adapter = new global::Devart.Data.SQLite.SQLiteDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "StrainNodeParameters";
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("E1", "E1");
+            tableMapping.ColumnMappings.Add("E2", "E2");
+            tableMapping.ColumnMappings.Add("E3", "E3");
+            tableMapping.ColumnMappings.Add("ENERGY", "ENERGY");
+            tableMapping.ColumnMappings.Add("EPSx", "EPSx");
+            tableMapping.ColumnMappings.Add("EPSy", "EPSy");
+            tableMapping.ColumnMappings.Add("EPSz", "EPSz");
+            tableMapping.ColumnMappings.Add("ESTRN", "ESTRN");
+            tableMapping.ColumnMappings.Add("GMxy", "GMxy");
+            tableMapping.ColumnMappings.Add("GMxz", "GMxz");
+            tableMapping.ColumnMappings.Add("GMyz", "GMyz");
+            tableMapping.ColumnMappings.Add("SEDENS", "SEDENS");
+            this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
             this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""main"".""StrainNodeParameters"" WHERE ((""Id"" = :Original_Id) AND (""E1"" = :Original_E1) AND (""E2"" = :Original_E2) AND (""E3"" = :Original_E3) AND (""ENERGY"" = :Original_ENERGY) AND (""EPSx"" = :Original_EPSx) AND (""EPSy"" = :Original_EPSy) AND (""EPSz"" = :Original_EPSz) AND (""ESTRN"" = :Original_ESTRN) AND (""GMxy"" = :Original_GMxy) AND (""GMxz"" = :Original_GMxz) AND (""GMyz"" = :Original_GMyz) AND (""SEDENS"" = :Original_SEDENS))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Devart.Data.SQLite.SQLiteParameter param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_E1";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "E1";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_E2";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "E2";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_E3";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "E3";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_ENERGY";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "ENERGY";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_EPSx";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "EPSx";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter7";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_EPSy";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "EPSy";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter8";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_EPSz";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "EPSz";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter9";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_ESTRN";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "ESTRN";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter10";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_GMxy";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "GMxy";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter11";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_GMxz";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "GMxz";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter12";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_GMyz";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "GMyz";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter13";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_SEDENS";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "SEDENS";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
@@ -9791,242 +12419,294 @@ namespace ConsoleApp1.DataSet1TableAdapters {
                 " :E2, :E3, :ENERGY, :EPSx, :EPSy, :EPSz, :ESTRN, :GMxy, :GMxz, :GMyz, :SEDENS)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "E1";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "E1";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "E2";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "E2";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "E3";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "E3";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "ENERGY";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "ENERGY";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "EPSx";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "EPSx";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter7";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "EPSy";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "EPSy";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter8";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "EPSz";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "EPSz";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter9";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "ESTRN";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "ESTRN";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter10";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "GMxy";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "GMxy";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter11";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "GMxz";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "GMxz";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter12";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "GMyz";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "GMyz";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter13";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "SEDENS";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "SEDENS";
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = @"UPDATE ""main"".""StrainNodeParameters"" SET ""Id"" = :Id, ""E1"" = :E1, ""E2"" = :E2, ""E3"" = :E3, ""ENERGY"" = :ENERGY, ""EPSx"" = :EPSx, ""EPSy"" = :EPSy, ""EPSz"" = :EPSz, ""ESTRN"" = :ESTRN, ""GMxy"" = :GMxy, ""GMxz"" = :GMxz, ""GMyz"" = :GMyz, ""SEDENS"" = :SEDENS WHERE ((""Id"" = :Original_Id) AND (""E1"" = :Original_E1) AND (""E2"" = :Original_E2) AND (""E3"" = :Original_E3) AND (""ENERGY"" = :Original_ENERGY) AND (""EPSx"" = :Original_EPSx) AND (""EPSy"" = :Original_EPSy) AND (""EPSz"" = :Original_EPSz) AND (""ESTRN"" = :Original_ESTRN) AND (""GMxy"" = :Original_GMxy) AND (""GMxz"" = :Original_GMxz) AND (""GMyz"" = :Original_GMyz) AND (""SEDENS"" = :Original_SEDENS))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "E1";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "E1";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "E2";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "E2";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "E3";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "E3";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "ENERGY";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "ENERGY";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "EPSx";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "EPSx";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter7";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "EPSy";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "EPSy";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter8";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "EPSz";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "EPSz";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter9";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "ESTRN";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "ESTRN";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter10";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "GMxy";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "GMxy";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter11";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "GMxz";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "GMxz";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter12";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "GMyz";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "GMyz";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter13";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "SEDENS";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "SEDENS";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter14";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter15";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_E1";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "E1";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter16";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_E2";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "E2";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter17";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_E3";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "E3";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter18";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_ENERGY";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "ENERGY";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter19";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_EPSx";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "EPSx";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter20";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_EPSy";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "EPSy";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter21";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_EPSz";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "EPSz";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter22";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_ESTRN";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "ESTRN";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter23";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_GMxy";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "GMxy";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter24";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_GMxz";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "GMxz";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter25";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_GMyz";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "GMyz";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter26";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_SEDENS";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "SEDENS";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
         }
         
@@ -10105,85 +12785,20 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8, string Parameter9, string Parameter10, string Parameter11, string Parameter12, string Parameter13) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Parameter1));
-            }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Parameter3));
-            }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Parameter5));
-            }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            if ((Parameter7 == null)) {
-                throw new global::System.ArgumentNullException("Parameter7");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Parameter7));
-            }
-            if ((Parameter8 == null)) {
-                throw new global::System.ArgumentNullException("Parameter8");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Parameter8));
-            }
-            if ((Parameter9 == null)) {
-                throw new global::System.ArgumentNullException("Parameter9");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Parameter9));
-            }
-            if ((Parameter10 == null)) {
-                throw new global::System.ArgumentNullException("Parameter10");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((string)(Parameter10));
-            }
-            if ((Parameter11 == null)) {
-                throw new global::System.ArgumentNullException("Parameter11");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Parameter11));
-            }
-            if ((Parameter12 == null)) {
-                throw new global::System.ArgumentNullException("Parameter12");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((string)(Parameter12));
-            }
-            if ((Parameter13 == null)) {
-                throw new global::System.ArgumentNullException("Parameter13");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Parameter13));
-            }
+        public virtual int Delete(long Original_Id, double Original_E1, double Original_E2, double Original_E3, double Original_ENERGY, double Original_EPSx, double Original_EPSy, double Original_EPSz, double Original_ESTRN, double Original_GMxy, double Original_GMxz, double Original_GMyz, double Original_SEDENS) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_Id));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((double)(Original_E1));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((double)(Original_E2));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((double)(Original_E3));
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((double)(Original_ENERGY));
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((double)(Original_EPSx));
+            this.Adapter.DeleteCommand.Parameters[6].Value = ((double)(Original_EPSy));
+            this.Adapter.DeleteCommand.Parameters[7].Value = ((double)(Original_EPSz));
+            this.Adapter.DeleteCommand.Parameters[8].Value = ((double)(Original_ESTRN));
+            this.Adapter.DeleteCommand.Parameters[9].Value = ((double)(Original_GMxy));
+            this.Adapter.DeleteCommand.Parameters[10].Value = ((double)(Original_GMxz));
+            this.Adapter.DeleteCommand.Parameters[11].Value = ((double)(Original_GMyz));
+            this.Adapter.DeleteCommand.Parameters[12].Value = ((double)(Original_SEDENS));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -10204,85 +12819,20 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8, string Parameter9, string Parameter10, string Parameter11, string Parameter12, string Parameter13) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Parameter1));
-            }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Parameter3));
-            }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Parameter5));
-            }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            if ((Parameter7 == null)) {
-                throw new global::System.ArgumentNullException("Parameter7");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Parameter7));
-            }
-            if ((Parameter8 == null)) {
-                throw new global::System.ArgumentNullException("Parameter8");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(Parameter8));
-            }
-            if ((Parameter9 == null)) {
-                throw new global::System.ArgumentNullException("Parameter9");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(Parameter9));
-            }
-            if ((Parameter10 == null)) {
-                throw new global::System.ArgumentNullException("Parameter10");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(Parameter10));
-            }
-            if ((Parameter11 == null)) {
-                throw new global::System.ArgumentNullException("Parameter11");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(Parameter11));
-            }
-            if ((Parameter12 == null)) {
-                throw new global::System.ArgumentNullException("Parameter12");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((string)(Parameter12));
-            }
-            if ((Parameter13 == null)) {
-                throw new global::System.ArgumentNullException("Parameter13");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(Parameter13));
-            }
+        public virtual int Insert(long Id, double E1, double E2, double E3, double ENERGY, double EPSx, double EPSy, double EPSz, double ESTRN, double GMxy, double GMxz, double GMyz, double SEDENS) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((long)(Id));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((double)(E1));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((double)(E2));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((double)(E3));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((double)(ENERGY));
+            this.Adapter.InsertCommand.Parameters[5].Value = ((double)(EPSx));
+            this.Adapter.InsertCommand.Parameters[6].Value = ((double)(EPSy));
+            this.Adapter.InsertCommand.Parameters[7].Value = ((double)(EPSz));
+            this.Adapter.InsertCommand.Parameters[8].Value = ((double)(ESTRN));
+            this.Adapter.InsertCommand.Parameters[9].Value = ((double)(GMxy));
+            this.Adapter.InsertCommand.Parameters[10].Value = ((double)(GMxz));
+            this.Adapter.InsertCommand.Parameters[11].Value = ((double)(GMyz));
+            this.Adapter.InsertCommand.Parameters[12].Value = ((double)(SEDENS));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -10304,188 +12854,58 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    string Parameter1, 
-                    string Parameter2, 
-                    string Parameter3, 
-                    string Parameter4, 
-                    string Parameter5, 
-                    string Parameter6, 
-                    string Parameter7, 
-                    string Parameter8, 
-                    string Parameter9, 
-                    string Parameter10, 
-                    string Parameter11, 
-                    string Parameter12, 
-                    string Parameter13, 
-                    string Parameter14, 
-                    string Parameter15, 
-                    string Parameter16, 
-                    string Parameter17, 
-                    string Parameter18, 
-                    string Parameter19, 
-                    string Parameter20, 
-                    string Parameter21, 
-                    string Parameter22, 
-                    string Parameter23, 
-                    string Parameter24, 
-                    string Parameter25, 
-                    string Parameter26) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Parameter1));
-            }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Parameter3));
-            }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Parameter5));
-            }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            if ((Parameter7 == null)) {
-                throw new global::System.ArgumentNullException("Parameter7");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Parameter7));
-            }
-            if ((Parameter8 == null)) {
-                throw new global::System.ArgumentNullException("Parameter8");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Parameter8));
-            }
-            if ((Parameter9 == null)) {
-                throw new global::System.ArgumentNullException("Parameter9");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Parameter9));
-            }
-            if ((Parameter10 == null)) {
-                throw new global::System.ArgumentNullException("Parameter10");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Parameter10));
-            }
-            if ((Parameter11 == null)) {
-                throw new global::System.ArgumentNullException("Parameter11");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Parameter11));
-            }
-            if ((Parameter12 == null)) {
-                throw new global::System.ArgumentNullException("Parameter12");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Parameter12));
-            }
-            if ((Parameter13 == null)) {
-                throw new global::System.ArgumentNullException("Parameter13");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Parameter13));
-            }
-            if ((Parameter14 == null)) {
-                throw new global::System.ArgumentNullException("Parameter14");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Parameter14));
-            }
-            if ((Parameter15 == null)) {
-                throw new global::System.ArgumentNullException("Parameter15");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Parameter15));
-            }
-            if ((Parameter16 == null)) {
-                throw new global::System.ArgumentNullException("Parameter16");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Parameter16));
-            }
-            if ((Parameter17 == null)) {
-                throw new global::System.ArgumentNullException("Parameter17");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Parameter17));
-            }
-            if ((Parameter18 == null)) {
-                throw new global::System.ArgumentNullException("Parameter18");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Parameter18));
-            }
-            if ((Parameter19 == null)) {
-                throw new global::System.ArgumentNullException("Parameter19");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Parameter19));
-            }
-            if ((Parameter20 == null)) {
-                throw new global::System.ArgumentNullException("Parameter20");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Parameter20));
-            }
-            if ((Parameter21 == null)) {
-                throw new global::System.ArgumentNullException("Parameter21");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Parameter21));
-            }
-            if ((Parameter22 == null)) {
-                throw new global::System.ArgumentNullException("Parameter22");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Parameter22));
-            }
-            if ((Parameter23 == null)) {
-                throw new global::System.ArgumentNullException("Parameter23");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Parameter23));
-            }
-            if ((Parameter24 == null)) {
-                throw new global::System.ArgumentNullException("Parameter24");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((string)(Parameter24));
-            }
-            if ((Parameter25 == null)) {
-                throw new global::System.ArgumentNullException("Parameter25");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Parameter25));
-            }
-            if ((Parameter26 == null)) {
-                throw new global::System.ArgumentNullException("Parameter26");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(Parameter26));
-            }
+                    long Id, 
+                    double E1, 
+                    double E2, 
+                    double E3, 
+                    double ENERGY, 
+                    double EPSx, 
+                    double EPSy, 
+                    double EPSz, 
+                    double ESTRN, 
+                    double GMxy, 
+                    double GMxz, 
+                    double GMyz, 
+                    double SEDENS, 
+                    long Original_Id, 
+                    double Original_E1, 
+                    double Original_E2, 
+                    double Original_E3, 
+                    double Original_ENERGY, 
+                    double Original_EPSx, 
+                    double Original_EPSy, 
+                    double Original_EPSz, 
+                    double Original_ESTRN, 
+                    double Original_GMxy, 
+                    double Original_GMxz, 
+                    double Original_GMyz, 
+                    double Original_SEDENS) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(Id));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((double)(E1));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((double)(E2));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((double)(E3));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((double)(ENERGY));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((double)(EPSx));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((double)(EPSy));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((double)(EPSz));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((double)(ESTRN));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((double)(GMxy));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((double)(GMxz));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((double)(GMyz));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((double)(SEDENS));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((long)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((double)(Original_E1));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((double)(Original_E2));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((double)(Original_E3));
+            this.Adapter.UpdateCommand.Parameters[17].Value = ((double)(Original_ENERGY));
+            this.Adapter.UpdateCommand.Parameters[18].Value = ((double)(Original_EPSx));
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((double)(Original_EPSy));
+            this.Adapter.UpdateCommand.Parameters[20].Value = ((double)(Original_EPSz));
+            this.Adapter.UpdateCommand.Parameters[21].Value = ((double)(Original_ESTRN));
+            this.Adapter.UpdateCommand.Parameters[22].Value = ((double)(Original_GMxy));
+            this.Adapter.UpdateCommand.Parameters[23].Value = ((double)(Original_GMxz));
+            this.Adapter.UpdateCommand.Parameters[24].Value = ((double)(Original_GMyz));
+            this.Adapter.UpdateCommand.Parameters[25].Value = ((double)(Original_SEDENS));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -10500,6 +12920,39 @@ namespace ConsoleApp1.DataSet1TableAdapters {
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
             }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    double E1, 
+                    double E2, 
+                    double E3, 
+                    double ENERGY, 
+                    double EPSx, 
+                    double EPSy, 
+                    double EPSz, 
+                    double ESTRN, 
+                    double GMxy, 
+                    double GMxz, 
+                    double GMyz, 
+                    double SEDENS, 
+                    long Original_Id, 
+                    double Original_E1, 
+                    double Original_E2, 
+                    double Original_E3, 
+                    double Original_ENERGY, 
+                    double Original_EPSx, 
+                    double Original_EPSy, 
+                    double Original_EPSz, 
+                    double Original_ESTRN, 
+                    double Original_GMxy, 
+                    double Original_GMxz, 
+                    double Original_GMyz, 
+                    double Original_SEDENS) {
+            return this.Update(Original_Id, E1, E2, E3, ENERGY, EPSx, EPSy, EPSz, ESTRN, GMxy, GMxz, GMyz, SEDENS, Original_Id, Original_E1, Original_E2, Original_E3, Original_ENERGY, Original_EPSx, Original_EPSy, Original_EPSz, Original_ESTRN, Original_GMxy, Original_GMxz, Original_GMyz, Original_SEDENS);
         }
     }
     
@@ -10621,81 +13074,121 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitAdapter() {
             this._adapter = new global::Devart.Data.SQLite.SQLiteDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "StressNodeParameters";
+            tableMapping.ColumnMappings.Add("Id", "Id");
+            tableMapping.ColumnMappings.Add("INT", "INT");
+            tableMapping.ColumnMappings.Add("P1", "P1");
+            tableMapping.ColumnMappings.Add("P2", "P2");
+            tableMapping.ColumnMappings.Add("P3", "P3");
+            tableMapping.ColumnMappings.Add("Sx", "Sx");
+            tableMapping.ColumnMappings.Add("Sy", "Sy");
+            tableMapping.ColumnMappings.Add("Sz", "Sz");
+            tableMapping.ColumnMappings.Add("Txy", "Txy");
+            tableMapping.ColumnMappings.Add("Txz", "Txz");
+            tableMapping.ColumnMappings.Add("Tyz", "Tyz");
+            tableMapping.ColumnMappings.Add("VON", "VON");
+            this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
             this._adapter.DeleteCommand.CommandText = @"DELETE FROM ""main"".""StressNodeParameters"" WHERE ((""Id"" = :Original_Id) AND (""INT"" = :Original_INT) AND (""P1"" = :Original_P1) AND (""P2"" = :Original_P2) AND (""P3"" = :Original_P3) AND (""Sx"" = :Original_Sx) AND (""Sy"" = :Original_Sy) AND (""Sz"" = :Original_Sz) AND (""Txy"" = :Original_Txy) AND (""Txz"" = :Original_Txz) AND (""Tyz"" = :Original_Tyz) AND (""VON"" = :Original_VON))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::Devart.Data.SQLite.SQLiteParameter param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_INT";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "INT";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_P1";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "P1";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_P2";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "P2";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_P3";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "P3";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Sx";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Sx";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter7";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Sy";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Sy";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter8";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Sz";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Sz";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter9";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Txy";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Txy";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter10";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Txz";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Txz";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter11";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Tyz";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Tyz";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter12";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_VON";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "VON";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
@@ -10704,224 +13197,272 @@ namespace ConsoleApp1.DataSet1TableAdapters {
                 "y, :Sz, :Txy, :Txz, :Tyz, :VON)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "INT";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "INT";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "P1";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "P1";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "P2";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "P2";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "P3";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "P3";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Sx";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Sx";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter7";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Sy";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Sy";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter8";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Sz";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Sz";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter9";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Txy";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Txy";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter10";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Txz";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Txz";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter11";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Tyz";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Tyz";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter12";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "VON";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "VON";
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::Devart.Data.SQLite.SQLiteCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = @"UPDATE ""main"".""StressNodeParameters"" SET ""Id"" = :Id, ""INT"" = :INT, ""P1"" = :P1, ""P2"" = :P2, ""P3"" = :P3, ""Sx"" = :Sx, ""Sy"" = :Sy, ""Sz"" = :Sz, ""Txy"" = :Txy, ""Txz"" = :Txz, ""Tyz"" = :Tyz, ""VON"" = :VON WHERE ((""Id"" = :Original_Id) AND (""INT"" = :Original_INT) AND (""P1"" = :Original_P1) AND (""P2"" = :Original_P2) AND (""P3"" = :Original_P3) AND (""Sx"" = :Original_Sx) AND (""Sy"" = :Original_Sy) AND (""Sz"" = :Original_Sz) AND (""Txy"" = :Original_Txy) AND (""Txz"" = :Original_Txz) AND (""Tyz"" = :Original_Tyz) AND (""VON"" = :Original_VON))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter1";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter2";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "INT";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "INT";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter3";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "P1";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "P1";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter4";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "P2";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "P2";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter5";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "P3";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "P3";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter6";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Sx";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Sx";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter7";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Sy";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Sy";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter8";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Sz";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Sz";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter9";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Txy";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Txy";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter10";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Txz";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Txz";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter11";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Tyz";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Tyz";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter12";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "VON";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "VON";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter13";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Id";
+            param.DbType = global::System.Data.DbType.Int64;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Int64;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Id";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter14";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_INT";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "INT";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter15";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_P1";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "P1";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter16";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_P2";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "P2";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter17";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_P3";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "P3";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter18";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Sx";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Sx";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter19";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Sy";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Sy";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter20";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Sz";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Sz";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter21";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Txy";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Txy";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter22";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Txz";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Txz";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter23";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_Tyz";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "Tyz";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::Devart.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "Parameter24";
-            param.DbType = global::System.Data.DbType.AnsiString;
+            param.ParameterName = "Original_VON";
+            param.DbType = global::System.Data.DbType.Double;
+            param.SQLiteType = global::Devart.Data.SQLite.SQLiteType.Double;
             param.IsNullable = true;
-            param.SourceColumn = null;
+            param.SourceColumn = "VON";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
         }
         
@@ -11000,79 +13541,19 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8, string Parameter9, string Parameter10, string Parameter11, string Parameter12) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Parameter1));
-            }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Parameter3));
-            }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Parameter5));
-            }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            if ((Parameter7 == null)) {
-                throw new global::System.ArgumentNullException("Parameter7");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Parameter7));
-            }
-            if ((Parameter8 == null)) {
-                throw new global::System.ArgumentNullException("Parameter8");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Parameter8));
-            }
-            if ((Parameter9 == null)) {
-                throw new global::System.ArgumentNullException("Parameter9");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Parameter9));
-            }
-            if ((Parameter10 == null)) {
-                throw new global::System.ArgumentNullException("Parameter10");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((string)(Parameter10));
-            }
-            if ((Parameter11 == null)) {
-                throw new global::System.ArgumentNullException("Parameter11");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Parameter11));
-            }
-            if ((Parameter12 == null)) {
-                throw new global::System.ArgumentNullException("Parameter12");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((string)(Parameter12));
-            }
+        public virtual int Delete(long Original_Id, double Original_INT, double Original_P1, double Original_P2, double Original_P3, double Original_Sx, double Original_Sy, double Original_Sz, double Original_Txy, double Original_Txz, double Original_Tyz, double Original_VON) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_Id));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((double)(Original_INT));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((double)(Original_P1));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((double)(Original_P2));
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((double)(Original_P3));
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((double)(Original_Sx));
+            this.Adapter.DeleteCommand.Parameters[6].Value = ((double)(Original_Sy));
+            this.Adapter.DeleteCommand.Parameters[7].Value = ((double)(Original_Sz));
+            this.Adapter.DeleteCommand.Parameters[8].Value = ((double)(Original_Txy));
+            this.Adapter.DeleteCommand.Parameters[9].Value = ((double)(Original_Txz));
+            this.Adapter.DeleteCommand.Parameters[10].Value = ((double)(Original_Tyz));
+            this.Adapter.DeleteCommand.Parameters[11].Value = ((double)(Original_VON));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -11093,79 +13574,19 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8, string Parameter9, string Parameter10, string Parameter11, string Parameter12) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Parameter1));
-            }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Parameter3));
-            }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Parameter5));
-            }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            if ((Parameter7 == null)) {
-                throw new global::System.ArgumentNullException("Parameter7");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Parameter7));
-            }
-            if ((Parameter8 == null)) {
-                throw new global::System.ArgumentNullException("Parameter8");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(Parameter8));
-            }
-            if ((Parameter9 == null)) {
-                throw new global::System.ArgumentNullException("Parameter9");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(Parameter9));
-            }
-            if ((Parameter10 == null)) {
-                throw new global::System.ArgumentNullException("Parameter10");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(Parameter10));
-            }
-            if ((Parameter11 == null)) {
-                throw new global::System.ArgumentNullException("Parameter11");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(Parameter11));
-            }
-            if ((Parameter12 == null)) {
-                throw new global::System.ArgumentNullException("Parameter12");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((string)(Parameter12));
-            }
+        public virtual int Insert(long Id, double INT, double P1, double P2, double P3, double Sx, double Sy, double Sz, double Txy, double Txz, double Tyz, double VON) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((long)(Id));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((double)(INT));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((double)(P1));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((double)(P2));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((double)(P3));
+            this.Adapter.InsertCommand.Parameters[5].Value = ((double)(Sx));
+            this.Adapter.InsertCommand.Parameters[6].Value = ((double)(Sy));
+            this.Adapter.InsertCommand.Parameters[7].Value = ((double)(Sz));
+            this.Adapter.InsertCommand.Parameters[8].Value = ((double)(Txy));
+            this.Adapter.InsertCommand.Parameters[9].Value = ((double)(Txz));
+            this.Adapter.InsertCommand.Parameters[10].Value = ((double)(Tyz));
+            this.Adapter.InsertCommand.Parameters[11].Value = ((double)(VON));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -11187,174 +13608,54 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    string Parameter1, 
-                    string Parameter2, 
-                    string Parameter3, 
-                    string Parameter4, 
-                    string Parameter5, 
-                    string Parameter6, 
-                    string Parameter7, 
-                    string Parameter8, 
-                    string Parameter9, 
-                    string Parameter10, 
-                    string Parameter11, 
-                    string Parameter12, 
-                    string Parameter13, 
-                    string Parameter14, 
-                    string Parameter15, 
-                    string Parameter16, 
-                    string Parameter17, 
-                    string Parameter18, 
-                    string Parameter19, 
-                    string Parameter20, 
-                    string Parameter21, 
-                    string Parameter22, 
-                    string Parameter23, 
-                    string Parameter24) {
-            if ((Parameter1 == null)) {
-                throw new global::System.ArgumentNullException("Parameter1");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Parameter1));
-            }
-            if ((Parameter2 == null)) {
-                throw new global::System.ArgumentNullException("Parameter2");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Parameter2));
-            }
-            if ((Parameter3 == null)) {
-                throw new global::System.ArgumentNullException("Parameter3");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Parameter3));
-            }
-            if ((Parameter4 == null)) {
-                throw new global::System.ArgumentNullException("Parameter4");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Parameter4));
-            }
-            if ((Parameter5 == null)) {
-                throw new global::System.ArgumentNullException("Parameter5");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Parameter5));
-            }
-            if ((Parameter6 == null)) {
-                throw new global::System.ArgumentNullException("Parameter6");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Parameter6));
-            }
-            if ((Parameter7 == null)) {
-                throw new global::System.ArgumentNullException("Parameter7");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Parameter7));
-            }
-            if ((Parameter8 == null)) {
-                throw new global::System.ArgumentNullException("Parameter8");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Parameter8));
-            }
-            if ((Parameter9 == null)) {
-                throw new global::System.ArgumentNullException("Parameter9");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Parameter9));
-            }
-            if ((Parameter10 == null)) {
-                throw new global::System.ArgumentNullException("Parameter10");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Parameter10));
-            }
-            if ((Parameter11 == null)) {
-                throw new global::System.ArgumentNullException("Parameter11");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Parameter11));
-            }
-            if ((Parameter12 == null)) {
-                throw new global::System.ArgumentNullException("Parameter12");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Parameter12));
-            }
-            if ((Parameter13 == null)) {
-                throw new global::System.ArgumentNullException("Parameter13");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Parameter13));
-            }
-            if ((Parameter14 == null)) {
-                throw new global::System.ArgumentNullException("Parameter14");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Parameter14));
-            }
-            if ((Parameter15 == null)) {
-                throw new global::System.ArgumentNullException("Parameter15");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Parameter15));
-            }
-            if ((Parameter16 == null)) {
-                throw new global::System.ArgumentNullException("Parameter16");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Parameter16));
-            }
-            if ((Parameter17 == null)) {
-                throw new global::System.ArgumentNullException("Parameter17");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Parameter17));
-            }
-            if ((Parameter18 == null)) {
-                throw new global::System.ArgumentNullException("Parameter18");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Parameter18));
-            }
-            if ((Parameter19 == null)) {
-                throw new global::System.ArgumentNullException("Parameter19");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Parameter19));
-            }
-            if ((Parameter20 == null)) {
-                throw new global::System.ArgumentNullException("Parameter20");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Parameter20));
-            }
-            if ((Parameter21 == null)) {
-                throw new global::System.ArgumentNullException("Parameter21");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Parameter21));
-            }
-            if ((Parameter22 == null)) {
-                throw new global::System.ArgumentNullException("Parameter22");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Parameter22));
-            }
-            if ((Parameter23 == null)) {
-                throw new global::System.ArgumentNullException("Parameter23");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Parameter23));
-            }
-            if ((Parameter24 == null)) {
-                throw new global::System.ArgumentNullException("Parameter24");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((string)(Parameter24));
-            }
+                    long Id, 
+                    double INT, 
+                    double P1, 
+                    double P2, 
+                    double P3, 
+                    double Sx, 
+                    double Sy, 
+                    double Sz, 
+                    double Txy, 
+                    double Txz, 
+                    double Tyz, 
+                    double VON, 
+                    long Original_Id, 
+                    double Original_INT, 
+                    double Original_P1, 
+                    double Original_P2, 
+                    double Original_P3, 
+                    double Original_Sx, 
+                    double Original_Sy, 
+                    double Original_Sz, 
+                    double Original_Txy, 
+                    double Original_Txz, 
+                    double Original_Tyz, 
+                    double Original_VON) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(Id));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((double)(INT));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((double)(P1));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((double)(P2));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((double)(P3));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((double)(Sx));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((double)(Sy));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((double)(Sz));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((double)(Txy));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((double)(Txz));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((double)(Tyz));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((double)(VON));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((long)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((double)(Original_INT));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((double)(Original_P1));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((double)(Original_P2));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((double)(Original_P3));
+            this.Adapter.UpdateCommand.Parameters[17].Value = ((double)(Original_Sx));
+            this.Adapter.UpdateCommand.Parameters[18].Value = ((double)(Original_Sy));
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((double)(Original_Sz));
+            this.Adapter.UpdateCommand.Parameters[20].Value = ((double)(Original_Txy));
+            this.Adapter.UpdateCommand.Parameters[21].Value = ((double)(Original_Txz));
+            this.Adapter.UpdateCommand.Parameters[22].Value = ((double)(Original_Tyz));
+            this.Adapter.UpdateCommand.Parameters[23].Value = ((double)(Original_VON));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -11370,6 +13671,37 @@ namespace ConsoleApp1.DataSet1TableAdapters {
                 }
             }
         }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    double INT, 
+                    double P1, 
+                    double P2, 
+                    double P3, 
+                    double Sx, 
+                    double Sy, 
+                    double Sz, 
+                    double Txy, 
+                    double Txz, 
+                    double Tyz, 
+                    double VON, 
+                    long Original_Id, 
+                    double Original_INT, 
+                    double Original_P1, 
+                    double Original_P2, 
+                    double Original_P3, 
+                    double Original_Sx, 
+                    double Original_Sy, 
+                    double Original_Sz, 
+                    double Original_Txy, 
+                    double Original_Txz, 
+                    double Original_Tyz, 
+                    double Original_VON) {
+            return this.Update(Original_Id, INT, P1, P2, P3, Sx, Sy, Sz, Txy, Txz, Tyz, VON, Original_Id, Original_INT, Original_P1, Original_P2, Original_P3, Original_Sx, Original_Sy, Original_Sz, Original_Txy, Original_Txz, Original_Tyz, Original_VON);
+        }
     }
     
     /// <summary>
@@ -11384,23 +13716,25 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         
         private UpdateOrderOption _updateOrder;
         
-        private AdjacmentResearchTableAdapter _adjacmentResearchTableAdapter;
-        
-        private AdjacmentResearchsTableAdapter _adjacmentResearchsTableAdapter;
+        private @__EFMigrationsHistoryTableAdapter ___EFMigrationsHistoryTableAdapter;
         
         private AreasTableAdapter _areasTableAdapter;
         
-        private DbscanResearchTableAdapter _dbscanResearchTableAdapter;
-        
-        private DbScanResearchsTableAdapter _dbScanResearchsTableAdapter;
-        
         private ElementsTableAdapter _elementsTableAdapter;
         
-        private MeshParamsTableAdapter _meshParamsTableAdapter;
+        private MeshConfigurationsTableAdapter _meshConfigurationsTableAdapter;
+        
+        private NodeIndexesTableAdapter _nodeIndexesTableAdapter;
         
         private NodesTableAdapter _nodesTableAdapter;
         
         private PointsTableAdapter _pointsTableAdapter;
+        
+        private ResearchConfigurationsTableAdapter _researchConfigurationsTableAdapter;
+        
+        private ResearchsTableAdapter _researchsTableAdapter;
+        
+        private sqlite_sequenceTableAdapter _sqlite_sequenceTableAdapter;
         
         private StrainNodeParametersTableAdapter _strainNodeParametersTableAdapter;
         
@@ -11426,26 +13760,12 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public AdjacmentResearchTableAdapter AdjacmentResearchTableAdapter {
+        public @__EFMigrationsHistoryTableAdapter @__EFMigrationsHistoryTableAdapter {
             get {
-                return this._adjacmentResearchTableAdapter;
+                return this.___EFMigrationsHistoryTableAdapter;
             }
             set {
-                this._adjacmentResearchTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public AdjacmentResearchsTableAdapter AdjacmentResearchsTableAdapter {
-            get {
-                return this._adjacmentResearchsTableAdapter;
-            }
-            set {
-                this._adjacmentResearchsTableAdapter = value;
+                this.___EFMigrationsHistoryTableAdapter = value;
             }
         }
         
@@ -11468,34 +13788,6 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public DbscanResearchTableAdapter DbscanResearchTableAdapter {
-            get {
-                return this._dbscanResearchTableAdapter;
-            }
-            set {
-                this._dbscanResearchTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public DbScanResearchsTableAdapter DbScanResearchsTableAdapter {
-            get {
-                return this._dbScanResearchsTableAdapter;
-            }
-            set {
-                this._dbScanResearchsTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
         public ElementsTableAdapter ElementsTableAdapter {
             get {
                 return this._elementsTableAdapter;
@@ -11510,12 +13802,26 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public MeshParamsTableAdapter MeshParamsTableAdapter {
+        public MeshConfigurationsTableAdapter MeshConfigurationsTableAdapter {
             get {
-                return this._meshParamsTableAdapter;
+                return this._meshConfigurationsTableAdapter;
             }
             set {
-                this._meshParamsTableAdapter = value;
+                this._meshConfigurationsTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public NodeIndexesTableAdapter NodeIndexesTableAdapter {
+            get {
+                return this._nodeIndexesTableAdapter;
+            }
+            set {
+                this._nodeIndexesTableAdapter = value;
             }
         }
         
@@ -11544,6 +13850,48 @@ namespace ConsoleApp1.DataSet1TableAdapters {
             }
             set {
                 this._pointsTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public ResearchConfigurationsTableAdapter ResearchConfigurationsTableAdapter {
+            get {
+                return this._researchConfigurationsTableAdapter;
+            }
+            set {
+                this._researchConfigurationsTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public ResearchsTableAdapter ResearchsTableAdapter {
+            get {
+                return this._researchsTableAdapter;
+            }
+            set {
+                this._researchsTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public sqlite_sequenceTableAdapter sqlite_sequenceTableAdapter {
+            get {
+                return this._sqlite_sequenceTableAdapter;
+            }
+            set {
+                this._sqlite_sequenceTableAdapter = value;
             }
         }
         
@@ -11594,33 +13942,25 @@ namespace ConsoleApp1.DataSet1TableAdapters {
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._adjacmentResearchTableAdapter != null) 
-                            && (this._adjacmentResearchTableAdapter.Connection != null))) {
-                    return this._adjacmentResearchTableAdapter.Connection;
-                }
-                if (((this._adjacmentResearchsTableAdapter != null) 
-                            && (this._adjacmentResearchsTableAdapter.Connection != null))) {
-                    return this._adjacmentResearchsTableAdapter.Connection;
+                if (((this.___EFMigrationsHistoryTableAdapter != null) 
+                            && (this.___EFMigrationsHistoryTableAdapter.Connection != null))) {
+                    return this.___EFMigrationsHistoryTableAdapter.Connection;
                 }
                 if (((this._areasTableAdapter != null) 
                             && (this._areasTableAdapter.Connection != null))) {
                     return this._areasTableAdapter.Connection;
                 }
-                if (((this._dbscanResearchTableAdapter != null) 
-                            && (this._dbscanResearchTableAdapter.Connection != null))) {
-                    return this._dbscanResearchTableAdapter.Connection;
-                }
-                if (((this._dbScanResearchsTableAdapter != null) 
-                            && (this._dbScanResearchsTableAdapter.Connection != null))) {
-                    return this._dbScanResearchsTableAdapter.Connection;
-                }
                 if (((this._elementsTableAdapter != null) 
                             && (this._elementsTableAdapter.Connection != null))) {
                     return this._elementsTableAdapter.Connection;
                 }
-                if (((this._meshParamsTableAdapter != null) 
-                            && (this._meshParamsTableAdapter.Connection != null))) {
-                    return this._meshParamsTableAdapter.Connection;
+                if (((this._meshConfigurationsTableAdapter != null) 
+                            && (this._meshConfigurationsTableAdapter.Connection != null))) {
+                    return this._meshConfigurationsTableAdapter.Connection;
+                }
+                if (((this._nodeIndexesTableAdapter != null) 
+                            && (this._nodeIndexesTableAdapter.Connection != null))) {
+                    return this._nodeIndexesTableAdapter.Connection;
                 }
                 if (((this._nodesTableAdapter != null) 
                             && (this._nodesTableAdapter.Connection != null))) {
@@ -11629,6 +13969,18 @@ namespace ConsoleApp1.DataSet1TableAdapters {
                 if (((this._pointsTableAdapter != null) 
                             && (this._pointsTableAdapter.Connection != null))) {
                     return this._pointsTableAdapter.Connection;
+                }
+                if (((this._researchConfigurationsTableAdapter != null) 
+                            && (this._researchConfigurationsTableAdapter.Connection != null))) {
+                    return this._researchConfigurationsTableAdapter.Connection;
+                }
+                if (((this._researchsTableAdapter != null) 
+                            && (this._researchsTableAdapter.Connection != null))) {
+                    return this._researchsTableAdapter.Connection;
+                }
+                if (((this._sqlite_sequenceTableAdapter != null) 
+                            && (this._sqlite_sequenceTableAdapter.Connection != null))) {
+                    return this._sqlite_sequenceTableAdapter.Connection;
                 }
                 if (((this._strainNodeParametersTableAdapter != null) 
                             && (this._strainNodeParametersTableAdapter.Connection != null))) {
@@ -11651,31 +14003,34 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._adjacmentResearchTableAdapter != null)) {
-                    count = (count + 1);
-                }
-                if ((this._adjacmentResearchsTableAdapter != null)) {
+                if ((this.___EFMigrationsHistoryTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._areasTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._dbscanResearchTableAdapter != null)) {
-                    count = (count + 1);
-                }
-                if ((this._dbScanResearchsTableAdapter != null)) {
-                    count = (count + 1);
-                }
                 if ((this._elementsTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._meshParamsTableAdapter != null)) {
+                if ((this._meshConfigurationsTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._nodeIndexesTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._nodesTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._pointsTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._researchConfigurationsTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._researchsTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._sqlite_sequenceTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._strainNodeParametersTableAdapter != null)) {
@@ -11695,21 +14050,30 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private int UpdateUpdatedRows(DataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._adjacmentResearchTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.AdjacmentResearch.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._meshConfigurationsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.MeshConfigurations.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._adjacmentResearchTableAdapter.Update(updatedRows));
+                    result = (result + this._meshConfigurationsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._adjacmentResearchsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.AdjacmentResearchs.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._researchConfigurationsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ResearchConfigurations.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._adjacmentResearchsTableAdapter.Update(updatedRows));
+                    result = (result + this._researchConfigurationsTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._researchsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Researchs.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._researchsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -11722,48 +14086,12 @@ namespace ConsoleApp1.DataSet1TableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._dbscanResearchTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.DbscanResearch.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._dbscanResearchTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._dbScanResearchsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.DbScanResearchs.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._dbScanResearchsTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._elementsTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Elements.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._elementsTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._meshParamsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.MeshParams.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._meshParamsTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._nodesTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Nodes.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._nodesTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -11794,6 +14122,42 @@ namespace ConsoleApp1.DataSet1TableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this.___EFMigrationsHistoryTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.@__EFMigrationsHistory.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this.___EFMigrationsHistoryTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._nodeIndexesTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.NodeIndexes.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._nodeIndexesTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._nodesTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Nodes.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._nodesTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._sqlite_sequenceTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.sqlite_sequence.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._sqlite_sequenceTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             return result;
         }
         
@@ -11804,19 +14168,27 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private int UpdateInsertedRows(DataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._adjacmentResearchTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.AdjacmentResearch.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._meshConfigurationsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.MeshConfigurations.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._adjacmentResearchTableAdapter.Update(addedRows));
+                    result = (result + this._meshConfigurationsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._adjacmentResearchsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.AdjacmentResearchs.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._researchConfigurationsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ResearchConfigurations.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._adjacmentResearchsTableAdapter.Update(addedRows));
+                    result = (result + this._researchConfigurationsTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._researchsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Researchs.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._researchsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -11828,43 +14200,11 @@ namespace ConsoleApp1.DataSet1TableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._dbscanResearchTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.DbscanResearch.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._dbscanResearchTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._dbScanResearchsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.DbScanResearchs.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._dbScanResearchsTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._elementsTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Elements.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._elementsTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._meshParamsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.MeshParams.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._meshParamsTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._nodesTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Nodes.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._nodesTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -11892,6 +14232,38 @@ namespace ConsoleApp1.DataSet1TableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this.___EFMigrationsHistoryTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.@__EFMigrationsHistory.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this.___EFMigrationsHistoryTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._nodeIndexesTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.NodeIndexes.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._nodeIndexesTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._nodesTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Nodes.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._nodesTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._sqlite_sequenceTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.sqlite_sequence.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._sqlite_sequenceTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -11902,6 +14274,38 @@ namespace ConsoleApp1.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private int UpdateDeletedRows(DataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._sqlite_sequenceTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.sqlite_sequence.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._sqlite_sequenceTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._nodesTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Nodes.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._nodesTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._nodeIndexesTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.NodeIndexes.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._nodeIndexesTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this.___EFMigrationsHistoryTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.@__EFMigrationsHistory.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this.___EFMigrationsHistoryTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._stressNodeParametersTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.StressNodeParameters.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -11926,43 +14330,11 @@ namespace ConsoleApp1.DataSet1TableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._nodesTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Nodes.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._nodesTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._meshParamsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.MeshParams.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._meshParamsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._elementsTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Elements.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._elementsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._dbScanResearchsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.DbScanResearchs.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._dbScanResearchsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._dbscanResearchTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.DbscanResearch.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._dbscanResearchTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -11974,19 +14346,27 @@ namespace ConsoleApp1.DataSet1TableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._adjacmentResearchsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.AdjacmentResearchs.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._researchsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Researchs.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._adjacmentResearchsTableAdapter.Update(deletedRows));
+                    result = (result + this._researchsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._adjacmentResearchTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.AdjacmentResearch.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._researchConfigurationsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ResearchConfigurations.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._adjacmentResearchTableAdapter.Update(deletedRows));
+                    result = (result + this._researchConfigurationsTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._meshConfigurationsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.MeshConfigurations.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._meshConfigurationsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -12029,13 +14409,8 @@ namespace ConsoleApp1.DataSet1TableAdapters {
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
-            if (((this._adjacmentResearchTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._adjacmentResearchTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
-                        "r, должны использовать одинаковую строку подключения.");
-            }
-            if (((this._adjacmentResearchsTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._adjacmentResearchsTableAdapter.Connection) == false))) {
+            if (((this.___EFMigrationsHistoryTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this.___EFMigrationsHistoryTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
@@ -12044,23 +14419,18 @@ namespace ConsoleApp1.DataSet1TableAdapters {
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
-            if (((this._dbscanResearchTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._dbscanResearchTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
-                        "r, должны использовать одинаковую строку подключения.");
-            }
-            if (((this._dbScanResearchsTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._dbScanResearchsTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
-                        "r, должны использовать одинаковую строку подключения.");
-            }
             if (((this._elementsTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._elementsTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
-            if (((this._meshParamsTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._meshParamsTableAdapter.Connection) == false))) {
+            if (((this._meshConfigurationsTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._meshConfigurationsTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
+                        "r, должны использовать одинаковую строку подключения.");
+            }
+            if (((this._nodeIndexesTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._nodeIndexesTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
@@ -12071,6 +14441,21 @@ namespace ConsoleApp1.DataSet1TableAdapters {
             }
             if (((this._pointsTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._pointsTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
+                        "r, должны использовать одинаковую строку подключения.");
+            }
+            if (((this._researchConfigurationsTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._researchConfigurationsTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
+                        "r, должны использовать одинаковую строку подключения.");
+            }
+            if (((this._researchsTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._researchsTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
+                        "r, должны использовать одинаковую строку подключения.");
+            }
+            if (((this._sqlite_sequenceTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._sqlite_sequenceTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
@@ -12116,22 +14501,13 @@ namespace ConsoleApp1.DataSet1TableAdapters {
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._adjacmentResearchTableAdapter != null)) {
-                    revertConnections.Add(this._adjacmentResearchTableAdapter, this._adjacmentResearchTableAdapter.Connection);
-                    this._adjacmentResearchTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(workConnection));
-                    this._adjacmentResearchTableAdapter.Transaction = ((global::System.Data.Common.DbTransaction)(workTransaction));
-                    if (this._adjacmentResearchTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._adjacmentResearchTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._adjacmentResearchTableAdapter.Adapter);
-                    }
-                }
-                if ((this._adjacmentResearchsTableAdapter != null)) {
-                    revertConnections.Add(this._adjacmentResearchsTableAdapter, this._adjacmentResearchsTableAdapter.Connection);
-                    this._adjacmentResearchsTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(workConnection));
-                    this._adjacmentResearchsTableAdapter.Transaction = ((global::System.Data.Common.DbTransaction)(workTransaction));
-                    if (this._adjacmentResearchsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._adjacmentResearchsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._adjacmentResearchsTableAdapter.Adapter);
+                if ((this.___EFMigrationsHistoryTableAdapter != null)) {
+                    revertConnections.Add(this.___EFMigrationsHistoryTableAdapter, this.___EFMigrationsHistoryTableAdapter.Connection);
+                    this.___EFMigrationsHistoryTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(workConnection));
+                    this.___EFMigrationsHistoryTableAdapter.Transaction = ((global::System.Data.Common.DbTransaction)(workTransaction));
+                    if (this.___EFMigrationsHistoryTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this.___EFMigrationsHistoryTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this.___EFMigrationsHistoryTableAdapter.Adapter);
                     }
                 }
                 if ((this._areasTableAdapter != null)) {
@@ -12143,24 +14519,6 @@ namespace ConsoleApp1.DataSet1TableAdapters {
                         adaptersWithAcceptChangesDuringUpdate.Add(this._areasTableAdapter.Adapter);
                     }
                 }
-                if ((this._dbscanResearchTableAdapter != null)) {
-                    revertConnections.Add(this._dbscanResearchTableAdapter, this._dbscanResearchTableAdapter.Connection);
-                    this._dbscanResearchTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(workConnection));
-                    this._dbscanResearchTableAdapter.Transaction = ((global::System.Data.Common.DbTransaction)(workTransaction));
-                    if (this._dbscanResearchTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._dbscanResearchTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._dbscanResearchTableAdapter.Adapter);
-                    }
-                }
-                if ((this._dbScanResearchsTableAdapter != null)) {
-                    revertConnections.Add(this._dbScanResearchsTableAdapter, this._dbScanResearchsTableAdapter.Connection);
-                    this._dbScanResearchsTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(workConnection));
-                    this._dbScanResearchsTableAdapter.Transaction = ((global::System.Data.Common.DbTransaction)(workTransaction));
-                    if (this._dbScanResearchsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._dbScanResearchsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._dbScanResearchsTableAdapter.Adapter);
-                    }
-                }
                 if ((this._elementsTableAdapter != null)) {
                     revertConnections.Add(this._elementsTableAdapter, this._elementsTableAdapter.Connection);
                     this._elementsTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(workConnection));
@@ -12170,13 +14528,22 @@ namespace ConsoleApp1.DataSet1TableAdapters {
                         adaptersWithAcceptChangesDuringUpdate.Add(this._elementsTableAdapter.Adapter);
                     }
                 }
-                if ((this._meshParamsTableAdapter != null)) {
-                    revertConnections.Add(this._meshParamsTableAdapter, this._meshParamsTableAdapter.Connection);
-                    this._meshParamsTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(workConnection));
-                    this._meshParamsTableAdapter.Transaction = ((global::System.Data.Common.DbTransaction)(workTransaction));
-                    if (this._meshParamsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._meshParamsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._meshParamsTableAdapter.Adapter);
+                if ((this._meshConfigurationsTableAdapter != null)) {
+                    revertConnections.Add(this._meshConfigurationsTableAdapter, this._meshConfigurationsTableAdapter.Connection);
+                    this._meshConfigurationsTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(workConnection));
+                    this._meshConfigurationsTableAdapter.Transaction = ((global::System.Data.Common.DbTransaction)(workTransaction));
+                    if (this._meshConfigurationsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._meshConfigurationsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._meshConfigurationsTableAdapter.Adapter);
+                    }
+                }
+                if ((this._nodeIndexesTableAdapter != null)) {
+                    revertConnections.Add(this._nodeIndexesTableAdapter, this._nodeIndexesTableAdapter.Connection);
+                    this._nodeIndexesTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(workConnection));
+                    this._nodeIndexesTableAdapter.Transaction = ((global::System.Data.Common.DbTransaction)(workTransaction));
+                    if (this._nodeIndexesTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._nodeIndexesTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._nodeIndexesTableAdapter.Adapter);
                     }
                 }
                 if ((this._nodesTableAdapter != null)) {
@@ -12195,6 +14562,33 @@ namespace ConsoleApp1.DataSet1TableAdapters {
                     if (this._pointsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._pointsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._pointsTableAdapter.Adapter);
+                    }
+                }
+                if ((this._researchConfigurationsTableAdapter != null)) {
+                    revertConnections.Add(this._researchConfigurationsTableAdapter, this._researchConfigurationsTableAdapter.Connection);
+                    this._researchConfigurationsTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(workConnection));
+                    this._researchConfigurationsTableAdapter.Transaction = ((global::System.Data.Common.DbTransaction)(workTransaction));
+                    if (this._researchConfigurationsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._researchConfigurationsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._researchConfigurationsTableAdapter.Adapter);
+                    }
+                }
+                if ((this._researchsTableAdapter != null)) {
+                    revertConnections.Add(this._researchsTableAdapter, this._researchsTableAdapter.Connection);
+                    this._researchsTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(workConnection));
+                    this._researchsTableAdapter.Transaction = ((global::System.Data.Common.DbTransaction)(workTransaction));
+                    if (this._researchsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._researchsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._researchsTableAdapter.Adapter);
+                    }
+                }
+                if ((this._sqlite_sequenceTableAdapter != null)) {
+                    revertConnections.Add(this._sqlite_sequenceTableAdapter, this._sqlite_sequenceTableAdapter.Connection);
+                    this._sqlite_sequenceTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(workConnection));
+                    this._sqlite_sequenceTableAdapter.Transaction = ((global::System.Data.Common.DbTransaction)(workTransaction));
+                    if (this._sqlite_sequenceTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._sqlite_sequenceTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._sqlite_sequenceTableAdapter.Adapter);
                     }
                 }
                 if ((this._strainNodeParametersTableAdapter != null)) {
@@ -12273,33 +14667,25 @@ namespace ConsoleApp1.DataSet1TableAdapters {
                 if (workConnOpened) {
                     workConnection.Close();
                 }
-                if ((this._adjacmentResearchTableAdapter != null)) {
-                    this._adjacmentResearchTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(revertConnections[this._adjacmentResearchTableAdapter]));
-                    this._adjacmentResearchTableAdapter.Transaction = null;
-                }
-                if ((this._adjacmentResearchsTableAdapter != null)) {
-                    this._adjacmentResearchsTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(revertConnections[this._adjacmentResearchsTableAdapter]));
-                    this._adjacmentResearchsTableAdapter.Transaction = null;
+                if ((this.___EFMigrationsHistoryTableAdapter != null)) {
+                    this.___EFMigrationsHistoryTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(revertConnections[this.___EFMigrationsHistoryTableAdapter]));
+                    this.___EFMigrationsHistoryTableAdapter.Transaction = null;
                 }
                 if ((this._areasTableAdapter != null)) {
                     this._areasTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(revertConnections[this._areasTableAdapter]));
                     this._areasTableAdapter.Transaction = null;
                 }
-                if ((this._dbscanResearchTableAdapter != null)) {
-                    this._dbscanResearchTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(revertConnections[this._dbscanResearchTableAdapter]));
-                    this._dbscanResearchTableAdapter.Transaction = null;
-                }
-                if ((this._dbScanResearchsTableAdapter != null)) {
-                    this._dbScanResearchsTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(revertConnections[this._dbScanResearchsTableAdapter]));
-                    this._dbScanResearchsTableAdapter.Transaction = null;
-                }
                 if ((this._elementsTableAdapter != null)) {
                     this._elementsTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(revertConnections[this._elementsTableAdapter]));
                     this._elementsTableAdapter.Transaction = null;
                 }
-                if ((this._meshParamsTableAdapter != null)) {
-                    this._meshParamsTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(revertConnections[this._meshParamsTableAdapter]));
-                    this._meshParamsTableAdapter.Transaction = null;
+                if ((this._meshConfigurationsTableAdapter != null)) {
+                    this._meshConfigurationsTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(revertConnections[this._meshConfigurationsTableAdapter]));
+                    this._meshConfigurationsTableAdapter.Transaction = null;
+                }
+                if ((this._nodeIndexesTableAdapter != null)) {
+                    this._nodeIndexesTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(revertConnections[this._nodeIndexesTableAdapter]));
+                    this._nodeIndexesTableAdapter.Transaction = null;
                 }
                 if ((this._nodesTableAdapter != null)) {
                     this._nodesTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(revertConnections[this._nodesTableAdapter]));
@@ -12308,6 +14694,18 @@ namespace ConsoleApp1.DataSet1TableAdapters {
                 if ((this._pointsTableAdapter != null)) {
                     this._pointsTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(revertConnections[this._pointsTableAdapter]));
                     this._pointsTableAdapter.Transaction = null;
+                }
+                if ((this._researchConfigurationsTableAdapter != null)) {
+                    this._researchConfigurationsTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(revertConnections[this._researchConfigurationsTableAdapter]));
+                    this._researchConfigurationsTableAdapter.Transaction = null;
+                }
+                if ((this._researchsTableAdapter != null)) {
+                    this._researchsTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(revertConnections[this._researchsTableAdapter]));
+                    this._researchsTableAdapter.Transaction = null;
+                }
+                if ((this._sqlite_sequenceTableAdapter != null)) {
+                    this._sqlite_sequenceTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(revertConnections[this._sqlite_sequenceTableAdapter]));
+                    this._sqlite_sequenceTableAdapter.Transaction = null;
                 }
                 if ((this._strainNodeParametersTableAdapter != null)) {
                     this._strainNodeParametersTableAdapter.Connection = ((global::Devart.Data.SQLite.SQLiteConnection)(revertConnections[this._strainNodeParametersTableAdapter]));
