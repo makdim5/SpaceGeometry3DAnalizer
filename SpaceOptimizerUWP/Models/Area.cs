@@ -25,13 +25,13 @@ namespace SpaceOptimizerUWP.Models
             elements = new();
         }
 
-        public Area(HashSet<Node> nodes):this()
+        public Area(HashSet<Node> nodes) : this()
         {
             this.nodes = nodes;
             dimensions = DefineDimensions();
         }
 
-        public Area(HashSet<Element> elements):this()
+        public Area(HashSet<Element> elements) : this()
         {
             this.elements = elements;
         }
@@ -44,7 +44,7 @@ namespace SpaceOptimizerUWP.Models
                  minY = nodes.First().point.y, maxY = nodes.First().point.y,
                  minZ = nodes.First().point.z, maxZ = nodes.First().point.z;
 
-            foreach(Node node in nodes)
+            foreach (Node node in nodes)
             {
                 if (minX > node.point.x)
                 {
@@ -87,7 +87,7 @@ namespace SpaceOptimizerUWP.Models
 
             };
             Volume = Math.Abs(dims["minX"] - dims["maxX"]) * Math.Abs(dims["minY"] - dims["maxY"]) * Math.Abs(dims["minZ"] - dims["maxZ"]);
-           
+
             return dims;
 
         }
@@ -95,7 +95,7 @@ namespace SpaceOptimizerUWP.Models
         public double DefineAreaRadiusThroughDimensions()
         {
             var dims = DefineDimensions();
-            var minLengths = new List<double>() 
+            var minLengths = new List<double>()
             {
                 Math.Abs(dims["maxX"] - dims["minX"]),
                 Math.Abs(dims["maxY"] - dims["minY"]),
@@ -118,8 +118,18 @@ namespace SpaceOptimizerUWP.Models
                     areaNodes.UnionWith(element.vertexNodes);
                 }
             }
-            
+
             return areaNodes;
+        }
+
+        public List<List<double>> GetCoordsToChart()
+        {
+            return new List<List<double>>()
+            {
+                nodes.ToList().Select(item => item.point.x).ToList(),
+                nodes.ToList().Select(item => item.point.y).ToList(),
+                nodes.ToList().Select(item => item.point.z).ToList()
+            };
         }
 
         public override string ToString()
