@@ -124,8 +124,7 @@ namespace SpaceOptimizerUWP.Models
 
         public override string ToString()
         {
-            string res = $"ElementArea nodes count - {nodes.Count()}," +
-                $" elements count  - {elements.Count()}";
+            string res = $"Область - {Id}";
 
             return res;
         }

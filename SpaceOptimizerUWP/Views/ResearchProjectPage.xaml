@@ -17,9 +17,10 @@
         <Grid Background="Transparent"  Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center">
             <TextBlock HorizontalAlignment="Left" Grid.Column="0" TextAlignment="Center" Margin="10" Text="{x:Bind model.Title}" x:Name="headerBlock" FontSize="35"
                        Style="{ThemeResource HeaderTextBlockStyle}" />
-            <CommandBar HorizontalAlignment="Right" Grid.Column="1" IsOpen="False" DefaultLabelPosition="Right">
+            <TextBlock Grid.Column="1" TextAlignment="Center" x:Name="pathTb"  Text="{x:Bind model.FilePath}" ></TextBlock>
+            <CommandBar HorizontalAlignment="Right" Grid.Column="2" IsOpen="False" DefaultLabelPosition="Right">
                 <AppBarButton Icon="Play" Label="Запуск" Click="AppBarButton_Click"/>
-                <AppBarButton Icon="BrowsePhotos" Label="Об исследовании"/>
+                <AppBarButton Icon="BrowsePhotos" Label="Об исследовании" Click="AppBarButton_Click_2"/>
                 <AppBarButton Icon="Delete" Label="Удалить" Click="AppBarButton_Click_1"/>
                
             </CommandBar>

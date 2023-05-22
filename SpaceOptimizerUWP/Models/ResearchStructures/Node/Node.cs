@@ -31,6 +31,8 @@ namespace SpaceOptimizerUWP.Models
                 point.y,
                 point.z);
 
+            text += "\nStrain:\n" + strain.ToString() + "\nStress:\n" + stress.ToString();
+
             return text;
         }
 

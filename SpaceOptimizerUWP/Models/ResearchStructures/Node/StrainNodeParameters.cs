@@ -77,12 +77,7 @@ namespace SpaceOptimizerUWP.Models
 
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            foreach (var param in this.GetParameters())
-            {
-                sb.AppendLine(param.ToString());
-            }
-            return sb.ToString();
+            return string.Join(",\n", Extensions.GetDictString(param));
         }
     }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SpaceOptimizerUWP.Models
 {
@@ -44,6 +45,13 @@ namespace SpaceOptimizerUWP.Models
                 {"squeezeCoef", squeezeCoef },
                 {"nodesIntersectionAmount", nodesIntersectionAmount }
             };
+        }
+
+        public override string ToString()
+        {
+            var dict = ToJsonDict();
+            dict["meshParams"] = meshParams;
+            return string.Join(",\n", Extensions.GetDictString(dict));
         }
 
         public string DetermineType()

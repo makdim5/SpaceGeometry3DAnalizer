@@ -66,5 +66,10 @@ namespace SpaceOptimizerUWP.Views
             }
 
         }
+
+        private void AppBarButton_Click_2(object sender, RoutedEventArgs e)
+        {
+            Message.Show(model.Research.ToString(), Frame.XamlRoot, "Параметры исследования");
+        }
     }
 }

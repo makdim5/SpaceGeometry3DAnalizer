@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SpaceOptimizerUWP.Models
 {
@@ -120,5 +121,22 @@ namespace SpaceOptimizerUWP.Models
                     $" but given {saveSettingsWithoutMeshing}!");
             }
         }
+
+        public override string ToString()
+        {
+            return string.Join(",\n", Extensions.GetDictString(ToJsonDict()));
+        }
+
+        
     }
+
+    public static class Extensions
+    {
+        public static string GetDictString<K, V>(this IDictionary<K, V> dict)
+        {
+            var items = dict.Select(kvp => kvp.ToString());
+            return string.Join(",\n", items);
+        }
+    }
+
 }
