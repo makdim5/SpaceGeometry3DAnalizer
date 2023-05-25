@@ -40,6 +40,10 @@ namespace SpaceOptimizerUWP.Views
         {
             model = (ResearchDbModel)e.Parameter;
             areas = model.Areas;
+            for (int i = 0; i < areas.Count; i++)
+            {
+                areas[i].areaName = $"Область -  {i}";
+            }
             areasList.ItemsSource = areas;
         }
 
@@ -86,11 +90,11 @@ namespace SpaceOptimizerUWP.Views
             nodesList.ItemsSource = nodes;
         }
 
-        private void nodesList_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            Node clickedNode = (Node)e.ClickedItem;
-            Message.Show(clickedNode.ToString(), Frame.XamlRoot, $"Информация об узле #{clickedNode.number}");
-        }
+        //private void nodesList_ItemClick(object sender, ItemClickEventArgs e)
+        //{
+        //    Node clickedNode = (Node)e.ClickedItem;
+        //    Message.Show(clickedNode.ToString(), Frame.XamlRoot, $"Информация об узле #{clickedNode.number}");
+        //}
 
         private async void AppBarButton_Click_3(object sender, RoutedEventArgs e)
         {

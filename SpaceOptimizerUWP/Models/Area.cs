@@ -13,6 +13,8 @@ namespace SpaceOptimizerUWP.Models
 
         public Point3D areaCenter;
 
+        public string areaName;
+
         public double maxRadius { get; set; }
 
         public Dictionary<string, double> dimensions;
