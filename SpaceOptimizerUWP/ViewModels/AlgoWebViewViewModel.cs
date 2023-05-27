@@ -12,7 +12,7 @@ namespace SpaceOptimizerUWP.ViewModels
     public class AlgoWebViewViewModel : ObservableObject
     {
         // TODO: Set the URI of the page to show by default
-        private const string DefaultUrl = "https://sites.google.com/view/makmath/%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F";
+        private const string DefaultUrl = "https://sites.google.com/view/makmath/%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D1%8B";
 
         private Uri _source;
 

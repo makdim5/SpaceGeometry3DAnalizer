@@ -198,7 +198,7 @@
     <comment>About this application title for Settings</comment>
   </data>
   <data name="Settings_AboutDescription.Text" xml:space="preserve">
-    <value>Текст заполнителя страницы настроек. Здесь находится описание вашего приложения.</value>
+    <value>Данное приложение предназначено для автоматизации конструирования ячеистых структур на основе многовариантного инженерного анализа детали. Программу создал студент группы 10701119 Маканов Дмитрий.</value>
     <comment>About this application description for Settings</comment>
   </data>
   <data name="Settings_PrivacyTermsLink.Content" xml:space="preserve">

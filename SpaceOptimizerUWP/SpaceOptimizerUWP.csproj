@@ -307,6 +307,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="README.md" />
     <None Include="SpaceOptimizerUWP_TemporaryKey.pfx" />
     <PRIResource Include="Strings\ru-ru\Resources.resw" />

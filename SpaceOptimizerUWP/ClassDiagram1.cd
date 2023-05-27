@@ -1,0 +1,401 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SpaceOptimizerUWP.Activation.ActivationHandler" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Activation\ActivationHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Activation.ActivationHandler&lt;T&gt;" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAACAAAAAAAAAAAAEIAAAAA=</HashCode>
+      <FileName>Activation\ActivationHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Activation.DefaultActivationHandler" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAEIAAAAA=</HashCode>
+      <FileName>Activation\DefaultActivationHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.App" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQBAAAIAAAAAAAAAAABAAASAAAAAIAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Behaviors.NavigationViewHeaderBehavior" Collapsed="true">
+    <Position X="14.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BEAAAAAAFEUAAAAEAAACoBIABAgAAAAAAABABCAAIAA=</HashCode>
+      <FileName>Behaviors\NavigationViewHeaderBehavior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Helpers.DataRequestExtensions" Collapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAABAAAAAAAAAAAAAAAAAAAAAACAAAAAAAQAAAA=</HashCode>
+      <FileName>Helpers\DataRequestExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Helpers.EnumToBooleanConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Helpers\EnumToBooleanConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Helpers.NavHelper" Collapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\NavHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Helpers.ResourceExtensions" Collapsed="true">
+    <Position X="18" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\ResourceExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Helpers.SettingsStorageExtensions" Collapsed="true">
+    <Position X="11" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAACAAAAwIgQAAAIAAEAAAAAAAA=</HashCode>
+      <FileName>Helpers\SettingsStorageExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Core.Helpers.Json" Collapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\Json.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Core.Helpers.Singleton&lt;T&gt;" Collapsed="true">
+    <Position X="9.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\Singleton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Models.Area" Collapsed="true">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgCAAgQAAAAABAEAhBAAIAAAAAAAAAAAAIAAACAIAA=</HashCode>
+      <FileName>Models\Area.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Models.ResearchDbContext" Collapsed="true">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgACAAAQAAgAABgAAQAAAAAACAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Models\DbModels\ResearchDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Models.ResearchDbModel" Collapsed="true">
+    <Position X="12.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAEAAAAAAAAAAAACAAAAABABAAAAAAAA=</HashCode>
+      <FileName>Models\DbModels\ResearchDbModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Models.Point3D" Collapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEgAAAAAAAAAAAAIAAAABgAQAAAiA=</HashCode>
+      <FileName>Models\Point3D.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Models.BaseResearch" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIIAAAAAAAQCEAAAAAEAEDAAAAQAAAAIgAAACAAE=</HashCode>
+      <FileName>Models\ResearchStructures\BaseResearch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Models.ResearchType" Collapsed="true">
+    <Position X="16.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Models\ResearchStructures\Constants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Models.CutType" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAABgAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ResearchStructures\Constants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Models.FigureCutType" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAgAAAAAABAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ResearchStructures\Constants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Models.NodeCutWay" Collapsed="true">
+    <Position X="18" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAIAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ResearchStructures\Constants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Models.CutConfig" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAIAAAAAAAAAAAAABAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Models\ResearchStructures\CutConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Models.Element" Collapsed="true">
+    <Position X="14.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgCAAAAAAAAQAAEAAAAAAAAAAAAAIAAAAIAAAQQIAA=</HashCode>
+      <FileName>Models\ResearchStructures\Element\Element.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Models.NodeIndex" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ResearchStructures\Element\NodeIndex.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Models.MeshParams" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAgAAAACAABMIIAIAAAADAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ResearchStructures\MeshParams.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Models.Extensions" Collapsed="true">
+    <Position X="18" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Models\ResearchStructures\MeshParams.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Models.Node" Collapsed="true">
+    <Position X="16.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAACAACAAQAAEgAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Models\ResearchStructures\Node\Node.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Models.StrainNodeParameters" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEACAAAAAAAOAAAEgAAAAAAkBAAAgAAQAAAAgAkAAAA=</HashCode>
+      <FileName>Models\ResearchStructures\Node\StrainNodeParameters.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Models.StressNodeParameters" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAIwAAEAqAAAEAAAAAQAAAACIgAAAAAAAgAAAAgA=</HashCode>
+      <FileName>Models\ResearchStructures\Node\StressNodeParameters.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Models.ShareSourceData" Collapsed="true">
+    <Position X="14.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAEAAAgCEAAAIAAAAEQAAAAAAAAAAAAAAQCAAA=</HashCode>
+      <FileName>Models\ShareSourceData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Models.ShareSourceItem" Collapsed="true">
+    <Position X="16.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAhIABAAAAAJAAQAAAAgABJAEAAAQSAAAAEA=</HashCode>
+      <FileName>Models\ShareSourceItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Services.ActivationService" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EgAAAAAAAAAAAAAIAAAAAAAAAEAAIAEAAgAAACABgAA=</HashCode>
+      <FileName>Services\ActivationService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Services.BackConnectorService" Collapsed="true">
+    <Position X="18" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAKAAAAAEAAAAAACAAFAQAAEAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Services\BackConnectorService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Services.FirstRunDisplayService" Collapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Services\FirstRunDisplayService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Services.HttpDataService" Collapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAgAAAACAAAAAAAgQAAAAAAAAAAAAJACAAIA=</HashCode>
+      <FileName>Services\HttpDataService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Services.LiveTileService" Collapsed="true">
+    <Position X="5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQEAAAAAgAGQAQAAAAAAAAAIAAQAAAAAAAEIAAAAA=</HashCode>
+      <FileName>Services\LiveTileService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Services.Message" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAABAAAAAAAAAAAAAAAAAAAAAAEAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Services\Message.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Services.NavigationService" Collapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAgAAAAAACRAAABAAAIAEAAAAQgAABQAE=</HashCode>
+      <FileName>Services\NavigationService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Services.ThemeSelectorService" Collapsed="true">
+    <Position X="14.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EIAAAAAAAAAAAICQAAAAAAAAAAAIAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Services\ThemeSelectorService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Services.ToastNotificationsService" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAIAABAA=</HashCode>
+      <FileName>Services\ToastNotificationsService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.ViewModels.AlgoWebViewViewModel" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUBgjAAAkCAAQJAgAgIAAAgAEQAEAIAAAAECgAAIBY=</HashCode>
+      <FileName>ViewModels\AlgoWebViewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.ViewModels.MainViewModel" Collapsed="true">
+    <Position X="18" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\MainViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.ViewModels.SettingsViewModel" Collapsed="true">
+    <Position X="12.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAAAAAAAAAAAAAEAAAAAAAAABEAAAAAAAAAAKAAAAAE=</HashCode>
+      <FileName>ViewModels\SettingsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.ViewModels.ShellViewModel" Collapsed="true">
+    <Position X="7.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CgAAACAQAAAAAQAAcgACAkAADAAAABEQAQAAgQAAAAI=</HashCode>
+      <FileName>ViewModels\ShellViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Views.AddResearchProjectPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAACIAAAQABAAAAAAAAAAEEAAIAAAEAAAAAAAAIAAA=</HashCode>
+      <FileName>Views\AddResearchProjectPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Views.AlgoWebViewPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\AlgoWebViewPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Views.FirstRunDialog" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\FirstRunDialog.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Views.MainPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAGAAAAAAAQEAEAAAAAACAAAAAIAAAAA=</HashCode>
+      <FileName>Views\MainPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Views.ResearchProjectPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAIQECAAgEAAAAAAACAAIIAA=</HashCode>
+      <FileName>Views\ResearchProjectPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Views.RunPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>wAACAAAAAAAAAAAAAAAAAIQAAAAAAAEAQAAAAAAIAAA=</HashCode>
+      <FileName>Views\RunPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Views.SettingsPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\SettingsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SpaceOptimizerUWP.Views.ShellPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ShellPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="SpaceOptimizerUWP.Models.IParameters" Collapsed="true">
+    <Position X="7.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Models\ResearchStructures\Node\IParameters.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="SpaceOptimizerUWP.Behaviors.NavigationViewHeaderMode" Collapsed="true">
+    <Position X="7.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAEAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Behaviors\NavigationViewHeaderMode.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SpaceOptimizerUWP.Models.ShareSourceItemType" Collapsed="true">
+    <Position X="9.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAQAAAAAABBAAAAAACgAAAEA=</HashCode>
+      <FileName>Models\ShareSourceItem.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

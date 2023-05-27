@@ -131,7 +131,7 @@ namespace SolidServer.Utitlites
                             }
                             else if (managerType == "adjacmentElements")
                             {
-                                manager = new SolidWorksResearchManager(managerConfig, cutConfig);
+                                manager = new AdjacentElementsResearchManager(managerConfig, cutConfig);
                                 sendresult = "ok";
                                 Console.WriteLine($"Выбран менеджер {managerType}!");
                             }

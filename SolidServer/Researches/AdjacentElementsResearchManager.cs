@@ -8,9 +8,11 @@ using SolidServer.SolidWorksPackage.ResearchPackage;
 
 namespace SolidServer.Researches
 {
-    public class SolidWorksResearchManager : BaseResearchManager
+    public class AdjacentElementsResearchManager : BaseResearchManager
     {
-        public SolidWorksResearchManager(Dictionary<string, object> clasteringConfiguration, Dictionary<string, string> cutConfiguration) : base(clasteringConfiguration, cutConfiguration) { }
+        public AdjacentElementsResearchManager(Dictionary<string, object> clasteringConfiguration,
+            Dictionary<string, string> cutConfiguration) : base(clasteringConfiguration,
+                cutConfiguration) { }
         public override List<Area> DefineAreas()
         {
             // поиск областей по смежным элементам

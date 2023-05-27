@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SolidServer.AreaWorkPackage.Area">
+    <Position X="11.25" Y="1.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAgAAAgAAAgAABAEIgBABIAAAAAAAIAAAAIAAASAIAA=</HashCode>
+      <FileName>AreaWorkPackage\Area.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.AreaWorkPackage.AreaWorker" Collapsed="true">
+    <Position X="19.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAQDAAAACgAAACAAAEACYAIABBAAAAIAA=</HashCode>
+      <FileName>AreaWorkPackage\AreaWorker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApp1.DataSet1" Collapsed="true">
+    <Position X="22.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BYBgECwAEw1AgAJJxAAZRAAAARiSQBgIBGCAKSEgBBQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApp1.DataSet1TableAdapters.@__EFMigrationsHistoryTableAdapter" Collapsed="true">
+    <Position X="14" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApp1.DataSet1TableAdapters.AreasTableAdapter" Collapsed="true">
+    <Position X="17.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApp1.DataSet1TableAdapters.ElementsTableAdapter" Collapsed="true">
+    <Position X="14" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApp1.DataSet1TableAdapters.MeshConfigurationsTableAdapter" Collapsed="true">
+    <Position X="19.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApp1.DataSet1TableAdapters.NodeIndexesTableAdapter" Collapsed="true">
+    <Position X="22.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApp1.DataSet1TableAdapters.NodesTableAdapter" Collapsed="true">
+    <Position X="24.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApp1.DataSet1TableAdapters.PointsTableAdapter" Collapsed="true">
+    <Position X="19.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApp1.DataSet1TableAdapters.ResearchConfigurationsTableAdapter" Collapsed="true">
+    <Position X="22.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApp1.DataSet1TableAdapters.ResearchsTableAdapter" Collapsed="true">
+    <Position X="24.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApp1.DataSet1TableAdapters.sqlite_sequenceTableAdapter" Collapsed="true">
+    <Position X="22.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApp1.DataSet1TableAdapters.StrainNodeParametersTableAdapter" Collapsed="true">
+    <Position X="19.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApp1.DataSet1TableAdapters.StressNodeParametersTableAdapter" Collapsed="true">
+    <Position X="22.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApp1.DataSet1TableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="14" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gQwCAiAAAABABAkBQAAAMAMiAAQGwAIEAQQBAIIABRQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.MainProgramm" Collapsed="true">
+    <Position X="22.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAABAAAABA=</HashCode>
+      <FileName>Main.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleApp1.Properties.Settings" Collapsed="true">
+    <Position X="15.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAACAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.Researches.AdjacentElementsResearchManager">
+    <Position X="0.5" Y="3.5" Width="2.75" />
+    <InheritanceLine Type="SolidServer.Researches.BaseResearchManager" FixedToPoint="true">
+      <Path>
+        <Point X="3.75" Y="4.188" />
+        <Point X="3.25" Y="4.188" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Researches\AdjacentElementsResearchManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.Researches.BaseResearchManager">
+    <Position X="3.75" Y="1.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAACBAAAAAASIAkAACAJAIAAgEQAAAAACABgCEAAQAg=</HashCode>
+      <FileName>Researches\BaseResearchManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.Researches.DbScanResearchManger">
+    <Position X="7.25" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Researches\DbScanResearchManger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.SolidWorksPackage.Cells.Parallelepiped" Collapsed="true">
+    <Position X="17.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AHAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAHAAAAA=</HashCode>
+      <FileName>SolidWorksPackage\DrawPackage\CellForms\Parallelepiped.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.SolidWorksPackage.Cells.PyramidFourVertexArea" Collapsed="true">
+    <Position X="21" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SolidWorksPackage\DrawPackage\CellForms\PyramidFourVertexArea.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.SolidWorksPackage.Cells.Sphere" Collapsed="true">
+    <Position X="21" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>SolidWorksPackage\DrawPackage\CellForms\Sphere.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.SolidWorksPackage.SolidWorksDrawer" Collapsed="true">
+    <Position X="19.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAgAAAAAJAAAAAAAACAAAAAAAABCAEAAAgAAI=</HashCode>
+      <FileName>SolidWorksPackage\DrawPackage\SolidWorksDrawer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.SolidWorksPackage.ResearchPackage.FacePlane" Collapsed="true">
+    <Position X="19" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>SolidWorksPackage\ResearchPackage\FeatureFace\FacePlane.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.SolidWorksPackage.ResearchPackage.FeatureFace" Collapsed="true">
+    <Position X="17.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAABAAAIAAgAAEAAAAAAAAIAYFAACAAAgAQAAAAAA=</HashCode>
+      <FileName>SolidWorksPackage\ResearchPackage\FeatureFace\FeatureFace.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.SolidWorksPackage.ResearchPackage.FeatureFaceManager" Collapsed="true">
+    <Position X="19.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAABAAACAAAAAAEAAAEAAAAAACIAACAAAAgBAA=</HashCode>
+      <FileName>SolidWorksPackage\ResearchPackage\FeatureFace\FeatureFaceManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.SolidWorksPackage.ResearchPackage.Material" Collapsed="true">
+    <Position X="24.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAEAAAAAAAAAAAEAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>SolidWorksPackage\ResearchPackage\MaterialWorker\Material.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.SolidWorksPackage.ResearchPackage.MaterialManager" Collapsed="true">
+    <Position X="14" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>YAQAAEAAgAACGAAgAAAAAAUBAACQAQAAAABAQBAEAAA=</HashCode>
+      <FileName>SolidWorksPackage\ResearchPackage\MaterialWorker\MaterialManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.SolidWorksPackage.ResearchPackage.Mesh" Collapsed="true">
+    <Position X="17.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAIAAAAAAAAAAAAgAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>SolidWorksPackage\ResearchPackage\MeshWorker\Mesh.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.SolidWorksPackage.ResearchPackage.Element" Collapsed="true">
+    <Position X="24.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAIAAAAQAAEAAAAAAAAAAAAAAAQAAIAAAQQIAE=</HashCode>
+      <FileName>SolidWorksPackage\ResearchPackage\ResearchStructures\Element\Element.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.SolidWorksPackage.ResearchPackage.Node" Collapsed="true">
+    <Position X="21" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAACAAQAAEgAAAAAAAAAAAAIAAAAAAAACAAAA=</HashCode>
+      <FileName>SolidWorksPackage\ResearchPackage\ResearchStructures\Node\Node.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.SolidWorksPackage.ResearchPackage.StrainNodeParameters" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAOAAAEgAAAAAAkBAAAgAAQAAAAgAkAAAA=</HashCode>
+      <FileName>SolidWorksPackage\ResearchPackage\ResearchStructures\Node\StrainNodeParameters.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SolidServer.SolidWorksPackage.ResearchPackage.StressNodeParameters" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIwAAEAqAAAEAAAAAQAAAACIgAAAAAAAgAAAAgA=</HashCode>
+      <FileName>SolidWorksPackage\ResearchPackage\ResearchStructures\Node\StressNodeParameters.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SolidServer.SolidWorksPackage.ResearchPackage.StaticStudy" Collapsed="true">
+    <Position X="24.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAGABIAIAAAAAAAAgAAgAgAAAQBAEQAEEQAACFAAEQ=</HashCode>
+      <FileName>SolidWorksPackage\ResearchPackage\Study\StaticStudy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.SolidWorksPackage.ResearchPackage.StaticStudyRecord" Collapsed="true">
+    <Position X="14" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAEAEAAAAAAAAAAABAAAIAAAAAABBAAA=</HashCode>
+      <FileName>SolidWorksPackage\ResearchPackage\Study\StaticStudyRecord.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.SolidWorksPackage.ResearchPackage.StaticStudyResults" Collapsed="true">
+    <Position X="15.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAEEAAAAgAEAACQAAAAAAADAAQAAAAAAAAUoCA=</HashCode>
+      <FileName>SolidWorksPackage\ResearchPackage\Study\StaticStudyResults.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.SolidWorksPackage.ResearchPackage.StudyManager" Collapsed="true">
+    <Position X="24.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAFAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAhAAAAAgAA=</HashCode>
+      <FileName>SolidWorksPackage\ResearchPackage\Study\StudyManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.SolidWorksApplicationPackage.NotSWAppFoundException" Collapsed="true">
+    <Position X="14" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SolidWorksPackage\SolidWorksApplicationPackage\AppWorkExeptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.SolidWorksApplicationPackage.NotSWDocumentFoundException" Collapsed="true">
+    <Position X="15.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SolidWorksPackage\SolidWorksApplicationPackage\AppWorkExeptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.SolidWorksApplicationPackage.RotManager" Collapsed="true">
+    <Position X="14" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIIAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>SolidWorksPackage\SolidWorksApplicationPackage\ROTManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.SolidWorksApplicationPackage.SolidWorksAppWorker" Collapsed="true">
+    <Position X="17.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAIAAAAAAAAAAAAAACYAAAAGAAAAAAEACAABAAAAAA=</HashCode>
+      <FileName>SolidWorksPackage\SolidWorksApplicationPackage\SolidWorksAppWorker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.Utitlites.ConnectionWorker" Collapsed="true">
+    <Position X="21" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAKAAAFgYACAAAQAEAAAFAEAECgEAAiAAAQAAEQAAI=</HashCode>
+      <FileName>Utilites\ConnectionWorker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.Utitlites.ExcelWorker" Collapsed="true">
+    <Position X="15.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilites\DataFormatUtils\ExcelWorker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.Utitlites.JsonWorker" Collapsed="true">
+    <Position X="21" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAQAAAAAAAACAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilites\DataFormatUtils\JsonWorker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.Utitlites.MathHelper" Collapsed="true">
+    <Position X="15.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAgAAAAAAAAAAAgAAAAAAAEAAACAAAgAABAAAAAA=</HashCode>
+      <FileName>Utilites\Maths\MathObjects.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SolidServer.Utitlites.SimplePlane" Collapsed="true">
+    <Position X="19" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAApAEAAAA=</HashCode>
+      <FileName>Utilites\Maths\SimplePlane.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="SolidServer.Utitlites.Point3D" Collapsed="true">
+    <Position X="14" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAAAAAAIAAAABgAQAAAiA=</HashCode>
+      <FileName>Utilites\Maths\MathObjects.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SolidServer.Utitlites.Vector3D" Collapsed="true">
+    <Position X="15.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAQAAAAA=</HashCode>
+      <FileName>Utilites\Maths\MathObjects.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="SolidServer.SolidWorksPackage.ResearchPackage.IParameters" Collapsed="true">
+    <Position X="14" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAgAAAAAA=</HashCode>
+      <FileName>SolidWorksPackage\ResearchPackage\ResearchStructures\Node\IParameters.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="SolidServer.SolidWorksPackage.ResearchPackage.FaceType" Collapsed="true">
+    <Position X="14" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>SolidWorksPackage\ResearchPackage\FeatureFace\FaceType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

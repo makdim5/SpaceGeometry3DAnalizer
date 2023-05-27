@@ -163,7 +163,7 @@
     <Compile Include="SolidWorksPackage\ResearchPackage\Study\StudyManager.cs" />
     <Compile Include="SolidWorksPackage\SolidWorksApplicationPackage\SolidWorksAppWorker.cs" />
     <Compile Include="SolidWorksPackage\DrawPackage\SolidWorksDrawer.cs" />
-    <Compile Include="Researches\SolidWorksResearchManager.cs" />
+    <Compile Include="Researches\AdjacentElementsResearchManager.cs" />
     <Compile Include="Utilites\ConnectionWorker.cs" />
     <Compile Include="Utilites\DataFormatUtils\ExcelWorker.cs" />
     <Compile Include="Utilites\DataFormatUtils\JsonWorker.cs" />
@@ -172,6 +172,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>

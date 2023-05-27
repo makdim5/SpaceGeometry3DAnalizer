@@ -66,7 +66,7 @@ namespace SolidServer
                 {"figureType", "rect" }
             };
             //var manager = new DbScanResearchManger(dbscanCusteringConfiguration, cutConfiguration);
-            var manager = new SolidWorksResearchManager(elementCusteringConfiguration, cutConfiguration);
+            var manager = new AdjacentElementsResearchManager(elementCusteringConfiguration, cutConfiguration);
 
             manager.RunInLoop();
             Console.WriteLine("Выполнение программы завершено!");
