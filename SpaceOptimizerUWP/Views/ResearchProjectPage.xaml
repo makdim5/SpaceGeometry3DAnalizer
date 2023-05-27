@@ -32,7 +32,7 @@
                 <AppBarButton x:Name="chartBtn" Icon="StopSlideShow" Label="Показать график" Click="AppBarButton_Click_3"/>
                 <AppBarButton Label="Экспорт в Excel" Icon="ImportAll" Click="AppBarButton_Click_5"  />
                 <AppBarButton Icon="BrowsePhotos" Label="Об исследовании" Click="AppBarButton_Click_2"/>
-                <AppBarButton Label="Нариcовать области" Icon="OutlineStar" Click="AppBarButton_Click_6"  />
+                <AppBarButton Label="Вырезать области" Icon="OutlineStar" Click="AppBarButton_Click_6"  />
                 <AppBarButton Label="Удалить области" Icon="Clear" Click="AppBarButton_Click_7"  />
                 <AppBarButton Icon="Delete" Label="Удалить" Click="AppBarButton_Click_1"/>
                 

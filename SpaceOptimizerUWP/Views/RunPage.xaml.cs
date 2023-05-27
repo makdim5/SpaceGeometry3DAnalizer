@@ -34,7 +34,11 @@ namespace SpaceOptimizerUWP.Views
                 model = (ResearchDbModel)params_[0];
                 if ((int)params_[1] == 0)
                 {
-                    model.Areas = new List<Area>();
+                    if (model.Areas == null)
+                    {
+                        model.Areas = new List<Area>();
+                    }
+                    
                     nextBtn.Click += nextBtn_Click;
 
                 }
