@@ -48,7 +48,7 @@
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" TextAlignment="Center" Margin="10"  x:Name="headerBlock" Text = "Проекты по работе с исследованиями" FontSize="35"
                        Style="{ThemeResource HeaderTextBlockStyle}" />
-                    <Grid Grid.Row="1">
+                    <Grid Grid.Row="1" Margin="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="*"/>
@@ -68,7 +68,7 @@
                         </StackPanel>
                     </Grid>
 
-                    <ListView IsItemClickEnabled="True" ItemClick="researchesList_ItemClick" Grid.Row="2" x:Name="researchesList" Margin="20">
+                    <ListView IsItemClickEnabled="True" ItemClick="researchesList_ItemClick" Grid.Row="2" x:Name="researchesList" Margin="10">
                         <ListView.ItemTemplate >
                             <DataTemplate x:DataType="models:ResearchDbModel">
                                 <Grid Height="70" Margin="20">

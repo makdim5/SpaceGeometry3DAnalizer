@@ -114,13 +114,6 @@ namespace SpaceOptimizerUWP.Views
             nodes = clickedArea.nodes;
             nodesList.ItemsSource = nodes;
         }
-
-        //private void nodesList_ItemClick(object sender, ItemClickEventArgs e)
-        //{
-        //    Node clickedNode = (Node)e.ClickedItem;
-        //    Message.Show(clickedNode.ToString(), Frame.XamlRoot, $"Информация об узле #{clickedNode.number}");
-        //}
-
         private async void AppBarButton_Click_3(object sender, RoutedEventArgs e)
         {
             if (areas == null)
