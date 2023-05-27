@@ -45,12 +45,15 @@ namespace SolidServer.Researches
             {
                 GetCompletedStudyResults(); // получить результаты выполненного исследования
                 DefineCriticalNodes(); // определение критических точек
-                DetermineCutAreas(); // опре
+                DetermineCutAreas(); // определение областей
+
+                // цикл идет пока не будут найдены критические точки
+                // или система не сможет сформировать область из полученных точек
                 while (crashNodes.Count() == 0 && cutAreas.Count() > 0)
                 {
-                    CutAreas();
-                    RunStudy();
-                    GetCompletedStudyResults(); // получить результаты выполненного исследования
+                    CutAreas(); // вырез областей
+                    RunStudy();  // повторный запуск исследования
+                    GetCompletedStudyResults();
                     DefineCriticalNodes();
                     DetermineCutAreas();
                 }
