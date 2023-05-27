@@ -5,6 +5,7 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
 {
     public class StrainNodeParameters : IParameters
     {
+        public int Id;
         public readonly float EPSx;
         public readonly float EPSy;
         public readonly float EPSz;

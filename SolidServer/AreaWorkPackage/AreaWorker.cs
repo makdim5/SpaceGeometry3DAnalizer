@@ -295,40 +295,54 @@ namespace SolidServer.AreaWorkPackage
                     else if (configuration["figureType"] == "sphere")
                     {
 
-                        var sphere = new Sphere(area.DefineAreaCenterThroughNodes(), area.DefineAreaRadiusThroughDimensions());
+                        var sphere = new Sphere(area.DefineAreaCenterThroughNodes(), area.DefineAreaRadiusThroughDimensions() / 1000);
                         features.Add(SolidWorksDrawer.CutSphiere(doc, sphere));
                     }
 
                 }
                 else if (configuration["nodeCutWay"] == "ravn")
                 {
-                    if (configuration["figureType"] == "cube")
-                    {
-                        var cubesCenters = MathHelper.DetermineCentersPerArea(
-                            areaDimensions,
-                            Convert.ToInt32(configuration["xAmount"]),
-                            Convert.ToInt32(configuration["yAmount"]),
-                            Convert.ToInt32(configuration["zAmount"]));
 
-                        var minLenghts = new List<double>()
+                    configuration["xAmount"] = "2";
+                    configuration["yAmount"] = "2";
+                    configuration["zAmount"] = "2";
+                    var cubesCenters = MathHelper.DetermineCentersPerArea(
+                        areaDimensions,
+                        Convert.ToInt32(configuration["xAmount"]),
+                        Convert.ToInt32(configuration["yAmount"]),
+                        Convert.ToInt32(configuration["zAmount"]));
+
+                    var minLenghts = new List<double>()
                         {
                             Math.Abs(areaDimensions["maxX"] - areaDimensions["minX"]) / Convert.ToInt32(configuration["xAmount"]),
                             Math.Abs(areaDimensions["maxY"] - areaDimensions["minY"]) / Convert.ToInt32(configuration["yAmount"]),
                             Math.Abs(areaDimensions["maxZ"] - areaDimensions["minZ"]) / Convert.ToInt32(configuration["zAmount"]),
                         };
-                        foreach (var point in cubesCenters)
+                    foreach (var point in cubesCenters)
+                    {
+                        try
                         {
-                            try
+                            if (configuration["figureType"] == "rect")
                             {
-
-                                features.Add(SolidWorksDrawer.CutCube(doc, point.x, point.y, point.z, minLenghts.Average()));
-                            }
-                            catch
+                                var parralellepiped = new Parallelepiped(point.x - minLenghts.Min(),
+                           point.y - minLenghts.Min(),
+                           point.z - minLenghts.Min(),
+                           point.x + minLenghts.Min(),
+                           point.y + minLenghts.Min(),
+                           point.z + minLenghts.Min());
+                                features.Add(SolidWorksDrawer.CutParallelepiped(doc, parralellepiped));
+                            } else if (configuration["figureType"] == "sphere")
                             {
-
+                                var sphere = new Sphere(point, minLenghts.Min() / 1000);
+                                features.Add(SolidWorksDrawer.CutSphiere(doc, sphere));
                             }
                         }
+                        catch
+                        {
+
+                        }
                     }
+
                 }
             }
             else if (configuration["cutType"] == "point")

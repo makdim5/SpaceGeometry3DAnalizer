@@ -21,7 +21,10 @@ namespace SpaceOptimizerUWP.Models
 
         private Dictionary<string, float> param;
         // показатели по деформации
+
+        public StrainNodeParameters() { }
         public StrainNodeParameters(
+            int id,
             float EPSx,
             float EPSy,
             float EPSz,
@@ -35,6 +38,7 @@ namespace SpaceOptimizerUWP.Models
             float E2,
             float E3)
         {
+            Id = id;
             this.EPSx = EPSx;
             this.EPSy = EPSy;
             this.EPSz = EPSz;

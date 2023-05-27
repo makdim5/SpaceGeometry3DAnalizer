@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml.Controls;
+﻿using Microsoft.Toolkit.Uwp.UI.Controls;
+using Microsoft.UI.Xaml.Controls;
 using Newtonsoft.Json;
 using SpaceOptimizerUWP.Models;
 using SpaceOptimizerUWP.Services;
@@ -10,6 +11,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.System.RemoteSystems;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -40,16 +42,31 @@ namespace SpaceOptimizerUWP.Views
         {
             model = (ResearchDbModel)e.Parameter;
             areas = model.Areas;
-            for (int i = 0; i < areas.Count; i++)
+            if (areas != null)
             {
-                areas[i].areaName = $"Область -  {i}";
+                for (int i = 0; i < areas.Count; i++)
+                {
+                    areas[i].areaName = $"Область -  {i}";
+                }
+                areasList.ItemsSource = areas;
+
+                double genVolume = 0;
+                foreach (Area area in areas)
+                {
+                    genVolume += area.Volume;
+                }
+                volumeTb.Text = $"Общий объём вырезаемых областей = {Math.Round(genVolume, 2)}";
             }
-            areasList.ItemsSource = areas;
+            else
+            {
+                areasList.ItemsSource = new List<Area>() { new Area() { areaName = "Области пока не обнаружены" } };
+
+            }
         }
 
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(RunPage), model);
+            Frame.Navigate(typeof(RunPage), new List<object>() { model, 0 });
 
         }
 
@@ -98,6 +115,11 @@ namespace SpaceOptimizerUWP.Views
 
         private async void AppBarButton_Click_3(object sender, RoutedEventArgs e)
         {
+            if (areas == null)
+            {
+                Message.Show("Нет доступных областей для отображения!", Frame.XamlRoot);
+                return;
+            }
             if (nodesList.Visibility == Visibility.Visible)
             {
                 chartBtn.Label = "Показать список";
@@ -120,6 +142,57 @@ namespace SpaceOptimizerUWP.Views
         {
             Message.ProgressShow(() => BackConnectorService.OpenDocument(model.FilePath), Frame.XamlRoot);
            
+        }
+
+        private async void AppBarButton_Click_5(object sender, RoutedEventArgs e)
+        {
+
+            //var options = new ExcelExportingOptions();
+            //options.ExcelVersion = ExcelVersion.Excel2013;
+            //var excelEngine = nodesList.ExportToExcel(nodesList.View, options);
+            //var workBook = excelEngine.Excel.Workbooks[0];
+            //StorageFile storageFile = await KnownFolders.PicturesLibrary.CreateFileAsync("Sample" + ".xlsx", CreationCollisionOption.ReplaceExisting);
+
+            //if (storageFile != null)
+            //    await workBook.SaveAsAsync(storageFile);
+        }
+
+        private void AppBarButton_Click_6(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(RunPage), new List<object>() { model, 1 });
+        }
+
+        private async void AppBarButton_Click_7(object sender, RoutedEventArgs e)
+        {
+            if (areas != null)
+            {
+                ContentDialog dialog = new ContentDialog();
+                dialog.Title = "Вы действительно хотите удалить области исследования?";
+                dialog.PrimaryButtonText = "Да";
+                dialog.SecondaryButtonText = "Отмена";
+
+                dialog.DefaultButton = ContentDialogButton.Primary;
+
+
+                var result = await dialog.ShowAsync();
+
+                if (result == ContentDialogResult.Primary)
+                {
+                   
+                    using (var db = new ResearchDbContext())
+                    {
+                        foreach (var area in model.Areas)
+                        {
+                            db.Areas.Remove(area);
+                        }
+                        model.Areas.Clear();
+                        db.Researchs.Update(model);
+                        db.SaveChanges();
+                    }
+                    Frame.Navigate(typeof(ResearchProjectPage), model);
+                }
+                
+            }
         }
     }
 }

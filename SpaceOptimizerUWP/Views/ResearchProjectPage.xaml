@@ -31,25 +31,34 @@
                 <AppBarButton Icon="BrowsePhotos" Label="Об исследовании" Click="AppBarButton_Click_2"/>
                 <AppBarButton Icon="Delete" Label="Удалить" Click="AppBarButton_Click_1"/>
                 <AppBarButton x:Name="chartBtn" Icon="StopSlideShow" Label="Показать график" Click="AppBarButton_Click_3"/>
+                <AppBarButton Label="Нариcовать области" Icon="TouchPointer" Click="AppBarButton_Click_6"  />
+                <AppBarButton Label="Удалить области" Icon="TouchPointer" Click="AppBarButton_Click_7"  />
                 <AppBarButton Icon="Document" Label="Открыть документ" Click="AppBarButton_Click_4"/>
             </CommandBar>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
-            <ListView BorderBrush="Black" BorderThickness="2" IsItemClickEnabled="True" ItemClick="areasList_ItemClick" VerticalAlignment="Stretch" Grid.Column="0" x:Name="areasList" Margin="20">
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
+            <ListView BorderBrush="Black" CornerRadius="20" Grid.Row="0" BorderThickness="2" IsItemClickEnabled="True" ItemClick="areasList_ItemClick" VerticalAlignment="Stretch"  x:Name="areasList" Margin="20">
                 <ListView.ItemTemplate >
                     <DataTemplate x:DataType="models:Area">
 
-                        <TextBlock Grid.Row="0" Text="{x:Bind areaName}"  FontSize="26" />
+                        <TextBlock Grid.Row="0" Text="{x:Bind areaName}"  TextWrapping="WrapWholeWords"  FontSize="26" />
                        
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <controls:DataGrid Grid.Column="1" x:Name="nodesList" Margin="10" IsReadOnly="False">
-                
+                <TextBlock Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="volumeTb" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWholeWords" FontSize="15" Margin="10"/>
+            </Grid>
+            <controls:DataGrid Grid.Column="1" x:Name="nodesList" Margin="10"  IsReadOnly="False">
+
             </controls:DataGrid>
             <muxc:WebView2 Grid.Column="1" x:Name="areasChartWebView" Visibility="Collapsed" />
         </Grid>

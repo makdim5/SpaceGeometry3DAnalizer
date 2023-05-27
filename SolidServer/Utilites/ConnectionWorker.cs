@@ -11,6 +11,7 @@ using SolidServer.SolidWorksApplicationPackage;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Runtime.Remoting.Contexts;
+using SolidServer.AreaWorkPackage;
 
 namespace SolidServer.Utitlites
 {
@@ -25,6 +26,7 @@ namespace SolidServer.Utitlites
         private const string DETERMINE_RESEARCH_RESULTS = "research";
         private const string DETERMINE_CRITICAL_NODES = "critical_nodes";
         private const string DETERMINE_AREAS = "areas";
+        private const string LOAD_AREAS = "loadareas";
         private const string CUT_AREAS = "cut_areas";
         private const string INIT_MANAGER = "setmngr";
         private const string RUN_STUDY = "runstudy";
@@ -166,7 +168,21 @@ namespace SolidServer.Utitlites
                         {
                             if (manager != null)
                             {
+                                
                                 sendresult = (JsonConvert.SerializeObject(manager.DetermineCutAreas()));
+                            }
+                            else { sendresult = "error"; }
+                            break;
+                        }
+                    case LOAD_AREAS:
+                        {
+                            if (manager != null)
+                            {
+                                string jsn = GetJson();
+                                var dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsn);
+                                manager.cutAreas = JsonConvert.DeserializeObject<List<Area>>(dict["areas"]);
+                                Console.WriteLine($"Загрузка областей выполнена успешно!");
+                                sendresult = "ok";
                             }
                             else { sendresult = "error"; }
                             break;

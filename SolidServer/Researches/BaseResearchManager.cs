@@ -116,6 +116,11 @@ namespace SolidServer.Researches
 
             var result = DefineAreas();
 
+            foreach(var area in cutAreas)
+            {
+                area.DefineDimensions();
+            }
+
             Console.WriteLine(msg + $"Окончание поиска областей. Их общее количество - {cutAreas.Count()}");
             return result;
 
@@ -132,7 +137,14 @@ namespace SolidServer.Researches
             Console.WriteLine("Начало выреза областей ...");
             for (int i = 0; i < cutAreas.Count(); i++)
             {
-                CutArea(i, cutConfiguration);
+                try
+                {
+                    CutArea(i, cutConfiguration);
+                }
+                catch
+                {
+                    Console.Write($"Возникла ошибка при вырезе {i+1}-области!");
+                }
             }
             cutAreas = new List<Area>();
             Console.WriteLine("Конец выреза областей");

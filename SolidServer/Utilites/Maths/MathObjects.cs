@@ -7,10 +7,15 @@ namespace SolidServer.Utitlites
     public struct Point3D
     {
         public double x, y, z;
+        public int Id = 0;
 
-        public Point3D(double x, double y, double z)
+        public Point3D()
         {
-            this.x = x; this.y = y; this.z = z;
+           
+        }
+        public Point3D(double x, double y, double z, int id=0)
+        {
+            this.x = x; this.y = y; this.z = z;Id = id;
         }
 
         public static bool operator ==(Point3D p1, Point3D p2)

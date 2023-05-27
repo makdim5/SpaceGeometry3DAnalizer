@@ -70,8 +70,8 @@
             </StackPanel>
         </Frame>
         <StackPanel Grid.Column="1"  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="prevBtn" Visibility="Collapsed" Margin="10" Content="Назад" Background="AliceBlue" Click="prevBtn_Click" ></Button>
-            <Button x:Name="nextBtn" Margin="10" Content="Далее" Background="AliceBlue" Click="nextBtn_Click" ></Button>
+            <Button x:Name="prevBtn" Visibility="Collapsed" Margin="10" Content="Назад"  Click="prevBtn_Click" ></Button>
+            <Button x:Name="nextBtn" Margin="10" Content="Далее" Click="nextBtn_Click" ></Button>
             <Button Margin="10" Content="X" ToolTipService.ToolTip="Прервать создание проекта" Background="Plum" Click="Button_Click" FontSize="20"></Button>
         </StackPanel>
     </Grid>

@@ -129,6 +129,33 @@ namespace SpaceOptimizerUWP.Services
 
         }
 
+        public static bool LoadAreas(List<Area> areas)
+        {
+            bool isOk = false;
+            try
+            {
+                var task = Task.Run(() =>
+                {
+                    var data = new Dictionary<string, object>() {
+                    { "areas", JsonConvert.SerializeObject(areas) }
+                };
+                    return new HttpDataService("http://127.0.0.1:8005/").PostAsJsonAsync("", "loadareas", data);
+                });
+                task.Wait();
+                if (task.Result == "ok")
+                {
+                    isOk = true;
+                }
+                return isOk;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Возникли проблемы с вырезом области" +
+                    " по причине разрыва соединения с сервером!");
+            }
+
+        }
+
         public static bool RunStudy()
         {
             bool isOk = false;

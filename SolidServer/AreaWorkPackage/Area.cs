@@ -8,11 +8,13 @@ namespace SolidServer.AreaWorkPackage
 {
     public class Area
     {
+        public int Id;
         public HashSet<Element> elements;
 
         public HashSet<Node> nodes;
 
         public Point3D areaCenter;
+        public string areaName;
 
         public double maxRadius;
 
@@ -22,6 +24,7 @@ namespace SolidServer.AreaWorkPackage
 
         public Area()
         {
+            areaCenter = new Point3D();
             nodes = new();
             elements = new();
         }

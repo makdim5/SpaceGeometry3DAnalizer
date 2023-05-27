@@ -5,7 +5,7 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
 {
     public class StressNodeParameters : IParameters
     {
-
+        public int Id;
         public readonly float Sx;
         public readonly float Sy;
         public readonly float Sz;

@@ -9,7 +9,7 @@
   <Identity
     Name="f43f6bc6-96a6-49dd-b1d2-e30156c9519d"
     Publisher="CN=makan"
-    Version="1.0.0.0" />
+    Version="1.0.2.0" />
 
   <Properties>
     <DisplayName>SpaceOptimizer</DisplayName>

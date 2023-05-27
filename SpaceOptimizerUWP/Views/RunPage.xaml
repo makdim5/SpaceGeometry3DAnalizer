@@ -49,7 +49,7 @@
                        Style="{ThemeResource HeaderTextBlockStyle}" />
             </StackPanel>
             <TextBlock Grid.Row="1" Visibility="Collapsed" x:Name="infoTextBlock" FontSize="15" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="WrapWholeWords" ScrollViewer.IsVerticalRailEnabled="True"/>
-            <Button Grid.Row="2" HorizontalAlignment="Center" Content="Далее" x:Name="nextBtn" Click="nextBtn_Click" />
+            <Button Grid.Row="2" HorizontalAlignment="Center" Content="Далее" x:Name="nextBtn" />
             <Button Grid.Row="3" HorizontalAlignment="Center" Content="Закрыть" x:Name="closeBtn" Click="closeBtn_Click" />
         </Grid>
     </Grid>

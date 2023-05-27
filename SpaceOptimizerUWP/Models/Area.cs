@@ -23,6 +23,7 @@ namespace SpaceOptimizerUWP.Models
 
         public Area()
         {
+            areaCenter = new Point3D();
             nodes = new();
             elements = new();
         }

@@ -9,6 +9,7 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
 {
     public class Element
     {
+        public int Id;
         public readonly int number;
 
         //Первые 4 нода это вершины, остальные 6 это центры ребер

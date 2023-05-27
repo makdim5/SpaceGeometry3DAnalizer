@@ -20,8 +20,10 @@ namespace SpaceOptimizerUWP.Models
 
         private Dictionary<string, float> param;
 
+        public StressNodeParameters() { }
         // показатели по напряжению
         public StressNodeParameters(
+            int id,
             float Sx,
             float Sy,
             float Sz,
@@ -33,7 +35,7 @@ namespace SpaceOptimizerUWP.Models
             float P3,
             float VON,
             float INT) {
-
+            Id = id;
             this.Sx = Sx;
             this.Sy = Sy;
             this.Sz = Sz;

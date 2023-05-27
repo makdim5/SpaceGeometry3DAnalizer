@@ -27,6 +27,11 @@ namespace SolidServer.Researches
 
             }
             cutAreas = squeezedAreas;
+
+            foreach (var area in cutAreas)
+            {
+                area.nodes = area.GetNodes();
+            }
             return cutAreas;
         }
     }

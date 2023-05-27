@@ -6,6 +6,7 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
 {
     public class Node
     {
+        public int Id;
         public readonly int number;
 
         public readonly Point3D point;
@@ -14,8 +15,8 @@ namespace SolidServer.SolidWorksPackage.ResearchPackage
 
         public readonly StrainNodeParameters strain;
 
-        public Node(int number , Point3D point, StressNodeParameters stress, StrainNodeParameters strain) {
-
+        public Node(int number , Point3D point, StressNodeParameters stress, StrainNodeParameters strain, int id=0) {
+            Id = id;
             this.number = number;
             this.point = point;
             this.stress = stress;

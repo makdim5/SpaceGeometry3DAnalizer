@@ -24,6 +24,8 @@ namespace SpaceOptimizerUWP.Views
             using (var db = new ResearchDbContext())
             {
                 db.MeshConfigurations.ToList();
+                db.StrainNodeParameters.ToList();
+                db.StressNodeParameters.ToList();
                 db.Areas.ToList();
                 db.Points.ToList();
                 db.Nodes.ToList();

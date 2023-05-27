@@ -15,6 +15,10 @@ namespace SpaceOptimizerUWP.Models
 
         public DbSet<Element> Elements { get; set; }
 
+        public DbSet<StrainNodeParameters> StrainNodeParameters { get; set; }
+
+        public DbSet<StressNodeParameters> StressNodeParameters { get; set; }
+
         public DbSet<NodeIndex> NodeIndexes { get; set; }
 
         public DbSet<Point3D> Points { get; set; }
