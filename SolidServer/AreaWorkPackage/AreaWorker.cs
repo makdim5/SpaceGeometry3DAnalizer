@@ -294,8 +294,18 @@ namespace SolidServer.AreaWorkPackage
                     }
                     else if (configuration["figureType"] == "sphere")
                     {
-
-                        var sphere = new Sphere(area.DefineAreaCenterThroughNodes(), area.DefineAreaRadiusThroughDimensions() / 1000);
+                        var minLenghts = new List<double>()
+                        {
+                            Math.Abs(areaDimensions["maxX"] - areaDimensions["minX"]),
+                            Math.Abs(areaDimensions["maxY"] - areaDimensions["minY"]),
+                            Math.Abs(areaDimensions["maxZ"] - areaDimensions["minZ"]),
+                        };
+                        var center = new Point3D(
+                             (areaDimensions["maxX"] + areaDimensions["minX"]) / 2,
+                              (areaDimensions["maxY"] + areaDimensions["minY"]) / 2,
+                               (areaDimensions["maxZ"] + areaDimensions["minZ"]) / 2
+                            );
+                        var sphere = new Sphere(center, minLenghts.Min() / 1200);
                         features.Add(SolidWorksDrawer.CutSphiere(doc, sphere));
                     }
 
@@ -331,7 +341,8 @@ namespace SolidServer.AreaWorkPackage
                            point.y + minLenghts.Min(),
                            point.z + minLenghts.Min());
                                 features.Add(SolidWorksDrawer.CutParallelepiped(doc, parralellepiped));
-                            } else if (configuration["figureType"] == "sphere")
+                            }
+                            else if (configuration["figureType"] == "sphere")
                             {
                                 var sphere = new Sphere(point, minLenghts.Min() / 1000);
                                 features.Add(SolidWorksDrawer.CutSphiere(doc, sphere));

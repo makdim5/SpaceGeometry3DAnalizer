@@ -228,8 +228,10 @@ namespace SolidServer.SolidWorksPackage
 
             var line = doc.SketchManager.CreateLine(endArcPoint.x, endArcPoint.y, endArcPoint.z,
                 startArcPoint.x, startArcPoint.y, startArcPoint.z);
-
-            line.Select2(false, 16);
+            
+            if (line != null)
+                line.Select2(false, 16);
+            
             var cut = doc.FeatureManager.FeatureRevolve2(true, true, false, true, false, false, 0, 0, 6.2831853071796, 0, false, false, radious, radious, 0, 0, 0, true, true, true);
             doc.SelectionManager.EnableContourSelection = false;
             doc.InsertSketch2(false);
