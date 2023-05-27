@@ -75,7 +75,19 @@ namespace SpaceOptimizerUWP.Models
         }
         public override string ToString()
         {
-            return string.Join(",\n", Extensions.GetDictString(param));
+            //string.Join(",\n", Extensions.GetDictString(param));
+            return $@"
+                ( ""SX"", {Sx} ),
+                ( ""SY"", {Sy} ),
+                ( ""SZ"", {Sz} ),
+                ( ""XY"", {Txy} ),
+                ( ""YZ"", {Tyz} ),
+                ( ""XZ"", {Txz}),
+                ( ""P1"", {P1} ),
+                ( ""P2"", {P2} ),
+                ( ""P3"", {P3} ),
+                ( ""VON"", {VON} ),
+                ( ""INT"", {INT} )";
         }
     }
 }

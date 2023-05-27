@@ -57,7 +57,7 @@
             </ListView>
                 <TextBlock Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="volumeTb" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWholeWords" FontSize="15" Margin="10"/>
             </Grid>
-            <controls:DataGrid Grid.Column="1" x:Name="nodesList" Margin="10"  IsReadOnly="False">
+            <controls:DataGrid Grid.Column="1" x:Name="nodesList" Margin="10" >
 
             </controls:DataGrid>
             <muxc:WebView2 Grid.Column="1" x:Name="areasChartWebView" Visibility="Collapsed" />

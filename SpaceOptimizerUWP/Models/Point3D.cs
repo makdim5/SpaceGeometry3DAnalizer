@@ -59,7 +59,7 @@ namespace SpaceOptimizerUWP.Models
 
         public override string ToString()
         {
-            return $"Point ({x},{y},{z})";
+            return $"Point (\nx={x},\ny={y},\nz={z}\n)";
         }
     }
 }
