@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.Toolkit.Uwp.Notifications;
 using SpaceOptimizerUWP.Models;
 using SpaceOptimizerUWP.Services;
 using System;
@@ -115,6 +116,8 @@ namespace SpaceOptimizerUWP.Views
                     }
                     cutCounterTb.Text = $"Области вырезаны!";
                     progressBar.Visibility = Visibility.Collapsed;
+                    var builder = new ToastContentBuilder().AddText("Области вырезаны!", hintMaxLines: 1);
+                    builder.Show();
 
                     nextBtn.IsEnabled = false;
                 }
@@ -222,7 +225,8 @@ namespace SpaceOptimizerUWP.Views
                     }
                     cutCounterTb.Text = $"Области вырезаны!";
                     progressBar.Visibility = Visibility.Collapsed;
-                    
+                    var builder = new ToastContentBuilder().AddText("Области вырезаны!", hintMaxLines: 1);
+                    builder.Show();
                     counter++;
                     nextBtn.IsEnabled = true;
                 }

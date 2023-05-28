@@ -214,11 +214,11 @@
     <comment>Personalization text for Settings</comment>
   </data>
   <data name="FirstRun_Body.Text" xml:space="preserve">
-    <value>Здесь вы сможете оптимизировать пространство внутри вашей детали SolidWorks!</value>
+    <value>Здесь вы сможете встроить ячеистые структуры внутри вашей детали SolidWorks!</value>
     <comment>First use prompt message body</comment>
   </data>
   <data name="FirstRunDialog.Title" xml:space="preserve">
-    <value>Добро пожаловать</value>
+    <value>Вас приветствует SpaceOptimizer</value>
     <comment>First use prompt message title</comment>
   </data>
   <data name="FirstRunDialog.PrimaryButtonText" xml:space="preserve">

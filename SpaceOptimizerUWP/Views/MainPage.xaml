@@ -72,14 +72,21 @@
                         <ListView.ItemTemplate >
                             <DataTemplate x:DataType="models:ResearchDbModel">
                                 <Grid Height="70" Margin="20">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
+                                    <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50" />
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="💎" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="30" />
+                                    <Grid Grid.Column="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
 
-                                    </Grid.RowDefinitions>
+                                        </Grid.RowDefinitions>
 
-                                    <TextBlock Grid.Row="0" Text="{Binding Title}"  FontSize="26" />
-                                    <TextBlock Grid.Row="1" Text="{Binding FilePath}"  FontSize="13" />
+                                        <TextBlock Grid.Row="0" Text="{Binding Title}"  FontSize="26" />
+                                        <TextBlock Grid.Row="1" Text="{Binding FilePath}"  FontSize="13" />
+                                    </Grid>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>

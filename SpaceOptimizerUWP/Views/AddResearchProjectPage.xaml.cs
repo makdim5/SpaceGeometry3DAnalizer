@@ -50,7 +50,7 @@ namespace SpaceOptimizerUWP.Views
         {
             if (counter == 0)
             {
-                if (titleTb.Text == "" && filePathTb.Text == "")
+                if (titleTb.Text == "" | model.FilePath == null | model.FilePath == "")
                 {
                     return;
                 }
