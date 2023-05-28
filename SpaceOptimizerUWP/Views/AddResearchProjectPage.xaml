@@ -65,7 +65,7 @@
                        Style="{ThemeResource HeaderTextBlockStyle}" />
                 <muxc:NumberBox x:Name="epsBox" Visibility="Collapsed" Header="Введите минимальное внутрикластерное расстояние:" Value="2"  Minimum="1" Maximum="50" />
                 <muxc:NumberBox x:Name="minSamplesBox" Visibility="Collapsed" Header="Введите минимальное количество точек в кластере:" Value="4" Minimum="2" Maximum="50" />
-                <muxc:NumberBox x:Name="squeezeCoefBox" Visibility="Collapsed" Header="Введите Введите коэффициент сжатия:" Value="0.8"  Minimum="0.1" Maximum="0.99" />
+                <muxc:NumberBox x:Name="squeezeCoefBox" Visibility="Collapsed" Header="Введите коэффициент сжатия:" Value="0.8"  Minimum="0.1" Maximum="0.99" />
                 <muxc:NumberBox x:Name="nodesIntersectionAmountBox" Visibility="Collapsed" Header="Введите число общих узлов при соприкосновении элементов:" Value="2" Minimum="1" Maximum="4" />
             </StackPanel>
         </Frame>

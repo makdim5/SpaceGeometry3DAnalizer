@@ -147,6 +147,10 @@ namespace SpaceOptimizerUWP.Views
 
         private async void AppBarButton_Click_5(object sender, RoutedEventArgs e)
         {
+            if (areas == null)
+            {
+                Message.Show("Нет доступных областей для экспорта!", Frame.XamlRoot); return; 
+            }
 
             using (ExcelEngine excelEngine = new ExcelEngine())
             {
@@ -263,6 +267,7 @@ namespace SpaceOptimizerUWP.Views
         }
         private void AppBarButton_Click_6(object sender, RoutedEventArgs e)
         {
+            if (model.Areas == null) { Message.Show("Нет доступных областей для выреза!", Frame.XamlRoot); return; }
             Frame.Navigate(typeof(RunPage), new List<object>() { model, 1 });
         }
 

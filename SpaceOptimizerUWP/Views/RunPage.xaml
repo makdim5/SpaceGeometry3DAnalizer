@@ -30,7 +30,7 @@
                 <ComboBox x:Name="cutTypeBox" SelectionChanged="cutTypeBox_SelectionChanged" Header="Выбирите параметр основы для выреза">
                     <x:String>Вырез на базе узлов</x:String>
                     <x:String>Вырез на базе элементов</x:String>
-                    <x:String>Отрисовка узов в виде точек (вырез области не производится)</x:String>
+                    <x:String>Отрисовка узлов в виде точек (вырез области не производится)</x:String>
                 </ComboBox>
 
                 <ComboBox x:Name="figureCutBox" Visibility="Collapsed" Header="Выбирите тип фигуры ячейки">
