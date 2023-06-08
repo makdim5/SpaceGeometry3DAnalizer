@@ -19,7 +19,7 @@ class DensityBasedSpatialClustering(Resource):
                 nodes_df[nodes_df["cluster"] == i].drop(["cluster"], axis=1).to_dict(orient='records')
                 for i in range(max(af.labels_) + 1)
             ]
-            print(f"Определено {max(af.labels_)} областей!")
+            print(f"Определено {max(af.labels_) + 1} областей!")
             return areas_to_send
         except Exception:
             abort(400)
