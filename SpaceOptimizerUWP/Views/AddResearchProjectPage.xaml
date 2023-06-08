@@ -44,15 +44,15 @@
                        Style="{ThemeResource HeaderTextBlockStyle}" />
                 <muxc:NumberBox x:Name="Coef1Box" Header="Введите Coef-1:" Value="0.2" Minimum="0.01" Maximum="0.99" />
                 <muxc:NumberBox x:Name="Coef2Box" Header="Введите Coef-2:" Value="0.1" Minimum="0.01" Maximum="0.99" />
-                <ComboBox x:Name="filterParamBox" Header="Выбирите параметр фильтрации">
+                <ComboBox x:Name="filterParamBox" Header="Выберите параметр фильтрации">
                     <x:String>VON</x:String>
                 </ComboBox>
 
-                <ComboBox x:Name="materialParamBox" Header="Выбирите параметр фильтрации по материалу">
+                <ComboBox x:Name="materialParamBox" Header="Выберите параметр фильтрации по материалу">
                     <x:String>SIGXT</x:String>
                 </ComboBox>
 
-                <ComboBox x:Name="researchTypeBox" Header="Выбирите алгоритм">
+                <ComboBox x:Name="researchTypeBox" Header="Выберите алгоритм">
                     <x:String>DBSCAN алгоритм на основе плотности облака точек</x:String>
                     <x:String>Алгоритм на основе смежных элементов КЭ-сетки</x:String>
                 </ComboBox>

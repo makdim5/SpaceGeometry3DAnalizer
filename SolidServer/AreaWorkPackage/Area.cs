@@ -115,44 +115,27 @@ namespace SolidServer.AreaWorkPackage
 
         public Dictionary<string, double> DefineDimensions()
         {
-            var nodes = GetNodes();
+            HashSet<Node> nodes = GetNodes();
+                      
+            List<double> x_coords = new List<double>();
+            List<double> y_coords = new List<double>();
+            List<double> z_coords = new List<double>();
 
-            double minX = nodes.First().point.x, maxX = nodes.First().point.x,
-                 minY = nodes.First().point.y, maxY = nodes.First().point.y,
-                 minZ = nodes.First().point.z, maxZ = nodes.First().point.z;
+            var nodesList = nodes.ToList();
 
-            foreach(Node node in nodes)
+            nodesList.ForEach(node => 
             {
-                if (minX > node.point.x)
-                {
-                    minX = node.point.x;
-                }
-                if (maxX < node.point.x)
-                {
-                    maxX = node.point.x;
-                }
+                x_coords.Add(node.point.x);
+                y_coords.Add(node.point.y);
+                z_coords.Add(node.point.z);
+            
+            });
 
-                if (minY > node.point.y)
-                {
-                    minY = node.point.y;
-                }
+            double minX = x_coords.Min(), maxX = x_coords.Max(),
+                 minY =y_coords.Min(), maxY = y_coords.Max(),
+                 minZ = z_coords.Min(), maxZ = z_coords.Max();
 
-                if (maxY < node.point.y)
-                {
-                    maxY = node.point.y;
-                }
-
-                if (minZ > node.point.z)
-                {
-                    minZ = node.point.z;
-                }
-
-                if (maxZ < node.point.z)
-                {
-                    maxZ = node.point.z;
-                }
-            }
-
+            
             var dims = new Dictionary<string, double>()
             {
                 { "minX", minX},

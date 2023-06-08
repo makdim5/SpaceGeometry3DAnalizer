@@ -302,7 +302,8 @@ namespace SolidServer.AreaWorkPackage
                         };
                         var center = new Point3D(
                              (areaDimensions["maxX"] + areaDimensions["minX"]) / 2,
-                              (areaDimensions["maxY"] + areaDimensions["minY"]) / 2,
+        
+                             (areaDimensions["maxY"] + areaDimensions["minY"]) / 2,
                                (areaDimensions["maxZ"] + areaDimensions["minZ"]) / 2
                             );
                         var sphere = new Sphere(center, minLenghts.Min() / 1200);

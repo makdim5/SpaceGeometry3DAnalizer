@@ -319,10 +319,11 @@ namespace SolidServer.SolidWorksPackage
             double unit = 1000;
             doc.ClearSelection();
             doc.SketchManager.Insert3DSketch(true);
-            var sketchPoint1 = doc.SketchManager.CreatePoint(x1 / unit, y1 / unit, z1 / unit);
+            double z_mid = (z1+z2)/ 2;
+            var sketchPoint1 = doc.SketchManager.CreatePoint(x1 / unit, y1 / unit, z_mid / unit);
 
-            var sketchPoint2 = doc.SketchManager.CreatePoint((x1 + 10) / unit, y2 / unit, z1 / unit);
-            var sketchPoint3 = doc.SketchManager.CreatePoint(x1 / unit, (y1 + 10) / unit, z1 / unit);
+            var sketchPoint2 = doc.SketchManager.CreatePoint((x1 + 10) / unit, y2 / unit, z_mid / unit);
+            var sketchPoint3 = doc.SketchManager.CreatePoint(x1 / unit, (y1 + 10) / unit, z_mid / unit);
 
             doc.SketchManager.Insert3DSketch(false);
             doc.ClearSelection();
@@ -336,10 +337,10 @@ namespace SolidServer.SolidWorksPackage
             doc.Extension.EditRebuildAll();
             doc.InsertSketch2(true);
 
-            doc.SketchManager.CreateCornerRectangle(x1 / unit, y1 / unit, z1 / unit,
-                x2 / unit, y2 / unit, z1 / unit);
+            doc.SketchManager.CreateCornerRectangle(x1 / unit, y1 / unit, z_mid / unit,
+                x2 / unit, y2 / unit, z_mid / unit);
 
-            var cut = doc.FeatureManager.FeatureCut4(true, false, false, 0, 0, (z2 - z1) / unit, (z2 - z1) / unit, false, false, false, false, 1.74532925199433E-02, 1.74532925199433E-02, false, false, false,
+            var cut = doc.FeatureManager.FeatureCut4(true, false, false, 6, 0, (z2 - z1) / (2*unit), (z2 - z1) / (2 * unit), false, false, false, false, 1.74532925199433E-02, 1.74532925199433E-02, false, false, false,
                 false, false, true, true, true, true, false, 0, 0, false, false);
 
             doc.InsertSketch2(false);

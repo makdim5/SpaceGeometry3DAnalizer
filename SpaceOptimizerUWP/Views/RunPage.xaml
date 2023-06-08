@@ -27,17 +27,17 @@
                        Style="{ThemeResource HeaderTextBlockStyle}" />
             <muxc:ProgressRing x:Name="progressRing" Visibility="Collapsed" Grid.Row="1" IsActive="True" Height="200" Width="200"  />
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="1" x:Name="cutConfigPanel" >
-                <ComboBox x:Name="cutTypeBox" SelectionChanged="cutTypeBox_SelectionChanged" Header="Выбирите параметр основы для выреза">
+                <ComboBox x:Name="cutTypeBox" SelectionChanged="cutTypeBox_SelectionChanged" Header="Выберите параметр основы для выреза">
                     <x:String>Вырез на базе узлов</x:String>
                     <x:String>Вырез на базе элементов</x:String>
                     <x:String>Отрисовка узлов в виде точек (вырез области не производится)</x:String>
                 </ComboBox>
 
-                <ComboBox x:Name="figureCutBox" Visibility="Collapsed" Header="Выбирите тип фигуры ячейки">
+                <ComboBox x:Name="figureCutBox" Visibility="Collapsed" Header="Выберите тип фигуры ячейки">
                     <x:String>Параллелепипед</x:String>
                     <x:String>Сфера</x:String>
                 </ComboBox>
-                <ComboBox x:Name="nodeCutWayBox" Visibility="Collapsed" Header="Выбирите способ выреза">
+                <ComboBox x:Name="nodeCutWayBox" Visibility="Collapsed" Header="Выберите способ выреза">
                     <x:String>Каждая область - отдельная фигура</x:String>
                     <x:String>Равномерное распределение фигур внутри области</x:String>
                 </ComboBox>
