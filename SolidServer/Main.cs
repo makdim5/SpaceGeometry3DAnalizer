@@ -13,8 +13,9 @@ namespace SolidServer
     {
         static void Main()
         {
-            StartAsServer();
-            //DoResearch();
+            // для начала работы закомментируйте одну из строчек StartAsServer() или DoResearch()
+            StartAsServer(); // для запуска программы как сервер
+            //DoResearch(); // запуск для тестирования без черверной части
         }
 
         static void DoResearch()
